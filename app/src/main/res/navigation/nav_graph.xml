@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/dashboardfragment">
+
+    <fragment android:id="@+id/dashboardfragment"
+              android:name="com.epalburquerqueiii.aexperience.UI.Personas.PersonasFragment" android:label="DashboardFragment"
+              tools:layout="@layout/list_fragment"/>
+    <fragment android:id="@+id/reportfragment" android:name="com.epalburquerqueiii.aexperience.UI.Fragment.ReportFragment"
+              tools:layout="@layout/report_fragment" android:label="ReportFragment"/>
+    <fragment android:id="@+id/acountfragment" android:name="com.epalburquerqueiii.aexperience.UI.Fragment.AcountFragment"
+              android:label="AccountFragment" tools:layout="@layout/acount_fragment"/>
+</navigation>

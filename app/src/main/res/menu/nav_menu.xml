@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/dashboardfragment"
+      android:icon="@drawable/ic_home_white_32dp"
+      android:title="Dashboard"></item>
+
+
+    <item android:id="@+id/reportfragment"
+          android:icon="@drawable/ic_person_outline_white_32dp"
+          android:title="Report"></item>
+
+    <item android:id="@+id/acountfragment"
+          android:icon="@drawable/ic_person_outline_white_32dp"
+          android:title="Account"></item>
+</menu>
