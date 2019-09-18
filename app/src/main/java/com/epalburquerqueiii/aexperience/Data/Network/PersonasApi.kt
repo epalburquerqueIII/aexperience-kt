@@ -14,12 +14,12 @@ import retrofit2.http.POST
 interface PersonasApi {
     //view
 
-    @GET(BuildConfig.TABLA_PERSONAS+BuildConfig.VIEW_DATA)
+    @GET("personas/"+BuildConfig.VIEW_DATA)
     fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Personas>
 
     //create
     @FormUrlEncoded
-    @POST(BuildConfig.TABLA_PERSONAS+BuildConfig.CREATE_DATA)
+    @POST("personas/"+BuildConfig.CREATE_DATA)
     fun Create(
         @Field("Nombre")Nombre:String,
         @Field("Direccion") Direccion:String,
@@ -31,7 +31,7 @@ interface PersonasApi {
 
     //update
     @FormUrlEncoded
-    @POST(BuildConfig.BASE_URL+BuildConfig.TABLA_PERSONAS+BuildConfig.UPDATE_DATA)
+    @POST(BuildConfig.BASE_URL+"personas/"+BuildConfig.UPDATE_DATA)
     fun Update(
         @Field("ID")id: Int,
         @Field("Nombre")Nombre:String,
@@ -43,7 +43,7 @@ interface PersonasApi {
     ):Call<responseModel>
 
     @FormUrlEncoded
-    @POST(BuildConfig.BASE_URL+BuildConfig.TABLA_PERSONAS+BuildConfig.DELETE_DATA)
+    @POST(BuildConfig.BASE_URL+"personas/"+BuildConfig.DELETE_DATA)
     fun Delete(
         @Field("ID")id:String
 

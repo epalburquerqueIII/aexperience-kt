@@ -10,7 +10,7 @@ import retrofit2.http.GET
 interface ProvinciasApi {
     //view
 
-    @GET(BuildConfig.TABLA_PROVINCIAS+BuildConfig.GETOPTIONS_DATA)
+    @GET("provincias/"+BuildConfig.GETOPTIONS_DATA)
     fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
 
 
