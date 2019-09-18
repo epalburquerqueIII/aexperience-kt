@@ -22,11 +22,6 @@ def CREATE_DATA = '"' + CREATE_DATA + '"' ?: '"CREATE_DATA"'
 
 def GETOPTIONS_DATA = '"' + GETOPTIONS_DATA + '"' ?: '"GETOPTIONS_DATA"'
 
-def TABLA_PERSONAS = '"' + TABLA_PERSONAS + '"' ?: '"TABLA_PERSONAS"'
-
-def TABLA_PROVINCIAS = '"' + TABLA_PROVINCIAS + '"' ?: '"TABLA_PROVINCIAS"'
-
-
 android.buildTypes.each { type ->
     type.buildConfigField 'String', 'BASE_URL', BASE_URL
     type.buildConfigField 'String', 'VIEW_DATA', VIEW_DATA
@@ -34,8 +29,6 @@ android.buildTypes.each { type ->
     type.buildConfigField 'String', 'UPDATE_DATA', UPDATE_DATA
     type.buildConfigField 'String', 'CREATE_DATA', CREATE_DATA
     type.buildConfigField 'String', 'GETOPTIONS_DATA', GETOPTIONS_DATA
-    type.buildConfigField 'String', 'TABLA_PERSONAS', TABLA_PERSONAS
-    type.buildConfigField 'String', 'TABLA_PROVINCIAS', TABLA_PROVINCIAS
 
 }
 
