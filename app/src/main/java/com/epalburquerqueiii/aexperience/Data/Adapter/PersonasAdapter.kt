@@ -58,8 +58,6 @@ class PersonasAdapter(private val personas: ArrayList<Persona>, context: Context
 //            itemView.Email.text = this.Persona?.Email
         }
 
-
-
     }
 
     interface OnItemClickListener {
