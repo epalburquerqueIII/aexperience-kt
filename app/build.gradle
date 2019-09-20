@@ -29,6 +29,7 @@ android.buildTypes.each { type ->
     type.buildConfigField 'String', 'UPDATE_DATA', UPDATE_DATA
     type.buildConfigField 'String', 'CREATE_DATA', CREATE_DATA
     type.buildConfigField 'String', 'GETOPTIONS_DATA', GETOPTIONS_DATA
+
 }
 
 android {

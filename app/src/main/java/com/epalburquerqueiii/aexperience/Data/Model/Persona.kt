@@ -1,6 +1,8 @@
 package com.epalburquerqueiii.aexperience.Data.Model
 
-class Persona {
+import java.io.Serializable
+
+class Persona : Serializable {
 
     constructor(
        ID: Int?,

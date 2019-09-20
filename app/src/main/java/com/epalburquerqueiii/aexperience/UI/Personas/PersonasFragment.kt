@@ -25,6 +25,9 @@ class PersonasFragment : Fragment() {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var mAdapter: PersonasAdapter
 
+    private val Crear = 0
+    private val Editar = 1
+
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +43,11 @@ class PersonasFragment : Fragment() {
         viewModel.getRegistros()
         bt_new.setOnClickListener{
             var intent = Intent(activity, PersonaActivity::class.java)
+            var registro = Persona(0,"","","",6,"","")
+            intent.putExtra("registro",registro)
+
+/*
+// pasar los campos de manera individual
             intent.putExtra("ID", 0)
             intent.putExtra("Nombre", "")
             intent.putExtra("Direccion", "")
@@ -47,7 +55,8 @@ class PersonasFragment : Fragment() {
             intent.putExtra("Provinciaid", 0)
             intent.putExtra("Telefono", "")
             intent.putExtra("Email", "")
-            intent.putExtra("modo", 0)
+*/
+            intent.putExtra("modo", Crear)
             startActivity(intent) }
     }
 
@@ -69,6 +78,11 @@ class PersonasFragment : Fragment() {
                 override fun onItemClick(registro: Persona) {
                     //Toast.makeText(activity,""+registro.id,Toast.LENGTH_SHORT).show()
                     var intent = Intent(activity, PersonaActivity::class.java)
+
+                    intent.putExtra("registro", registro)
+
+/*
+// Pasar los datos campo a campo
                     intent.putExtra("ID", registro.ID?.toInt())
                     intent.putExtra("Nombre", registro.Nombre?.toString())
                     intent.putExtra("Direccion", registro.Direccion?.toString())
@@ -76,7 +90,9 @@ class PersonasFragment : Fragment() {
                     intent.putExtra("Provinciaid", registro.Provinciaid)
                     intent.putExtra("Telefono", registro.Telefono?.toString())
                     intent.putExtra("Email", registro.Email?.toString())
-                    intent.putExtra("modo", 1)
+
+ */
+                    intent.putExtra("modo", Editar)
                     startActivityForResult(intent,1)
                 }
             })

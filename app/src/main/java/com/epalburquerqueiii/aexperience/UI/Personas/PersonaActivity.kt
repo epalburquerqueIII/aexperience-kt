@@ -47,6 +47,9 @@ class PersonaActivity : AppCompatActivity() {
        // var addnotemodel = ViewModelProviders.of(this).get(PersonasViewModel::class.java)
 
         val bundle:Bundle? = intent.extras
+        val registro = intent.extras.get("registro") as Persona
+
+/*
         val registro = Persona(bundle?.getInt("ID"),
                                 bundle?.getString("Nombre"),
                                 bundle?.getString("Direccion"),
@@ -54,6 +57,7 @@ class PersonaActivity : AppCompatActivity() {
                                 bundle?.getInt("Provinciaid"),
                                 bundle?.getString("Telefono"),
                                 bundle?.getString("Email"))
+*/
 
         modo = bundle?.getInt("modo")
 
