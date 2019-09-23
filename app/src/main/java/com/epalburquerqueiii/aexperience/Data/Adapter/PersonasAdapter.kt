@@ -50,6 +50,7 @@ class PersonasAdapter(private val personas: ArrayList<Persona>, context: Context
             }
         }
 
+// asigna el dato del adapter al control de la vista
         fun bindView(Persona: Persona){
             this.Persona = Persona
             itemView.Nombre.text = this.Persona?.Nombre
@@ -57,8 +58,6 @@ class PersonasAdapter(private val personas: ArrayList<Persona>, context: Context
             itemView.Poblacion.text = this.Persona?.Poblacion
 //            itemView.Email.text = this.Persona?.Email
         }
-
-
 
     }
 
