@@ -1,9 +1,8 @@
 package com.epalburquerqueiii.aexperience.Data.Network
 
+import com.epalburquerqueiii.aexperience.BuildConfig
 import com.epalburquerqueiii.aexperience.Data.Model.Personas
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
-import com.epalburquerqueiii.aexperience.BuildConfig
-
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -28,7 +27,7 @@ interface PersonasApi {
         @Field("Telefono") Telefono:String,
         @Field("Email") Email:String
     ):Call<responseModel>
-
+//TODO hacer que el back-end devuelva el registro ID creado
     //update
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"personas/"+BuildConfig.UPDATE_DATA)
@@ -45,7 +44,7 @@ interface PersonasApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"personas/"+BuildConfig.DELETE_DATA)
     fun Delete(
-        @Field("ID")id:String
+        @Field("ID")id:Int
 
     ):Call<responseModel>
 
