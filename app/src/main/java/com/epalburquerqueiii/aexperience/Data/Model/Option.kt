@@ -13,5 +13,4 @@ class Option {
     var Value: Int? = null
     var DisplayText: String? = null
 
-
 }

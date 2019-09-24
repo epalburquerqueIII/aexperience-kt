@@ -1,7 +1,5 @@
 package com.epalburquerqueiii.aexperience.UI
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,17 +9,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Persona
 import com.epalburquerqueiii.aexperience.Data.Model.Option
 import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Network.ProvinciasApi
+import com.epalburquerqueiii.aexperience.Data.Model.Persona
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.PersonasApi
+import com.epalburquerqueiii.aexperience.Data.Network.ProvinciasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Personas.PersonasViewModel
 import com.epalburquerqueiii.aexperience.databinding.ActivityPersonaBinding
 import kotlinx.android.synthetic.main.activity_persona.*
+import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,6 +48,8 @@ class PersonaActivity : AppCompatActivity() {
         val bundle:Bundle? = intent.extras
         val registro = intent.extras.get("registro") as Persona
 
+//  sin databinding los campo se rellenarían manualmente
+//        Poblacion.setText(registro.Poblacion.toString())
 /*
         val registro = Persona(bundle?.getInt("ID"),
                                 bundle?.getString("Nombre"),
@@ -64,11 +65,13 @@ class PersonaActivity : AppCompatActivity() {
 
         if (modo == Editar){
             btn_delete.visibility = View.VISIBLE
-            binding.setVariable(BR.addregistroviewmodel,registro)
+            binding.setVariable(BR.addpersonaviewmodel,registro)
             binding.executePendingBindings()
         }
 
-        btn_next.setOnClickListener {
+
+
+        btn_save.setOnClickListener {
             if (modo == Crear) {
                 create()
             }else{
@@ -133,12 +136,12 @@ class PersonaActivity : AppCompatActivity() {
 
     private fun create(){
 
-        val get = RetrofitBuilder.builder().create(PersonasApi::class.java)
+        val post = RetrofitBuilder.builder().create(PersonasApi::class.java)
         var Provinciaid :Int = 0
         if (records.size > 0) {
              Provinciaid = records[cbprovincia.selectedItemPosition].Value!!.toInt()
         }
-        val callcreate = get.Create(Nombre.text.toString(),Direccion.text.toString(),Poblacion.text.toString(),Provinciaid,Telefono.text.toString(),Email.text.toString())
+        val callcreate = post.Create(Nombre.text.toString(),Direccion.text.toString(),Poblacion.text.toString(),Provinciaid,Telefono.text.toString(),Email.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                // Toast.makeText(this@PersonaActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -164,13 +167,13 @@ class PersonaActivity : AppCompatActivity() {
 
     private fun update(ID:Int){
 
-        val get = RetrofitBuilder.builder().create(PersonasApi::class.java)
+        val post = RetrofitBuilder.builder().create(PersonasApi::class.java)
         var Provinciaid :Int = 0
         if (records.size > 0) {
             Provinciaid = records[cbprovincia.selectedItemPosition].Value!!.toInt()
         }
 
-        val callUpdate = get.Update(ID,Nombre.text.toString(),Direccion.text.toString(),Poblacion.text.toString(),Provinciaid,Telefono.text.toString(),Email.text.toString())
+        val callUpdate = post.Update(ID,Nombre.text.toString(),Direccion.text.toString(),Poblacion.text.toString(),Provinciaid,Telefono.text.toString(),Email.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@PersonaActivity, "Fallo $ID",Toast.LENGTH_SHORT).show()
@@ -198,8 +201,8 @@ class PersonaActivity : AppCompatActivity() {
     }
 
     private fun delete(ID: Int){
-        val get = RetrofitBuilder.builder().create(PersonasApi::class.java)
-        val calldelete = get.Delete(ID.toString())
+        val post = RetrofitBuilder.builder().create(PersonasApi::class.java)
+        val calldelete = post.Delete(ID.toInt())
         calldelete.enqueue(object : Callback<responseModel>{
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

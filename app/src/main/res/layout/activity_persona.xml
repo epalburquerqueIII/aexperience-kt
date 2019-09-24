@@ -8,19 +8,15 @@
 
         <import type="android.view.View"/>
 
-        <variable name="addregistroviewmodel" type="com.epalburquerqueiii.aexperience.Data.Model.Persona"/>
+        <variable name="addpersonaviewmodel" type="com.epalburquerqueiii.aexperience.Data.Model.Persona"/>
 
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/btn_next"
-        app:layout_constraintTop_toTopOf="@+id/btn_next"
-        tools:context=".UI.Personas.AddPersonaActivity">
+        tools:context=".UI.Personas.PersonaActivity">
 
 
         <EditText
@@ -40,7 +36,7 @@
             android:maxLines="1"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:text="@{addregistroviewmodel.Telefono}"
+            android:text="@{addpersonaviewmodel.Telefono}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +62,7 @@
             android:hint="Email"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:text="@{addregistroviewmodel.Email}"
+            android:text="@{addpersonaviewmodel.Email}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +102,7 @@
             android:maxLines="1"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:text="@{addregistroviewmodel.Nombre}"
+            android:text="@{addpersonaviewmodel.Nombre}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +128,7 @@
             android:maxLines="1"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:text="@{addregistroviewmodel.Direccion}"
+            android:text="@{addpersonaviewmodel.Direccion}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -158,58 +154,13 @@
             android:maxLines="1"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:text="@{addregistroviewmodel.Poblacion}"
+            android:text="@{addpersonaviewmodel.Poblacion}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Direccion"
-            tools:ignore="MissingConstraints" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_next"
-            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:paddingEnd="20dp"
-            android:text="Guardar"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textStyle="bold"
-            app:cornerRadius="15dp"
-            app:elevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Email"
-            app:strokeColor="@color/grey_300"
-            app:strokeWidth="2dp"
-            tools:ignore="MissingConstraints" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_delete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/background_rectangle_black"
-            android:paddingEnd="20dp"
-            android:text="Borrar"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:cornerRadius="15dp"
-            app:elevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_next"
-            app:strokeColor="@color/grey_300"
-            app:strokeWidth="2dp"
             tools:ignore="MissingConstraints" />
 
         <Spinner
@@ -225,6 +176,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Poblacion" />
+
+        <include
+            layout="@layout/editupdate_botton"
+            android:layout_width="403dp"
+            android:layout_height="128dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Email"
+            app:layout_constraintVertical_bias="0.252" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
