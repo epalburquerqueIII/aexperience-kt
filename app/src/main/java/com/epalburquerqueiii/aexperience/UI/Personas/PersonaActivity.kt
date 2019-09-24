@@ -9,18 +9,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
+import com.epalburquerqueiii.aexperience.Data.Model.Persona
 import com.epalburquerqueiii.aexperience.Data.Model.Option
 import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Model.Persona
+import com.epalburquerqueiii.aexperience.Data.Network.ProvinciasApi
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.PersonasApi
-import com.epalburquerqueiii.aexperience.Data.Network.ProvinciasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Personas.PersonasViewModel
 import com.epalburquerqueiii.aexperience.databinding.ActivityPersonaBinding
 import kotlinx.android.synthetic.main.activity_persona.*
-import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,8 +47,6 @@ class PersonaActivity : AppCompatActivity() {
         val bundle:Bundle? = intent.extras
         val registro = intent.extras.get("registro") as Persona
 
-//  sin databinding los campo se rellenarían manualmente
-//        Poblacion.setText(registro.Poblacion.toString())
 /*
         val registro = Persona(bundle?.getInt("ID"),
                                 bundle?.getString("Nombre"),
@@ -65,11 +62,9 @@ class PersonaActivity : AppCompatActivity() {
 
         if (modo == Editar){
             btn_delete.visibility = View.VISIBLE
-            binding.setVariable(BR.addpersonaviewmodel,registro)
+            binding.setVariable(BR.addregistroviewmodel,registro)
             binding.executePendingBindings()
         }
-
-
 
         btn_save.setOnClickListener {
             if (modo == Crear) {

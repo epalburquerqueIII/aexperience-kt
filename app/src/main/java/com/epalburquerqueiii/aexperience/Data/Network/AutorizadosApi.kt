@@ -1,8 +1,9 @@
 package com.epalburquerqueiii.aexperience.Data.Network
 
-import com.epalburquerqueiii.aexperience.BuildConfig
 import com.epalburquerqueiii.aexperience.Data.Model.Autorizados
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
+import com.epalburquerqueiii.aexperience.BuildConfig
+
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -20,7 +21,7 @@ interface AutorizadosApi {
     @FormUrlEncoded
     @POST("autorizados/"+BuildConfig.CREATE_DATA)
     fun Create(
-        @Field("Idusuario")IdUsuario:Int,
+        @Field("IdUsuario")IdUsuario:Int,
         @Field("NombreAutorizado") NombreAutorizado:String,
         @Field("Nif") Nif:String
     ):Call<responseModel>
@@ -30,12 +31,11 @@ interface AutorizadosApi {
     @POST(BuildConfig.BASE_URL+"autorizados/"+BuildConfig.UPDATE_DATA)
     fun Update(
         @Field("ID")id: Int,
-        @Field("Idusuario")IdUsuario:Int,
-        @Field("NombreAutorizado") NombreAutorizado:String,
+        @Field("IdUsuario")IdUsuario:Int,
+        @Field("NombreAutorizado")NombreAutorizado:String,
         @Field("Nif") Nif:String
     ):Call<responseModel>
 
-    //delete
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"autorizados/"+BuildConfig.DELETE_DATA)
     fun Delete(
