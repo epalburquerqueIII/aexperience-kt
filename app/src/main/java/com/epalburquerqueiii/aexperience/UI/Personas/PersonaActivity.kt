@@ -20,6 +20,7 @@ import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Personas.PersonasViewModel
 import com.epalburquerqueiii.aexperience.databinding.ActivityPersonaBinding
 import kotlinx.android.synthetic.main.activity_persona.*
+import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -64,7 +65,7 @@ class PersonaActivity : AppCompatActivity() {
 
         if (modo == Editar){
             btn_delete.visibility = View.VISIBLE
-            binding.setVariable(BR.addregistroviewmodel,registro)
+            binding.setVariable(BR.addpersonaviewmodel,registro)
             binding.executePendingBindings()
         }
 

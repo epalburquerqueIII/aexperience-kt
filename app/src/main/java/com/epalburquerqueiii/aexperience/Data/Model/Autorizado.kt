@@ -6,19 +6,19 @@ class Autorizado : Serializable {
 
     constructor(
         ID: Int?,
-        IdUsuario: Int?,
+        IDUsuario: Int?,
         NombreAutorizado: String?,
         Nif: String?
 
     ) {
         this.ID = ID
-        this.IdUsuario = IdUsuario
+        this.IDUsuario = IDUsuario
         this.NombreAutorizado = NombreAutorizado
         this.Nif = Nif
     }
 
     var ID: Int? = null
-    var IdUsuario: Int? = null
+    var IDUsuario: Int? = null
     var NombreAutorizado: String? = null
     var Nif: String? = null
 
