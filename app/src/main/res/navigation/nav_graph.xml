@@ -11,14 +11,14 @@
         tools:layout="@layout/list_fragment" />
     <fragment android:id="@+id/reportfragment" android:name="com.epalburquerqueiii.aexperience.UI.Fragment.ReportFragment"
               tools:layout="@layout/report_fragment" android:label="ReportFragment"/>
-    <fragment android:id="@+id/AutorizadosFragment" android:name="com.epalburquerqueiii.aexperience.UI.Fragment.AcountFragment"
-              android:label="AccountFragment" tools:layout="@layout/acount_fragment"/>
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
-        android:label="AutorizadosFragment" />
+        android:label="Autorizados"
+        tools:layout="@layout/list_fragment"/>
     <fragment
-        android:id="@+id/usuariosFragment"
+        android:id="@+id/UsuariosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.UsuariosFragment"
-        android:label="UsuariosFragment" />
+        android:label="Usuarios"
+        tools:layout="@layout/list_fragment"/>
 </navigation>
