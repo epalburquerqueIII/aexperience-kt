@@ -17,4 +17,8 @@
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
         android:label="AutorizadosFragment" />
+    <fragment
+        android:id="@+id/usuariosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.UsuariosFragment"
+        android:label="UsuariosFragment" />
 </navigation>
