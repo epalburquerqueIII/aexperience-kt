@@ -14,4 +14,8 @@
         android:id="@+id/AutorizadosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
         android:title="Autorizados"></item>
+    <item
+        android:id="@+id/usuariosFragment"
+        android:icon="@drawable/ic_person_outline_white_32dp"
+        android:title="Usuarios"></item>
 </menu>
