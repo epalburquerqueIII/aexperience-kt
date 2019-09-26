@@ -1,8 +1,6 @@
 package com.epalburquerqueiii.aexperience.Data.Network
 
 import com.epalburquerqueiii.aexperience.BuildConfig
-import com.epalburquerqueiii.aexperience.Data.Model.Autorizados
-import com.epalburquerqueiii.aexperience.Data.Model.Tipospago
 import com.epalburquerqueiii.aexperience.Data.Model.Tipospagos
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import retrofit2.Call

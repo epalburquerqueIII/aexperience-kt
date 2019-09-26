@@ -1,6 +1,6 @@
 package com.epalburquerqueiii.aexperience.UI.Tipospagos
 
-import android.util.Log
+import  android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,7 +19,6 @@ import retrofit2.Response
 class TipospagosViewModel : ViewModel() {
 
 
-//    private val personasUseCase = PersonasUseCase()
 
     val changed = ObservableBoolean(false)
 
