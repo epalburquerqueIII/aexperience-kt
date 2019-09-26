@@ -39,7 +39,7 @@ interface AutorizadosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"autorizado/"+BuildConfig.DELETE_DATA)
     fun Delete(
-        @Field("ID")id:Int
+        @Field("ID")id: Int
 
     ):Call<responseModel>
 
