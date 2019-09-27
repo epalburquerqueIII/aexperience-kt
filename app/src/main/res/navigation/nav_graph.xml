@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@+id/MenusFragment">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+    app:startDestination="@id/EspaciosFragment">
 
     <fragment
         android:id="@+id/reportfragment"
@@ -30,5 +29,9 @@
         android:id="@+id/TipospagosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Tipospagos.TipospagosFragment"
         android:label="Tipospagos"
-        tools:layout="@layout/list_fragment"/>
+        tools:layout="@layout/list_fragment"/>    <fragment
+        android:id="@+id/EspaciosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Espacios.EspaciosFragment"
+        android:label="EspaciosFragment" />
+
 </navigation>

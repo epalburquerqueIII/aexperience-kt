@@ -12,6 +12,11 @@
         android:icon="@drawable/ic_person_outline_white_32dp"
         android:title="Autorizados"></item>
 
+    <item android:id="@+id/EspaciosFragment"
+        android:icon="@drawable/ic_person_outline_white_32dp"
+        android:title="Espacios"></item>
+
+
 
     <item
         android:id="@+id/TipospagosFragment"

@@ -1,4 +1,4 @@
-package com.epalburquerqueiii.aexperience.UI
+package com.epalburquerqueiii.aexperience.UI.Espacios
 
 import android.os.Bundle
 import android.util.Log
@@ -7,33 +7,34 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+//import androidx.databinding.library.baseAdapters.BR
 import com.epalburquerqueiii.aexperience.BR
+import androidx.lifecycle.ViewModelProvider
+import com.epalburquerqueiii.aexperience.Data.Model.Espacio
 import com.epalburquerqueiii.aexperience.Data.Model.Option
 import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Model.Persona
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
-import com.epalburquerqueiii.aexperience.Data.Network.PersonasApi
-import com.epalburquerqueiii.aexperience.Data.Network.ProvinciasApi
+import com.epalburquerqueiii.aexperience.Data.Network.EspaciosApi
+import com.epalburquerqueiii.aexperience.Data.Network.EventosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
-import com.epalburquerqueiii.aexperience.UI.Personas.PersonasViewModel
-import com.epalburquerqueiii.aexperience.databinding.ActivityPersonaBinding
-import kotlinx.android.synthetic.main.activity_persona.*
+import com.epalburquerqueiii.aexperience.databinding.ActivityEspaciosBinding
+
+import kotlinx.android.synthetic.main.activity_espacios.*
+
+
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+class EspacioActivity : AppCompatActivity() {
 
-class PersonaActivity : AppCompatActivity() {
+    private lateinit var viewModel: EspaciosViewModel
 
-    private lateinit var viewModel: PersonasViewModel
-
-    private var modo:Int? = 0
+    private var modo: Int? = 0
     private val Crear = 0
     private val Editar = 1
-
     private lateinit var records: ArrayList<Option>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,32 +42,31 @@ class PersonaActivity : AppCompatActivity() {
         setupViewModelAndObserve()
 
 
-        val binding = DataBindingUtil.setContentView<ActivityPersonaBinding>(this@PersonaActivity,R.layout.activity_persona)
+        val binding = DataBindingUtil.setContentView<ActivityEspaciosBinding>(
+            this@EspacioActivity,
+            R.layout.activity_espacios
+        )
 
-       // var addnotemodel = ViewModelProviders.of(this).get(PersonasViewModel::class.java)
+        // var addnotemodel = ViewModelProviders.of(this).get(EspaciosViewModel::class.java)
 
-        val bundle:Bundle? = intent.extras
-        val registro = intent.extras.get("registro") as Persona
+        val bundle: Bundle? = intent.extras
+        val registro = intent.extras.get("registro") as Espacio
 
 //  sin databinding los campo se rellenarían manualmente
-//        Poblacion.setText(registro.Poblacion.toString())
 /*
-        val registro = Persona(bundle?.getInt("ID"),
-                                bundle?.getString("Nombre"),
-                                bundle?.getString("Direccion"),
-                                bundle?.getString("Poblacion"),
-                                bundle?.getInt("Provinciaid"),
-                                bundle?.getString("Telefono"),
-                                bundle?.getString("Email"))
+        val registro = Espacio(bundle?.getInt("ID"),
+                                bundle?.getString("NombreEspacio"),
+                                bundle?.getString("Nif"))
 */
 
         modo = bundle?.getInt("modo")
 
 
-        if (modo == Editar){
+        if (modo == Editar) {
             btn_delete.visibility = View.VISIBLE
-            binding.setVariable(BR.addpersonaviewmodel,registro)
+            binding.setVariable(BR.addespacioviewmodel,registro)
             binding.executePendingBindings()
+
         }
 
 
@@ -74,16 +74,16 @@ class PersonaActivity : AppCompatActivity() {
         btn_save.setOnClickListener {
             if (modo == Crear) {
                 create()
-            }else{
+            } else {
                 update(registro.ID!!)
             }
         }
 
-        btn_delete.setOnClickListener{
+        btn_delete.setOnClickListener {
             delete(registro.ID!!)
         }
-// Obtiene las provincias
-        val get = RetrofitBuilder.builder().create(ProvinciasApi::class.java)
+
+        val get = RetrofitBuilder.builder().create(EventosApi::class.java)
         val callget = get.GetOptions()
 
         callget.enqueue(object : Callback<Options> {
@@ -94,24 +94,24 @@ class PersonaActivity : AppCompatActivity() {
                 var sel :Int = 0
                 records = response.Options!!
                 if (size > 0) {
-                    val provincias = ArrayList<String>()
+                    val Eventosarray = ArrayList<String>()
                     var i:Int = 0
                     for ( item in records){
-                        provincias.add(item.DisplayText.toString())
-                        if (registro.Provinciaid == item.Value) {
+                        Eventosarray.add(item.DisplayText.toString())
+                        if (registro.IDTiposevento == item.Value) {
                             sel = i }
                         i++
                     }
-                    val adapter = ArrayAdapter(this@PersonaActivity, android.R.layout.simple_spinner_dropdown_item, provincias)
+                    val adapter = ArrayAdapter(this@EspacioActivity, android.R.layout.simple_spinner_dropdown_item, Eventosarray)
                     // Set Adapter to Spinner
-                    cbpoblacion!!.setAdapter(adapter)
-                    cbpoblacion.setSelection(sel)
+                    IDTipoevento!!.setAdapter(adapter)
+                    IDTipoevento.setSelection(sel)
                 }
             }
 
             override fun onFailure(call: Call<Options>, t: Throwable) {
-                Toast.makeText(this@PersonaActivity, "failure", Toast.LENGTH_SHORT).show()
-                Log.i("Error en Provincias :", "" + t.message)
+                Toast.makeText(this@EspacioActivity, "failure", Toast.LENGTH_SHORT).show()
+                Log.i("Error en Espacios :", "" + t.message)
             }
 
         })
@@ -119,7 +119,7 @@ class PersonaActivity : AppCompatActivity() {
     }
 
     private fun setupViewModelAndObserve() {
-        viewModel = ViewModelProvider(this).get(PersonasViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(EspaciosViewModel::class.java)
         // TODO: Use the ViewModel si se necesita pedir datos del principal
 
 /*
@@ -134,18 +134,28 @@ class PersonaActivity : AppCompatActivity() {
 
     }
 
-    private fun create(){
+    private fun create() {
 
-        val post = RetrofitBuilder.builder().create(PersonasApi::class.java)
-        var Provinciaid :Int = 0
+        val post = RetrofitBuilder.builder().create(EspaciosApi::class.java)
+        var Evento:Int = 0
         if (records.size > 0) {
-             Provinciaid = records[cbpoblacion.selectedItemPosition].Value!!.toInt()
+            Evento = records[IDTipoevento.selectedItemPosition].Value!!.toInt()
         }
-        val callcreate = post.Create(Nombre.text.toString(),Email.text.toString(),Dirección.text.toString(),Provinciaid,Población.text.toString(),Telefono.text.toString())
-        callcreate.enqueue(object: Callback<responseModel> {
+        val callcreate = post.Create(
+            Descripcion.text.toString(),
+            Estado.id,
+            Modo.id,
+            Precio.text.toString().toInt(),
+            Evento,
+            Fecha.text.toString(),
+            Aforo.text.toString().toInt(),
+            NumeroReservaslimite.text.toString().toInt()
+
+        )
+        callcreate.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-               // Toast.makeText(this@PersonaActivity,"failure",Toast.LENGTH_SHORT).show()
-                Log.i("dasboardfragment:",""+t.message)
+                // Toast.makeText(this@EspacioActivity,"failure",Toast.LENGTH_SHORT).show()
+                Log.i("dasboardfragment:", "" + t.message)
                 finish()
             }
 
@@ -153,7 +163,7 @@ class PersonaActivity : AppCompatActivity() {
                 //Toast.makeText(activity,"succes",Toast.LENGTH_SHORT).show()
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as responseModel
-                println("test : "+response.Error)
+                println("test : " + response.Error)
 // Changed true
                 viewModel.make_Change()
                 finish()
@@ -165,27 +175,36 @@ class PersonaActivity : AppCompatActivity() {
 
     }
 
-    private fun update(ID:Int){
+    private fun update(ID: Int) {
 
-        val post = RetrofitBuilder.builder().create(PersonasApi::class.java)
-        var Provinciaid :Int = 0
+        val post = RetrofitBuilder.builder().create(EspaciosApi::class.java)
+        var Evento:Int = 0
         if (records.size > 0) {
-            Provinciaid = records[cbpoblacion.selectedItemPosition].Value!!.toInt()
+            Evento = records[IDTipoevento.selectedItemPosition].Value!!.toInt()
         }
-
-        val callUpdate = post.Update(ID,Nombre.text.toString(),Email.text.toString(),Dirección.text.toString(),Provinciaid,Población.text.toString(),Telefono.text.toString())
-        callUpdate.enqueue(object: Callback<responseModel> {
+        val callUpdate = post.Update(
+            ID,
+            Descripcion.text.toString(),
+            Estado.id,
+            Modo.id,
+            Precio.toString().toInt(),
+            Evento,
+            Fecha.text.toString(),
+            Aforo.text.toString().toInt(),
+            NumeroReservaslimite.text.toString().toInt()
+        )
+        callUpdate.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-                Toast.makeText(this@PersonaActivity, "Fallo $ID",Toast.LENGTH_SHORT).show()
-                Log.i("dasboardfragmetn:",""+ t.message)
+                Toast.makeText(this@EspacioActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
+                Log.i("dasboardfragmetn:", "" + t.message)
                 finish()
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@PersonaActivity,"succes $ID",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@EspacioActivity, "succes $ID", Toast.LENGTH_SHORT).show()
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as responseModel
-                println("test : "+response.Result)
+                println("test : " + response.Result)
 
                 //val resultIntent = Intent()
                 //setResult(Activity.RESULT_OK,resultIntent)
@@ -200,16 +219,16 @@ class PersonaActivity : AppCompatActivity() {
 
     }
 
-    private fun delete(ID: Int){
-        val post = RetrofitBuilder.builder().create(PersonasApi::class.java)
+    private fun delete(ID: Int) {
+        val post = RetrofitBuilder.builder().create(EspaciosApi::class.java)
         val calldelete = post.Delete(ID.toInt())
-        calldelete.enqueue(object : Callback<responseModel>{
+        calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@PersonaActivity," borrado ",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@EspacioActivity, " borrado ", Toast.LENGTH_SHORT).show()
 // Changed true
                 viewModel.make_Change()
                 finish()
@@ -217,6 +236,4 @@ class PersonaActivity : AppCompatActivity() {
         })
 
     }
-
-
 }
