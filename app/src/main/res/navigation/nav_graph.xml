@@ -3,6 +3,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
     app:startDestination="@id/EspaciosFragment">
+    app:startDestination="@id/ConsumoBonosFragment">
 
     <fragment
         android:id="@+id/reportfragment"
@@ -12,6 +13,11 @@
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
+        android:label="AutorizadosFragment" />
+    <fragment
+        android:id="@+id/ConsumoBonosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.ConsumoBonos.ConsumoBonosFragment"
+        android:label="ConsumoBonos" />
         android:label="AutorizadosFragment"
         tools:layout="@layout/list_fragment"/>
     <fragment

@@ -82,7 +82,8 @@ class PersonaActivity : AppCompatActivity() {
         btn_delete.setOnClickListener{
             delete(registro.ID!!)
         }
-// Obtiene las provincias
+
+        // Obtiene las provincias
         val get = RetrofitBuilder.builder().create(ProvinciasApi::class.java)
         val callget = get.GetOptions()
 
@@ -131,7 +132,6 @@ class PersonaActivity : AppCompatActivity() {
         }
         shareViewModel.getsharedata().observe(this, shareObserver)
 */
-
     }
 
     private fun create(){
@@ -157,12 +157,8 @@ class PersonaActivity : AppCompatActivity() {
 // Changed true
                 viewModel.make_Change()
                 finish()
-
-
             }
-
         })
-
     }
 
     private fun update(ID:Int){
@@ -189,7 +185,7 @@ class PersonaActivity : AppCompatActivity() {
 
                 //val resultIntent = Intent()
                 //setResult(Activity.RESULT_OK,resultIntent)
-// Changed true
+                // Changed true
                 viewModel.make_Change()
                 finish()
 

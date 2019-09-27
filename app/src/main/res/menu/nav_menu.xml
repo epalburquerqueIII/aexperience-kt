@@ -10,7 +10,17 @@
     <item
         android:id="@+id/AutorizadosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
+        android:title="Account"></item>
+
+    <item
+        android:id="@+id/AutorizadosFragment"
+        android:icon="@drawable/ic_person_outline_white_32dp"
         android:title="Autorizados"></item>
+
+    <item
+        android:id="@+id/ConsumoBonosFragment"
+        android:icon="@drawable/ic_person_outline_white_32dp"
+        android:title="Consumo de bonos"></item>
 
     <item android:id="@+id/EspaciosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"

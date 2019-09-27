@@ -12,9 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Espacios.EspacioActivity"/>
-
-        <activity android:name=".UI.Menus.MenuActivity" />
+        <activity android:name=".UI.ConsumoBonos.ConsumoBonoActivity"></activity>
         <activity android:name=".UI.Autorizados.AutorizadoActivity" />
         <activity android:name=".UI.PersonaActivity" />
         <activity android:name=".UI.MainActivity">
