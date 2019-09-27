@@ -5,11 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@+id/MenusFragment">
 
-<fragment
-        android:id="@+id/PersonasFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Personas.PersonasFragment"
-        android:label="Personas"
-        tools:layout="@layout/list_fragment" />
     <fragment
         android:id="@+id/reportfragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Fragment.ReportFragment"
@@ -18,11 +13,12 @@
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
-        android:label="AutorizadosFragment" />
+        android:label="AutorizadosFragment"
+        tools:layout="@layout/list_fragment"/>
     <fragment
         android:id="@+id/MenusFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Menus.MenusFragment"
-        android:label="MenusFragment" />
+        android:label="MenusFragment"
         tools:layout="@layout/list_fragment"/>
     <fragment
         android:id="@+id/UsuariosFragment"
