@@ -16,12 +16,10 @@ import com.epalburquerqueiii.aexperience.Data.Model.Options
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.MenuParentApi
 import com.epalburquerqueiii.aexperience.Data.Network.MenusApi
-import com.epalburquerqueiii.aexperience.Data.Network.PersonasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.databinding.ActivityMenuBinding
 import kotlinx.android.synthetic.main.activity_menu.*
-import kotlinx.android.synthetic.main.activity_persona.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback

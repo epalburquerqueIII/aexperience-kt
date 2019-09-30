@@ -10,7 +10,7 @@
                       android:layout_width="fill_parent" android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="166dp"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
@@ -19,16 +19,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nombre"
+                    android:text="Reserva"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/Nombre"
+                    android:id="@+id/Reserva_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nombre"
+                    android:text="Reserva"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 
@@ -39,7 +39,7 @@
                 android:layout_height="2dp" />
 
             <LinearLayout
-                android:layout_width="128dp"
+                android:layout_width="30dp"
                 android:layout_height="36dp"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
@@ -48,16 +48,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Direccion"
+                    android:text="Fecha de pago"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/Direccion"
+                    android:id="@+id/Fechapago_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Direccion"
+                    android:text="FechaPago"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 
@@ -66,25 +66,28 @@
             <View
                 android:id="@+id/view"
                 android:layout_width="4dp"
-                android:layout_height="2dp"
-                android:layout_weight="1.0" />
+                android:layout_height="2dp" />
 
-            <LinearLayout android:gravity="end" android:orientation="vertical"
-                          android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Poblacion"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_weight="1"
+                    android:text="Tipo de pago"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/Poblacion"
+                    android:id="@+id/Tipopago_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Poblacion"
+                    android:text="Tipo pago"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 

@@ -8,10 +8,14 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import com.epalburquerqueiii.aexperience.Data.Model.Options
 
 
 interface TipospagosApi {
     //view
+
+    @GET("tiposPago/"+BuildConfig.GETOPTIONS_DATA)
+    fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
 
     @GET("tiposPago/"+BuildConfig.VIEW_DATA)
     fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Tipospagos>

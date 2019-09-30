@@ -1,4 +1,4 @@
-package com.epalburquerqueiii.aexperience.UI.Tipospagos
+package com.epalburquerqueiii.aexperience.UI.Pagos
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,19 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.epalburquerqueiii.aexperience.Data.Adapter.TipospagosAdapter
-import com.epalburquerqueiii.aexperience.Data.Model.Tipospago
+import com.epalburquerqueiii.aexperience.Data.Adapter.PagosAdapter
+import com.epalburquerqueiii.aexperience.Data.Model.Pago
 import com.epalburquerqueiii.aexperience.R
 import kotlinx.android.synthetic.main.list_fragment.*
 
 
-class TipospagosFragment : Fragment() {
+class PagosFragment : Fragment() {
 
 
-    private lateinit var viewModel: TipospagosViewModel
+    private lateinit var viewModel: PagosViewModel
 
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var mAdapter: TipospagosAdapter
+    private lateinit var mAdapter: PagosAdapter
 
     private val Crear = 0
     private val Editar = 1
@@ -40,21 +40,21 @@ class TipospagosFragment : Fragment() {
         setupViewModelAndObserve()
         viewModel.getRegistros()
         bt_new.setOnClickListener{
-            var intent = Intent(activity, TipospagoActivity::class.java)
-            var registro = Tipospago(0,"")
+            var intent = Intent(activity, PagoActivity::class.java)
+            var registro = Pago(0,0,"",0,"")
             intent.putExtra("registro",registro)
-
             intent.putExtra("modo", Crear)
-            startActivity(intent) }
+            startActivity(intent)
+        }
     }
 
     fun setupViewModelAndObserve() {
 
-        viewModel = ViewModelProvider(this).get(TipospagosViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(PagosViewModel::class.java)
         // TODO: Use the ViewModel
-        val registrosObserver = Observer<ArrayList<Tipospago>> {
+        val registrosObserver = Observer<ArrayList<Pago>> {
 
-            mAdapter = TipospagosAdapter(it, activity!!)
+            mAdapter = PagosAdapter(it, activity!!)
             linearLayoutManager = LinearLayoutManager(activity)
 
             recycleview.layoutManager = linearLayoutManager
@@ -62,12 +62,14 @@ class TipospagosFragment : Fragment() {
             recycleview.adapter = mAdapter
 
 
-            mAdapter.setOnItemClickListener(object : TipospagosAdapter.OnItemClickListener {
-                override fun onItemClick(registro: Tipospago) {
-
-                    var intent = Intent(activity, TipospagoActivity::class.java)
+            mAdapter.setOnItemClickListener(object : PagosAdapter.OnItemClickListener {
+                override fun onItemClick(registro: Pago) {
+                    //Toast.makeText(activity,""+registro.id,Toast.LENGTH_SHORT).show()
+                    var intent = Intent(activity, PagoActivity::class.java)
 
                     intent.putExtra("registro", registro)
+
+
 
                     intent.putExtra("modo", Editar)
                     startActivityForResult(intent,1)

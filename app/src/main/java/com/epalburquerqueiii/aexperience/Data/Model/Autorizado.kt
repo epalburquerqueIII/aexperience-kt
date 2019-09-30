@@ -21,5 +21,4 @@ class Autorizado : Serializable {
     var IDUsuario: Int? = null
     var NombreAutorizado: String? = null
     var Nif: String? = null
-
 }

@@ -5,11 +5,8 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.epalburquerqueiii.aexperience.Data.Model.Persona
-import com.epalburquerqueiii.aexperience.Data.Model.Personas
 import com.epalburquerqueiii.aexperience.Data.Model.Tipospago
 import com.epalburquerqueiii.aexperience.Data.Model.Tipospagos
-import com.epalburquerqueiii.aexperience.Data.Network.PersonasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.TipospagosApi
 import retrofit2.Call
