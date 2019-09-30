@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.23" />
 
     <EditText
-        android:id="@+id/Orden"
+        android:id="@+id/idMenu"
         style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -72,7 +72,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/Titulo"
+        android:id="@+id/idUsuario"
         style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -93,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Orden"
+        app:layout_constraintTop_toTopOf="@+id/idMenu"
         app:layout_constraintVertical_bias="0.113"
         tools:ignore="MissingConstraints" />
 
@@ -119,7 +119,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Titulo"
+        app:layout_constraintTop_toTopOf="@+id/idUsuario"
         app:layout_constraintVertical_bias="0.122"
         tools:ignore="MissingConstraints" />
 

@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/MenusFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Menus.MenusFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Menus.MenuRolesFragment"
         android:label="MenusFragment"
         tools:layout="@layout/list_fragment"/>
 

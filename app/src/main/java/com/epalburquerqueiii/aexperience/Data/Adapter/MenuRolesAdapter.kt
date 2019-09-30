@@ -50,7 +50,7 @@ class MenuRolesAdapter(private val menuroles: ArrayList<MenuRol>, context: Conte
         fun bindView(MenuRol: MenuRol){
             this.MenuRol = MenuRol
             itemView.idmenu_item.text = this.MenuRol?.idMenu.toString()
-            itemView.idusuario_item.text = this.MenuRol?.idUsuario
+            itemView.idusuario_item.text = this.MenuRol?.idUsuario.toString()
         }
     }
 
