@@ -49,7 +49,7 @@ class AutorizadosAdapter(private val autorizados: ArrayList<Autorizado>, context
 // asigna el dato del adapter al control de la vista
         fun bindView(Autorizado: Autorizado){
             this.Autorizado = Autorizado
-            itemView.nombreautorizado_item.text = this.Autorizado?.NombreAutorizado
+            itemView.parentid_item.text = this.Autorizado?.NombreAutorizado
             itemView.nif_item.text = this.Autorizado?.Nif
         }
 

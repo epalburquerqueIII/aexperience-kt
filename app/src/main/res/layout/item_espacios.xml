@@ -10,7 +10,7 @@
                       android:layout_width="fill_parent" android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="282dp"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
@@ -19,16 +19,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nombre"
+                    android:text="Descripcion"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/parentid_item"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/Descripcion"
+                    android:layout_width="71dp"
                     android:layout_height="wrap_content"
-                    android:text="Nombre"
+                    android:text="Descripcion"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 
@@ -39,7 +39,7 @@
                 android:layout_height="2dp" />
 
             <LinearLayout
-                android:layout_width="113dp"
+                android:layout_width="74dp"
                 android:layout_height="36dp"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
@@ -48,16 +48,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nif"
+                    android:text="Estado"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/nif_item"
+                    android:id="@+id/Estado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nif"
+                    android:text="Estado"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 
@@ -68,6 +68,55 @@
                 android:layout_width="4dp"
                 android:layout_height="2dp"
                 android:layout_weight="1.0" />
+
+            <LinearLayout
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Precio"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/Precio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Precio"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="128dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fecha"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/Fecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

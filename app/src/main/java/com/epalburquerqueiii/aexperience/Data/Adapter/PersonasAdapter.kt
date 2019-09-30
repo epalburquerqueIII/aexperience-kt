@@ -8,8 +8,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.epalburquerqueiii.aexperience.Data.Model.Persona
 import com.epalburquerqueiii.aexperience.R
-import kotlinx.android.synthetic.main.activity_persona.view.*
-import kotlinx.android.synthetic.main.item_persona.view.*
 import kotlinx.android.synthetic.main.item_persona.view.Direccion
 import kotlinx.android.synthetic.main.item_persona.view.Nombre
 import kotlinx.android.synthetic.main.item_persona.view.Poblacion

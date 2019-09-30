@@ -1,37 +1,41 @@
-package com.epalburquerqueiii.aexperience.UI
+package com.epalburquerqueiii.aexperience.UI.Menus
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Persona
+import com.epalburquerqueiii.aexperience.Data.Model.Menu
 import com.epalburquerqueiii.aexperience.Data.Model.Option
+
 import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Network.ProvinciasApi
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
+import com.epalburquerqueiii.aexperience.Data.Network.MenuParentApi
+import com.epalburquerqueiii.aexperience.Data.Network.MenusApi
 import com.epalburquerqueiii.aexperience.Data.Network.PersonasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
-import com.epalburquerqueiii.aexperience.UI.Personas.PersonasViewModel
-import com.epalburquerqueiii.aexperience.databinding.ActivityPersonaBinding
+import com.epalburquerqueiii.aexperience.databinding.ActivityMenuBinding
+import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.activity_persona.*
+import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+class MenuActivity : AppCompatActivity() {
 
-class PersonaActivity : AppCompatActivity() {
-
-    private lateinit var viewModel: PersonasViewModel
+    private lateinit var viewModel: MenusViewModel
 
     private var modo:Int? = 0
     private val Crear = 0
     private val Editar = 1
+    // TODO tomar el idusuario que se haga el login en el móvil
+    private val idusuario:Int = 8
 
     private lateinit var records: ArrayList<Option>
 
@@ -40,21 +44,18 @@ class PersonaActivity : AppCompatActivity() {
         setupViewModelAndObserve()
 
 
-        val binding = DataBindingUtil.setContentView<ActivityPersonaBinding>(this@PersonaActivity,R.layout.activity_persona)
+        val binding = DataBindingUtil.setContentView<ActivityMenuBinding>(this@MenuActivity,R.layout.activity_menu)
 
-       // var addnotemodel = ViewModelProviders.of(this).get(PersonasViewModel::class.java)
+        // var addnotemodel = ViewModelProviders.of(this).get(MenusViewModel::class.java)
 
         val bundle:Bundle? = intent.extras
-        val registro = intent.extras.get("registro") as Persona
+        val registro = intent.extras.get("registro") as Menu
 
+//  sin databinding los campo se rellenarían manualmente
 /*
-        val registro = Persona(bundle?.getInt("ID"),
-                                bundle?.getString("Nombre"),
-                                bundle?.getString("Direccion"),
-                                bundle?.getString("Poblacion"),
-                                bundle?.getInt("Provinciaid"),
-                                bundle?.getString("Telefono"),
-                                bundle?.getString("Email"))
+        val registro = Menu(bundle?.getInt("ID"),
+                                bundle?.getString("NombreMenu"),
+                                bundle?.getString("Nif"))
 */
 
         modo = bundle?.getInt("modo")
@@ -62,24 +63,24 @@ class PersonaActivity : AppCompatActivity() {
 
         if (modo == Editar){
             btn_delete.visibility = View.VISIBLE
-            binding.setVariable(BR.addregistroviewmodel,registro)
+            binding.setVariable(BR.addmenuviewmodel,registro)
             binding.executePendingBindings()
         }
+
+
 
         btn_save.setOnClickListener {
             if (modo == Crear) {
                 create()
             }else{
-                update(registro.ID!!)
+                update(registro.Id!!)
             }
         }
 
         btn_delete.setOnClickListener{
-            delete(registro.ID!!)
+            delete(registro.Id!!)
         }
-
-        // Obtiene las provincias
-        val get = RetrofitBuilder.builder().create(ProvinciasApi::class.java)
+        val get = RetrofitBuilder.builder().create(MenuParentApi::class.java)
         val callget = get.GetOptions()
 
         callget.enqueue(object : Callback<Options> {
@@ -90,32 +91,31 @@ class PersonaActivity : AppCompatActivity() {
                 var sel :Int = 0
                 records = response.Options!!
                 if (size > 0) {
-                    val provincias = ArrayList<String>()
+                    val menuParent = ArrayList<String>()
                     var i:Int = 0
                     for ( item in records){
-                        provincias.add(item.DisplayText.toString())
-                        if (registro.Provinciaid == item.Value) {
+                        menuParent.add(item.DisplayText.toString())
+                        if (registro.ParentId == item.Value) {
                             sel = i }
                         i++
                     }
-                    val adapter = ArrayAdapter(this@PersonaActivity, android.R.layout.simple_spinner_dropdown_item, provincias)
+                    val adapter = ArrayAdapter(this@MenuActivity, android.R.layout.simple_spinner_dropdown_item, menuParent)
                     // Set Adapter to Spinner
-                    cbpoblacion!!.setAdapter(adapter)
-                    cbpoblacion.setSelection(sel)
+                    cbparentid!!.setAdapter(adapter)
+                    cbparentid.setSelection(sel)
                 }
             }
 
             override fun onFailure(call: Call<Options>, t: Throwable) {
-                Toast.makeText(this@PersonaActivity, "failure", Toast.LENGTH_SHORT).show()
-                Log.i("Error en Provincias :", "" + t.message)
+                Toast.makeText(this@MenuActivity, "failure", Toast.LENGTH_SHORT).show()
+                Log.i("Error en ParentId :", "" + t.message)
             }
 
         })
-
     }
 
     private fun setupViewModelAndObserve() {
-        viewModel = ViewModelProvider(this).get(PersonasViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MenusViewModel::class.java)
         // TODO: Use the ViewModel si se necesita pedir datos del principal
 
 /*
@@ -127,19 +127,22 @@ class PersonaActivity : AppCompatActivity() {
         }
         shareViewModel.getsharedata().observe(this, shareObserver)
 */
+
     }
+    
 
+    
     private fun create(){
-
-        val post = RetrofitBuilder.builder().create(PersonasApi::class.java)
-        var Provinciaid :Int = 0
+        val post = RetrofitBuilder.builder().create(MenusApi::class.java)
+        var ParentId :Int = 0
         if (records.size > 0) {
-             Provinciaid = records[cbpoblacion.selectedItemPosition].Value!!.toInt()
+            ParentId = records[cbparentid.selectedItemPosition].Value!!.toInt()
         }
-        val callcreate = post.Create(Nombre.text.toString(),Email.text.toString(),Dirección.text.toString(),Provinciaid,Población.text.toString(),Telefono.text.toString())
+
+        val callcreate = post.Create(ParentId,Orden.text.toString().toInt(),Titulo.text.toString(),Icono.text.toString(),Url.text.toString(),HanledFunc.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-               // Toast.makeText(this@PersonaActivity,"failure",Toast.LENGTH_SHORT).show()
+                // Toast.makeText(this@MenuActivity,"failure",Toast.LENGTH_SHORT).show()
                 Log.i("dasboardfragment:",""+t.message)
                 finish()
             }
@@ -152,35 +155,38 @@ class PersonaActivity : AppCompatActivity() {
 // Changed true
                 viewModel.make_Change()
                 finish()
+
+
             }
+
         })
+
     }
 
     private fun update(ID:Int){
 
-        val post = RetrofitBuilder.builder().create(PersonasApi::class.java)
-        var Provinciaid :Int = 0
+        val post = RetrofitBuilder.builder().create(MenusApi::class.java)
+        var ParentId :Int = 0
         if (records.size > 0) {
-            Provinciaid = records[cbpoblacion.selectedItemPosition].Value!!.toInt()
+            ParentId = records[cbparentid.selectedItemPosition].Value!!.toInt()
         }
-
-        val callUpdate = post.Update(ID,Nombre.text.toString(),Email.text.toString(),Dirección.text.toString(),Provinciaid,Población.text.toString(),Telefono.text.toString())
+        val callUpdate = post.Update(ID,ParentId,Orden.text.toString().toInt(),Titulo.text.toString(),Icono.text.toString(),Url.text.toString(),HanledFunc.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-                Toast.makeText(this@PersonaActivity, "Fallo $ID",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MenuActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
                 Log.i("dasboardfragmetn:",""+ t.message)
                 finish()
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@PersonaActivity,"succes $ID",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MenuActivity,"succes $ID", Toast.LENGTH_SHORT).show()
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as responseModel
                 println("test : "+response.Result)
 
                 //val resultIntent = Intent()
                 //setResult(Activity.RESULT_OK,resultIntent)
-                // Changed true
+// Changed true
                 viewModel.make_Change()
                 finish()
 
@@ -192,15 +198,15 @@ class PersonaActivity : AppCompatActivity() {
     }
 
     private fun delete(ID: Int){
-        val post = RetrofitBuilder.builder().create(PersonasApi::class.java)
+        val post = RetrofitBuilder.builder().create(MenusApi::class.java)
         val calldelete = post.Delete(ID.toInt())
-        calldelete.enqueue(object : Callback<responseModel>{
+        calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@PersonaActivity," borrado ",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MenuActivity," borrado ", Toast.LENGTH_SHORT).show()
 // Changed true
                 viewModel.make_Change()
                 finish()
@@ -208,6 +214,4 @@ class PersonaActivity : AppCompatActivity() {
         })
 
     }
-
-
 }

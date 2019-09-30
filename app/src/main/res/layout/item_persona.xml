@@ -57,7 +57,7 @@
                     android:id="@+id/Direccion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Descripción"
+                    android:text="Direccion"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 

@@ -1,16 +1,17 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android"
->
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
     <androidx.cardview.widget.CardView
-                                       android:layout_width="fill_parent"
-                                       android:layout_height="wrap_content"
-                                       app:cardCornerRadius="6.0dip" app:cardElevation="2.0dip"
-                                       app:cardUseCompatPadding="true">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="6.0dip" app:cardElevation="2.0dip"
+        app:cardUseCompatPadding="true">
+
         <LinearLayout android:orientation="horizontal" android:padding="@dimen/spacing_large"
                       android:layout_width="fill_parent" android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="282dp"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
@@ -19,16 +20,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nombre"
+                    android:text="Fecha"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/parentid_item"
+                    android:id="@+id/fecha_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nombre"
+                    android:text="Fecha"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 
@@ -39,7 +40,38 @@
                 android:layout_height="2dp" />
 
             <LinearLayout
-                android:layout_width="113dp"
+                android:layout_width="115dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sesiones"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/sesiones_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sesiones"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="4dp"
+                android:layout_height="2dp"
+                android:layout_weight="1.0" />
+
+            <LinearLayout
+                android:layout_width="118dp"
                 android:layout_height="36dp"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
@@ -48,23 +80,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nif"
+                    android:text="Usuario"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/nif_item"
+                    android:id="@+id/usuario_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nif"
+                    android:text="Usuario"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 
             </LinearLayout>
 
             <View
-                android:id="@+id/view"
                 android:layout_width="4dp"
                 android:layout_height="2dp"
                 android:layout_weight="1.0" />
