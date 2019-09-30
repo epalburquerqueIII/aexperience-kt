@@ -2,19 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-    app:startDestination="@id/AutorizadosFragment">
+    app:startDestination="@id/PagosFragment">
 
     <fragment
         android:id="@+id/PersonasFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Personas.PersonasFragment"
         android:label="Personas"
         tools:layout="@layout/list_fragment" />
-    <fragment android:id="@+id/reportfragment" android:name="com.epalburquerqueiii.aexperience.UI.Fragment.ReportFragment"
-              tools:layout="@layout/report_fragment" android:label="ReportFragment"/>
     <fragment android:id="@+id/AccountFragment" android:name="com.epalburquerqueiii.aexperience.UI.Fragment.AcountFragment"
               android:label="AccountFragment" tools:layout="@layout/acount_fragment"/>
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
-        android:label="AutorizadosFragment" />
+        android:label="AutorizadosFragment"
+        tools:layout="@layout/list_fragment"/>
+    <fragment
+        android:id="@+id/PagosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Pagos.PagosFragment"
+        android:label="Pagos"
+        tools:layout="@layout/list_fragment"/>
 </navigation>
