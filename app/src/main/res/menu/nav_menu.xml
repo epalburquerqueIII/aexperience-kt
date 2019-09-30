@@ -6,9 +6,9 @@
         android:title="Menus">
     </item>
     <item
-        android:id="@+id/PagosFragment"
+        android:id="@+id/AutorizadosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Pagos">
+        android:title="Account">
     </item>
 
     <item
@@ -22,9 +22,8 @@
         android:title="Espacios">
     </item>
     <item
-        android:id="@+id/TipospagosFragment"
+        android:id="@+id/UsuariosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Tipos de pago">
+        android:title="Usuarios">
     </item>
-
 </menu>

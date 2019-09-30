@@ -2,6 +2,7 @@ package com.epalburquerqueiii.aexperience.Data.Network
 
 import com.epalburquerqueiii.aexperience.BuildConfig
 import com.epalburquerqueiii.aexperience.Data.Model.Espacios
+import com.epalburquerqueiii.aexperience.Data.Model.Options
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import retrofit2.Call
 import retrofit2.http.Field
@@ -57,5 +58,8 @@ interface EspaciosApi {
         @Field("ID")id:Int
 
     ):Call<responseModel>
+
+    @GET("espacios/"+BuildConfig.GETOPTIONS_DATA)
+    fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
 
 }
