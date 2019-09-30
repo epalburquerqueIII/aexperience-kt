@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-    app:startDestination="@id/AutorizadosFragment">
+    app:startDestination="@id/ReservasFragment">
 
     <fragment
         android:id="@+id/PersonasFragment"
@@ -17,4 +17,8 @@
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
         android:label="AutorizadosFragment" />
+    <fragment
+        android:id="@+id/ReservasFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Reservas.ReservasFragment"
+        android:label="ReservasFragment" />
 </navigation>

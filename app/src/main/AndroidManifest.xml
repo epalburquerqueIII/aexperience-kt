@@ -14,6 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".UI.Autorizados.AutorizadoActivity" />
+        <activity android:name=".UI.Reservas.ReservaActivity" />
         <activity android:name=".UI.PersonaActivity" />
         <activity android:name=".UI.MainActivity">
             <intent-filter>
