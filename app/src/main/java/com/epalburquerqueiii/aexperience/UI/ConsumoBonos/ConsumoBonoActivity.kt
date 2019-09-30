@@ -78,7 +78,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
         }
 
         // Obtiene los Usuarios
-        val get = RetrofitBuilder.builder().create(GetUsuariosApi::class.java)
+        val get = RetrofitBuilder.builder().create(UsuariosApi::class.java)
         val callget = get.GetOptions()
 
         callget.enqueue(object : Callback<Options> {
@@ -116,7 +116,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
         })
 
         // Obtiene los Espacios
-        val getEspacios = RetrofitBuilder.builder().create(GetEspaciosApi::class.java)
+        val getEspacios = RetrofitBuilder.builder().create(EspaciosApi::class.java)
         val callgetEspacios = getEspacios.GetOptions()
 
         callgetEspacios.enqueue(object : Callback<Options> {
@@ -155,7 +155,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
         })
 
         // Obtiene los Autorizados
-        val getAutorizados = RetrofitBuilder.builder().create(GetAutorizadosApi::class.java)
+        val getAutorizados = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
         val callgetAutorizados = getAutorizados.GetOptions()
 
         callgetAutorizados.enqueue(object : Callback<Options> {
