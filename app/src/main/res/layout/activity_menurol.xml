@@ -7,7 +7,7 @@
 
         <import type="android.view.View"/>
 
-        <variable name="addmenuviewmodel" type="com.epalburquerqueiii.aexperience.Data.Model.Menu"/>
+        <variable name="addmenurolviewmodel" type="com.epalburquerqueiii.aexperience.Data.Model.MenuRol"/>
 
 
     </data>
@@ -15,7 +15,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Menus.MenuActivity">
+    tools:context=".UI.MenuRoles.MenuRolActivity">
 
     <TextView
         android:id="@+id/txt_activity3"
@@ -48,7 +48,7 @@
         android:maxLines="1"
         android:paddingEnd="20dp"
         android:singleLine="true"
-        android:text="@{addmenuviewmodel.idMenu.toString()}"
+        android:text="@{addmenurolviewmodel.idMenu.toString()}"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +72,7 @@
         android:maxLines="1"
         android:paddingEnd="20dp"
         android:singleLine="true"
-        android:text="@{addmenuviewmodel.idUsuario.toString()}"
+        android:text="@{addmenurolviewmodel.idUsuario.toString()}"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"

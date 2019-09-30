@@ -18,7 +18,7 @@ interface MenuRolApi {
 
     //create
     @FormUrlEncoded
-    @POST("menusroles/"+BuildConfig.CREATE_DATA)
+    @POST("menuroles/"+BuildConfig.CREATE_DATA)
     fun Create(
         @Field("idMenu")idMenu:Int,
         @Field("idUsuario")idUsuario:Int

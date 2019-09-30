@@ -14,10 +14,10 @@ import com.epalburquerqueiii.aexperience.Data.Network.MenuRolApi
 
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
-import com.epalburquerqueiii.aexperience.databinding.ActivityMenuRolBinding
-import com.epalburquerqueiii.aexperience.databinding.ActivityMenuRolesBinding
+import com.epalburquerqueiii.aexperience.databinding.ActivityMenurolBinding
+
 import kotlinx.android.synthetic.main.activity_menu.*
-import kotlinx.android.synthetic.main.activity_menuroles.*
+
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,7 +39,7 @@ class MenuRolActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setupViewModelAndObserve()
 
-        val binding = DataBindingUtil.setContentView<ActivityMenuRolBinding>(this@MenuRolActivity,R.layout.activity_menurol)
+        val binding = DataBindingUtil.setContentView<ActivityMenurolBinding>(this@MenuRolActivity,R.layout.activity_menurol)
 
         // var addnotemodel = ViewModelProviders.of(this).get(MenuRolesViewModel::class.java)
 
