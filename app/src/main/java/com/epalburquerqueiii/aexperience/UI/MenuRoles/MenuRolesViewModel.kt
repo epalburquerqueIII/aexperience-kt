@@ -5,12 +5,9 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.epalburquerqueiii.aexperience.Data.Model.Menu
 import com.epalburquerqueiii.aexperience.Data.Model.MenuRol
 import com.epalburquerqueiii.aexperience.Data.Model.MenuRoles
-import com.epalburquerqueiii.aexperience.Data.Model.Menus
-import com.epalburquerqueiii.aexperience.Data.Network.MenuRolesApi
-import com.epalburquerqueiii.aexperience.Data.Network.MenusApi
+import com.epalburquerqueiii.aexperience.Data.Network.MenuRolApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,7 +39,7 @@ class MenusRolesViewModel : ViewModel() {
 
         var datos = ArrayList<MenuRol>()
 
-        val get = RetrofitBuilder.builder().create(MenuRolesApi::class.java)
+        val get = RetrofitBuilder.builder().create(MenuRolApi::class.java)
         val callget = get.Get()
         callget.enqueue(object : Callback<MenuRoles> {
             override fun onFailure(call: Call<MenuRoles>, t: Throwable) {

@@ -41,7 +41,7 @@ class MenuRolesAdapter(private val menuroles: ArrayList<MenuRol>, context: Conte
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION){
-                    listener?.onItemClick(menus[position])
+                    listener?.onItemClick(menuroles[position])
                 }
             }
         }

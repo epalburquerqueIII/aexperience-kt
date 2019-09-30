@@ -10,10 +10,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
 import com.epalburquerqueiii.aexperience.Data.Model.*
+import com.epalburquerqueiii.aexperience.Data.Network.MenuRolApi
 
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.databinding.ActivityMenuRolBinding
+import com.epalburquerqueiii.aexperience.databinding.ActivityMenuRolesBinding
+import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.activity_menuroles.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
@@ -59,8 +62,6 @@ class MenuRolActivity : AppCompatActivity() {
             binding.executePendingBindings()
         }
 
-
-
         btn_save.setOnClickListener {
             if (modo == Crear) {
                 create()
@@ -87,27 +88,27 @@ class MenuRolActivity : AppCompatActivity() {
                     var i:Int = 0
                     for ( item in records){
                         menuParent.add(item.DisplayText.toString())
-                        if (registro.ParentId == item.Value) {
+                        if (registro.idMenu == item.Value) {
                             sel = i }
                         i++
                     }
-                    val adapter = ArrayAdapter(this@MenuActivity, android.R.layout.simple_spinner_dropdown_item, menuParent)
+                    val adapter = ArrayAdapter(this@MenuRolActivity, android.R.layout.simple_spinner_dropdown_item, menuParent)
                     // Set Adapter to Spinner
-                    cbparentid!!.setAdapter(adapter)
-                    cbparentid.setSelection(sel)
+                    idMenu!!.setAdapter(adapter)
+                    idMenu.setSelection(sel)
                 }
             }
 
             override fun onFailure(call: Call<Options>, t: Throwable) {
-                Toast.makeText(this@MenuActivity, "failure", Toast.LENGTH_SHORT).show()
-                Log.i("Error en ParentId :", "" + t.message)
+                Toast.makeText(this@MenuRolActivity, "failure", Toast.LENGTH_SHORT).show()
+                Log.i("Error en Menu id :", "" + t.message)
             }
 
         })
     }
 
     private fun setupViewModelAndObserve() {
-        viewModel = ViewModelProvider(this).get(MenusViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MenuRolesViewModel::class.java)
         // TODO: Use the ViewModel si se necesita pedir datos del principal
 
 /*
@@ -115,23 +116,19 @@ class MenuRolActivity : AppCompatActivity() {
             if ( shareViewModel.getsharedata().value == "Actualizar" ){
                 viewModel.getRecords()
             }
-
         }
         shareViewModel.getsharedata().observe(this, shareObserver)
 */
-
     }
-    
 
-    
     private fun create(){
-        val post = RetrofitBuilder.builder().create(MenusApi::class.java)
-        var ParentId :Int = 0
+        val post = RetrofitBuilder.builder().create(MenuRolApi::class.java)
+        var idMenu :Int = 0
         if (records.size > 0) {
-            ParentId = records[cbparentid.selectedItemPosition].Value!!.toInt()
+            idMenu = records[cbparentid.selectedItemPosition].Value!!.toInt()
         }
 
-        val callcreate = post.Create(ParentId,Orden.text.toString().toInt(),Titulo.text.toString(),Icono.text.toString(),Url.text.toString(),HanledFunc.text.toString())
+        val callcreate = post.Create(idMenu, idUsuario.toString().toInt())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@MenuActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -148,30 +145,27 @@ class MenuRolActivity : AppCompatActivity() {
                 viewModel.make_Change()
                 finish()
 
-
             }
-
         })
-
     }
 
     private fun update(ID:Int){
 
-        val post = RetrofitBuilder.builder().create(MenusApi::class.java)
-        var ParentId :Int = 0
+        val post = RetrofitBuilder.builder().create(MenuRolApi::class.java)
+        var idMenu :Int = 0
         if (records.size > 0) {
-            ParentId = records[cbparentid.selectedItemPosition].Value!!.toInt()
+            idMenu = records[cbparentid.selectedItemPosition].Value!!.toInt()
         }
-        val callUpdate = post.Update(ID,ParentId,Orden.text.toString().toInt(),Titulo.text.toString(),Icono.text.toString(),Url.text.toString(),HanledFunc.text.toString())
+        val callUpdate = post.Update(ID,idMenu, idUsuario.toString().toInt())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-                Toast.makeText(this@MenuActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MenuRolActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
                 Log.i("dasboardfragmetn:",""+ t.message)
                 finish()
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@MenuActivity,"succes $ID", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MenuRolActivity,"succes $ID", Toast.LENGTH_SHORT).show()
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as responseModel
                 println("test : "+response.Result)
@@ -181,16 +175,12 @@ class MenuRolActivity : AppCompatActivity() {
 // Changed true
                 viewModel.make_Change()
                 finish()
-
-
             }
-
         })
-
     }
 
     private fun delete(ID: Int){
-        val post = RetrofitBuilder.builder().create(MenusApi::class.java)
+        val post = RetrofitBuilder.builder().create(MenuRolApi::class.java)
         val calldelete = post.Delete(ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -198,12 +188,11 @@ class MenuRolActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@MenuActivity," borrado ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MenuRolActivity," borrado ", Toast.LENGTH_SHORT).show()
 // Changed true
                 viewModel.make_Change()
                 finish()
             }
         })
-
     }
 }

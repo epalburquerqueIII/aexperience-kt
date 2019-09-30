@@ -10,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 
-interface MenuRolesApi {
+interface MenuRolApi {
     //view
 
     @GET("menuroles/"+BuildConfig.VIEW_DATA)
