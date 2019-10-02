@@ -77,6 +77,7 @@ class AutorizadoActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(AutorizadosViewModel::class.java)
         // TODO: Use the ViewModel si se necesita pedir datos del principal
 
+
 /*
         val shareObserver = Observer<String> {
             if ( shareViewModel.getsharedata().value == "Actualizar" ){
