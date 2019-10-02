@@ -1,6 +1,7 @@
 package com.epalburquerqueiii.aexperience.Data.Network
 
 import com.epalburquerqueiii.aexperience.BuildConfig
+import com.epalburquerqueiii.aexperience.Data.Model.Options
 import com.epalburquerqueiii.aexperience.Data.Model.Usuariosroles
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import retrofit2.Call
@@ -37,5 +38,8 @@ interface UsuariosrolesApi {
         @Field("ID")id:Int
 
     ):Call<responseModel>
+
+    @GET("usuariosRoles/"+BuildConfig.GETOPTIONS_DATA)
+    fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
 
 }
