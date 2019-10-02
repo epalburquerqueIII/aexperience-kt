@@ -16,6 +16,8 @@ import retrofit2.Response
 class ConsumoBonosViewModel : ViewModel() {
 
 
+//    private val ConsumoBonosUseCase = ConsumoBonosUseCase()
+
     val changed = ObservableBoolean(false)
 
 

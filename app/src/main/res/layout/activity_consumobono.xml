@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable name="addusuarioviewmodel" type="com.epalburquerqueiii.aexperience.Data.Model.Usuario"/>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".UI.Usuarios.UsuarioActivity">
+
+
+        <TextView
+            android:id="@+id/txt_activity2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Consumo de Bonos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/grey_900"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+
+        <Spinner
+            android:id="@+id/espacio"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="36dp"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_activity2" />
+
+        <EditText
+            android:id="@+id/Sesiones"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="388dp"
+            android:layout_height="48dp"
+
+            android:layout_marginTop="24dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Sesiones"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addconsumobonosviewmodel.Sesiones.toString()}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.347"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/espacio"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/Fecha"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="382dp"
+            android:layout_height="53dp"
+
+            android:layout_marginTop="24dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Fecha"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addconsumobonosviewmodel.Fecha.toString()}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Sesiones"
+            tools:ignore="MissingConstraints" />
+
+        <Spinner
+            android:id="@+id/autorizado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Fecha"
+            app:layout_constraintVertical_bias="0.076"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <include
+            layout="@layout/editupdate_botton"
+            android:layout_width="401dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="-5dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

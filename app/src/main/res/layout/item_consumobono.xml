@@ -1,18 +1,71 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android">
-
+        xmlns:android="http://schemas.android.com/apk/res/android"
+>
     <androidx.cardview.widget.CardView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="6.0dip" app:cardElevation="2.0dip"
-        app:cardUseCompatPadding="true">
+                                       android:layout_width="fill_parent"
+                                       android:layout_height="wrap_content"
+                                       app:cardCornerRadius="6.0dip" app:cardElevation="2.0dip"
+                                       app:cardUseCompatPadding="true">
 
-        <LinearLayout android:orientation="horizontal" android:padding="@dimen/spacing_large"
-                      android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="65dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_large">
 
             <LinearLayout
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
+                android:layout_width="149dp"
+                android:layout_height="44dp"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:layout_weight="1"
+                        android:text="Espacio"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                        android:textColor="@color/indigo_900"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/usuario_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:text="Usuario"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                        android:textColor="@color/indigo_900" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="31dp"
+                    android:layout_weight="1"
+                    android:text="Usuario"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/espacio_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:text="Usuario"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="124dp"
+                android:layout_height="45dp"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
 
@@ -20,16 +73,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Fecha"
+                    android:text="Espacio"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/fecha_item"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fecha"
+                    android:layout_height="25dp"
+                    android:text="Espacio"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 
@@ -40,24 +92,49 @@
                 android:layout_height="2dp" />
 
             <LinearLayout
-                android:layout_width="115dp"
-                android:layout_height="match_parent"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:layout_weight="1"
+                        android:text="Espacio"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                        android:textColor="@color/indigo_900"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/sesiones_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:text="Sesiones"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                        android:textColor="@color/indigo_900" />
+
+                </LinearLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="31dp"
                     android:layout_weight="1"
-                    android:text="Sesiones"
+                    android:text="Espacio"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/sesiones_item"
+                    android:id="@+id/nif_item"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:text="Sesiones"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
@@ -70,35 +147,6 @@
                 android:layout_height="2dp"
                 android:layout_weight="1.0" />
 
-            <LinearLayout
-                android:layout_width="118dp"
-                android:layout_height="36dp"
-                android:layout_weight="1.0"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Usuario"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/indigo_900"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/usuario_item"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Usuario"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                    android:textColor="@color/grey_40" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="4dp"
-                android:layout_height="2dp"
-                android:layout_weight="1.0" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

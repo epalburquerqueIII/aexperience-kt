@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.epalburquerqueiii.aexperience.Data.Model.ConsumoBono
 import com.epalburquerqueiii.aexperience.R
 import kotlinx.android.synthetic.main.item_consumobono.view.*
+import kotlinx.android.synthetic.main.item_consumobono.view.*
 
 
 class ConsumoBonosAdapter(private val consumoBonos: ArrayList<ConsumoBono>, context: Context) : RecyclerView.Adapter<ConsumoBonosAdapter.ConsumoBonoViewHolder>() {
@@ -49,9 +50,8 @@ class ConsumoBonosAdapter(private val consumoBonos: ArrayList<ConsumoBono>, cont
 // asigna el dato del adapter al control de la vista
         fun bindView(ConsumoBono: ConsumoBono){
             this.ConsumoBono = ConsumoBono
-            itemView.fecha_item.text = this.ConsumoBono?.Fecha
-            itemView.sesiones_item.text = this.ConsumoBono?.Sesiones.toString()
-            itemView.usuario_item.text = this.ConsumoBono?.NombreUsuario
+            itemView.usuario_item.text = this.ConsumoBono?.Usuario
+            itemView.espacio_item.text = this.ConsumoBono?.Espacio
         }
 
     }

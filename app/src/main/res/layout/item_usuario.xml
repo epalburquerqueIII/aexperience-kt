@@ -14,8 +14,8 @@
             android:padding="@dimen/spacing_large">
 
             <LinearLayout
-                android:layout_width="202dp"
-                android:layout_height="41dp"
+                android:layout_width="230dp"
+                android:layout_height="45dp"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
 
@@ -31,7 +31,7 @@
                 <TextView
                     android:id="@+id/nombreusuario_item"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:text="Nombre"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
@@ -43,14 +43,14 @@
                 android:layout_height="2dp" />
 
             <LinearLayout
-                android:layout_width="103dp"
-                android:layout_height="39dp"
+                android:layout_width="122dp"
+                android:layout_height="44dp"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="31dp"
                     android:layout_weight="1"
                     android:text="Nif"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
@@ -60,7 +60,7 @@
                 <TextView
                     android:id="@+id/nif_item"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:text="Nif"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
