@@ -14,7 +14,6 @@ import com.epalburquerqueiii.aexperience.Data.Network.AutorizadosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.databinding.ActivityAutorizadoBinding
-
 import kotlinx.android.synthetic.main.activity_autorizado.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call

@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UI.Tiposeventos.TiposEventoActivity" />
+        <activity android:name=".UI.Pagos.PagoActivity"></activity>
+        <activity android:name=".UI.ConsumoBonos.ConsumoBonoActivity"></activity>
         <activity android:name=".UI.Autorizados.AutorizadoActivity" />
+        <activity android:name=".UI.Reservas.ReservaActivity" />
         <activity android:name=".UI.PersonaActivity" />
         <activity android:name=".UI.MainActivity">
             <intent-filter>
