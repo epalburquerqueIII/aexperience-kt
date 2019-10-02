@@ -20,7 +20,7 @@
 
 
     <TextView
-        android:id="@+id/txt_activity2"
+        android:id="@+id/tipoevento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -35,7 +35,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/NombreAutorizado"
+        android:id="@+id/NombreEventos"
         style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/txt_activity2"
+        app:layout_constraintTop_toTopOf="@id/tipoevento"
         app:layout_constraintVertical_bias="0.125"
         tools:ignore="MissingConstraints" />
 
@@ -82,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/NombreAutorizado"
+        app:layout_constraintTop_toBottomOf="@id/NombreEventos"
         app:layout_constraintVertical_bias="0.025"
         tools:ignore="MissingConstraints" />
 

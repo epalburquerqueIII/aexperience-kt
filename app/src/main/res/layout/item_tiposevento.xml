@@ -10,8 +10,8 @@
                       android:layout_width="fill_parent" android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="282dp"
-                android:layout_height="match_parent"
+                android:layout_width="375dp"
+                android:layout_height="48dp"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
 
@@ -37,31 +37,6 @@
             <View
                 android:layout_width="4dp"
                 android:layout_height="2dp" />
-
-            <LinearLayout
-                android:layout_width="113dp"
-                android:layout_height="36dp"
-                android:layout_weight="1.0"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Nif"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/indigo_900"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/nif_item"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nif"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                    android:textColor="@color/grey_40" />
-
-            </LinearLayout>
 
             <View
                 android:id="@+id/view"
