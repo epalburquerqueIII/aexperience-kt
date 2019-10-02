@@ -37,5 +37,6 @@
     <fragment
         android:id="@+id/reservasFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Reservas.ReservasFragment"
-        android:label="ReservasFragment" />
+        android:label="ReservasFragment"
+        tools:layout="@layout/list_fragment"/>
 </navigation>

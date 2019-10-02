@@ -1,5 +1,6 @@
 package com.epalburquerqueiii.aexperience.UI.Reservas
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -20,6 +21,7 @@ import com.epalburquerqueiii.aexperience.Data.Network.ReservasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.databinding.ActivityReservaBinding
+import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 
 import kotlinx.android.synthetic.main.activity_reserva.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
@@ -188,6 +190,9 @@ class ReservaActivity : AppCompatActivity() {
 
         })
 
+        FechaR.setOnClickListener {
+            showDatePickerDialog()
+        }
     }
 
     private fun setupViewModelAndObserve() {
@@ -204,6 +209,16 @@ class ReservaActivity : AppCompatActivity() {
         shareViewModel.getsharedata().observe(this, shareObserver)
 */
 
+    }
+
+    private fun showDatePickerDialog() {
+        val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            // +1 because January is zero
+            val selectedDate = day.toString() + " / " + (month + 1) + " / " + year
+            FechaR.setText(selectedDate)
+        })
+
+        newFragment.show(supportFragmentManager, "datePicker")
     }
 
     private fun create(){
