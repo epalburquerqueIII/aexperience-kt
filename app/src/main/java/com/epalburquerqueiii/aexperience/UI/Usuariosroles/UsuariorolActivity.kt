@@ -1,4 +1,4 @@
-package com.epalburquerqueiii.aexperience.UI.Autorizados
+package com.epalburquerqueiii.aexperience.UI.Usuariosroles
 
 import android.os.Bundle
 import android.util.Log
@@ -8,53 +8,48 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Autorizado
+import com.epalburquerqueiii.aexperience.Data.Model.Option
+import com.epalburquerqueiii.aexperience.Data.Model.Usuariorol
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
-import com.epalburquerqueiii.aexperience.Data.Network.AutorizadosApi
+import com.epalburquerqueiii.aexperience.Data.Network.UsuariosrolesApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
-import com.epalburquerqueiii.aexperience.databinding.ActivityAutorizadoBinding
-import kotlinx.android.synthetic.main.activity_autorizado.*
+import com.epalburquerqueiii.aexperience.UI.Usuariosroles.UsuariosrolesViewModel
+import com.epalburquerqueiii.aexperience.databinding.ActivityUsuariorolBinding
+import kotlinx.android.synthetic.main.activity_usuariorol.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AutorizadoActivity : AppCompatActivity() {
+class UsuariorolActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: AutorizadosViewModel
+    private lateinit var viewModel: UsuariosrolesViewModel
 
     private var modo:Int? = 0
     private val Crear = 0
     private val Editar = 1
-// TODO tomar el idusuario que se haga el login en el móvil
-    private val idusuario:Int = 8
+
+    private lateinit var records:ArrayList<Option>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupViewModelAndObserve()
 
 
-        val binding = DataBindingUtil.setContentView<ActivityAutorizadoBinding>(this@AutorizadoActivity,R.layout.activity_autorizado)
+        val binding = DataBindingUtil.setContentView<ActivityUsuariorolBinding>(this@UsuariorolActivity,
+            R.layout.activity_usuariorol)
 
-        // var addnotemodel = ViewModelProviders.of(this).get(AutorizadosViewModel::class.java)
+        val bundle: Bundle? = intent.extras
+        val registro = intent.extras.get("registro") as Usuariorol
 
-        val bundle:Bundle? = intent.extras
-        val registro = intent.extras.get("registro") as Autorizado
-
-//  sin databinding los campo se rellenarían manualmente
-/*
-        val registro = Autorizado(bundle?.getInt("ID"),
-                                bundle?.getString("NombreAutorizado"),
-                                bundle?.getString("Nif"))
-*/
 
         modo = bundle?.getInt("modo")
 
 
         if (modo == Editar){
             btn_delete.visibility = View.VISIBLE
-            binding.setVariable(BR.addautorizadoviewmodel,registro)
+            binding.setVariable(BR.addusuariorolviewmodel,registro)
             binding.executePendingBindings()
         }
 
@@ -74,26 +69,14 @@ class AutorizadoActivity : AppCompatActivity() {
     }
 
     private fun setupViewModelAndObserve() {
-        viewModel = ViewModelProvider(this).get(AutorizadosViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(UsuariosrolesViewModel::class.java)
         // TODO: Use the ViewModel si se necesita pedir datos del principal
-
-
-/*
-        val shareObserver = Observer<String> {
-            if ( shareViewModel.getsharedata().value == "Actualizar" ){
-                viewModel.getRecords()
-            }
-
-        }
-        shareViewModel.getsharedata().observe(this, shareObserver)
-*/
-
     }
 
     private fun create(){
 
-        val post = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
-        val callcreate = post.Create(idusuario,NombreAutorizado.text.toString(),Nif.text.toString())
+        val post = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
+        val callcreate = post.Create(NombreRol.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@AutorizadoActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -119,18 +102,18 @@ class AutorizadoActivity : AppCompatActivity() {
 
     private fun update(ID:Int){
 
-        val post = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
+        val post = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
 
-        val callUpdate = post.Update(ID,idusuario,NombreAutorizado.text.toString(),Nif.text.toString())
+        val callUpdate = post.Update(ID,NombreRol.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-                Toast.makeText(this@AutorizadoActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@UsuariorolActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
                 Log.i("dasboardfragmetn:",""+ t.message)
                 finish()
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@AutorizadoActivity,"succes $ID", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@UsuariorolActivity,"succes $ID", Toast.LENGTH_SHORT).show()
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as responseModel
                 println("test : "+response.Result)
@@ -149,7 +132,7 @@ class AutorizadoActivity : AppCompatActivity() {
     }
 
     private fun delete(ID: Int){
-        val post = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
+        val post = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
         val calldelete = post.Delete(ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -157,7 +140,7 @@ class AutorizadoActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@AutorizadoActivity," borrado ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@UsuariorolActivity," borrado ", Toast.LENGTH_SHORT).show()
 // Changed true
                 viewModel.make_Change()
                 finish()
