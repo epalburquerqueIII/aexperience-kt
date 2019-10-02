@@ -10,9 +10,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
 import com.epalburquerqueiii.aexperience.Data.Model.*
-import com.epalburquerqueiii.aexperience.Data.Network.MenuRolApi
+import com.epalburquerqueiii.aexperience.Data.Network.MenuRolesApi
 
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
+import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.databinding.ActivityMenurolBinding
 
@@ -73,7 +74,7 @@ class MenuRolActivity : AppCompatActivity() {
         btn_delete.setOnClickListener{
             delete(registro.Id!!)
         }
-        val get = RetrofitBuilder.builder().create(MenuRolApi::class.java)
+        val get = RetrofitBuilder.builder().create(UsuariosApi::class.java)
         val callget = get.GetOptions()
 
         callget.enqueue(object : Callback<Options> {
@@ -122,7 +123,7 @@ class MenuRolActivity : AppCompatActivity() {
     }
 
     private fun create(){
-        val post = RetrofitBuilder.builder().create(MenuRolApi::class.java)
+        val post = RetrofitBuilder.builder().create(MenuRolesApi::class.java)
         var idMenu :Int = 0
         if (records.size > 0) {
             idMenu = records[cbparentid.selectedItemPosition].Value!!.toInt()
@@ -151,7 +152,7 @@ class MenuRolActivity : AppCompatActivity() {
 
     private fun update(ID:Int){
 
-        val post = RetrofitBuilder.builder().create(MenuRolApi::class.java)
+        val post = RetrofitBuilder.builder().create(MenuRolesApi::class.java)
         var idMenu :Int = 0
         if (records.size > 0) {
             idMenu = records[cbparentid.selectedItemPosition].Value!!.toInt()
@@ -180,7 +181,7 @@ class MenuRolActivity : AppCompatActivity() {
     }
 
     private fun delete(ID: Int){
-        val post = RetrofitBuilder.builder().create(MenuRolApi::class.java)
+        val post = RetrofitBuilder.builder().create(MenuRolesApi::class.java)
         val calldelete = post.Delete(ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {

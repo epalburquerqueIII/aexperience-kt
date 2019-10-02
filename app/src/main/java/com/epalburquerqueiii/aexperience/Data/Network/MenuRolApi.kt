@@ -10,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 
-interface MenuRolApi {
+interface MenuRolesApi {
     //view
 
     @GET("menuroles/"+BuildConfig.VIEW_DATA)
@@ -21,7 +21,7 @@ interface MenuRolApi {
     @POST("menuroles/"+BuildConfig.CREATE_DATA)
     fun Create(
         @Field("idMenu")idMenu:Int,
-        @Field("idUsuario")idUsuario:Int
+        @Field("idUsuarioRoles")idUsuarioRoles:Int
     ):Call<responseModel>
 
     //update
@@ -30,7 +30,7 @@ interface MenuRolApi {
     fun Update(
         @Field("Id")id: Int,
         @Field("idMenu")idMenu:Int,
-        @Field("idUsuario")idUsuario: Int
+        @Field("idUsuarioRoles")idUsuarioRoles: Int
     ):Call<responseModel>
 
     //delete
