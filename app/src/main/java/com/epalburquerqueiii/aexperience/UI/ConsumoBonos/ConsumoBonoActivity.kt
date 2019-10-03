@@ -1,12 +1,12 @@
 package com.epalburquerqueiii.aexperience.UI.ConsumoBonos
 
 import android.app.DatePickerDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
@@ -19,6 +19,7 @@ import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityConsumoBonoBinding
 import kotlinx.android.synthetic.main.activity_consumo_bono.*
+import kotlinx.android.synthetic.main.activity_consumo_bono.FechaCB
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -77,7 +78,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
         }
 
         // Obtiene los Usuarios
-        val get = RetrofitBuilder.builder().create(UsuariosApi::class.java)
+        val get = RetrofitBuilder.builder().create(GetUsuariosApi::class.java)
         val callget = get.GetOptions()
 
         callget.enqueue(object : Callback<Options> {
@@ -115,7 +116,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
         })
 
         // Obtiene los Espacios
-        val getEspacios = RetrofitBuilder.builder().create(EspaciosApi::class.java)
+        val getEspacios = RetrofitBuilder.builder().create(GetEspaciosApi::class.java)
         val callgetEspacios = getEspacios.GetOptions()
 
         callgetEspacios.enqueue(object : Callback<Options> {
@@ -154,7 +155,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
         })
 
         // Obtiene los Autorizados
-        val getAutorizados = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
+        val getAutorizados = RetrofitBuilder.builder().create(GetAutorizadosApi::class.java)
         val callgetAutorizados = getAutorizados.GetOptions()
 
         callgetAutorizados.enqueue(object : Callback<Options> {

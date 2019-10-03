@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.epalburquerqueiii.aexperience.Data.Adapter.ConsumoBonosAdapter
 import com.epalburquerqueiii.aexperience.Data.Model.ConsumoBono
 import com.epalburquerqueiii.aexperience.R
-import kotlinx.android.synthetic.main.activity_consumobono.*
 import kotlinx.android.synthetic.main.list_fragment.*
 
 
@@ -41,8 +40,8 @@ class ConsumoBonosFragment : Fragment() {
         setupViewModelAndObserve()
         viewModel.getRegistros()
         bt_new.setOnClickListener{
-            var intent = Intent(activity, ConsumobonosActivity::class.java)
-            var registro = ConsumoBono(0,"", 0, "", "", "")
+            var intent = Intent(activity, ConsumoBonoActivity::class.java)
+            var registro = ConsumoBono(0,"",0,0, "", 0,0)
             intent.putExtra("registro",registro)
             intent.putExtra("modo", Crear)
             startActivity(intent) }
@@ -65,7 +64,7 @@ class ConsumoBonosFragment : Fragment() {
             mAdapter.setOnItemClickListener(object : ConsumoBonosAdapter.OnItemClickListener {
                 override fun onItemClick(registro: ConsumoBono) {
                     //Toast.makeText(activity,""+registro.id,Toast.LENGTH_SHORT).show()
-                    var intent = Intent(activity, ConsumobonosActivity::class.java)
+                    var intent = Intent(activity, ConsumoBonoActivity::class.java)
 
                     intent.putExtra("registro", registro)
 

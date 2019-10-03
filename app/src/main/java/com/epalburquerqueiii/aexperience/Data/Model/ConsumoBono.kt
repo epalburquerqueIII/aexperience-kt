@@ -8,23 +8,28 @@ class ConsumoBono : Serializable {
         ID: Int?,
         Fecha: String?,
         Sesiones: Int?,
-        Usuario: String?,
-        Espacio: String?,
-        Autorizado: String?
+        IDUsuario: Int?,
+        NombreUsuario: String?,
+        IDEspacio: Int?,
+        IDAutorizado: Int?
 
     ) {
         this.ID = ID
         this.Fecha = Fecha
         this.Sesiones = Sesiones
-        this.Usuario = Usuario
-        this.Espacio = Espacio
-        this.Autorizado = Autorizado
+        this.IDUsuario = IDUsuario
+        this.NombreUsuario = NombreUsuario
+        this.IDEspacio = IDEspacio
+        this.IDAutorizado = IDAutorizado
     }
 
     var ID: Int? = null
     var Fecha: String? = null
     var Sesiones: Int? = null
-    var Usuario: String? = null
-    var Espacio: String? = null
-    var Autorizado: String? = null
+    var IDUsuario: Int? = null
+    var NombreUsuario: String? = null
+    var IDEspacio: Int? = null
+    var IDAutorizado: Int? = null
+
+
 }
