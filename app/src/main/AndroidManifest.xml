@@ -12,12 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Usuariosroles.UsuariorolActivity"></activity>
-        <activity android:name=".UI.Pagos.PagoActivity"></activity>
-        <activity android:name=".UI.ConsumoBonos.ConsumoBonoActivity"></activity>
         <activity android:name=".UI.Autorizados.AutorizadoActivity" />
+        <activity android:name=".UI.ConsumoBonos.ConsumoBonoActivity"></activity>
+        <activity android:name=".UI.Espacios.EspacioActivity"></activity>
+        <activity android:name=".UI.Menus.MenuActivity"></activity>
+        <activity android:name=".UI.Pagos.PagoActivity"></activity>
         <activity android:name=".UI.Reservas.ReservaActivity" />
-        <activity android:name=".UI.PersonaActivity" />
+        <activity android:name=".UI.Tiposeventos.TiposEventoActivity" />
+        <activity android:name=".UI.Tipospagos.TipospagoActivity" />
+        <activity android:name=".UI.Usuarios.UsuarioActivity"></activity>
+        <activity android:name=".UI.Usuariosroles.UsuariorolActivity"></activity>
         <activity android:name=".UI.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

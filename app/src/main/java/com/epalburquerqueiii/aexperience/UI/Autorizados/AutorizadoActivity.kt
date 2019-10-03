@@ -93,7 +93,7 @@ class AutorizadoActivity : AppCompatActivity() {
     private fun create(){
 
         val post = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
-        val callcreate = post.Create(idusuario,NombreEventos.text.toString(),Nif.text.toString())
+        val callcreate = post.Create(idusuario,NombreAutorizado.text.toString(),Nif.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@AutorizadoActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -121,7 +121,7 @@ class AutorizadoActivity : AppCompatActivity() {
 
         val post = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
 
-        val callUpdate = post.Update(ID,idusuario,NombreEventos.text.toString(),Nif.text.toString())
+        val callUpdate = post.Update(ID,idusuario,NombreAutorizado.text.toString(),Nif.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@AutorizadoActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
