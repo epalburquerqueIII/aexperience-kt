@@ -1,5 +1,6 @@
 package com.epalburquerqueiii.aexperience.UI.Pagos
 
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,14 +18,17 @@ import com.epalburquerqueiii.aexperience.Data.Network.PagosApi
 import com.epalburquerqueiii.aexperience.Data.Network.ReservasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.TipospagosApi
+import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
+import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityPagoBinding
 import kotlinx.android.synthetic.main.activity_pago.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
-import kotlinx.android.synthetic.main.item_pago.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class PagoActivity : AppCompatActivity() {
@@ -34,7 +38,7 @@ class PagoActivity : AppCompatActivity() {
     private var modo:Int? = 0
     private val Crear = 0
     private val Editar = 1
-
+    private lateinit var fecha : Date
 
 
     private lateinit var records: ArrayList<Option>
@@ -62,6 +66,7 @@ class PagoActivity : AppCompatActivity() {
 
         btn_save.setOnClickListener {
             if (modo == Crear) {
+
                 create()
             }else{
                 update(registro.Id!!)
@@ -141,7 +146,9 @@ class PagoActivity : AppCompatActivity() {
             }
 
         })
-
+        fechapagoCB.setOnClickListener {
+            showDatePickerDialog()
+        }
     }
 
     private fun setupViewModelAndObserve() {
@@ -149,6 +156,18 @@ class PagoActivity : AppCompatActivity() {
         // TODO: Use the ViewModel si se necesita pedir datos del principal
 
     }
+
+    private fun showDatePickerDialog() {
+        val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            // +1 because January is zero
+            val selectedDate = day.toString() + " / " + (month + 1) + " / " + year
+            fechapagoCB.setText(selectedDate)
+            fecha = Comun.codetoDate(year,month,day)
+        })
+
+        newFragment.show(supportFragmentManager, "datePicker")
+    }
+
 
 
     private fun create(){
@@ -163,7 +182,9 @@ class PagoActivity : AppCompatActivity() {
             IdReserva = records[cbreserva.selectedItemPosition].Value!!.toInt()
         }
 
-        val callcreate = post.Create(IdReserva,Fechapago_item.text.toString(),IdTipopago,numerotarjeta.text.toString())
+
+
+        val callcreate = post.Create(IdReserva,fechapagoCB.text.toString(),IdTipopago,numerotarjeta.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@PagosActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -199,7 +220,10 @@ class PagoActivity : AppCompatActivity() {
             IdReserva = records[cbreserva.selectedItemPosition].Value!!.toInt()
         }
 
-        val callUpdate = post.Update(IdReserva,Fechapago_item.text.toString(),IdTipopago,numerotarjeta.text.toString())
+        val callUpdate = post.Update(IdReserva,
+            Comun.datetoStringsql(fecha),
+            IdTipopago,
+            numerotarjeta.text.toString())
         callUpdate.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@PagoActivity, "Fallo $Id", Toast.LENGTH_SHORT).show()
