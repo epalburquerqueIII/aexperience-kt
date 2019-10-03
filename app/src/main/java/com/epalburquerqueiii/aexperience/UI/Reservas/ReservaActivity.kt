@@ -188,6 +188,9 @@ class ReservaActivity : AppCompatActivity() {
         FechaR.setOnClickListener {
             showDatePickerDialog()
         }
+        FechaPago.setOnClickListener {
+            showDatePickerDialog1()
+        }
     }
 
     private fun setupViewModelAndObserve() {
@@ -211,6 +214,16 @@ class ReservaActivity : AppCompatActivity() {
             // +1 because January is zero
             val selectedDate = day.toString() + " / " + (month + 1) + " / " + year
             FechaR.setText(selectedDate)
+        })
+
+        newFragment.show(supportFragmentManager, "datePicker")
+    }
+
+    private fun showDatePickerDialog1() {
+        val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            // +1 because January is zero
+            val selectedDate = day.toString() + " / " + (month + 1) + " / " + year
+            FechaPago.setText(selectedDate)
         })
 
         newFragment.show(supportFragmentManager, "datePicker")
