@@ -14,9 +14,6 @@ import com.epalburquerqueiii.aexperience.Data.Model.Option
 import com.epalburquerqueiii.aexperience.Data.Model.Options
 import com.epalburquerqueiii.aexperience.Data.Model.Reserva
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
-import com.epalburquerqueiii.aexperience.Data.Network.GetUsuariosApi
-import com.epalburquerqueiii.aexperience.Data.Network.GetEspaciosApi
-import com.epalburquerqueiii.aexperience.Data.Network.GetAutorizadosApi
 import com.epalburquerqueiii.aexperience.Data.Network.ReservasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
