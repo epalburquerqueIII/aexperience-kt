@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.epalburquerqueiii.aexperience.Data.Model.ConsumoBono
 import com.epalburquerqueiii.aexperience.R
 import kotlinx.android.synthetic.main.item_consumobono.view.*
+import kotlinx.android.synthetic.main.item_consumobono.view.*
 
 
 class ConsumoBonosAdapter(private val consumoBonos: ArrayList<ConsumoBono>, context: Context) : RecyclerView.Adapter<ConsumoBonosAdapter.ConsumoBonoViewHolder>() {

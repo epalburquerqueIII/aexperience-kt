@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Tiposeventos.TiposEventoActivity" />
+        <activity android:name=".UI.Usuariosroles.UsuariorolActivity"></activity>
         <activity android:name=".UI.Pagos.PagoActivity"></activity>
         <activity android:name=".UI.ConsumoBonos.ConsumoBonoActivity"></activity>
         <activity android:name=".UI.Autorizados.AutorizadoActivity" />
