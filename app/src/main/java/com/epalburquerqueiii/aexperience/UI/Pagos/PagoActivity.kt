@@ -184,7 +184,10 @@ class PagoActivity : AppCompatActivity() {
 
 
 
-        val callcreate = post.Create(IdReserva,fechapagoCB.text.toString(),IdTipopago,numerotarjeta.text.toString())
+        val callcreate = post.Create(IdReserva,
+            fechapagoCB.text.toString(),
+            IdTipopago,
+            numerotarjeta.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@PagosActivity,"failure",Toast.LENGTH_SHORT).show()
