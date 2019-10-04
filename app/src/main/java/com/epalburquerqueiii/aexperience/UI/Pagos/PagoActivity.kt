@@ -79,8 +79,8 @@ class PagoActivity : AppCompatActivity() {
 
         // Obtiene el Tipo de pago
 
-        val gettipospago = RetrofitBuilder.builder().create(TipospagosApi::class.java)
-        val callgettipopago = gettipospago.GetOptions()
+        val gettipopago = RetrofitBuilder.builder().create(TipospagosApi::class.java)
+        val callgettipopago = gettipopago.GetOptions()
 
         callgettipopago.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
@@ -90,15 +90,15 @@ class PagoActivity : AppCompatActivity() {
                 var sel :Int = 0
                 records = response.Options!!
                 if (size > 0) {
-                    val IdTipopago = ArrayList<String>()
+                    val IdTipospago = ArrayList<String>()
                     var i:Int = 0
                     for ( item in records){
-                        IdTipopago.add(item.DisplayText.toString())
-                        if (registro.IdTipopago == item.Value) {
+                        IdTipospago.add(item.DisplayText.toString())
+                        if (registro.IdTipospago == item.Value) {
                             sel = i }
                         i++
                     }
-                    val adapter = ArrayAdapter(this@PagoActivity, android.R.layout.simple_spinner_dropdown_item, IdTipopago)
+                    val adapter = ArrayAdapter(this@PagoActivity, android.R.layout.simple_spinner_dropdown_item, IdTipospago)
                     // Set Adapter to Spinner
                     cbtipopago!!.setAdapter(adapter)
                     cbtipopago.setSelection(sel)
@@ -173,9 +173,9 @@ class PagoActivity : AppCompatActivity() {
     private fun create(){
 
         val post = RetrofitBuilder.builder().create(PagosApi::class.java)
-        var IdTipopago :Int = 0
+        var IdTipospago :Int = 0
         if (records.size > 0) {
-            IdTipopago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
+            IdTipospago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
         }
         var IdReserva :Int = 0
         if (records.size > 0) {
@@ -186,7 +186,7 @@ class PagoActivity : AppCompatActivity() {
 
         val callcreate = post.Create(IdReserva,
             fechapagoCB.text.toString(),
-            IdTipopago,
+            IdTipospago,
             numerotarjeta.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -214,9 +214,9 @@ class PagoActivity : AppCompatActivity() {
 
         val post = RetrofitBuilder.builder().create(PagosApi::class.java)
 
-        var IdTipopago: Int = 0
+        var IdTipospago: Int = 0
         if (records.size > 0) {
-            IdTipopago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
+            IdTipospago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
         }
         var IdReserva :Int = 0
         if (records.size > 0) {
@@ -225,7 +225,7 @@ class PagoActivity : AppCompatActivity() {
 
         val callUpdate = post.Update(IdReserva,
             Comun.datetoStringsql(fecha),
-            IdTipopago,
+            IdTipospago,
             numerotarjeta.text.toString())
         callUpdate.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
