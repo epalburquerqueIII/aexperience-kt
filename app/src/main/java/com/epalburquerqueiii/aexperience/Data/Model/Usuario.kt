@@ -9,7 +9,7 @@ class Usuario : Serializable {
         Nombre: String?,
         Nif: String?,
         Email: String?,
-        Tipo: Int?,
+        IdUsuarioRol: Int?,
         Telefono: String?,
         SesionesBonos: Int?,
         Newsletter: Int?,
@@ -20,7 +20,7 @@ class Usuario : Serializable {
         this.Nombre = Nombre
         this.Nif = Nif
         this.Email = Email
-        this.Tipo = Tipo
+        this.IdUsuarioRol = IdUsuarioRol
         this.Telefono = Telefono
         this.SesionesBonos = SesionesBonos
         this.Newsletter = Newsletter
@@ -31,7 +31,7 @@ class Usuario : Serializable {
     var Nombre: String? = null
     var Nif: String? = null
     var Email: String? = null
-    var Tipo: Int? = null
+    var IdUsuarioRol: Int? = null
     var Telefono: String? = null
     var SesionesBonos: Int? = null
     var Newsletter: Int? = null

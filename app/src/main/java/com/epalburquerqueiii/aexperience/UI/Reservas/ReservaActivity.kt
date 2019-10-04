@@ -14,15 +14,10 @@ import com.epalburquerqueiii.aexperience.Data.Model.Option
 import com.epalburquerqueiii.aexperience.Data.Model.Options
 import com.epalburquerqueiii.aexperience.Data.Model.Reserva
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
-import com.epalburquerqueiii.aexperience.Data.Network.GetUsuariosApi
-import com.epalburquerqueiii.aexperience.Data.Network.GetEspaciosApi
-import com.epalburquerqueiii.aexperience.Data.Network.GetAutorizadosApi
-import com.epalburquerqueiii.aexperience.Data.Network.ReservasApi
-import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
+import com.epalburquerqueiii.aexperience.Data.Network.*
 import com.epalburquerqueiii.aexperience.R
-import com.epalburquerqueiii.aexperience.databinding.ActivityReservaBinding
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
-
+import com.epalburquerqueiii.aexperience.databinding.ActivityReservaBinding
 import kotlinx.android.synthetic.main.activity_reserva.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
@@ -85,7 +80,7 @@ class ReservaActivity : AppCompatActivity() {
         }
 
         // Obtiene los Usuarios
-        val get = RetrofitBuilder.builder().create(GetUsuariosApi::class.java)
+        val get = RetrofitBuilder.builder().create(UsuariosApi::class.java)
         val callget = get.GetOptions()
 
         callget.enqueue(object : Callback<Options> {
@@ -123,7 +118,7 @@ class ReservaActivity : AppCompatActivity() {
         })
 
         // Obtiene los Espacios
-        val getEspacios = RetrofitBuilder.builder().create(GetEspaciosApi::class.java)
+        val getEspacios = RetrofitBuilder.builder().create(EspaciosApi::class.java)
         val callgetEspacios = getEspacios.GetOptions()
 
         callgetEspacios.enqueue(object : Callback<Options> {
@@ -157,7 +152,7 @@ class ReservaActivity : AppCompatActivity() {
         })
 
         // Obtiene los Autorizados
-        val getAutorizados = RetrofitBuilder.builder().create(GetAutorizadosApi::class.java)
+        val getAutorizados = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
         val callgetAutorizados = getAutorizados.GetOptions()
 
         callgetAutorizados.enqueue(object : Callback<Options> {
