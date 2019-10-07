@@ -10,20 +10,45 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_delete"
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="321dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingEnd="20dp"
+            android:text="Borrar"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            app:backgroundTint="#DB2525"
+            app:cornerRadius="15dp"
+            app:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_save"
+            app:layout_constraintVertical_bias="0.164"
+            app:strokeColor="@color/grey_300"
+            app:strokeWidth="2dp"
+            tools:ignore="MissingConstraints" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save"
             style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="321dp"
             android:layout_height="54dp"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:paddingEnd="20dp"
             android:text="Guardar"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
+            app:backgroundTint="#66BB6A"
             app:cornerRadius="15dp"
             app:elevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.54"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.023"
@@ -31,28 +56,6 @@
             app:strokeWidth="2dp"
             tools:ignore="MissingConstraints" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_delete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/background_rectangle_black"
-            android:paddingEnd="20dp"
-            android:text="Borrar"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:cornerRadius="15dp"
-            app:elevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_save"
-            app:strokeColor="@color/grey_300"
-            app:strokeWidth="2dp"
-            tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
