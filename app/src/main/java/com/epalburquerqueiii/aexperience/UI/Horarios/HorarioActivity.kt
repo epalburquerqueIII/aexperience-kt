@@ -54,7 +54,8 @@ class HorarioActivity : AppCompatActivity() {
 
         val bundle:Bundle? = intent.extras
         val registro = intent.extras.get("registro") as Horario
-        registro.Fechainicio
+        registro.Fechainicio = Comun.StringYMDtoDMY(registro.Fechainicio)
+        registro.Fechafinal = Comun.StringYMDtoDMY(registro.Fechafinal)
 
 //  sin databinding los campo se rellenarían manualmente
 /*
