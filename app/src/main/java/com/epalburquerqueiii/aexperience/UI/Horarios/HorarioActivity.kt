@@ -40,9 +40,8 @@ class HorarioActivity : AppCompatActivity() {
     private val Crear = 0
     private val Editar = 1
     private lateinit var records: ArrayList<Option>
-    private var fecini:Date? = null
-    private var fecfin:Date? = null
-
+    private var fecini:String = ""
+    private var fecfin:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +54,7 @@ class HorarioActivity : AppCompatActivity() {
 
         val bundle:Bundle? = intent.extras
         val registro = intent.extras.get("registro") as Horario
+        registro.Fechainicio
 
 //  sin databinding los campo se rellenarían manualmente
 /*
@@ -150,9 +150,9 @@ class HorarioActivity : AppCompatActivity() {
     private fun showDatePickerDialogfecini() {
         val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
             // +1 because January is zero
-            val selectedDate = "%2d/%2d/%4d".format(day,month+1,year)
+            val selectedDate = "%02d-%02d-%04d".format(day,month+1,year)
             Fechainicio.setText(selectedDate)
-            fecini = Comun.CodetoDate(year,month+1,day)
+            fecini = selectedDate
         })
 
         newFragment.show(supportFragmentManager, "datePicker")
@@ -162,8 +162,8 @@ class HorarioActivity : AppCompatActivity() {
     private fun showDatePickerDialogfecfin() {
         val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
             // +1 because January is zero
-            val selectedDate = "%2d/%2d/%4d".format(day,month+1,year)
-            fecfin = Comun.CodetoDate(year,month+1,day)
+            val selectedDate = "%02d-%02d-%04d".format(day,month+1,year)
+            fecfin = selectedDate
             Fechafinal.setText(selectedDate)
         })
 
@@ -183,8 +183,8 @@ class HorarioActivity : AppCompatActivity() {
         val callcreate = post.Create(
             Espacioid,
             Descripcion.text.toString(),
-            Comun.DatetoStringsql(fecini),
-            Comun.DatetoStringsql(fecfin),
+            fecini,
+            fecfin,
             Hora.text.toString().toInt()
         )
 
@@ -221,10 +221,10 @@ class HorarioActivity : AppCompatActivity() {
 
         val callUpdate = post.Update(
             ID,
-            Espacioid.toString().toInt(),
+            Espacioid,
             Descripcion.text.toString(),
-            Comun.DatetoStringsql(fecini),
-            Comun.DatetoStringsql(fecfin),
+            fecini,
+            fecfin,
             Hora.text.toString().toInt())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {

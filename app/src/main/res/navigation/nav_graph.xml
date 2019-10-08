@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/EspaciosFragment">
+            app:startDestination="@id/HorariosFragment">
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
@@ -29,7 +29,8 @@
     <fragment
         android:id="@+id/TiposEventosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Tiposeventos.TiposEventosFragment"
-        android:label="TiposEventosFragment" />
+        android:label="TiposEventosFragment"
+        tools:layout="@layout/list_fragment"/>
 
 
     <fragment
@@ -41,5 +42,10 @@
         android:id="@+id/reservasFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Reservas.ReservasFragment"
         android:label="ReservasFragment"
+        tools:layout="@layout/list_fragment"/>
+    <fragment
+        android:id="@+id/HorariosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Horarios.HorariosFragment"
+        android:label="HorariosFragment"
         tools:layout="@layout/list_fragment"/>
 </navigation>
