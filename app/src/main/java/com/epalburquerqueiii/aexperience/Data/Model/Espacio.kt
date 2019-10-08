@@ -1,6 +1,6 @@
 package com.epalburquerqueiii.aexperience.Data.Model
 
-import com.epalburquerqueiii.aexperience.Data.util.Comun
+import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import java.io.Serializable
 
 class Espacio : Serializable {

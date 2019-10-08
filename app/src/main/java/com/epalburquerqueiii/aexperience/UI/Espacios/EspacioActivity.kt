@@ -17,7 +17,7 @@ import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.EspaciosApi
 import com.epalburquerqueiii.aexperience.Data.Network.EventosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
-import com.epalburquerqueiii.aexperience.Data.util.Comun
+import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityEspaciosBinding
@@ -40,7 +40,7 @@ class EspacioActivity : AppCompatActivity() {
     private var modo: Int? = 0
     private val Crear = 0
     private val Editar = 1
-    private lateinit var fecha : Date
+    private var fecha : String = ""
     private lateinit var records: ArrayList<Option>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -147,7 +147,7 @@ class EspacioActivity : AppCompatActivity() {
             val selectedDate = String.format("%02d-%02d-%04d", day, month+1, year)
             Fecha.setText(selectedDate)
 
-            fecha = Comun.codetoDate(day, month+1, year)
+            fecha = selectedDate
         })
 
         newFragment.show(supportFragmentManager, "datePicker")
@@ -177,7 +177,7 @@ class EspacioActivity : AppCompatActivity() {
             Modo.text.toString().toInt(),
             Precio.text.toString().toInt(),
             Evento,
-            Comun.datetoString(fecha),
+            fecha,
             Aforo.text.toString().toInt(),
             NumeroReservaslimite.text.toString().toInt()
 
@@ -229,7 +229,7 @@ class EspacioActivity : AppCompatActivity() {
             Modo.text.toString().toInt(),
             Precio.text.toString().toInt(),
             Evento,
-            Comun.datetoString(fecha),
+            fecha,
             Aforo.text.toString().toInt(),
             NumeroReservaslimite.text.toString().toInt()
         )
