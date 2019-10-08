@@ -1,5 +1,6 @@
 package com.epalburquerqueiii.aexperience.Data.Model
 
+import com.epalburquerqueiii.aexperience.Data.util.Comun
 import java.io.Serializable
 
 class Espacio : Serializable {
@@ -10,7 +11,7 @@ class Espacio : Serializable {
         Estado: Int?,
         Modo: Int?,
         Precio: Int?,
-        IDTiposevento: Int?,
+        IDTipoevento: Int?,
         Fecha: String?,
         Aforo: Int?,
         NumeroReservaslimite: Int?
@@ -21,10 +22,11 @@ class Espacio : Serializable {
         this.Estado = Estado
         this.Modo = Modo
         this.Precio = Precio
-        this.IDTiposevento = IDTiposevento
+        this.IDTipoevento = IDTipoevento
         this.NumeroReservaslimite = NumeroReservaslimite
         this.Aforo = Aforo
         this.Fecha = Fecha
+
     }
 
     var ID: Int? = null
@@ -32,9 +34,10 @@ class Espacio : Serializable {
     var Estado: Int? = null
     var Modo: Int? = null
     var Precio: Int? = null
-    var IDTiposevento: Int? = null
+    var IDTipoevento: Int? = null
     var NumeroReservaslimite: Int? = null
     var Aforo: Int? = null
     var Fecha: String? = null
+    var ShowFecha: String = Comun.StringYMDtoDMY(Fecha)
 
 }

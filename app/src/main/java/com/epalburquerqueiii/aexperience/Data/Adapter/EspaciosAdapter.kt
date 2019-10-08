@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.epalburquerqueiii.aexperience.Data.Model.Espacio
 import com.epalburquerqueiii.aexperience.Data.Model.Espacios
+import com.epalburquerqueiii.aexperience.Data.util.Comun
+import com.epalburquerqueiii.aexperience.Data.util.Comun.Companion.StringYMDtoDMY
 import com.epalburquerqueiii.aexperience.R
 import kotlinx.android.synthetic.main.item_espacios.view.*
 
@@ -51,7 +53,7 @@ class EspaciosAdapter(private val espacios: ArrayList<Espacio>, context: Context
         fun bindView(Espacio: Espacio){
             this.Espacio = Espacio
             itemView.Descripcion.text = this.Espacio?.Descripcion
-            if (this.Espacio?.Estado == 0){
+            if (this.Espacio?.Estado== 0){
                 itemView.Estado.text = "cerrado"
             }else{
                 itemView.Estado.text = "abierto"
@@ -59,7 +61,7 @@ class EspaciosAdapter(private val espacios: ArrayList<Espacio>, context: Context
             }
 
             itemView.Precio.text = this.Espacio?.Precio.toString()
-            itemView.Fecha.text = this.Espacio?.Fecha
+            itemView.Fecha.text = this.Espacio?.ShowFecha
 
 }
 

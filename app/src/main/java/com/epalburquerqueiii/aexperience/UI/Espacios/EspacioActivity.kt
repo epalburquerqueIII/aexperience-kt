@@ -1,5 +1,6 @@
 package com.epalburquerqueiii.aexperience.UI.Espacios
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -7,7 +8,6 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-//import androidx.databinding.library.baseAdapters.BR
 import com.epalburquerqueiii.aexperience.BR
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.Data.Model.Espacio
@@ -17,7 +17,9 @@ import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.EspaciosApi
 import com.epalburquerqueiii.aexperience.Data.Network.EventosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
+import com.epalburquerqueiii.aexperience.Data.util.Comun
 import com.epalburquerqueiii.aexperience.R
+import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityEspaciosBinding
 
 import kotlinx.android.synthetic.main.activity_espacios.*
@@ -27,6 +29,9 @@ import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class EspacioActivity : AppCompatActivity() {
 
@@ -35,6 +40,7 @@ class EspacioActivity : AppCompatActivity() {
     private var modo: Int? = 0
     private val Crear = 0
     private val Editar = 1
+    private lateinit var fecha : Date
     private lateinit var records: ArrayList<Option>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +58,7 @@ class EspacioActivity : AppCompatActivity() {
         val bundle: Bundle? = intent.extras
         val registro = intent.extras.get("registro") as Espacio
 
+
 //  sin databinding los campo se rellenarían manualmente
 /*
         val registro = Espacio(bundle?.getInt("ID"),
@@ -68,8 +75,6 @@ class EspacioActivity : AppCompatActivity() {
             binding.executePendingBindings()
 
         }
-
-
 
         btn_save.setOnClickListener {
             if (modo == Crear) {
@@ -98,14 +103,14 @@ class EspacioActivity : AppCompatActivity() {
                     var i:Int = 0
                     for ( item in records){
                         Eventosarray.add(item.DisplayText.toString())
-                        if (registro.IDTiposevento == item.Value) {
+                        if (registro.IDTipoevento == item.Value) {
                             sel = i }
                         i++
                     }
                     val adapter = ArrayAdapter(this@EspacioActivity, android.R.layout.simple_spinner_dropdown_item, Eventosarray)
                     // Set Adapter to Spinner
-                    IDTipoevento!!.setAdapter(adapter)
-                    IDTipoevento.setSelection(sel)
+                    IDTiposeventos!!.setAdapter(adapter)
+                    IDTiposeventos.setSelection(sel)
                 }
             }
 
@@ -115,6 +120,9 @@ class EspacioActivity : AppCompatActivity() {
             }
 
         })
+        Fecha.setOnClickListener {
+            showDatePickerDialog()
+        }
 
     }
 
@@ -133,21 +141,43 @@ class EspacioActivity : AppCompatActivity() {
 */
 
     }
+    private fun showDatePickerDialog() {
+        val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            // +1 because January is zero
+            val selectedDate = String.format("%02d-%02d-%04d", day, month+1, year)
+            Fecha.setText(selectedDate)
 
+            fecha = Comun.codetoDate(day, month+1, year)
+        })
+
+        newFragment.show(supportFragmentManager, "datePicker")
+    }
     private fun create() {
 
         val post = RetrofitBuilder.builder().create(EspaciosApi::class.java)
         var Evento:Int = 0
         if (records.size > 0) {
-            Evento = records[IDTipoevento.selectedItemPosition].Value!!.toInt()
+            Evento = records[IDTiposeventos.selectedItemPosition].Value!!.toInt()
         }
+        if (Estado.isChecked){
+            Estado.text= "1"
+        }else{
+           Estado.text = "0"
+           }
+        if (Modo.isChecked){
+            Modo.text= "1"
+        }else{
+            Modo.text="0"
+        }
+
+//        val s:String = Comun.datetoStringsql(fecha)
         val callcreate = post.Create(
             Descripcion.text.toString(),
-            Estado.id,
-            Modo.id,
+            Estado.text.toString().toInt(),
+            Modo.text.toString().toInt(),
             Precio.text.toString().toInt(),
             Evento,
-            Fecha.text.toString(),
+            Comun.datetoString(fecha),
             Aforo.text.toString().toInt(),
             NumeroReservaslimite.text.toString().toInt()
 
@@ -180,16 +210,26 @@ class EspacioActivity : AppCompatActivity() {
         val post = RetrofitBuilder.builder().create(EspaciosApi::class.java)
         var Evento:Int = 0
         if (records.size > 0) {
-            Evento = records[IDTipoevento.selectedItemPosition].Value!!.toInt()
+            Evento = records[IDTiposeventos.selectedItemPosition].Value!!.toInt()
+        }
+        if (Estado.isChecked){
+            Estado.text= "1"
+        }else{
+            Estado.text = "0"
+        }
+        if (Modo.isChecked){
+            Modo.text= "1"
+        }else{
+            Modo.text="0"
         }
         val callUpdate = post.Update(
             ID,
             Descripcion.text.toString(),
-            Estado.id,
-            Modo.id,
-            Precio.toString().toInt(),
+            Estado.text.toString().toInt(),
+            Modo.text.toString().toInt(),
+            Precio.text.toString().toInt(),
             Evento,
-            Fecha.text.toString(),
+            Comun.datetoString(fecha),
             Aforo.text.toString().toInt(),
             NumeroReservaslimite.text.toString().toInt()
         )
@@ -221,7 +261,7 @@ class EspacioActivity : AppCompatActivity() {
 
     private fun delete(ID: Int) {
         val post = RetrofitBuilder.builder().create(EspaciosApi::class.java)
-        val calldelete = post.Delete(ID.toInt())
+        val calldelete = post.Delete(ID)
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 
