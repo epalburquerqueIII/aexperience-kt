@@ -57,41 +57,26 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_activity3"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/idUsuario"
-        style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="15dp"
-
-        android:background="@drawable/background_rectangle_black"
-        android:drawablePadding="8dp"
-        android:hint="idUsuario"
-        android:imeActionId="6"
-        android:imeOptions="actionUnspecified"
-        android:maxLines="1"
-        android:paddingEnd="20dp"
-        android:singleLine="true"
-        android:text="@{addmenurolviewmodel.idUsuario.toString()}"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Spinner
+        android:id="@+id/cbidUsuarioRoles"
+        android:layout_width="366dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="152dp"
+        app:layout_constraintBottom_toTopOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/idMenu"
-        app:layout_constraintVertical_bias="0.113"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/idMenu"
+        app:layout_constraintVertical_bias="0.191" />
 
     <include
         android:id="@+id/include"
         layout="@layout/editupdate_botton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idUsuario"
-        app:layout_constraintVertical_bias="0.894" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

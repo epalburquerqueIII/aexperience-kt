@@ -11,10 +11,10 @@ class MenuRol : Serializable {
     ) {
         this.Id = Id
         this.idMenu = idMenu
-        this.idUsuario = idUsuario
+        this.idUsuarioRoles = idUsuarioRoles
     }
 
     var Id: Int? = null
     var idMenu: Int? = null
-    var idUsuario: Int? = null
+    var idUsuarioRoles: Int? = null
 }
