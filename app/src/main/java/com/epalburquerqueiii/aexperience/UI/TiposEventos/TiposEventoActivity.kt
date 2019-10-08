@@ -10,12 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
 import com.epalburquerqueiii.aexperience.Data.Model.TiposEvento
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
-import com.epalburquerqueiii.aexperience.Data.Network.TiposEventosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
+import com.epalburquerqueiii.aexperience.Data.Network.TiposEventosApi
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.TiposEventos.TiposEventosViewModel
 import com.epalburquerqueiii.aexperience.databinding.ActivityTiposeventoBinding
-
 import kotlinx.android.synthetic.main.activity_tiposevento.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
@@ -37,8 +36,6 @@ class TiposEventoActivity : AppCompatActivity() {
 
 
         val binding = DataBindingUtil.setContentView<ActivityTiposeventoBinding>(this@TiposEventoActivity,R.layout.activity_tiposevento)
-
-        // var addnotemodel = ViewModelProviders.of(this).get(TiposEventosViewModel::class.java)
 
         val bundle:Bundle? = intent.extras
         val registro = intent.extras.get("registro") as TiposEvento
