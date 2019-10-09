@@ -41,7 +41,7 @@ android:textSize="22sp"
 app:layout_constraintBottom_toTopOf="@+id/linearLayout"
 app:layout_constraintEnd_toEndOf="parent"
 app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@+id/SesionesBonos"
+app:layout_constraintTop_toBottomOf="@+id/Fecha "
 tools:ignore="MissingConstraints" />
 
 <EditText
@@ -137,7 +137,7 @@ app:layout_constraintTop_toBottomOf="@+id/Email"
 tools:ignore="MissingConstraints" />
 
 <EditText
-android:id="@+id/SesionesBonos"
+android:id="@+id/Fecha "
 style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
 android:layout_width="387dp"
 android:layout_height="48dp"
@@ -183,32 +183,32 @@ app:layout_constraintStart_toStartOf="parent"
 app:layout_constraintTop_toBottomOf="@+id/Nif"
 tools:ignore="MissingConstraints" />
 
-<EditText
-android:id="@+id/Telefono"
-style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
-android:layout_width="386dp"
-android:layout_height="53dp"
+        <EditText
+            android:id="@+id/Telefono"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="386dp"
+            android:layout_height="53dp"
 
-android:layout_marginStart="12dp"
-android:layout_marginTop="8dp"
-android:background="@drawable/background_rectangle_black"
-android:drawablePadding="8dp"
-android:hint="Telefono"
-android:imeActionId="6"
-android:imeOptions="actionUnspecified"
-android:maxLines="1"
-android:paddingEnd="20dp"
-android:singleLine="true"
-android:text="@{addusuarioviewmodel.Telefono}"
-android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-android:textSize="22sp"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintHorizontal_bias="1.0"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@+id/Tipo"
-tools:ignore="MissingConstraints" />
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Telefono"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addusuarioviewmodel.Telefono}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Tipo"
+            tools:ignore="MissingConstraints" />
 
-<LinearLayout
+        <LinearLayout
 android:id="@+id/linearLayout"
 android:layout_width="387dp"
 android:layout_height="61dp"

@@ -10,12 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
 import com.epalburquerqueiii.aexperience.Data.Model.TiposEvento
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
-import com.epalburquerqueiii.aexperience.Data.Network.TiposEventosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
+import com.epalburquerqueiii.aexperience.Data.Network.TiposEventosApi
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.TiposEventos.TiposEventosViewModel
 import com.epalburquerqueiii.aexperience.databinding.ActivityTiposeventoBinding
-
 import kotlinx.android.synthetic.main.activity_tiposevento.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
@@ -93,7 +92,7 @@ class TiposEventoActivity : AppCompatActivity() {
     private fun create(){
 
         val post = RetrofitBuilder.builder().create(TiposEventosApi::class.java)
-        val callcreate = post.Create(NombreEventos.text.toString())
+        val callcreate = post.Create(NombreEvento.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@TiposeventoActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -121,7 +120,7 @@ class TiposEventoActivity : AppCompatActivity() {
 
         val post = RetrofitBuilder.builder().create(TiposEventosApi::class.java)
 
-        val callUpdate = post.Update(ID,NombreEventos.text.toString())
+        val callUpdate = post.Update(ID,NombreEvento.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@TiposEventoActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()

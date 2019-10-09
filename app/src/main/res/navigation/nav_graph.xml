@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/UsuariosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.UsuariosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.Registros31Fragment"
         android:label="Usuarios"
         tools:layout="@layout/list_fragment"/>
 

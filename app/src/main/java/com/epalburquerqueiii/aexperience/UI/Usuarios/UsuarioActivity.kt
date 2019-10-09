@@ -14,9 +14,15 @@ import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.databinding.ActivityUsuarioBinding
+import kotlinx.android.synthetic.main.activity_tiposevento.*
 
 import kotlinx.android.synthetic.main.activity_usuario.*
+import kotlinx.android.synthetic.main.activity_usuario.Email
+import kotlinx.android.synthetic.main.activity_usuario.Nif
+import kotlinx.android.synthetic.main.activity_usuario.Nombre
+import kotlinx.android.synthetic.main.activity_usuario.Telefono
 import kotlinx.android.synthetic.main.editupdate_botton.*
+import kotlinx.android.synthetic.main.fragment_registro31.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +35,6 @@ class UsuarioActivity : AppCompatActivity() {
     private val Crear = 0
     private val Editar = 1
     // TODO tomar el idusuario que se haga el login en el móvil
-    private val idusuario:Int = 8
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +98,7 @@ class UsuarioActivity : AppCompatActivity() {
     private fun create(){
 
         val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-        val callcreate = post.Create(Nombre.text.toString(),Nif.text.toString(), Email.text.toString(),Tipo.text as Int,Telefono.text.toString(), SesionesBonos.text as Int,Newsletter.text as Int, FechaBaja.text.toString())
+        val callcreate = post.Create(Nombre.text.toString(),Nif.text.toString(), Email.text.toString(), Tipo.text as Int, Telefono.text.toString(), FechaNacimiento.text.toString(),Newsletter.text as Int, FechaBaja.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@UsuarioActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -109,19 +114,14 @@ class UsuarioActivity : AppCompatActivity() {
 // Changed true
                 viewModel.make_Change()
                 finish()
-
-
             }
-
         })
-
     }
+    private fun update(ID: Int){
 
-    private fun update(ID:Int){
+        val post = RetrofitBuilder.builder().create(UsuarioActivity::class.java)
 
-        val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-
-        val callUpdate = post.Update(ID,Nombre.text.toString(),Nif.text.toString(), Email.text.toString(),Tipo.text as Int,Telefono.text.toString(), SesionesBonos.text as Int,Newsletter.text as Int, FechaBaja.text.toString())
+        val callUpdate = post.update(ID,Nombre.text.toString(),Nif.text.toString(), Email.text.toString(), Tipo.text as Int, Telefono.text.toString(), FechaNacimiento.text.toString(),Newsletter.text as Int, FechaBaja.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@UsuarioActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
@@ -140,8 +140,6 @@ class UsuarioActivity : AppCompatActivity() {
 // Changed true
                 viewModel.make_Change()
                 finish()
-
-
             }
 
         })
@@ -149,8 +147,8 @@ class UsuarioActivity : AppCompatActivity() {
     }
 
     private fun delete(ID: Int){
-        val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-        val calldelete = post.Delete(ID.toInt())
+        val post = RetrofitBuilder.builder().create(UsuarioActivity::class.java)
+        val calldelete = post.delete(ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 
@@ -165,6 +163,5 @@ class UsuarioActivity : AppCompatActivity() {
         })
 
     }
-
 
 }

@@ -24,6 +24,7 @@ interface UsuariosApi {
         @Field("Nombre")Nombre:String,
         @Field("Nif") Nif:String,
         @Field("Email") Email:String,
+        @Field("Fecha de Nacimiento") FechaNacimiento: String,
         @Field("IdUsuarioRol") IdUsuarioRol:Int,
         @Field("Telefono") Telefono:String,
         @Field("SesionesBonos") SesionesBonos:Int,
@@ -40,6 +41,7 @@ interface UsuariosApi {
         @Field("Nombre")Nombre:String,
         @Field("Nif") Nif:String,
         @Field("Email") Email:String,
+        @Field("Fecha de Nacimiento") FechaNacimiento: String,
         @Field("IdUsuarioRol") IdUsuarioRol:Int,
         @Field("Telefono") Telefono:String,
         @Field("SesionesBonos") SesionesBonos:Int,
@@ -52,6 +54,18 @@ interface UsuariosApi {
     @POST(BuildConfig.BASE_URL+"usuarios/"+BuildConfig.DELETE_DATA)
     fun Delete(
         @Field("ID")id:Int
+
+    ):Call<responseModel>
+
+    // Registro del usuario
+    @FormUrlEncoded
+    @POST("usuarios/registro")
+    fun Registro(
+        @Field("Nombre")Nombre:String,
+        @Field("Nif") Nif:String,
+        @Field("Email") Email:String,
+        @Field("Fecha de Nacimiento") FechaNacimiento:String,
+        @Field("Telefono") Telefono:String
 
     ):Call<responseModel>
 

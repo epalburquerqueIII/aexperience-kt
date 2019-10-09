@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable name="addregistro31viewmodel" type="com.epalburquerqueiii.aexperience.Data.Model.Registro31"/>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".UI.Registros31.Registro31Activity">
+
+
+        <TextView
+            android:id="@+id/registro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/grey_900"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.472"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/Nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Nombre"
+            app:layout_constraintBottom_toTopOf="@+id/NombreRegistro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/NombreRegistro"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="72dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Nombre"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addregistro31viewmodel.Nombre}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registro"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/Nif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nif"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <EditText
+            android:id="@+id/Nif"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Nif"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addregistro31viewmodel.Nombre}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/NombreRegistro"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/Email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="267dp" />
+
+        <EditText
+            android:id="@+id/Email"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Email"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addregistro31viewmodel.Nombre}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Nif"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/FechaNacimiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de Naciento"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="367dp" />
+
+        <EditText
+            android:id="@+id/FechaNacimiento "
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="48dp"
+            android:hint="Fecha de Nacimiento"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addregistro31viewmodel.Nombre}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Email"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/Telefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telefono"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.039"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="462dp" />
+
+        <EditText
+            android:id="@+id/Telefono"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="48dp"
+            android:hint="Telefono"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addregistro31viewmodel.Nombre}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/FechaNacimiento "
+            tools:ignore="MissingConstraints" />
+
+        <include
+            android:id="@+id/include2"
+            layout="@layout/editupdate_botton"
+            android:layout_width="403dp"
+            android:layout_height="128dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
