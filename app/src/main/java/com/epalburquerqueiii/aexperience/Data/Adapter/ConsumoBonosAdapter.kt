@@ -47,7 +47,7 @@ class ConsumoBonosAdapter(private val consumoBonos: ArrayList<ConsumoBono>, cont
             }
         }
 
-// asigna el dato del adapter al control de la vista
+        // asigna el dato del adapter al control de la vista
         fun bindView(ConsumoBono: ConsumoBono){
             this.ConsumoBono = ConsumoBono
             itemView.fecha_item.text = this.ConsumoBono?.Fecha
