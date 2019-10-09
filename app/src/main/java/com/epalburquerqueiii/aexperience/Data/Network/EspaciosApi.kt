@@ -25,7 +25,7 @@ interface EspaciosApi {
         @Field("Estado") Estado: Int,
         @Field("Modo") Modo: Int,
         @Field("Precio") Precio:Int,
-        @Field("IdTiposevento") IdTiposevento:Int,
+        @Field("IDTipoevento") IDTipoevento:Int,
         @Field("Fecha") Fecha:String,
         @Field("Aforo") Aforo:Int,
         @Field("NumeroReservaslimite") NumeroReservaslimite:Int
@@ -44,7 +44,7 @@ interface EspaciosApi {
         @Field("Estado") Estado:Int,
         @Field("Modo") Modo:Int,
         @Field("Precio") Precio:Int,
-        @Field("IdTiposevento") IdTiposevento:Int,
+        @Field("IDTipoevento") IDTipoevento:Int,
         @Field("Fecha") Fecha:String,
         @Field("Aforo") Aforo:Int,
         @Field("NumeroReservaslimite") NumeroReservaslimite:Int

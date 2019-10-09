@@ -10,7 +10,7 @@ import retrofit2.http.GET
 interface EventosApi {
     //view
 
-    @GET("espacios/"+BuildConfig.GETOPTIONS_DATA)
+    @GET("tiposeventos/"+BuildConfig.GETOPTIONS_DATA)
     fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
 
 

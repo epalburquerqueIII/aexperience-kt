@@ -24,12 +24,14 @@
             android:layout_width="360dp"
             android:layout_height="57dp"
             android:layout_marginTop="20dp"
-            android:text="Modo pago "
+            android:checked="false"
+            android:text="Modo pago(Fijo/Variable)"
             android:textOff="Fijo"
             android:textOn="Variable"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Estado" />
+            app:layout_constraintTop_toBottomOf="@+id/Estado"
+            tools:checked="false" />
 
         <EditText
             android:id="@+id/NumeroReservaslimite"
@@ -54,7 +56,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/IDTipoevento"
+            app:layout_constraintTop_toBottomOf="@+id/IDTiposeventos"
             tools:ignore="MissingConstraints" />
 
         <EditText
@@ -94,7 +96,7 @@
             android:layout_marginEnd="15dp"
             android:background="@drawable/background_rectangle_black"
             android:drawablePadding="8dp"
-            android:hint="Fecha(AAAA-MM-DD)"
+            android:hint="Fecha(DD/MM/AAAA)"
             android:imeActionId="6"
             android:imeOptions="actionUnspecified"
             android:maxLines="1"
@@ -175,7 +177,7 @@
             tools:ignore="MissingConstraints" />
 
         <Spinner
-            android:id="@+id/IDTipoevento"
+            android:id="@+id/IDTiposeventos"
             style="@style/Spinner"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -204,12 +206,14 @@
             android:layout_width="359dp"
             android:layout_height="53dp"
             android:layout_marginTop="24dp"
-            android:text="Estado "
+            android:checked="false"
+            android:text="Estado(C/A)"
             android:textOff="Abierto"
             android:textOn="Cerrado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Descripcion" />
+            app:layout_constraintTop_toBottomOf="@+id/Descripcion"
+            tools:checked="false" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

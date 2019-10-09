@@ -13,12 +13,12 @@ import retrofit2.http.POST
 interface ConsumoBonosApi {
     //view
 
-    @GET("consumoBonos/"+BuildConfig.VIEW_DATA)
+    @GET("consumobonos/"+BuildConfig.VIEW_DATA)
     fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<ConsumoBonos>
 
     //create
     @FormUrlEncoded
-    @POST("consumoBonos/"+BuildConfig.CREATE_DATA)
+    @POST("consumobonos/"+BuildConfig.CREATE_DATA)
     fun Create(
         @Field("Fecha")Fecha:String,
         @Field("Sesiones")Sesiones:Int,
@@ -29,7 +29,7 @@ interface ConsumoBonosApi {
 
     //update
     @FormUrlEncoded
-    @POST(BuildConfig.BASE_URL+"consumoBonos/"+BuildConfig.UPDATE_DATA)
+    @POST(BuildConfig.BASE_URL+"consumobonos/"+BuildConfig.UPDATE_DATA)
     fun Update(
         @Field("ID")id: Int,
         @Field("Fecha")Fecha:String,
@@ -41,7 +41,7 @@ interface ConsumoBonosApi {
 
     //delete
     @FormUrlEncoded
-    @POST(BuildConfig.BASE_URL+"consumoBonos/"+BuildConfig.DELETE_DATA)
+    @POST(BuildConfig.BASE_URL+"consumobonos/"+BuildConfig.DELETE_DATA)
     fun Delete(
         @Field("ID")id:Int
 

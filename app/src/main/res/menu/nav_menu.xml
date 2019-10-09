@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/EspaciosFragment"
+        android:icon="@drawable/ic_person_outline_white_32dp"
+        android:title="Espacios"></item>
+    <item
+        android:id="@+id/MenusFragment"
+        android:icon="@drawable/ic_person_outline_white_32dp"
+        android:title="Menus"></item>
     <item
         android:id="@+id/AutorizadosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
@@ -9,11 +16,7 @@
         android:icon="@drawable/ic_person_outline_white_32dp"
         android:title="Usuarios"></item>
     <item
-        android:id="@+id/ConsumoBonosFragment"
-        android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Usuarios"></item>
-    <item
-        android:id="@+id/TiposEventosFragment"
+        android:id="@+id/HorariosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
         android:title="Tipos Evento"></item>
 </menu>

@@ -1,0 +1,174 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable name="addhorarioviewmodel" type="com.epalburquerqueiii.aexperience.Data.Model.Horario"/>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".UI.Horarios.HorarioActivity">
+
+
+        <TextView
+            android:id="@+id/Horarios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Horarios"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/grey_900"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Spinner
+            android:id="@+id/IdEspacio"
+            style="@style/Spinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/background_rectangle_black"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Horarios" />
+
+        <EditText
+            android:id="@+id/Descripcion"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="15dp"
+
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Descripcion"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addhorarioviewmodel.Descripcion}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/IdEspacio"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/Fechainicio"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Fecha inicio"
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true"
+            android:maxLines="1"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addhorarioviewmodel.Fechainicio}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Descripcion"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/Fechafinal"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Fecha final"
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addhorarioviewmodel.Fechafinal}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Fechainicio"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/Hora"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Hora"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addhorarioviewmodel.Hora.toString()}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Fechafinal"
+            tools:ignore="MissingConstraints" />
+
+        <include
+            layout="@layout/editupdate_botton"
+            android:layout_width="368dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Hora"
+            app:layout_constraintVertical_bias="0.642" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

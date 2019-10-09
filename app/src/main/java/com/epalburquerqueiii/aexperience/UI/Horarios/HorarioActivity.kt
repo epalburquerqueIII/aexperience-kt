@@ -1,4 +1,4 @@
-package com.epalburquerqueiii.aexperience.UI.Espacios
+package com.epalburquerqueiii.aexperience.UI.Horarios
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -8,72 +8,69 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.epalburquerqueiii.aexperience.BR
 import androidx.lifecycle.ViewModelProvider
-import com.epalburquerqueiii.aexperience.Data.Model.Espacio
+import com.epalburquerqueiii.aexperience.BR
+import com.epalburquerqueiii.aexperience.Data.Model.Horario
 import com.epalburquerqueiii.aexperience.Data.Model.Option
 import com.epalburquerqueiii.aexperience.Data.Model.Options
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.EspaciosApi
-import com.epalburquerqueiii.aexperience.Data.Network.EventosApi
+import com.epalburquerqueiii.aexperience.Data.Network.HorariosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
-import com.epalburquerqueiii.aexperience.databinding.ActivityEspaciosBinding
+import com.epalburquerqueiii.aexperience.databinding.ActivityHorarioBinding
 
-import kotlinx.android.synthetic.main.activity_espacios.*
-
+import kotlinx.android.synthetic.main.activity_horario.*
 
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class EspacioActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: EspaciosViewModel
+class HorarioActivity : AppCompatActivity() {
 
-    private var modo: Int? = 0
+    private lateinit var viewModel: HorariosViewModel
+
+    private var modo:Int? = 0
     private val Crear = 0
     private val Editar = 1
-    private var fecha : String = ""
     private lateinit var records: ArrayList<Option>
+    private var fecini:String = ""
+    private var fecfin:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupViewModelAndObserve()
 
 
-        val binding = DataBindingUtil.setContentView<ActivityEspaciosBinding>(
-            this@EspacioActivity,
-            R.layout.activity_espacios
-        )
+        val binding = DataBindingUtil.setContentView<ActivityHorarioBinding>(this@HorarioActivity,R.layout.activity_horario)
 
-        // var addnotemodel = ViewModelProviders.of(this).get(EspaciosViewModel::class.java)
+        // var addnotemodel = ViewModelProviders.of(this).get(HorariosViewModel::class.java)
 
-        val bundle: Bundle? = intent.extras
-        val registro = intent.extras.get("registro") as Espacio
-
+        val bundle:Bundle? = intent.extras
+        val registro = intent.extras.get("registro") as Horario
+        registro.Fechainicio = Comun.StringYMDtoDMY(registro.Fechainicio)
+        registro.Fechafinal = Comun.StringYMDtoDMY(registro.Fechafinal)
 
 //  sin databinding los campo se rellenarían manualmente
 /*
-        val registro = Espacio(bundle?.getInt("ID"),
-                                bundle?.getString("NombreEspacio"),
+        val registro = Horario(bundle?.getInt("ID"),
+                                bundle?.getString("NombreHorario"),
                                 bundle?.getString("Nif"))
 */
 
         modo = bundle?.getInt("modo")
 
 
-        if (modo == Editar) {
+        if (modo == Editar){
             btn_delete.visibility = View.VISIBLE
-            binding.setVariable(BR.addespacioviewmodel,registro)
+            binding.setVariable(BR.addhorarioviewmodel,registro)
             binding.executePendingBindings()
-
         }
 
         btn_save.setOnClickListener {
@@ -84,11 +81,12 @@ class EspacioActivity : AppCompatActivity() {
             }
         }
 
-        btn_delete.setOnClickListener {
+        btn_delete.setOnClickListener{
             delete(registro.ID!!)
         }
 
-        val get = RetrofitBuilder.builder().create(EventosApi::class.java)
+        //Obtener los espacios
+        val get = RetrofitBuilder.builder().create(EspaciosApi::class.java)
         val callget = get.GetOptions()
 
         callget.enqueue(object : Callback<Options> {
@@ -96,38 +94,45 @@ class EspacioActivity : AppCompatActivity() {
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as Options
                 val size = response.Options!!.size
-                var sel :Int = 0
+                var sel: Int = 0
                 records = response.Options!!
                 if (size > 0) {
-                    val Eventosarray = ArrayList<String>()
-                    var i:Int = 0
-                    for ( item in records){
-                        Eventosarray.add(item.DisplayText.toString())
-                        if (registro.IDTipoevento == item.Value) {
-                            sel = i }
+                    val espacios = ArrayList<String>()
+                    var i: Int = 0
+                    for (item in records) {
+                        espacios.add(item.DisplayText.toString())
+                        if (registro.IDEspacio == item.Value) {
+                            sel = i
+                        }
                         i++
                     }
-                    val adapter = ArrayAdapter(this@EspacioActivity, android.R.layout.simple_spinner_dropdown_item, Eventosarray)
+                    val adapter = ArrayAdapter(
+                        this@HorarioActivity,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        espacios
+                    )
                     // Set Adapter to Spinner
-                    IDTiposeventos!!.setAdapter(adapter)
-                    IDTiposeventos.setSelection(sel)
+                    IdEspacio!!.setAdapter(adapter)
+                    IdEspacio.setSelection(sel)
                 }
             }
-
             override fun onFailure(call: Call<Options>, t: Throwable) {
-                Toast.makeText(this@EspacioActivity, "failure", Toast.LENGTH_SHORT).show()
-                Log.i("Error en Espacios :", "" + t.message)
+                Toast.makeText(this@HorarioActivity, "failure", Toast.LENGTH_SHORT).show()
+                Log.i("Error en Horarios :", "" + t.message)
             }
-
         })
-        Fecha.setOnClickListener {
-            showDatePickerDialog()
+
+        Fechainicio.setOnClickListener {
+            showDatePickerDialogfecini()
         }
 
+        Fechafinal.setOnClickListener {
+            showDatePickerDialogfecfin()
+        }
     }
 
     private fun setupViewModelAndObserve() {
-        viewModel = ViewModelProvider(this).get(EspaciosViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(HorariosViewModel::class.java)
         // TODO: Use the ViewModel si se necesita pedir datos del principal
 
 /*
@@ -141,51 +146,53 @@ class EspacioActivity : AppCompatActivity() {
 */
 
     }
-    private fun showDatePickerDialog() {
+
+    //para la fecha de inicio
+    private fun showDatePickerDialogfecini() {
         val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
             // +1 because January is zero
-            val selectedDate = String.format("%02d-%02d-%04d", day, month+1, year)
-            Fecha.setText(selectedDate)
-
-            fecha = selectedDate
+            val selectedDate = "%02d-%02d-%04d".format(day,month+1,year)
+            Fechainicio.setText(selectedDate)
+            fecini = selectedDate
         })
 
         newFragment.show(supportFragmentManager, "datePicker")
     }
-    private fun create() {
 
-        val post = RetrofitBuilder.builder().create(EspaciosApi::class.java)
-        var Evento:Int = 0
+    //para la fecha final
+    private fun showDatePickerDialogfecfin() {
+        val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            // +1 because January is zero
+            val selectedDate = "%02d-%02d-%04d".format(day,month+1,year)
+            fecfin = selectedDate
+            Fechafinal.setText(selectedDate)
+        })
+
+        newFragment.show(supportFragmentManager, "datePicker")
+    }
+
+
+
+    private fun create(){
+
+        val post = RetrofitBuilder.builder().create(HorariosApi::class.java)
+        var Espacioid :Int=0
         if (records.size > 0) {
-            Evento = records[IDTiposeventos.selectedItemPosition].Value!!.toInt()
-        }
-        if (Estado.isChecked){
-            Estado.text= "1"
-        }else{
-           Estado.text = "0"
-           }
-        if (Modo.isChecked){
-            Modo.text= "1"
-        }else{
-            Modo.text="0"
+            Espacioid = records[IdEspacio.selectedItemPosition].Value!!.toInt()
         }
 
-//        val s:String = Comun.datetoStringsql(fecha)
         val callcreate = post.Create(
+            Espacioid,
             Descripcion.text.toString(),
-            Estado.text.toString().toInt(),
-            Modo.text.toString().toInt(),
-            Precio.text.toString().toInt(),
-            Evento,
-            fecha,
-            Aforo.text.toString().toInt(),
-            NumeroReservaslimite.text.toString().toInt()
-
+            fecini,
+            fecfin,
+            Hora.text.toString().toInt()
         )
-        callcreate.enqueue(object : Callback<responseModel> {
+
+        callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-                // Toast.makeText(this@EspacioActivity,"failure",Toast.LENGTH_SHORT).show()
-                Log.i("dasboardfragment:", "" + t.message)
+                // Toast.makeText(this@HorarioActivity,"failure",Toast.LENGTH_SHORT).show()
+                Log.i("dasboardfragment:",""+t.message)
                 finish()
             }
 
@@ -193,7 +200,7 @@ class EspacioActivity : AppCompatActivity() {
                 //Toast.makeText(activity,"succes",Toast.LENGTH_SHORT).show()
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as responseModel
-                println("test : " + response.Error)
+                println("test : "+response.Error)
 // Changed true
                 viewModel.make_Change()
                 finish()
@@ -205,70 +212,52 @@ class EspacioActivity : AppCompatActivity() {
 
     }
 
-    private fun update(ID: Int) {
+    private fun update(ID:Int){
 
-        val post = RetrofitBuilder.builder().create(EspaciosApi::class.java)
-        var Evento:Int = 0
+        val post = RetrofitBuilder.builder().create(HorariosApi::class.java)
+        var Espacioid :Int=0
         if (records.size > 0) {
-            Evento = records[IDTiposeventos.selectedItemPosition].Value!!.toInt()
+            Espacioid = records[IdEspacio.selectedItemPosition].Value!!.toInt()
         }
-        if (Estado.isChecked){
-            Estado.text= "1"
-        }else{
-            Estado.text = "0"
-        }
-        if (Modo.isChecked){
-            Modo.text= "1"
-        }else{
-            Modo.text="0"
-        }
+
         val callUpdate = post.Update(
             ID,
+            Espacioid,
             Descripcion.text.toString(),
-            Estado.text.toString().toInt(),
-            Modo.text.toString().toInt(),
-            Precio.text.toString().toInt(),
-            Evento,
-            fecha,
-            Aforo.text.toString().toInt(),
-            NumeroReservaslimite.text.toString().toInt()
-        )
-        callUpdate.enqueue(object : Callback<responseModel> {
+            fecini,
+            fecfin,
+            Hora.text.toString().toInt())
+        callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-                Toast.makeText(this@EspacioActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
-                Log.i("dasboardfragmetn:", "" + t.message)
+                Toast.makeText(this@HorarioActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
+                Log.i("dasboardfragmetn:",""+ t.message)
                 finish()
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@EspacioActivity, "succes $ID", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@HorarioActivity,"succes $ID", Toast.LENGTH_SHORT).show()
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as responseModel
-                println("test : " + response.Result)
+                println("test : "+response.Result)
 
                 //val resultIntent = Intent()
                 //setResult(Activity.RESULT_OK,resultIntent)
 // Changed true
                 viewModel.make_Change()
                 finish()
-
-
             }
-
         })
-
     }
 
-    private fun delete(ID: Int) {
-        val post = RetrofitBuilder.builder().create(EspaciosApi::class.java)
-        val calldelete = post.Delete(ID)
+    private fun delete(ID: Int){
+        val post = RetrofitBuilder.builder().create(HorariosApi::class.java)
+        val calldelete = post.Delete(ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@EspacioActivity, " borrado ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@HorarioActivity," borrado ", Toast.LENGTH_SHORT).show()
 // Changed true
                 viewModel.make_Change()
                 finish()
@@ -276,4 +265,6 @@ class EspacioActivity : AppCompatActivity() {
         })
 
     }
+
+
 }

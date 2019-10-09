@@ -211,10 +211,15 @@ class ConsumoBonoActivity : AppCompatActivity() {
 */
     }
 
+    fun Int.twoDigits() =
+        if (this <= 9) "0$this" else this.toString()
+
     private fun showDatePickerDialog() {
         val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
-            // +1 because January is zero
-            val selectedDate = day.toString() + " / " + (month + 1) + " / " + year
+            val dayStr = day.twoDigits()
+            val monthStr = (month + 1).twoDigits() // +1 because January is zero
+
+            val selectedDate = "$dayStr-$monthStr-$year"
             FechaCB.setText(selectedDate)
         })
 
@@ -283,9 +288,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
                 viewModel.make_Change()
                 finish()
             }
-
         })
-
     }
 
     private fun delete(ID: Int){
@@ -293,16 +296,14 @@ class ConsumoBonoActivity : AppCompatActivity() {
         val calldelete = post.Delete(ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
                 Toast.makeText(this@ConsumoBonoActivity," borrado ", Toast.LENGTH_SHORT).show()
-// Changed true
+                // Changed true
                 viewModel.make_Change()
                 finish()
             }
         })
-
     }
 }
