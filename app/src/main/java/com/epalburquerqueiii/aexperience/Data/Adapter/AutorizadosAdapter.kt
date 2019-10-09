@@ -51,7 +51,8 @@ class AutorizadosAdapter(private val autorizados: ArrayList<Autorizado>, context
             this.Autorizado = Autorizado
             itemView.parentid_item.text = this.Autorizado?.NombreAutorizado
             itemView.nif_item.text = this.Autorizado?.Nif
-        }
+        //    itemView.IDUsuario_item.text = this.Autorizado?.IDUsuario.toString()
+}
 
     }
 

@@ -25,9 +25,9 @@ interface ReservasApi {
         @Field("Fecha")Fecha:String,
         @Field("FechaPago") FechaPago:String,
         @Field("Hora") Hora:Int,
-        @Field("IdUsuario")IdUsuario:Int,
-        @Field("IdEspacio")IdEspacio:Int,
-        @Field("IdAutorizado")IdAutorizado:Int
+        @Field("IDUsuario")IdUsuario:Int,
+        @Field("IDEspacio")IdEspacio:Int,
+        @Field("IDAutorizado")IdAutorizado:Int
 
     ):Call<responseModel>
     //TODO hacer que el back-end devuelva el registro ID creado
@@ -39,15 +39,15 @@ interface ReservasApi {
         @Field("Fecha")Fecha:String,
         @Field("FechaPago") FechaPago:String,
         @Field("Hora") Hora:Int,
-        @Field("IdUsuario")IdUsuario:Int,
-        @Field("IdEspacio")IdEspacio:Int,
-        @Field("IdAutorizado")IdAutorizado:Int
+        @Field("IDUsuario")IdUsuario:Int,
+        @Field("IDEspacio")IdEspacio:Int,
+        @Field("IDAutorizado")IdAutorizado:Int
     ):Call<responseModel>
 
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"reservas/"+BuildConfig.DELETE_DATA)
     fun Delete(
-        @Field("Id")id:Int
+        @Field("ID")id:Int
 
     ):Call<responseModel>
     @GET("reservas/"+BuildConfig.GETOPTIONS_DATA)
