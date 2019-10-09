@@ -9,10 +9,11 @@ class Usuario : Serializable {
         Nombre: String?,
         Nif: String?,
         Email: String?,
+        FechaNacimiento: String?,
         IdUsuarioRol: Int?,
         Telefono: String?,
         SesionesBonos: Int?,
-        Newsletter: Int?,
+        Newsletter: Int,
         FechaBaja: String?
 
     ) {
@@ -20,6 +21,7 @@ class Usuario : Serializable {
         this.Nombre = Nombre
         this.Nif = Nif
         this.Email = Email
+        this.FechaNacimiento = FechaNacimiento
         this.IdUsuarioRol = IdUsuarioRol
         this.Telefono = Telefono
         this.SesionesBonos = SesionesBonos
@@ -31,10 +33,11 @@ class Usuario : Serializable {
     var Nombre: String? = null
     var Nif: String? = null
     var Email: String? = null
+    var FechaNacimiento: String? = null
     var IdUsuarioRol: Int? = null
     var Telefono: String? = null
     var SesionesBonos: Int? = null
-    var Newsletter: Int? = null
+    var Newsletter: Int = 0
     var FechaBaja: String? = null
 
 }

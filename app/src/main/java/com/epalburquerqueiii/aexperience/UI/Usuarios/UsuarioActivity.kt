@@ -1,18 +1,22 @@
 package com.epalburquerqueiii.aexperience.UI.Usuarios
 
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.SyncStateContract.Helpers.update
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Usuario
-import com.epalburquerqueiii.aexperience.Data.Model.responseModel
+import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
+import com.epalburquerqueiii.aexperience.Data.Network.UsuariosrolesApi
 import com.epalburquerqueiii.aexperience.R
+import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityUsuarioBinding
 
 import kotlinx.android.synthetic.main.activity_usuario.*
@@ -20,6 +24,7 @@ import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.nio.file.Files.delete
 
 class UsuarioActivity : AppCompatActivity() {
 
@@ -28,8 +33,11 @@ class UsuarioActivity : AppCompatActivity() {
     private var modo:Int? = 0
     private val Crear = 0
     private val Editar = 1
+    var noticias :Int = 5
+    var RolUsuario :Int = 5
     // TODO tomar el idusuario que se haga el login en el móvil
     private val idusuario:Int = 8
+    private lateinit var records: ArrayList<Option>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +51,6 @@ class UsuarioActivity : AppCompatActivity() {
         val bundle:Bundle? = intent.extras
         val registro = intent.extras.get("registro") as Usuario
 
-//  sin databinding los campo se rellenarían manualmente
-/*
-        val registro = Usuario(bundle?.getInt("ID"),
-                                bundle?.getString("NombreUsuario"),
-                                bundle?.getString("Nif"))
-*/
 
         modo = bundle?.getInt("modo")
 
@@ -72,28 +74,113 @@ class UsuarioActivity : AppCompatActivity() {
         btn_delete.setOnClickListener{
             delete(registro.ID!!)
         }
+
+        // Obtiene los Roles de Usuarios
+        val get = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
+        val callget = get.GetOptions()
+
+        callget.enqueue(object : Callback<Options> {
+            override fun onFailure(call: Call<Options>, t: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onResponse(call: Call<Options>, response: Response<Options>) {
+                @Suppress("NAME_SHADOWING")
+                val response = response.body() as Options
+                val size = response.Options!!.size
+                var sel: Int = 0
+                records = response.Options!!
+                if (size > 0) {
+                    val roles = ArrayList<String>()
+                    var i: Int = 0
+                    for (item in records) {
+                        roles.add(item.DisplayText.toString())
+                        if (registro.IdUsuarioRol == item.Value) {
+                            sel = i
+                        }
+                        i++
+                    }
+                    val adapter = ArrayAdapter(
+                        this@UsuarioActivity,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        roles
+                    )
+                    // Set Adapter to Spinner
+                    Rol!!.setAdapter(adapter)
+                    Rol.setSelection(sel)
+                }
+                fun onFailure(call: Call<Options>, t: Throwable) {
+                    Toast.makeText(this@UsuarioActivity, "failure", Toast.LENGTH_SHORT).show()
+                    Log.i("Error en Roles :", "" + t.message)
+                }
+            }
+            })
+
+
+        FechaBaja.setOnClickListener {
+            showDatePickerDialog()
+        }
+
+        FechaNacimiento.setOnClickListener {
+            showDatePickerDialogo()
+        }
+
+        OpcionesNoticias.setChecked(registro.Newsletter == 1)
+
     }
+
+    private fun ver_noticia():Int{
+        if (OpcionesNoticias.isChecked()){
+            return 1
+        } else {
+            return 0
+        }
+
+    }
+
 
     private fun setupViewModelAndObserve() {
         viewModel = ViewModelProvider(this).get(UsuariosViewModel::class.java)
         // TODO: Use the ViewModel si se necesita pedir datos del principal
 
-/*
-        val shareObserver = Observer<String> {
-            if ( shareViewModel.getsharedata().value == "Actualizar" ){
-                viewModel.getRecords()
-            }
 
-        }
-        shareViewModel.getsharedata().observe(this, shareObserver)
-*/
+    }
+    private fun showDatePickerDialog() {
+        val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            // +1 because January is zero
+            val selectedDate = day.toString() + " / " + (month + 1) + " / " + year
+            FechaBaja.setText(selectedDate)
+        })
 
+        newFragment.show(supportFragmentManager, "datePicker")
+    }
+    private fun showDatePickerDialogo() {
+        val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            // +1 because January is zero
+            val selectedDate = day.toString() + " / " + (month + 1) + " / " + year
+            FechaBaja.setText(selectedDate)
+        })
+
+        newFragment.show(supportFragmentManager, "datePicker")
     }
 
     private fun create(){
-
         val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-        val callcreate = post.Create(Nombre.text.toString(),Nif.text.toString(), Email.text.toString(),Tipo.text as Int,Telefono.text.toString(), SesionesBonos.text as Int,Newsletter.text as Int, FechaBaja.text.toString())
+
+        if (records.size > 0) {
+            RolUsuario = records[Rol.selectedItemPosition].Value!!.toInt()
+        }
+
+        val callcreate = post.Create(
+            Nombre.text.toString(),
+            Nif.text.toString(),
+            Email.text.toString(),
+            FechaNacimiento.text.toString(),
+            RolUsuario,
+            Telefono.text.toString(),
+            SesionesBonos.text.toString().toInt(),
+            ver_noticia(),
+            FechaBaja.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@UsuarioActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -109,19 +196,27 @@ class UsuarioActivity : AppCompatActivity() {
 // Changed true
                 viewModel.make_Change()
                 finish()
-
-
             }
-
         })
-
     }
 
     private fun update(ID:Int){
 
         val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
 
-        val callUpdate = post.Update(ID,Nombre.text.toString(),Nif.text.toString(), Email.text.toString(),Tipo.text as Int,Telefono.text.toString(), SesionesBonos.text as Int,Newsletter.text as Int, FechaBaja.text.toString())
+        if (records.size > 0) {
+            RolUsuario = records[Rol.selectedItemPosition].Value!!.toInt()}
+
+        val callUpdate = post.Update(
+                ID,Nombre.text.toString(),
+                Nif.text.toString(),
+                Email.text.toString(),
+                FechaNacimiento.text.toString(),
+                RolUsuario,
+                Telefono.text.toString(),
+                SesionesBonos.text.toString().toInt(),
+                ver_noticia(),
+                FechaBaja.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@UsuarioActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
@@ -140,12 +235,8 @@ class UsuarioActivity : AppCompatActivity() {
 // Changed true
                 viewModel.make_Change()
                 finish()
-
-
             }
-
         })
-
     }
 
     private fun delete(ID: Int){
@@ -163,8 +254,5 @@ class UsuarioActivity : AppCompatActivity() {
                 finish()
             }
         })
-
     }
-
-
 }
