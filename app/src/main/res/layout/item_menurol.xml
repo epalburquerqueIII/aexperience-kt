@@ -54,7 +54,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/idusuario_item"
+                    android:id="@+id/idusuarioroles_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="id Usuario Roles"

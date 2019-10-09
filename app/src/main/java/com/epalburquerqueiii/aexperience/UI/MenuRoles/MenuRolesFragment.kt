@@ -1,4 +1,4 @@
-package com.epalburquerqueiii.aexperience.UI.Menus
+package com.epalburquerqueiii.aexperience.UI.MenuRoles
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.epalburquerqueiii.aexperience.Data.Adapter.MenusAdapter
-import com.epalburquerqueiii.aexperience.Data.Model.Menu
+import com.epalburquerqueiii.aexperience.Data.Adapter.MenuRolesAdapter
+import com.epalburquerqueiii.aexperience.Data.Model.MenuRol
+import com.epalburquerqueiii.aexperience.Data.Model.MenuRoles
 import com.epalburquerqueiii.aexperience.R
 import kotlinx.android.synthetic.main.list_fragment.*
 
@@ -18,10 +19,10 @@ import kotlinx.android.synthetic.main.list_fragment.*
 class MenuRolesFragment : Fragment() {
 
 
-    private lateinit var viewModel: MenusViewModel
+    private lateinit var viewModel: MenuRolesViewModel
 
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var mAdapter: MenusAdapter
+    private lateinit var mAdapter: MenuRolesAdapter
 
     private val Crear = 0
     private val Editar = 1
@@ -40,8 +41,8 @@ class MenuRolesFragment : Fragment() {
         setupViewModelAndObserve()
         viewModel.getRegistros()
         bt_new.setOnClickListener{
-            var intent = Intent(activity, MenuActivity::class.java)
-            var registro = Menu(0,0,0,"","","","")
+            var intent = Intent(activity, MenuRolActivity::class.java)
+            var registro = MenuRol(0,0,0)
             intent.putExtra("registro",registro)
             intent.putExtra("modo", Crear)
             startActivity(intent) }
@@ -49,11 +50,11 @@ class MenuRolesFragment : Fragment() {
 
     fun setupViewModelAndObserve() {
 
-        viewModel = ViewModelProvider(this).get(MenusViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MenuRolesViewModel::class.java)
         // TODO: Use the ViewModel
-        val registrosObserver = Observer<ArrayList<Menu>> {
+        val registrosObserver = Observer<ArrayList<MenuRol>> {
 
-            mAdapter = MenusAdapter(it, activity!!)
+            mAdapter = MenuRolesAdapter(it, activity!!)
             linearLayoutManager = LinearLayoutManager(activity)
 
             recycleview.layoutManager = linearLayoutManager
@@ -61,10 +62,10 @@ class MenuRolesFragment : Fragment() {
             recycleview.adapter = mAdapter
 
 
-            mAdapter.setOnItemClickListener(object : MenusAdapter.OnItemClickListener {
-                override fun onItemClick(registro: Menu) {
+            mAdapter.setOnItemClickListener(object : MenuRolesAdapter.OnItemClickListener {
+                override fun onItemClick(registro: MenuRol) {
                     //Toast.makeText(activity,""+registro.id,Toast.LENGTH_SHORT).show()
-                    var intent = Intent(activity, MenuActivity::class.java)
+                    var intent = Intent(activity, MenuRolActivity::class.java)
 
                     intent.putExtra("registro", registro)
 

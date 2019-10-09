@@ -25,6 +25,9 @@
         <activity android:name=".UI.Reservas.ReservaActivity" />
         <activity android:name=".UI.Tiposeventos.TiposEventoActivity" />
         <activity android:name=".UI.Tipospagos.TipospagoActivity" />
+        <activity android:name=".UI.Usuarios.UsuarioActivity"></activity>
+        <activity android:name=".UI.Usuariosroles.UsuariorolActivity"></activity>
+        <activity android:name=".UI.MenuRoles.MenuRolActivity"></activity>
         <activity android:name=".UI.Usuarios.UsuarioActivity" />
         <activity android:name=".UI.Usuariosroles.UsuariorolActivity" />
         <activity
