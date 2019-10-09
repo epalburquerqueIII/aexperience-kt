@@ -26,19 +26,6 @@ class Registros31Fragment : Fragment() {
 
         }
 
-        override fun onActivityCreated(savedInstanceState: Bundle?) {
-            super.onActivityCreated(savedInstanceState)
-            setupViewModelAndObserve()
-            viewModel.getRegistros()
-            bt_new.setOnClickListener{
-                // Servicio de registro de usuario
-                var intent = Intent(activity, UsuarioActivity::class.java)
-                var registro = Usuario(0,"","","", "", 0)
-                intent.putExtra("registro",registro)
-                startActivity(intent)
-            }
-        }
-
         fun setupViewModelAndObserve() {
 
             viewModel = ViewModelProvider(this).get(Registros31ViewModel::class.java)

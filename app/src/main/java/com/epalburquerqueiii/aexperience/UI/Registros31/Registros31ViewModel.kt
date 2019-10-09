@@ -20,46 +20,25 @@ class Registros31ViewModel : ViewModel() {
     val changed = ObservableBoolean(false)
 
 
-    private val registros = MutableLiveData<ArrayList<Usuario>>()
+    private val registro = MutableLiveData<Usuario>()
 
-    private fun setRegistros(listregistros: ArrayList<Usuario>) {
-        registros.value = listregistros
+    private fun setRegistro(registro: Usuario) {
+        registro.value = listregistros
     }
 
-    fun getRegistros() {
-        setRegistros(getRecords())
+    fun getRegistro() {
+        setRegistro(getRecord())
     }
 
-    fun getregistrosLiveData(): LiveData<ArrayList<Usuario>> {
-        return registros
+    fun getregistroLiveData(): LiveData<Usuario> {
+        return registro
     }
 
-    fun getRecords(): ArrayList<Usuario> {
+    fun getRecord(): Usuario {
 
-        var datos = ArrayList<Usuario>()
-
-        val get = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-        val callget = get.Get()
-        callget.enqueue(object : Callback<Usuarios> {
-            override fun onFailure(call: Call<Usuarios>, t: Throwable) {
-                Log.i("Registro31s Fragment:", "" + t.message)
-            }
-
-            override fun onResponse(call: Call<Usuarios>, response: Response<Usuarios>) {
-
-                @Suppress("NAME_SHADOWING")
-                val response = response.body() as Usuarios
-//                val size = response.Records!!.size
-                datos = response.Records!!
-                setRegistros(datos)
-            }
-        })
-/*
-        if (datos.size == 0) {
-            datos!!.add(Registro31(0,"No hay registros","","",0,"",""))
-        }
-*/
-        return datos
+        var dato  = Usuario(0,"","","", null, 0, "", 0, "")
+        setRegistro(dato)
+        return dato
     }
 
     public fun Load() = changed.set(false)
