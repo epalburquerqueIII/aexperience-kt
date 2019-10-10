@@ -11,7 +11,7 @@ class Menu : Serializable {
         Titulo: String?,
         Icono: String?,
         Url : String?,
-        HanledFunc: String?
+        HandleFunc: String?
 
     ) {
         this.Id = Id
@@ -20,7 +20,7 @@ class Menu : Serializable {
         this.Titulo = Titulo
         this.Icono = Icono
         this.Url = Url
-        this.HanledFunc = HanledFunc
+        this.HandleFunc = HandleFunc
     }
 
     var Id: Int? = null
@@ -29,7 +29,7 @@ class Menu : Serializable {
     var Titulo: String? = null
     var Icono: String? = null
     var Url: String? = null
-    var HanledFunc: String? = null
+    var HandleFunc: String? = null
 
 
 

@@ -22,7 +22,7 @@ interface PagosApi {
     fun Create(
         @Field("IdReserva")IdReserva:Int,
         @Field("FechaPago") FechaPago:String,
-        @Field("IdTipopago") IdTipopago:Int,
+        @Field("IdTipospago") IdTipospago:Int,
         @Field("NumeroTarjeta") NumeroTarjeta:String
     ):Call<responseModel>
 
@@ -32,7 +32,7 @@ interface PagosApi {
     fun Update(
         @Field("IdReserva")IdReserva:Int,
         @Field("FechaPago") FechaPago:String,
-        @Field("IdTipopago") IdTipopago:Int,
+        @Field("IdTipospago") IdTipospago:Int,
         @Field("NumeroTarjeta") NumeroTarjeta:String
     ):Call<responseModel>
 
