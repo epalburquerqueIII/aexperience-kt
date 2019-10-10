@@ -31,9 +31,4 @@
         android:name="com.epalburquerqueiii.aexperience.UI.Tipospagos.TipospagosFragment"
         android:label="Tipospagos"
         tools:layout="@layout/list_fragment"/>
-    <fragment
-        android:id="@+id/EspaciosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Espacios.EspaciosFragment"
-        android:label="Espacios"
-        tools:layout="@layout/list_fragment"/>
 </navigation>
