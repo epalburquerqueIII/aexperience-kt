@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/pagosFragment">
+            app:startDestination="@id/Registrar">
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/UsuariosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.Registros31Fragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.UsuariosFragment"
         android:label="Usuarios"
         tools:layout="@layout/list_fragment"/>
 
@@ -49,8 +49,7 @@
         android:label="HorariosFragment"
         tools:layout="@layout/list_fragment"/>
     <fragment
-        android:id="@+id/pagosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Pagos.PagosFragment"
-        android:label="Pagos"
-        tools:layout="@layout/list_fragment"/>
+        android:id="@+id/Registrar"
+        android:name="com.epalburquerqueiii.aexperience.UI.Registros31.Registros31Fragment"
+        android:label="Registrar" />
 </navigation>

@@ -1,5 +1,6 @@
 package com.epalburquerqueiii.aexperience.UI.Espacios
 
+
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +9,8 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.epalburquerqueiii.aexperience.BR
 import androidx.lifecycle.ViewModelProvider
+import com.epalburquerqueiii.aexperience.BR
 import com.epalburquerqueiii.aexperience.Data.Model.Espacio
 import com.epalburquerqueiii.aexperience.Data.Model.Option
 import com.epalburquerqueiii.aexperience.Data.Model.Options
@@ -17,21 +18,14 @@ import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.EspaciosApi
 import com.epalburquerqueiii.aexperience.Data.Network.EventosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
-import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityEspaciosBinding
-
 import kotlinx.android.synthetic.main.activity_espacios.*
-
-
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
 
 class EspacioActivity : AppCompatActivity() {
 

@@ -1,30 +1,30 @@
 package com.epalburquerqueiii.aexperience.UI.Usuarios
 
 import android.app.DatePickerDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.SyncStateContract.Helpers.update
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.*
-import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
+import com.epalburquerqueiii.aexperience.Data.Model.Option
+import com.epalburquerqueiii.aexperience.Data.Model.Options
+import com.epalburquerqueiii.aexperience.Data.Model.Usuario
+import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
+import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
 import com.epalburquerqueiii.aexperience.Data.Network.UsuariosrolesApi
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityUsuarioBinding
-
 import kotlinx.android.synthetic.main.activity_usuario.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.nio.file.Files.delete
 
 class UsuarioActivity : AppCompatActivity() {
 
@@ -238,7 +238,6 @@ class UsuarioActivity : AppCompatActivity() {
             }
         })
     }
-
     private fun delete(ID: Int){
         val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
         val calldelete = post.Delete(ID.toInt())

@@ -56,19 +56,16 @@ interface UsuariosApi {
         @Field("ID")id:Int
 
     ):Call<responseModel>
-
-    // Registro del usuario
+ //registrar
     @FormUrlEncoded
-    @POST("usuarios/registro")
-    fun Registro(
+    @POST(BuildConfig.BASE_URL+"usuarios/register")
+    fun registrar(
         @Field("Nombre")Nombre:String,
         @Field("Nif") Nif:String,
         @Field("Email") Email:String,
-        @Field("Fecha de Nacimiento") FechaNacimiento:String,
+        @Field("FechaNacimiento") FechaNacimiento:String,
         @Field("Telefono") Telefono:String
-
-    ):Call<responseModel>
-
+        ):Call<responseModel>
     @GET("usuarios/"+BuildConfig.GETOPTIONS_DATA)
     fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
 

@@ -11,10 +11,9 @@ import com.epalburquerqueiii.aexperience.BR
 import com.epalburquerqueiii.aexperience.Data.Model.Option
 import com.epalburquerqueiii.aexperience.Data.Model.Usuariorol
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
-import com.epalburquerqueiii.aexperience.Data.Network.UsuariosrolesApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
+import com.epalburquerqueiii.aexperience.Data.Network.UsuariosrolesApi
 import com.epalburquerqueiii.aexperience.R
-import com.epalburquerqueiii.aexperience.UI.Usuariosroles.UsuariosrolesViewModel
 import com.epalburquerqueiii.aexperience.databinding.ActivityUsuariorolBinding
 import kotlinx.android.synthetic.main.activity_usuariorol.*
 import kotlinx.android.synthetic.main.editupdate_botton.*

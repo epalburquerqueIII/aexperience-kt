@@ -60,7 +60,7 @@
         tools:ignore="MissingConstraints" />
 
         <EditText
-            android:id="@+id/Nif"
+            android:id="@+id/nif"
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -92,7 +92,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Nif"
+        app:layout_constraintTop_toBottomOf="@+id/nif"
         app:layout_constraintVertical_bias="0.252" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

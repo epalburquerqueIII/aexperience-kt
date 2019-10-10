@@ -1,14 +1,16 @@
 package com.epalburquerqueiii.aexperience.UI.Tipospagos
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.*
+import com.epalburquerqueiii.aexperience.Data.Model.Option
+import com.epalburquerqueiii.aexperience.Data.Model.Tipospago
+import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.TipospagosApi
 import com.epalburquerqueiii.aexperience.R

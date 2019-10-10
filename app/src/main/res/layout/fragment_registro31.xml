@@ -8,7 +8,7 @@
 
         <import type="android.view.View"/>
 
-        <variable name="addregistro31viewmodel" type="com.epalburquerqueiii.aexperience.Data.Model.Registro31"/>
+        <variable name="addregistro31viewmodel" type="com.epalburquerqueiii.aexperience.Data.Model.Usuario"/>
 
 
     </data>
@@ -37,11 +37,11 @@
             android:id="@+id/Nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="12dp"
             android:text="Nombre"
             app:layout_constraintBottom_toTopOf="@+id/NombreRegistro"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintHorizontal_bias="0.033"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
@@ -49,7 +49,7 @@
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/background_rectangle_black"
             android:drawablePadding="8dp"
             android:hint="Nombre"
@@ -68,21 +68,22 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/Nif"
+            android:id="@+id/nif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
             android:text="Nif"
+            app:layout_constraintBottom_toTopOf="@+id/Nif"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.04"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="170dp" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/Nif"
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/background_rectangle_black"
             android:drawablePadding="8dp"
             android:hint="Nif"
@@ -91,7 +92,7 @@
             android:maxLines="1"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:text="@{addregistro31viewmodel.Nombre}"
+            android:text="@{addregistro31viewmodel.Nif}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,30 +102,31 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/Email"
+            android:id="@+id/email"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginBottom="12dp"
             android:text="Email"
+            app:layout_constraintBottom_toTopOf="@+id/Email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.04"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="267dp" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/Email"
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/background_rectangle_black"
-            android:drawablePadding="8dp"
+            android:drawablePadding="48dp"
             android:hint="Email"
             android:imeActionId="6"
             android:imeOptions="actionUnspecified"
             android:maxLines="1"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:text="@{addregistro31viewmodel.Nombre}"
+            android:text="@{addregistro31viewmodel.Email}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -134,21 +136,22 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/FechaNacimiento"
+            android:id="@+id/fechanacimento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
             android:text="Fecha de Naciento"
+            app:layout_constraintBottom_toTopOf="@+id/FechaNacimento "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.04"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="367dp" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/FechaNacimiento "
+            android:id="@+id/FechaNacimento "
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/background_rectangle_black"
             android:drawablePadding="48dp"
             android:hint="Fecha de Nacimiento"
@@ -157,7 +160,7 @@
             android:maxLines="1"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:text="@{addregistro31viewmodel.Nombre}"
+            android:text="@{addregistro31viewmodel.FechaNacimiento}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -167,21 +170,22 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/Telefono"
+            android:id="@+id/telefono"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
             android:text="Telefono"
+            app:layout_constraintBottom_toTopOf="@+id/Telefono"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.039"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="462dp" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/Telefono"
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/background_rectangle_black"
             android:drawablePadding="48dp"
             android:hint="Telefono"
@@ -190,23 +194,25 @@
             android:maxLines="1"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:text="@{addregistro31viewmodel.Nombre}"
+            android:text="@{addregistro31viewmodel.Telefono}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/FechaNacimiento "
+            app:layout_constraintTop_toBottomOf="@+id/FechaNacimento "
             tools:ignore="MissingConstraints" />
 
         <include
             android:id="@+id/include2"
-            layout="@layout/editupdate_botton"
+            layout="@layout/registrar_botton"
             android:layout_width="403dp"
             android:layout_height="128dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Telefono"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.epalburquerqueiii.aexperience.Data.Adapter.UsuariosAdapter
 import com.epalburquerqueiii.aexperience.Data.Model.Usuario
 import com.epalburquerqueiii.aexperience.R
-import kotlinx.android.synthetic.main.activity_usuario.*
 import kotlinx.android.synthetic.main.list_fragment.*
 
 
@@ -30,8 +29,8 @@ class UsuariosFragment : Fragment() {
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.list_fragment, container, false)
 
     }
@@ -76,6 +75,6 @@ class UsuariosFragment : Fragment() {
 
         }
         viewModel.getregistrosLiveData().observe(this, registrosObserver)
-   }
+    }
 
 }
