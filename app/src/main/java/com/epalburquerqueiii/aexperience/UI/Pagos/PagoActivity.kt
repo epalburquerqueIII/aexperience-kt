@@ -18,7 +18,6 @@ import com.epalburquerqueiii.aexperience.Data.Network.PagosApi
 import com.epalburquerqueiii.aexperience.Data.Network.ReservasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.TipospagosApi
-import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityPagoBinding
@@ -27,7 +26,6 @@ import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -38,9 +36,7 @@ class PagoActivity : AppCompatActivity() {
     private var modo:Int? = 0
     private val Crear = 0
     private val Editar = 1
-    private lateinit var fecha : Date
-
-
+    private var fecha : String = ""
     private lateinit var records: ArrayList<Option>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,17 +86,17 @@ class PagoActivity : AppCompatActivity() {
                 var sel :Int = 0
                 records = response.Options!!
                 if (size > 0) {
-                    val IdTipospago = ArrayList<String>()
+                    val IdTipopago = ArrayList<String>()
                     var i:Int = 0
                     for ( item in records){
-                        IdTipospago.add(item.DisplayText.toString())
-                        if (registro.IdTipospago == item.Value) {
+                        IdTipopago.add(item.DisplayText.toString())
+                        if (registro.IdTipopago == item.Value) {
                             sel = i }
                         i++
                     }
-                    val adapter = ArrayAdapter(this@PagoActivity, android.R.layout.simple_spinner_dropdown_item, IdTipospago)
+                    val adapterTipopago = ArrayAdapter(this@PagoActivity, android.R.layout.simple_spinner_dropdown_item, IdTipopago)
                     // Set Adapter to Spinner
-                    cbtipopago!!.setAdapter(adapter)
+                    cbtipopago!!.setAdapter(adapterTipopago)
                     cbtipopago.setSelection(sel)
                 }
             }
@@ -146,6 +142,7 @@ class PagoActivity : AppCompatActivity() {
             }
 
         })
+
         fechapagoCB.setOnClickListener {
             showDatePickerDialog()
         }
@@ -157,36 +154,36 @@ class PagoActivity : AppCompatActivity() {
 
     }
 
+
     private fun showDatePickerDialog() {
         val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
             // +1 because January is zero
-            val selectedDate = day.toString() + " / " + (month + 1) + " / " + year
+            val selectedDate = String.format("%02d-%02d-%04d", day, month+1, year)
             fechapagoCB.setText(selectedDate)
-            fecha = Comun.codetoDate(year,month,day)
+
+            fecha = selectedDate
         })
 
         newFragment.show(supportFragmentManager, "datePicker")
     }
 
-
-
     private fun create(){
 
         val post = RetrofitBuilder.builder().create(PagosApi::class.java)
-        var IdTipospago :Int = 0
+        var Tipopago :Int = 0
         if (records.size > 0) {
-            IdTipospago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
+            Tipopago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
         }
-        var IdReserva :Int = 0
+        var Reserva :Int = 0
         if (records.size > 0) {
-            IdReserva = records[cbreserva.selectedItemPosition].Value!!.toInt()
+            Reserva = records[cbreserva.selectedItemPosition].Value!!.toInt()
         }
 
 
 
-        val callcreate = post.Create(IdReserva,
+        val callcreate = post.Create(Reserva,
             fechapagoCB.text.toString(),
-            IdTipospago,
+            Tipopago,
             numerotarjeta.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -214,9 +211,9 @@ class PagoActivity : AppCompatActivity() {
 
         val post = RetrofitBuilder.builder().create(PagosApi::class.java)
 
-        var IdTipospago: Int = 0
+        var IdTipopago: Int = 0
         if (records.size > 0) {
-            IdTipospago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
+            IdTipopago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
         }
         var IdReserva :Int = 0
         if (records.size > 0) {
@@ -224,8 +221,8 @@ class PagoActivity : AppCompatActivity() {
         }
 
         val callUpdate = post.Update(IdReserva,
-            Comun.datetoStringsql(fecha),
-            IdTipospago,
+            fecha,
+            IdTipopago,
             numerotarjeta.text.toString())
         callUpdate.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -235,7 +232,7 @@ class PagoActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@PagoActivity, "succes $Id", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@PagoActivity, "modificado $Id", Toast.LENGTH_SHORT).show()
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as responseModel
                 println("test : " + response.Result)

@@ -51,7 +51,7 @@ class PagosAdapter(private val pagos: ArrayList<Pago>, context: Context) : Recyc
             this.Pago = Pago
             itemView.Reserva_item.text = this.Pago?.IdReserva.toString()
             itemView.Fechapago_item.text = this.Pago?.FechaPago
-            itemView.Tipopago_item.text = this.Pago?.IdTipospago.toString()
+            itemView.Tipopago_item.text = this.Pago?.IdTipopago.toString()
 //            itemView.Email.text = this.Persona?.Email
         }
 

@@ -1,12 +1,10 @@
 package com.epalburquerqueiii.aexperience.Data.Util
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import java.text.SimpleDateFormat
-import java.util.Date
-
-class Comun {
-
+public class Comun {
     companion object {
 
         fun CodetoDate(day: Int, month: Int, year: Int): Date {
@@ -15,7 +13,7 @@ class Comun {
             try {
                 return sdf.parse(String.format("%04d-%02d-%02d", year, month, day))
             } catch (e1: Exception) {
-                 return sdf.parse(String.format(""))
+                return sdf.parse(String.format(""))
             }
 
         }
@@ -32,7 +30,7 @@ class Comun {
 
         }
 
-//2019-01-01
+        //2019-01-01
         fun StringYMDtoDMY(fecha: String?): String {
             val date:Date = SimpleDateFormat("yyyy-MM-dd").parse(fecha)
             return DatetoString(date)
@@ -50,5 +48,5 @@ class Comun {
             }
 
         }
-        }
     }
+}
