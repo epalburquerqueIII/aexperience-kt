@@ -137,7 +137,7 @@ class MenuActivity : AppCompatActivity() {
             ParentId = records[cbparentid.selectedItemPosition].Value!!.toInt()
         }
 
-        val callcreate = post.Create(ParentId,Orden.text.toString().toInt(),Titulo.text.toString(),Icono.text.toString(),Url.text.toString(),HanledFunc.text.toString())
+        val callcreate = post.Create(ParentId,Orden.text.toString().toInt(),Titulo.text.toString(),Icono.text.toString(),Url.text.toString(),HandleFunc.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@MenuActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -168,7 +168,7 @@ class MenuActivity : AppCompatActivity() {
         if (records.size > 0) {
             ParentId = records[cbparentid.selectedItemPosition].Value!!.toInt()
         }
-        val callUpdate = post.Update(ID,ParentId,Orden.text.toString().toInt(),Titulo.text.toString(),Icono.text.toString(),Url.text.toString(),HanledFunc.text.toString())
+        val callUpdate = post.Update(ID,ParentId,Orden.text.toString().toInt(),Titulo.text.toString(),Icono.text.toString(),Url.text.toString(),HandleFunc.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@MenuActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()

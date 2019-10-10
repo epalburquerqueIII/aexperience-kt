@@ -14,12 +14,12 @@ import retrofit2.http.POST
 interface AutorizadosApi {
     //view
 
-    @GET("autorizado/"+BuildConfig.VIEW_DATA)
+    @GET("autorizados/"+BuildConfig.VIEW_DATA)
     fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Autorizados>
 
     //create
     @FormUrlEncoded
-    @POST("autorizado/"+BuildConfig.CREATE_DATA)
+    @POST("autorizados/"+BuildConfig.CREATE_DATA)
     fun Create(
         @Field("IDUsuario")IDUsuario:Int,
         @Field("NombreAutorizado") NombreAutorizado:String,
@@ -28,7 +28,7 @@ interface AutorizadosApi {
 
     //update
     @FormUrlEncoded
-    @POST(BuildConfig.BASE_URL+"autorizado/"+BuildConfig.UPDATE_DATA)
+    @POST(BuildConfig.BASE_URL+"autorizados/"+BuildConfig.UPDATE_DATA)
     fun Update(
         @Field("ID")id: Int,
         @Field("IDUsuario")IDUsuario:Int,
@@ -38,7 +38,7 @@ interface AutorizadosApi {
 
     //delete
     @FormUrlEncoded
-    @POST(BuildConfig.BASE_URL+"autorizado/"+BuildConfig.DELETE_DATA)
+    @POST(BuildConfig.BASE_URL+"autorizados/"+BuildConfig.DELETE_DATA)
     fun Delete(
         @Field("ID")id: Int
 

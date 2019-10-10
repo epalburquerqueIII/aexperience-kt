@@ -14,22 +14,22 @@ import retrofit2.http.POST
 interface TipospagosApi {
     //view
 
-    @GET("tiposPagos/"+BuildConfig.GETOPTIONS_DATA)
+    @GET("tipospagos/"+BuildConfig.GETOPTIONS_DATA)
     fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
 
-    @GET("tiposPagos/"+BuildConfig.VIEW_DATA)
+    @GET("tipospagos/"+BuildConfig.VIEW_DATA)
     fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Tipospagos>
 
     //create
     @FormUrlEncoded
-    @POST("tiposPagos/"+BuildConfig.CREATE_DATA)
+    @POST("tipospagos/"+BuildConfig.CREATE_DATA)
     fun Create(
         @Field("Nombre")Nombre:String
     ):Call<responseModel>
 
     //update
     @FormUrlEncoded
-    @POST(BuildConfig.BASE_URL+"tiposPagos/"+BuildConfig.UPDATE_DATA)
+    @POST(BuildConfig.BASE_URL+"tipospagos/"+BuildConfig.UPDATE_DATA)
     fun Update(
         @Field("Id")id: Int,
         @Field("Nombre") Nombre: String
@@ -38,7 +38,7 @@ interface TipospagosApi {
 
     //delete
     @FormUrlEncoded
-    @POST(BuildConfig.BASE_URL+"tiposPagos/"+BuildConfig.DELETE_DATA)
+    @POST(BuildConfig.BASE_URL+"tipospagos/"+BuildConfig.DELETE_DATA)
     fun Delete(
         @Field("Id")id:Int
 

@@ -151,7 +151,7 @@
 
 
     <EditText
-        android:id="@+id/HanledFunc"
+        android:id="@+id/HandleFunc"
         style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -159,13 +159,13 @@
 
         android:background="@drawable/background_rectangle_black"
         android:drawablePadding="8dp"
-        android:hint="HanledFunc"
+        android:hint="HandleFunc"
         android:imeActionId="6"
         android:imeOptions="actionUnspecified"
         android:maxLines="1"
         android:paddingEnd="20dp"
         android:singleLine="true"
-        android:text="@{addmenuviewmodel.HanledFunc}"
+        android:text="@{addmenuviewmodel.HandleFunc}"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -185,7 +185,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HanledFunc"
+        app:layout_constraintTop_toBottomOf="@+id/HandleFunc"
         app:layout_constraintVertical_bias="0.381" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

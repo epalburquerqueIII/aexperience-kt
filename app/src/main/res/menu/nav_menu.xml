@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/EspaciosFragment"
+    <item android:id="@+id/pagosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Espacios"></item>
+        android:title="Pagos"></item>
     <item
-        android:id="@+id/MenusFragment"
+        android:id="@+id/reservasFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Menus"></item>
-    <item
-        android:id="@+id/AutorizadosFragment"
-        android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Autorizados"></item>
-    <item
-        android:id="@+id/UsuariosFragment"
-        android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Usuarios"></item>
+        android:title="Reservas"></item>
     <item
         android:id="@+id/HorariosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"

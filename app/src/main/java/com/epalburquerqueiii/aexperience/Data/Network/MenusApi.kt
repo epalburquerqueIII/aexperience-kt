@@ -25,7 +25,7 @@ interface MenusApi {
         @Field("Titulo") Titulo:String,
         @Field("Icono") Icono:String,
         @Field("Url") Url:String,
-        @Field("HanledFunc") HanledFunc:String
+        @Field("HandleFunc") HandleFunc:String
     ):Call<responseModel>
 
     //update
@@ -38,7 +38,7 @@ interface MenusApi {
         @Field("Titulo") Titulo:String,
         @Field("Icono") Icono:String,
         @Field("Url") Url:String,
-        @Field("HanledFunc") HanledFunc:String
+        @Field("HandleFunc") HandleFunc:String
     ):Call<responseModel>
 
     //delete
