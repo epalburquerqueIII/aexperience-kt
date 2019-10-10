@@ -54,8 +54,6 @@ class HorarioActivity : AppCompatActivity() {
 
         val bundle:Bundle? = intent.extras
         val registro = intent.extras.get("registro") as Horario
-        registro.Fechainicio = Comun.StringYMDtoDMY(registro.Fechainicio)
-        registro.Fechafinal = Comun.StringYMDtoDMY(registro.Fechafinal)
 
 //  sin databinding los campo se rellenarían manualmente
 /*
@@ -67,13 +65,25 @@ class HorarioActivity : AppCompatActivity() {
         modo = bundle?.getInt("modo")
 
 
+
+
         if (modo == Editar){
             btn_delete.visibility = View.VISIBLE
+            registro.Fechainicio = Comun.StringYMDtoDMY(registro.Fechainicio)
+            registro.Fechafinal = Comun.StringYMDtoDMY(registro.Fechafinal)
             binding.setVariable(BR.addhorarioviewmodel,registro)
             binding.executePendingBindings()
         }
 
         btn_save.setOnClickListener {
+            if (fecini == "" || fecfin == "" ){
+                Toast.makeText(this@HorarioActivity, "Error en las fechas", Toast.LENGTH_SHORT).show()
+            }
+            else
+            if (Hora.text.toString() == "") {
+                Toast.makeText(this@HorarioActivity, "Error en la hora", Toast.LENGTH_SHORT).show()
+            }
+            else
             if (modo == Crear) {
                 create()
             } else {
