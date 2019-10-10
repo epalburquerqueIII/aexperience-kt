@@ -90,7 +90,7 @@ class MenuRolActivity : AppCompatActivity() {
                     var i:Int = 0
                     for ( item in records){
                         menuRolesArray.add(item.DisplayText.toString())
-                        if (registro.idUsuarioRoles == item.Value) {
+                        if (registro.IDUsuarioRoles == item.Value) {
                             sel = i }
                         i++
                     }
@@ -124,14 +124,15 @@ class MenuRolActivity : AppCompatActivity() {
 
     private fun create(){
         val post = RetrofitBuilder.builder().create(MenuRolesApi::class.java)
-        var idMenuRol :Int = 0
         var idUsuarioRoles :Int = 0
 
         if (records.size > 0) {
-            idMenuRol = records[cbidUsuarioRoles.selectedItemPosition].Value!!.toInt()
+            idUsuarioRoles = records[cbidUsuarioRoles.selectedItemPosition].Value!!.toInt()
         }
 
-        val callcreate = post.Create(idMenuRol, idUsuarioRoles.toString().toInt())
+        val callcreate = post.Create(
+            idMenu.toString().toInt(),
+            idUsuarioRoles)
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@MenuActivity,"failure",Toast.LENGTH_SHORT).show()
