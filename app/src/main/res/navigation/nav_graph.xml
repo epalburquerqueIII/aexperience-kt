@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/Registrar">
+            app:startDestination="@id/TipospagosFragment">
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
@@ -27,29 +27,8 @@
         tools:layout="@layout/list_fragment"/>
 
     <fragment
-        android:id="@+id/TiposEventosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Tiposeventos.TiposEventosFragment"
-        android:label="TiposEventosFragment"
+        android:id="@+id/TipospagosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Tipospagos.TipospagosFragment"
+        android:label="Tipospagos"
         tools:layout="@layout/list_fragment"/>
-
-
-    <fragment
-        android:id="@+id/EspaciosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Espacios.EspaciosFragment"
-        android:label="Espacios"
-        tools:layout="@layout/list_fragment"/>
-    <fragment
-        android:id="@+id/reservasFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Reservas.ReservasFragment"
-        android:label="ReservasFragment"
-        tools:layout="@layout/list_fragment"/>
-    <fragment
-        android:id="@+id/HorariosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Horarios.HorariosFragment"
-        android:label="HorariosFragment"
-        tools:layout="@layout/list_fragment"/>
-    <fragment
-        android:id="@+id/Registrar"
-        android:name="com.epalburquerqueiii.aexperience.UI.Registros31.Registros31Fragment"
-        android:label="Registrar" />
 </navigation>

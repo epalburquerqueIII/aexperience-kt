@@ -3,17 +3,16 @@
     <item
         android:id="@+id/MenusFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Menus"></item>
+        android:title="Menus">
+    </item>
     <item
-        android:id="@+id/AutorizadosFragment"
+        android:id="@+id/TipospagosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Autorizados"></item>
+        android:title="Tipos de pago">
+    </item>
+
     <item
-        android:id="@+id/TiposEventosFragment"
+        android:id="@+id/NewslettersFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Tipos de Eventos"></item>
-    <item
-        android:id="@+id/Registros31Fragment"
-        android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Registro"></item>
+        android:title="Newsletters"></item>
 </menu>
