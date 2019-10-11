@@ -14,5 +14,7 @@
     <item
         android:id="@+id/NewslettersFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Newsletters"></item>
+        android:title="Newsletters">
+
+    </item>
 </menu>

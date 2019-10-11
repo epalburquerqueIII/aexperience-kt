@@ -21,9 +21,9 @@
             app:startDestination="@id/TiposEventosFragment">
 
     <fragment
-        android:id="@+id/UsuariosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.UsuariosFragment"
-        android:label="Usuarios"
+        android:id="@+id/NewslettersFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Newsletters.NewslettersFragment"
+        android:label="Newsletters"
         tools:layout="@layout/list_fragment"/>
 
     <fragment
