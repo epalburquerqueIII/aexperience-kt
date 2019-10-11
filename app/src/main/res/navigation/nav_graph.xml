@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/TipospagosFragment">
+            app:startDestination="@id/UsuariosFragment">
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
@@ -21,9 +21,9 @@
             app:startDestination="@id/TiposEventosFragment">
 
     <fragment
-        android:id="@+id/UsuariosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.UsuariosFragment"
-        android:label="Usuarios"
+        android:id="@+id/NewslettersFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Newsletters.NewslettersFragment"
+        android:label="Newsletters"
         tools:layout="@layout/list_fragment"/>
 
     <fragment
