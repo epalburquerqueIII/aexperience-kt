@@ -18,6 +18,7 @@ import com.epalburquerqueiii.aexperience.Data.Network.PagosApi
 import com.epalburquerqueiii.aexperience.Data.Network.ReservasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.TipospagosApi
+import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityPagoBinding
@@ -54,12 +55,18 @@ class PagoActivity : AppCompatActivity() {
 
         if (modo == Editar){
             btn_delete.visibility = View.VISIBLE
-
+            registro.FechaPago = Comun.StringYMDtoDMY(registro.FechaPago)
             binding.setVariable(BR.addpagoviewmodel,registro)
             binding.executePendingBindings()
         }
 
+
         btn_save.setOnClickListener {
+
+            if (fecha == "" || fecha == "" ){
+                Toast.makeText(this@PagoActivity, "Error en la fecha", Toast.LENGTH_SHORT).show()
+            }
+            else
             if (modo == Crear) {
 
                 create()
@@ -71,41 +78,6 @@ class PagoActivity : AppCompatActivity() {
         btn_delete.setOnClickListener{
             delete(registro.Id!!)
         }
-
-        // Obtiene el Tipo de pago
-
-        val gettipopago = RetrofitBuilder.builder().create(TipospagosApi::class.java)
-        val callgettipopago = gettipopago.GetOptions()
-
-        callgettipopago.enqueue(object : Callback<Options> {
-            override fun onResponse(call: Call<Options>, response: Response<Options>) {
-                @Suppress("NAME_SHADOWING")
-                val response = response.body() as Options
-                val size = response.Options!!.size
-                var sel :Int = 0
-                records = response.Options!!
-                if (size > 0) {
-                    val IdTipopago = ArrayList<String>()
-                    var i:Int = 0
-                    for ( item in records){
-                        IdTipopago.add(item.DisplayText.toString())
-                        if (registro.IdTipopago == item.Value) {
-                            sel = i }
-                        i++
-                    }
-                    val adapterTipopago = ArrayAdapter(this@PagoActivity, android.R.layout.simple_spinner_dropdown_item, IdTipopago)
-                    // Set Adapter to Spinner
-                    cbtipopago!!.setAdapter(adapterTipopago)
-                    cbtipopago.setSelection(sel)
-                }
-            }
-
-            override fun onFailure(call: Call<Options>, t: Throwable) {
-                Toast.makeText(this@PagoActivity, "failure", Toast.LENGTH_SHORT).show()
-                Log.i("Error en Tipo de pago :", "" + t.message)
-            }
-
-        })
 
         // Obtiene las reservas
 
@@ -132,6 +104,41 @@ class PagoActivity : AppCompatActivity() {
                     // Set Adapter to Spinner
                     cbreserva!!.setAdapter(adapter)
                     cbreserva.setSelection(sel)
+                }
+            }
+
+            override fun onFailure(call: Call<Options>, t: Throwable) {
+                Toast.makeText(this@PagoActivity, "failure", Toast.LENGTH_SHORT).show()
+                Log.i("Error en Tipo de pago :", "" + t.message)
+            }
+
+        })
+
+        // Obtiene el Tipo de pago
+
+        val gettipopago = RetrofitBuilder.builder().create(TipospagosApi::class.java)
+        val callgettipopago = gettipopago.GetOptions()
+
+        callgettipopago.enqueue(object : Callback<Options> {
+            override fun onResponse(call: Call<Options>, response: Response<Options>) {
+                @Suppress("NAME_SHADOWING")
+                val response = response.body() as Options
+                val size = response.Options!!.size
+                var sel :Int = 0
+                records = response.Options!!
+                if (size > 0) {
+                    val IdTipopago = ArrayList<String>()
+                    var i:Int = 0
+                    for ( item in records){
+                        IdTipopago.add(item.DisplayText.toString())
+                        if (registro.IdTipopago == item.Value) {
+                            sel = i }
+                        i++
+                    }
+                    val adapterTipopago = ArrayAdapter(this@PagoActivity, android.R.layout.simple_spinner_dropdown_item, IdTipopago)
+                    // Set Adapter to Spinner
+                    cbtipopago!!.setAdapter(adapterTipopago)
+                    cbtipopago.setSelection(sel)
                 }
             }
 
@@ -169,18 +176,19 @@ class PagoActivity : AppCompatActivity() {
     private fun create(){
 
         val post = RetrofitBuilder.builder().create(PagosApi::class.java)
-        var Tipopago :Int = 0
-        if (records.size > 0) {
-            Tipopago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
-        }
+
         var Reserva :Int = 0
         if (records.size > 0) {
             Reserva = records[cbreserva.selectedItemPosition].Value!!.toInt()
         }
 
+        var Tipopago :Int = 0
+        if (records.size > 0) {
+            Tipopago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
+        }
 
-
-        val callcreate = post.Create(Reserva,
+        val callcreate = post.Create(
+            Reserva,
             fechapagoCB.text.toString(),
             Tipopago,
             numerotarjeta.text.toString())
@@ -210,16 +218,20 @@ class PagoActivity : AppCompatActivity() {
 
         val post = RetrofitBuilder.builder().create(PagosApi::class.java)
 
-        var IdTipopago: Int = 0
-        if (records.size > 0) {
-            IdTipopago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
-        }
         var IdReserva :Int = 0
         if (records.size > 0) {
             IdReserva = records[cbreserva.selectedItemPosition].Value!!.toInt()
         }
 
-        val callUpdate = post.Update(IdReserva,
+        var IdTipopago: Int = 0
+        if (records.size > 0) {
+            IdTipopago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
+        }
+
+
+        val callUpdate = post.Update(
+            Id,
+            IdReserva,
             fecha,
             IdTipopago,
             numerotarjeta.text.toString())
