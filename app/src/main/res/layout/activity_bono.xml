@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable name="addbonoviewmodel" type="com.epalburquerqueiii.aexperience.Data.Model.Bono"/>
+
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Bonos.BonoActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="133dp"
+        android:layout_height="43dp"
+        android:text="Sesiones"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.369" />
+
+    <TextView
+        android:id="@+id/txt_activity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Bono"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/grey_900"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/Precio"
+        style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/background_rectangle_black"
+        android:drawablePadding="8dp"
+        android:editable="false"
+        android:enabled="false"
+        android:hint="Precio"
+        android:imeActionId="6"
+        android:imeOptions="actionUnspecified"
+        android:maxLines="1"
+        android:paddingEnd="20dp"
+        android:singleLine="true"
+        android:text="@{addbonoviewmodel.Precio.toString()}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.226"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/Sesiones"
+        style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+
+        android:background="@drawable/background_rectangle_black"
+        android:drawablePadding="8dp"
+        android:hint="Sesiones"
+        android:imeActionId="6"
+        android:imeOptions="actionUnspecified"
+        android:maxLines="1"
+        android:paddingEnd="20dp"
+        android:singleLine="true"
+        android:text="@{addbonoviewmodel.Sesiones.toString()}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.436"
+        tools:ignore="MissingConstraints" />
+
+    <include
+        android:id="@+id/include3"
+        layout="@layout/editupdate_botton"
+        android:layout_width="403dp"
+        android:layout_height="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.626" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="77dp"
+        android:layout_height="34dp"
+        android:text="Precio"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.156" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
