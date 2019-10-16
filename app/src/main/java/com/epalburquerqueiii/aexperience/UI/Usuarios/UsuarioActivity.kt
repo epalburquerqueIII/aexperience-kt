@@ -178,6 +178,7 @@ class UsuarioActivity : AppCompatActivity() {
             FechaNacimiento.text.toString(),
             RolUsuario,
             Telefono.text.toString(),
+            Password.text.toString(),
             SesionesBonos.text.toString().toInt(),
             ver_noticia(),
             FechaBaja.text.toString())
@@ -214,6 +215,7 @@ class UsuarioActivity : AppCompatActivity() {
                 FechaNacimiento.text.toString(),
                 RolUsuario,
                 Telefono.text.toString(),
+                Password.text.toString(),
                 SesionesBonos.text.toString().toInt(),
                 ver_noticia(),
                 FechaBaja.text.toString())

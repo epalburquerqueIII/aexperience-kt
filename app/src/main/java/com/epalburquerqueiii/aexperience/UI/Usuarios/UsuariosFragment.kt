@@ -41,7 +41,7 @@ class UsuariosFragment : Fragment() {
         viewModel.getRegistros()
         bt_new.setOnClickListener{
             var intent = Intent(activity, UsuarioActivity::class.java)
-            var registro = Usuario(0,"","","", "", 0, "", 0, 0, "")
+            var registro = Usuario(0,"","","", "", 0, "", "", 0, 0, "")
             intent.putExtra("registro",registro)
             intent.putExtra("modo", Crear)
             startActivity(intent) }

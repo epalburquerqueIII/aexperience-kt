@@ -1,10 +1,10 @@
-package com.epalburquerqueiii.aexperience.UI.Registros31
+package com.epalburquerqueiii.aexperience.UI.Registros
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.epalburquerqueiii.aexperience.Data.Model.Usuario
 
-class Registros31ViewModel : ViewModel() {
+class RegistrosViewModel: ViewModel() {
 
 //    private val Registros31UseCase = Registros31UseCase()
 

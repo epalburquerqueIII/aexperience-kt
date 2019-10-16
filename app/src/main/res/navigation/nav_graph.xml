@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/UsuariosFragment">
+            app:startDestination="@id/Registros31Fragment">
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
@@ -30,5 +30,10 @@
         android:id="@+id/TipospagosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Tipospagos.TipospagosFragment"
         android:label="Tipospagos"
+        tools:layout="@layout/list_fragment"/>
+    <fragment
+        android:id="@+id/Registros31Fragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Registros.Registros31Fragment"
+        android:label="Registro"
         tools:layout="@layout/list_fragment"/>
 </navigation>

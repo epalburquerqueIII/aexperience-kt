@@ -27,11 +27,12 @@ interface UsuariosApi {
         @Field("FechaNacimiento") FechaNacimiento:String,
         @Field("IdUsuarioRol") IdUsuarioRol:Int,
         @Field("Telefono") Telefono:String,
+        @Field("Password") Password:String,
         @Field("SesionesBonos") SesionesBonos:Int,
         @Field("Newsletter") Newsletter:Int,
         @Field("FechaBaja") FechaBaja:String
-
     ):Call<responseModel>
+
 
     //update
     @FormUrlEncoded
@@ -44,6 +45,7 @@ interface UsuariosApi {
         @Field("FechaNacimiento") FechaNacimiento:String,
         @Field("IdUsuarioRol") IdUsuarioRol:Int,
         @Field("Telefono") Telefono:String,
+        @Field("Password") Password: String,
         @Field("SesionesBonos") SesionesBonos:Int,
         @Field("Newsletter") Newsletter:Int,
         @Field("FechaBaja") FechaBaja:String
@@ -59,12 +61,13 @@ interface UsuariosApi {
  //registrar
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"usuarios/register")
-    fun registrar(
+    fun Register(
         @Field("Nombre")Nombre:String,
         @Field("Nif") Nif:String,
         @Field("Email") Email:String,
         @Field("FechaNacimiento") FechaNacimiento:String,
-        @Field("Telefono") Telefono:String
+        @Field("Telefono") Telefono:String,
+        @Field("Password") Password:String
         ):Call<responseModel>
     @GET("usuarios/"+BuildConfig.GETOPTIONS_DATA)
     fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
