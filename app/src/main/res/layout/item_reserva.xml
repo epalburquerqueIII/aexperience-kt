@@ -3,174 +3,190 @@
 >
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="6.0dip"
         app:cardElevation="2.0dip"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="719dp"
-            android:orientation="vertical">
+            android:layout_width="371dp"
+            android:layout_height="521dp"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_large">
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="561dp"
-                android:orientation="vertical"
-                android:padding="@dimen/spacing_large">
+                android:layout_width="353dp"
+                android:layout_height="15dp"
+                android:layout_weight="1.0">
 
-                <LinearLayout
-                    android:layout_width="381dp"
-                    android:layout_height="400dp"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
+                <TextView
+                    android:layout_width="157dp"
+                    android:layout_height="57dp"
+                    android:layout_weight="1"
+                    android:text="Autorizado"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Fecha"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-                        android:textColor="@color/indigo_900"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/Fecha_item"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Fecha"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                        android:textColor="@color/grey_40" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="379dp"
-                    android:layout_height="392dp"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="FechaPago"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-                        android:textColor="@color/indigo_900"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/FechaPago_item"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="FechaPago"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                        android:textColor="@color/grey_40" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="379dp"
-                    android:layout_height="408dp"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="132dp"
-                        android:layout_weight="1"
-                        android:text="Hora"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-                        android:textColor="@color/indigo_900"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/Hora_item"
-                        android:layout_width="match_parent"
-                        android:layout_height="51dp"
-                        android:text="Hora"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                        android:textColor="@color/grey_40" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="378dp"
-                    android:layout_height="389dp"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Usuario"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-                        android:textColor="@color/indigo_900"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/IDUsuario_item"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:text="IDusuario"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                        android:textColor="@color/grey_40" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="378dp"
-                    android:layout_height="394dp"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Espacio"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-                        android:textColor="@color/indigo_900"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/IDEspacio_item"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:text="IDEspacio"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                        android:textColor="@color/grey_40" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="376dp"
-                    android:layout_height="391dp"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Autorizado"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-                        android:textColor="@color/indigo_900"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/IDAutorizado_item"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="IDAutorizado"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                        android:textColor="@color/grey_40" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/autorizado_item"
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:text="Autorizado"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
 
             </LinearLayout>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="4dp"
+                android:layout_height="2dp" />
+
+            <LinearLayout
+                android:layout_width="353dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="296dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Espacio"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/espacio_item"
+                    android:layout_width="322dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Espacio"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="4dp"
+                android:layout_height="2dp" />
+
+            <LinearLayout
+                android:layout_width="353dp"
+                android:layout_height="22dp"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="123dp"
+                    android:layout_height="82dp"
+                    android:layout_weight="1"
+                    android:text="Usuario"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/usuario_item"
+                    android:layout_width="189dp"
+                    android:layout_height="wrap_content"
+                    android:text="Usuario"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="4dp"
+                android:layout_height="2dp" />
+
+            <LinearLayout
+                android:layout_width="353dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="392dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Fecha"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/fecha_item"
+                    android:layout_width="187dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="4dp"
+                android:layout_height="2dp"
+                android:layout_weight="0" />
+
+            <LinearLayout
+                android:layout_width="353dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="226dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Fecha Pago"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/fechapago_item"
+                    android:layout_width="187dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha Pago"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="4dp"
+                android:layout_height="2dp" />
+
+            <LinearLayout
+                android:layout_width="353dp"
+                android:layout_height="11dp"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Hora"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/hora_item"
+                    android:layout_width="187dp"
+                    android:layout_height="wrap_content"
+                    android:text="Hora"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

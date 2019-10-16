@@ -25,6 +25,7 @@
         <activity android:name=".UI.Tipospagos.TipospagoActivity" />
         <activity android:name=".UI.Usuarios.UsuarioActivity" />
         <activity android:name=".UI.Usuariosroles.UsuariorolActivity" />
+
         <activity android:name=".UI.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

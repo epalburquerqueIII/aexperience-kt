@@ -14,6 +14,7 @@ import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.TiposEventosApi
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.TiposEventos.TiposEventosViewModel
+//import com.epalburquerqueiii.aexperience.UI.TiposEventos.TiposEventosViewModel
 import com.epalburquerqueiii.aexperience.databinding.ActivityTiposeventoBinding
 import kotlinx.android.synthetic.main.activity_tiposevento.*
 import kotlinx.android.synthetic.main.editupdate_botton.*

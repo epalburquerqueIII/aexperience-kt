@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Comun {
+
     companion object {
 
         fun CodetoDate(day: Int, month: Int, year: Int): Date {
@@ -35,7 +36,6 @@ public class Comun {
             val date:Date = SimpleDateFormat("yyyy-MM-dd").parse(fecha)
             return DatetoString(date)
         }
-
 
         fun DatetoString(date: Date): String {
 

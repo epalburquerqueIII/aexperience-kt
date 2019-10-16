@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/ReservasFragment">
+            app:startDestination="@id/UsuariosFragment">
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
@@ -21,22 +21,31 @@
             app:startDestination="@id/TiposEventosFragment">
 
     <fragment
-        android:id="@+id/NewslettersFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Newsletters.NewslettersFragment"
-        android:label="Newsletters"
+        android:id="@+id/UsuariosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.UsuariosFragment"
+        android:label="Usuarios"
         tools:layout="@layout/list_fragment"/>
 
     <fragment
-        android:id="@+id/TipospagosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Tipospagos.TipospagosFragment"
-        android:label="Tipospagos"
+        android:id="@+id/TiposEventosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Tiposeventos.TiposEventosFragment"
+        android:label="TiposEventosFragment"
         tools:layout="@layout/list_fragment"/>
+
+
     <fragment
-        android:id="@+id/usuariosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.UsuariosFragment"
-        android:label="UsuariosFragment" />
+        android:id="@+id/EspaciosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Espacios.EspaciosFragment"
+        android:label="Espacios"
+        tools:layout="@layout/list_fragment"/>
     <fragment
         android:id="@+id/ReservasFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Reservas.ReservasFragment"
-        android:label="ReservasFragment" />
+        android:label="ReservasFragment"
+        tools:layout="@layout/list_fragment"/>
+    <fragment
+        android:id="@+id/HorariosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Horarios.HorariosFragment"
+        android:label="HorariosFragment"
+        tools:layout="@layout/list_fragment"/>
 </navigation>

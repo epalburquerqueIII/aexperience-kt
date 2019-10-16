@@ -13,6 +13,7 @@ import com.epalburquerqueiii.aexperience.Data.Adapter.TiposEventosAdapter
 import com.epalburquerqueiii.aexperience.Data.Model.TiposEvento
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.TiposEventos.TiposEventosViewModel
+
 import kotlinx.android.synthetic.main.list_fragment.*
 
 
