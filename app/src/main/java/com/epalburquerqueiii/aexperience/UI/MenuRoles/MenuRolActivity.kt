@@ -75,6 +75,8 @@ class MenuRolActivity : AppCompatActivity() {
         btn_delete.setOnClickListener{
             delete(registro.Id!!)
         }
+
+        //combo idusuarios roles
         val get = RetrofitBuilder.builder().create(MenuRolesApi::class.java)
         val callget = get.GetOptions()
 
@@ -108,7 +110,12 @@ class MenuRolActivity : AppCompatActivity() {
         })
     }
 
-    private fun setupViewModelAndObserve() {
+
+
+
+
+
+private fun setupViewModelAndObserve() {
         viewModel = ViewModelProvider(this).get(MenuRolesViewModel::class.java)
         // TODO: Use the ViewModel si se necesita pedir datos del principal
 
@@ -124,11 +131,17 @@ class MenuRolActivity : AppCompatActivity() {
 
     private fun create(){
         val post = RetrofitBuilder.builder().create(MenuRolesApi::class.java)
-        var idUsuarioRoles :Int = 0
 
+        var idUsuarioRoles :Int = 1
         if (records.size > 0) {
             idUsuarioRoles = records[cbidUsuarioRoles.selectedItemPosition].Value!!.toInt()
         }
+
+        var idMenu :Int = 1
+        if (records.size > 0) {
+            idMenu = records[cbidmenu.selectedItemPosition].Value!!.toInt()
+        }
+
 
         val callcreate = post.Create(
             idMenu.toString().toInt(),

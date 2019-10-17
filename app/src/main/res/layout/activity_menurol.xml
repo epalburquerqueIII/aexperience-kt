@@ -32,31 +32,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/idMenu"
-        style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="15dp"
-
-        android:layout_marginTop="76dp"
-        android:background="@drawable/background_rectangle_black"
-        android:drawablePadding="8dp"
-        android:hint="idMenu"
-        android:imeActionId="6"
-        android:imeOptions="actionUnspecified"
-        android:maxLines="1"
-        android:paddingEnd="20dp"
-        android:singleLine="true"
-        android:text="@{addmenurolviewmodel.idMenu.toString()}"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_activity3"
-        tools:ignore="MissingConstraints" />
-
     <Spinner
         android:id="@+id/cbidUsuarioRoles"
         android:layout_width="366dp"
@@ -66,8 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idMenu"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <include
         android:id="@+id/include"
@@ -78,5 +52,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/cbidmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_activity3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
