@@ -21,7 +21,7 @@ interface PagosApi {
     @POST("pagos/"+BuildConfig.CREATE_DATA)
     fun Create(
         @Field("IdReserva")IdReserva:Int,
-        @Field("FechaPago") FechaPago:String,
+      //  @Field("FechaPago") FechaPago:String,
         @Field("IdTipopago") IdTipopago:Int,
         @Field("NumeroTarjeta") NumeroTarjeta:String
     ):Call<responseModel>

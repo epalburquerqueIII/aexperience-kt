@@ -41,6 +41,7 @@ class PagosFragment : Fragment() {
         viewModel.getRegistros()
         bt_new.setOnClickListener{
             var intent = Intent(activity, PagoActivity::class.java)
+
             var registro = Pago(0,0,"",0,"")
             intent.putExtra("registro",registro)
             intent.putExtra("modo", Crear)

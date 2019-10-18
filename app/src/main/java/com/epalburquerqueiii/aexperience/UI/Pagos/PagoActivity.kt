@@ -37,6 +37,7 @@ class PagoActivity : AppCompatActivity() {
     private val Crear = 0
     private val Editar = 1
     private var fecha : String = ""
+    private lateinit var recordsReser: ArrayList<Option>
     private lateinit var records: ArrayList<Option>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,11 +91,11 @@ class PagoActivity : AppCompatActivity() {
                 val response = response.body() as Options
                 val size = response.Options!!.size
                 var sel :Int = 0
-                records = response.Options!!
+                recordsReser = response.Options!!
                 if (size > 0) {
                     val IdReserva = ArrayList<String>()
                     var i:Int = 0
-                    for ( item in records){
+                    for ( item in recordsReser){
                         IdReserva.add(item.DisplayText.toString())
                         if (registro.IdReserva == item.Value) {
                             sel = i }
@@ -178,8 +179,8 @@ class PagoActivity : AppCompatActivity() {
         val post = RetrofitBuilder.builder().create(PagosApi::class.java)
 
         var Reserva :Int = 0
-        if (records.size > 0) {
-            Reserva = records[cbreserva.selectedItemPosition].Value!!.toInt()
+        if (recordsReser.size > 0) {
+            Reserva = recordsReser[cbreserva.selectedItemPosition].Value!!.toInt()
         }
 
         var Tipopago :Int = 0
@@ -189,7 +190,7 @@ class PagoActivity : AppCompatActivity() {
 
         val callcreate = post.Create(
             Reserva,
-            fechapagoCB.text.toString(),
+           // fechapagoCB.text.toString(),
             Tipopago,
             numerotarjeta.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
@@ -219,8 +220,8 @@ class PagoActivity : AppCompatActivity() {
         val post = RetrofitBuilder.builder().create(PagosApi::class.java)
 
         var IdReserva :Int = 0
-        if (records.size > 0) {
-            IdReserva = records[cbreserva.selectedItemPosition].Value!!.toInt()
+        if (recordsReser.size > 0) {
+            IdReserva = recordsReser[cbreserva.selectedItemPosition].Value!!.toInt()
         }
 
         var IdTipopago: Int = 0
