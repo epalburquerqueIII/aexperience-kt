@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/AutorizadosFragment">
+            app:startDestination="@id/eventosFragment">
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
@@ -50,4 +50,8 @@
             android:id="@+id/action_splashFragment_to_AutorizadosFragment"
             app:destination="@id/AutorizadosFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/eventosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Eventos.EventosFragment"
+        android:label="EventosFragment" />
 </navigation>

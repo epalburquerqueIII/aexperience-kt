@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.content.Intent
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import com.epalburquerqueiii.aexperience.Data.Model.Config.Companion.cms_url
 import com.epalburquerqueiii.aexperience.Data.Model.Evento
 import com.epalburquerqueiii.aexperience.Data.Model.Eventos
 import com.epalburquerqueiii.aexperience.Data.Model.Menu
@@ -61,14 +62,16 @@ class EventosAdapter(private val eventoList: ArrayList<Evento>, context: Context
         fun bindView(Evento: Evento){
             this.Evento = Evento
             val myImageView = itemView.findViewById(R.id.eventoThumbnail) as ImageView
+            loadImageFromUrl(myImageView,this.Evento?.Image)
             itemView.textViewTitle.text = this.Evento?.Description
             itemView.textViewYear.text = this.Evento?.Date
 
-            fun loadImageFromUrl(imageurl: String) {
-                Picasso.get()
-                    .load(imageurl)
-                    .into(myImageView)
-            }
+        }
+
+        fun loadImageFromUrl(imageview:ImageView, imageurl: String?) {
+            Picasso.get()
+                .load(cms_url+imageurl)
+                .into(imageview)
         }
 
     }

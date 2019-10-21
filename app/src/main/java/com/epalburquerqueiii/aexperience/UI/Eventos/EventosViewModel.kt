@@ -34,7 +34,7 @@ class EventosViewModel : ViewModel() {
         var datos = ArrayList<Evento>()
 
         val get = RetrofitBuilder.builder().create(EventosApi::class.java)
-        val callget = get.getEventos()
+        val callget = get.GetEventos()
         callget.enqueue(object : Callback<Eventos> {
             override fun onFailure(call: Call<Eventos>, t: Throwable) {
                 Log.i("Eventos Fragment:", "" + t.message)

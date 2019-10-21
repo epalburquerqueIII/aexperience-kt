@@ -76,6 +76,9 @@ dependencies {
     implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0'
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
     implementation 'com.google.android.material:material:1.1.0-alpha10'
+    // Image
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 //    implementation 'androidx.core:core-ktx:1.1.0-alpha04'
 //    kapt "com.android.databinding:compiler:$kotlin_version"
 //    kapt "androidx.databinding:databinding-compiler:3.5.0-alpha07"
