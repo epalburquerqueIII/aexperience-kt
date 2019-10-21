@@ -19,7 +19,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="id Menu"
+                    android:text="Menu"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
@@ -28,7 +28,7 @@
                     android:id="@+id/idmenu_item"
                     android:layout_width="71dp"
                     android:layout_height="wrap_content"
-                    android:text="id Menu"
+                    android:text="Menu"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 
@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="id Usuario Roles"
+                    android:text="Usuario Roles"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                     android:textColor="@color/indigo_900"
                     android:textSize="12sp" />
@@ -57,7 +57,7 @@
                     android:id="@+id/idusuarioroles_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="id Usuario Roles"
+                    android:text="Usuario Roles"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 

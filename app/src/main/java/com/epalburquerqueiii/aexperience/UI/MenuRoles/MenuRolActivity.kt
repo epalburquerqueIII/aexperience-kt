@@ -139,7 +139,7 @@ private fun setupViewModelAndObserve() {
 
         var idMenu :Int = 1
         if (records.size > 0) {
-            idMenu = records[cbidmenu.selectedItemPosition].Value!!.toInt()
+            idMenu = records[cbidMenu.selectedItemPosition].Value!!.toInt()
         }
 
 
