@@ -12,6 +12,7 @@ class Horario : Serializable {
         Fechafinal: String?,
         Hora : Int?
 
+
     ) {
         this.ID = ID
         this.IDEspacio = IDEspacio
@@ -19,6 +20,7 @@ class Horario : Serializable {
         this.Fechainicio = Fechainicio
         this.Fechafinal = Fechafinal
         this.Hora = Hora
+
     }
 
     var ID: Int? = null
@@ -27,5 +29,6 @@ class Horario : Serializable {
     var Fechainicio: String? = null
     var Fechafinal: String? = null
     var Hora: Int? = null
+
 
 }

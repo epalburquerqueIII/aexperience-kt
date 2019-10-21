@@ -183,10 +183,10 @@ class HorarioActivity : AppCompatActivity() {
 
 
 
-    private fun create(){
+    private fun create() {
 
         val post = RetrofitBuilder.builder().create(HorariosApi::class.java)
-        var Espacioid :Int=0
+        var Espacioid: Int = 0
         if (records.size > 0) {
             Espacioid = records[IdEspacio.selectedItemPosition].Value!!.toInt()
         }
@@ -197,7 +197,9 @@ class HorarioActivity : AppCompatActivity() {
             fecini,
             fecfin,
             Hora.text.toString().toInt()
+
         )
+
 
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -237,6 +239,7 @@ class HorarioActivity : AppCompatActivity() {
             fecini,
             fecfin,
             Hora.text.toString().toInt())
+
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@HorarioActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
