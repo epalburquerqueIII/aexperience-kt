@@ -18,6 +18,7 @@ import com.epalburquerqueiii.aexperience.Data.Network.*
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityReservaBinding
+import kotlinx.android.synthetic.main.activity_consumo_bono.*
 import kotlinx.android.synthetic.main.activity_reserva.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
