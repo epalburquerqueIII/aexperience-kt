@@ -55,11 +55,11 @@ class ReservasViewModel : ViewModel() {
                 setRegistros(datos)
             }
         })
-/*
-        if (datos.size == 0) {
-            datos!!.add(Autorizado(0,"No hay registros","","",0,"",""))
-        }
-*/
+
+        //if (datos.size == 0) {
+            //datos!!.add(Reserva(0,"No hay registros","",0,0,0,0))
+        //}
+
         return datos
     }
 

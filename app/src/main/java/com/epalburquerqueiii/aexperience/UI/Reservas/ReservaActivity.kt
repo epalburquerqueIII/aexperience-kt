@@ -15,6 +15,7 @@ import com.epalburquerqueiii.aexperience.Data.Model.Options
 import com.epalburquerqueiii.aexperience.Data.Model.Reserva
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.*
+import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import com.epalburquerqueiii.aexperience.databinding.ActivityReservaBinding
@@ -32,8 +33,12 @@ class ReservaActivity : AppCompatActivity() {
     private var modo:Int? = 0
     private val Crear = 0
     private val Editar = 1
+    private var fecha : String = ""
+    private var fechapago : String = ""
 
-    private lateinit var records: ArrayList<Option>
+    private lateinit var recordsusu: ArrayList<Option>
+    private lateinit var recordsespa: ArrayList<Option>
+    private lateinit var recordsauto: ArrayList<Option>
 
     // TODO tomar el idusuario que se haga el login en el móvil
     //private val idusuario:Int = 8
@@ -62,6 +67,8 @@ class ReservaActivity : AppCompatActivity() {
 
         if (modo == Editar){
             btn_delete.visibility = View.VISIBLE
+            registro.Fecha = Comun.StringYMDtoDMY(registro.FechaPago)
+            registro.FechaPago = Comun.StringYMDtoDMY(registro.FechaPago)
             binding.setVariable(BR.addreservaviewmodel,registro)
             binding.executePendingBindings()
         }
@@ -90,23 +97,22 @@ class ReservaActivity : AppCompatActivity() {
                 val response = response.body() as Options
                 val size = response.Options!!.size
                 var sel :Int = 0
-                records = response.Options!!
+                recordsusu = response.Options!!
                 if (size > 0) {
                     val Usuarios = ArrayList<String>()
                     var i:Int = 0
-                    for ( item in records){
+                    for ( item in recordsusu){
                         Usuarios.add(item.DisplayText.toString())
-                        if (registro.IDUsuario == item.Value) {
+                        if (registro.IdUsuario == item.Value) {
                             sel = i }
                         i++
                     }
-                    val adapter = ArrayAdapter(this@ReservaActivity,
+                    val adapterusuario = ArrayAdapter(this@ReservaActivity,
                         android.R.layout.simple_spinner_dropdown_item,
                         Usuarios
                     )
-
                     // Set Adapter to Spinner
-                    cbUsuario!!.setAdapter(adapter)
+                    cbUsuario!!.setAdapter(adapterusuario)
                     cbUsuario.setSelection(sel)
                 }
             }
@@ -128,19 +134,19 @@ class ReservaActivity : AppCompatActivity() {
                 val response = response.body() as Options
                 val size = response.Options!!.size
                 var sel :Int = 0
-                records = response.Options!!
+                recordsespa = response.Options!!
                 if (size > 0) {
                     val Espacios = ArrayList<String>()
                     var i:Int = 0
-                    for ( item in records){
+                    for ( item in recordsespa){
                         Espacios.add(item.DisplayText.toString())
-                        if (registro.IDEspacio == item.Value) {
+                        if (registro.IdEspacio == item.Value) {
                             sel = i }
                         i++
                     }
-                    val adapter = ArrayAdapter(this@ReservaActivity, android.R.layout.simple_spinner_dropdown_item, Espacios)
+                    val adapterespacio = ArrayAdapter(this@ReservaActivity, android.R.layout.simple_spinner_dropdown_item, Espacios)
                     // Set Adapter to Spinner
-                    cbEspacio!!.setAdapter(adapter)
+                    cbEspacio!!.setAdapter(adapterespacio)
                     cbEspacio.setSelection(sel)
                 }
             }
@@ -162,19 +168,19 @@ class ReservaActivity : AppCompatActivity() {
                 val response = response.body() as Options
                 val size = response.Options!!.size
                 var sel :Int = 0
-                records = response.Options!!
+                recordsauto = response.Options!!
                 if (size > 0) {
                     val Autorizados = ArrayList<String>()
                     var i:Int = 0
-                    for ( item in records){
+                    for ( item in recordsauto){
                         Autorizados.add(item.DisplayText.toString())
-                        if (registro.IDAutorizado == item.Value) {
+                        if (registro.IdAutorizado == item.Value) {
                             sel = i }
                         i++
                     }
-                    val adapter = ArrayAdapter(this@ReservaActivity, android.R.layout.simple_spinner_dropdown_item, Autorizados)
+                    val adapterautorizado = ArrayAdapter(this@ReservaActivity, android.R.layout.simple_spinner_dropdown_item, Autorizados)
                     // Set Adapter to Spinner
-                    cbAutorizado!!.setAdapter(adapter)
+                    cbAutorizado!!.setAdapter(adapterautorizado)
                     cbAutorizado.setSelection(sel)
                 }
             }
@@ -187,7 +193,10 @@ class ReservaActivity : AppCompatActivity() {
         })
 
         FechaR.setOnClickListener {
-            showDatePickerDialog()
+            showDatePickerDialogFecha()
+        }
+        FechaPago.setOnClickListener {
+            showDatePickerDialogFechaPago()
         }
         FechaPago.setOnClickListener {
             showDatePickerDialog1()
@@ -210,11 +219,24 @@ class ReservaActivity : AppCompatActivity() {
 
     }
 
-    private fun showDatePickerDialog() {
+    private fun showDatePickerDialogFecha() {
         val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
             // +1 because January is zero
-            val selectedDate = day.toString() + " / " + (month + 1) + " / " + year
+            val selectedDate = "%02d-%02d-%04d".format(day,month+1,year)
             FechaR.setText(selectedDate)
+            fecha = selectedDate
+
+        })
+
+        newFragment.show(supportFragmentManager, "datePicker")
+    }
+
+    private fun showDatePickerDialogFechaPago() {
+        val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            // +1 because January is zero
+            val selectedDate = "%02d-%02d-%04d".format(day,month+1,year)
+            FechaPago.setText(selectedDate)
+            fechapago = selectedDate
         })
 
         newFragment.show(supportFragmentManager, "datePicker")
@@ -234,17 +256,25 @@ class ReservaActivity : AppCompatActivity() {
 
         val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
 
-        var IDUsuario :Int = 0
-        var IDEspacio :Int = 0
-        var IDAutorizado :Int = 0
-
-        if (records.size > 0) {
-            IDUsuario = records[cbUsuario.selectedItemPosition].Value!!.toInt()
-            IDEspacio = records[cbEspacio.selectedItemPosition].Value!!.toInt()
-            IDAutorizado = records[cbAutorizado.selectedItemPosition].Value!!.toInt()
+        var IdUsuario :Int = 0
+        if (recordsusu.size > 0) {
+            IdUsuario = recordsusu[cbUsuario.selectedItemPosition].Value!!.toInt()
+        }
+        var IdEspacio :Int = 0
+        if (recordsespa.size > 0) {
+            IdEspacio = recordsespa[cbEspacio.selectedItemPosition].Value!!.toInt()
+        }
+        var IdAutorizado :Int = 0
+        if (recordsauto.size > 0) {
+            IdAutorizado = recordsauto[cbAutorizado.selectedItemPosition].Value!!.toInt()
         }
 
-        val callcreate = post.Create(FechaR.text.toString(),FechaPago.text.toString(),Hora.text.toString().toInt(),IDUsuario,IDEspacio,IDAutorizado)
+        val callcreate = post.Create(fecha,
+            fechapago,
+            Hora.text.toString().toInt(),
+            IdUsuario,
+            IdEspacio,
+            IdAutorizado)
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@AutorizadoActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -268,30 +298,39 @@ class ReservaActivity : AppCompatActivity() {
 
     }
 
-    private fun update(ID:Int){
+    private fun update(Id:Int){
 
         val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
 
-        var IDUsuario :Int = 0
-        var IDEspacio :Int = 0
-        var IDAutorizado :Int = 0
-
-        if (records.size > 0) {
-            IDUsuario = records[cbUsuario.selectedItemPosition].Value!!.toInt()
-            IDEspacio = records[cbEspacio.selectedItemPosition].Value!!.toInt()
-            IDAutorizado = records[cbAutorizado.selectedItemPosition].Value!!.toInt()
+        var IdUsuario :Int = 0
+        if (recordsusu.size > 0) {
+            IdUsuario = recordsusu[cbUsuario.selectedItemPosition].Value!!.toInt()
+        }
+        var IdEspacio :Int = 0
+        if (recordsespa.size > 0) {
+            IdEspacio = recordsespa[cbEspacio.selectedItemPosition].Value!!.toInt()
+        }
+        var IdAutorizado :Int = 0
+        if (recordsauto.size > 0) {
+            IdAutorizado = recordsauto[cbAutorizado.selectedItemPosition].Value!!.toInt()
         }
 
-        val callUpdate = post.Update(ID,FechaR.text.toString(),FechaPago.text.toString(),Hora.text.toString().toInt(),IDUsuario,IDEspacio,IDAutorizado)
+        val callUpdate = post.Update(Id,
+            fecha,
+            fechapago,
+            Hora.text.toString().toInt(),
+            IdUsuario,
+            IdEspacio,
+            IdAutorizado)
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
-                Toast.makeText(this@ReservaActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ReservaActivity, "Fallo $Id", Toast.LENGTH_SHORT).show()
                 Log.i("dasboardfragmetn:",""+ t.message)
                 finish()
             }
 
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                Toast.makeText(this@ReservaActivity,"succes $ID", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ReservaActivity,"succes $Id", Toast.LENGTH_SHORT).show()
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as responseModel
                 println("test : "+response.Result)

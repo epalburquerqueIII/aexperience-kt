@@ -105,7 +105,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="IDusuario"
+                        android:text="Usuario"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                         android:textColor="@color/indigo_900"
                         android:textSize="12sp" />
@@ -130,7 +130,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="IDEspacio"
+                        android:text="Espacio"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                         android:textColor="@color/indigo_900"
                         android:textSize="12sp" />
@@ -155,7 +155,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="IDAuto"
+                        android:text="Autorizado"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
                         android:textColor="@color/indigo_900"
                         android:textSize="12sp" />

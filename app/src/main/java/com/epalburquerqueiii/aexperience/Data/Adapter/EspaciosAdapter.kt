@@ -56,7 +56,6 @@ class EspaciosAdapter(private val espacios: ArrayList<Espacio>, context: Context
                 itemView.Estado.text = "abierto"
 
             }
-
             itemView.Precio.text = this.Espacio?.Precio.toString()
             itemView.Fecha.text = this.Espacio?.Fecha
 

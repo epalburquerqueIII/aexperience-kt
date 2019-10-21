@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/eventosFragment">
+            app:startDestination="@id/ReservasFragment">
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
@@ -32,26 +32,11 @@
         android:label="Tipospagos"
         tools:layout="@layout/list_fragment"/>
     <fragment
-        android:id="@+id/Registros31Fragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Registros.Registros31Fragment"
-        android:label="Registro"
-        tools:layout="@layout/list_fragment"/>
+        android:id="@+id/usuariosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.UsuariosFragment"
+        android:label="UsuariosFragment" />
     <fragment
-        android:id="@+id/pagosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Pagos.PagosFragment"
-        android:label="Pagos"
-        tools:layout="@layout/list_fragment"/>
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Splash.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_AutorizadosFragment"
-            app:destination="@id/AutorizadosFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/eventosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Eventos.EventosFragment"
-        android:label="EventosFragment" />
+        android:id="@+id/ReservasFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Reservas.ReservasFragment"
+        android:label="ReservasFragment" />
 </navigation>

@@ -37,7 +37,7 @@ class AutorizadoActivity : AppCompatActivity() {
 
         val binding = DataBindingUtil.setContentView<ActivityAutorizadoBinding>(this@AutorizadoActivity,R.layout.activity_autorizado)
 
-        // var addnotemodel = ViewModelProviders.of(this).get(AutorizadosViewModel::class.java)
+        // var addnotemodel = ViewModelProviders.of(this).get(ReservasViewModel::class.java)
 
         val bundle:Bundle? = intent.extras
         val registro = intent.extras.get("registro") as Autorizado
