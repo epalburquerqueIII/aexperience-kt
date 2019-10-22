@@ -7,14 +7,14 @@ class MenuRol : Serializable {
     constructor(
         Id: Int?,
         idMenu: Int?,
-        IDUsuarioRoles: Int?
+        IdUsuarioRoles: Int?
     ) {
         this.Id = Id
         this.idMenu = idMenu
-        this.IDUsuarioRoles = IDUsuarioRoles
+        this.IdUsuarioRoles = IdUsuarioRoles
     }
 
     var Id: Int? = null
     var idMenu: Int? = null
-    var IDUsuarioRoles: Int? = null
+    var IdUsuarioRoles: Int? = null
 }

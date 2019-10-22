@@ -92,7 +92,7 @@ class MenuRolActivity : AppCompatActivity() {
                     var i:Int = 0
                     for ( item in records){
                         menuRolesArray.add(item.DisplayText.toString())
-                        if (registro.IDUsuarioRoles == item.Value) {
+                        if (registro.IdUsuarioRoles == item.Value) {
                             sel = i }
                         i++
                     }
@@ -109,10 +109,6 @@ class MenuRolActivity : AppCompatActivity() {
             }
         })
     }
-
-
-
-
 
 
 private fun setupViewModelAndObserve() {
