@@ -196,9 +196,7 @@ class HorarioActivity : AppCompatActivity() {
             Descripcion.text.toString(),
             fecini,
             fecfin,
-            Hora.text.toString().toInt()
-
-        )
+            Hora.text.toString().toInt())
 
 
         callcreate.enqueue(object: Callback<responseModel> {
