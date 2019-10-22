@@ -1,8 +1,9 @@
 package com.epalburquerqueiii.aexperience.Data.Util
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import java.text.SimpleDateFormat
+import java.util.Date
 
 public class Comun {
 
@@ -18,26 +19,8 @@ public class Comun {
             }
 
         }
-
-        fun DatetoStringsql(date: Date): String {
-
-            val sdf = SimpleDateFormat("yyyyMMdd")
-            try {
-                return sdf.format(date)
-            } catch (e1: Exception) {
-                // TODO: handle exception
-                return "Nan"
-            }
-
-        }
-
-        //2019-01-01
-        fun StringYMDtoDMY(fecha: String?): String {
-            val date:Date = SimpleDateFormat("yyyy-MM-dd").parse(fecha)
-            return DatetoString(date)
-        }
-
-        fun DatetoString(date: Date): String {
+/*
+        fun DatetoStringsql(date: String): String {
 
             val sdf = SimpleDateFormat("dd-MM-yyyy")
             try {
@@ -48,6 +31,26 @@ public class Comun {
             }
 
         }
-    }
-}
 
+ */
+
+//2019-01-01
+        fun StringYMDtoDMY(fecha: String?): String? {
+            val date:Date = SimpleDateFormat("yyyy-MM-dd").parse(fecha)
+            return DatetoString(date)
+        }
+
+
+        fun DatetoString(date: Date?): String? {
+
+            val sdf = SimpleDateFormat("dd-MM-yyyy")
+            try {
+                return sdf.format(date)
+            } catch (e1: Exception) {
+                // TODO: handle exception
+                return "Nan"
+            }
+
+        }
+        }
+    }

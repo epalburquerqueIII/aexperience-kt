@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.epalburquerqueiii.aexperience.Data.Model.Espacio
+import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
 import kotlinx.android.synthetic.main.item_espacios.view.*
 
@@ -56,8 +57,10 @@ class EspaciosAdapter(private val espacios: ArrayList<Espacio>, context: Context
                 itemView.Estado.text = "abierto"
 
             }
+
+            var MostrarFecha : String? = this.Espacio?.Fecha
             itemView.Precio.text = this.Espacio?.Precio.toString()
-            itemView.Fecha.text = this.Espacio?.Fecha
+            itemView.Fecha.text = Comun.StringYMDtoDMY(MostrarFecha)
 
 }
 

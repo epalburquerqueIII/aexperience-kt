@@ -1,6 +1,5 @@
 package com.epalburquerqueiii.aexperience.Data.Model
 
-import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import java.io.Serializable
 
 class Espacio : Serializable {
@@ -38,6 +37,5 @@ class Espacio : Serializable {
     var NumeroReservaslimite: Int? = null
     var Aforo: Int? = null
     var Fecha: String? = null
-    var ShowFecha: String = Comun.StringYMDtoDMY(Fecha)
 
 }
