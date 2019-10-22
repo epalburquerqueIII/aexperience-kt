@@ -51,7 +51,7 @@ class MenuRolesAdapter(private val menuroles: ArrayList<MenuRol>, context: Conte
             this.MenuRol = MenuRol
             //itemView.id_item.text = this.MenuRol?.ParentId.toString()
             itemView.idmenu_item.text = this.MenuRol?.idMenu.toString()
-            itemView.idusuarioroles_item.text = this.MenuRol?.IDUsuarioRoles.toString()
+            itemView.idusuarioroles_item.text = this.MenuRol?.IdUsuarioRoles.toString()
         }
     }
 
