@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
+import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import kotlinx.android.synthetic.main.fragment_registro.*
@@ -18,8 +19,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-
 private var fecha : String = ""
+private var email: Boolean = false
+private var pass: String=""
+
 class Registros31Fragment : Fragment() {
 
         private lateinit var viewModel: RegistrosViewModel
@@ -40,33 +43,48 @@ class Registros31Fragment : Fragment() {
             showDatePickerDialog()
         }
 
+
         btn_registrar.setOnClickListener{
-            val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-            val callcreate = post.Register(
-                NombreRegistro.text.toString(),
-                NifR.text.toString(),
-                EmailR.text.toString(),
-                fecha,
-                TelefonoR.text.toString(),
-                PasswordR.text.toString())
-
-            callcreate.enqueue(object: Callback<responseModel> {
-                override fun onFailure(call: Call<responseModel>, t: Throwable) {
-                    // Toast.makeText(this@PagosActivity,"failure",Toast.LENGTH_SHORT).show()
-                    Log.i("dasboardfragment:",""+t.message)
+            // Validamos los datos
+            var ok : Boolean
+            if (PasswordR.text.toString() != Repetirpassword.text.toString()) {
+                textError.setText("Las contraseñas son distintas")
+                ok = false
+            }
+            else {
+                ok = Comun.validarEmail(EmailR.text.toString())
+                if (!ok) {
+                    textError.text = "Email no valido"
                 }
+            }
 
-                override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
-                    //Toast.makeText(activity,"succes",Toast.LENGTH_SHORT).show()
-                    @Suppress("NAME_SHADOWING")
-                    val response = response.body() as responseModel
-                    println("test : "+response.Error)
-// Changed true
+            if (ok) {
+                val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
+                val callcreate = post.Register(
+                    NombreRegistro.text.toString(),
+                    NifR.text.toString(),
+                    EmailR.text.toString(),
+                    fecha,
+                    TelefonoR.text.toString(),
+                    PasswordR.text.toString()
+                )
+                callcreate.enqueue(object: Callback<responseModel> {
+                    override fun onFailure(call: Call<responseModel>, t: Throwable) {
+                        // Toast.makeText(this@PagosActivity,"failure",Toast.LENGTH_SHORT).show()
+                        Log.i("dasboardfragment:",""+t.message)
+                    }
 
+                    override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
+                        //Toast.makeText(activity,"succes",Toast.LENGTH_SHORT).show()
+                        @Suppress("NAME_SHADOWING")
+                        val response = response.body() as responseModel
+                        println("test : "+response.Error)
+                    }
 
-                }
+                })
 
-            })
+            }
+
 
         }
 
@@ -83,4 +101,5 @@ class Registros31Fragment : Fragment() {
 
         newFragment.show(activity!!.supportFragmentManager, "datePicker")
     }
+
 }

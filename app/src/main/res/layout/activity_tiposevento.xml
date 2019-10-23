@@ -39,7 +39,7 @@
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginStart="@dimen/abc_action_bar_default_padding_end_material"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="172dp"
             android:background="@drawable/background_rectangle_black"
             android:drawablePadding="8dp"
