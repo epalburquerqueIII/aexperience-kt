@@ -43,7 +43,7 @@ class MenuRolesViewModel : ViewModel() {
         val callget = get.Get()
         callget.enqueue(object : Callback<MenuRoles> {
             override fun onFailure(call: Call<MenuRoles>, t: Throwable) {
-                Log.i("Menus Fragment:", "" + t.message)
+                Log.i("MenuRoles Fragment:", "" + t.message)
             }
 
             override fun onResponse(call: Call<MenuRoles>, response: Response<MenuRoles>) {

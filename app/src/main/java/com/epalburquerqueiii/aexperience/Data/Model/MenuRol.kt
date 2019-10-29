@@ -5,16 +5,16 @@ import java.io.Serializable
 class MenuRol : Serializable {
 
     constructor(
-        Id: Int?,
-        idMenu: Int?,
-        IdUsuarioRoles: Int?
+        ID: Int?,
+        IDMenu: Int?,
+        IDUsuarioRoles: Int?
     ) {
-        this.Id = Id
-        this.idMenu = idMenu
-        this.IdUsuarioRoles = IdUsuarioRoles
+        this.ID = ID
+        this.IDMenu = IDMenu
+        this.IDUsuarioRoles = IDUsuarioRoles
     }
 
-    var Id: Int? = null
-    var idMenu: Int? = null
-    var IdUsuarioRoles: Int? = null
+    var ID: Int? = null
+    var IDMenu: Int? = null
+    var IDUsuarioRoles: Int? = null
 }

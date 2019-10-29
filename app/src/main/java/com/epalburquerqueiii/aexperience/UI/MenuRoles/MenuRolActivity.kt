@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
 import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.MenuRolesApi
+import com.epalburquerqueiii.aexperience.Data.Network.MenusApi
 
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.UsuariosrolesApi
@@ -33,9 +34,10 @@ class MenuRolActivity : AppCompatActivity() {
     private val Crear = 0
     private val Editar = 1
     // TODO tomar el idusuario que se haga el login en el móvil
-    private val idusuario:Int = 8
+    //private val idusuario:Int = 8
 
-    private lateinit var records: ArrayList<Option>
+    private lateinit var recordsusuariosroles: ArrayList<Option>
+    private lateinit var recordsmenus: ArrayList<Option>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,35 +70,70 @@ class MenuRolActivity : AppCompatActivity() {
             if (modo == Crear) {
                 create()
             }else{
-                update(registro.Id!!)
+                update(registro.ID!!)
             }
         }
 
         btn_delete.setOnClickListener{
-            delete(registro.Id!!)
+            delete(registro.ID!!)
         }
 
-        //combo idusuarios roles
-        val get = RetrofitBuilder.builder().create(MenuRolesApi::class.java)
-        val callget = get.GetOptions()
+        //----------------------------------------------------------------------------------
+        //combo idmenus
+        val getidmenus = RetrofitBuilder.builder().create(MenusApi::class.java)
+        val callgetidmenus = getidmenus.GetOptions()
 
-        callget.enqueue(object : Callback<Options> {
+        callgetidmenus.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
                 @Suppress("NAME_SHADOWING")
                 val response = response.body() as Options
                 val size = response.Options!!.size
                 var sel :Int = 0
-                records = response.Options!!
+                recordsmenus = response.Options!!
                 if (size > 0) {
-                    val menuRolesArray = ArrayList<String>()
+                    val menusArray = ArrayList<String>()
                     var i:Int = 0
-                    for ( item in records){
-                        menuRolesArray.add(item.DisplayText.toString())
-                        if (registro.IdUsuarioRoles == item.Value) {
+                    for ( item in recordsmenus){
+                        menusArray.add(item.DisplayText.toString())
+                        if (registro.IDMenu == item.Value) {
                             sel = i }
                         i++
                     }
-                    val adapter = ArrayAdapter(this@MenuRolActivity, android.R.layout.simple_spinner_dropdown_item, menuRolesArray)
+                    val adapter = ArrayAdapter(this@MenuRolActivity, android.R.layout.simple_spinner_dropdown_item, menusArray)
+                    // Set Adapter to Spinner
+                    cbidMenu!!.setAdapter(adapter)
+                    cbidMenu.setSelection(sel)
+                }
+            }
+
+            override fun onFailure(call: Call<Options>, t: Throwable) {
+                Toast.makeText(this@MenuRolActivity, "failure", Toast.LENGTH_SHORT).show()
+                Log.i("Error en MenuRol id :", "" + t.message)
+            }
+        })
+
+        //----------------------------------------------------------------------------------------
+        //combo idusuarios roles
+        val getidusuariosroles = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
+        val callgetidusuariosroles = getidusuariosroles.GetOptions()
+
+        callgetidusuariosroles.enqueue(object : Callback<Options> {
+            override fun onResponse(call: Call<Options>, response: Response<Options>) {
+                @Suppress("NAME_SHADOWING")
+                val response = response.body() as Options
+                val size = response.Options!!.size
+                var sel :Int = 0
+                recordsusuariosroles = response.Options!!
+                if (size > 0) {
+                    val usuariosrolesArray = ArrayList<String>()
+                    var i:Int = 0
+                    for ( item in recordsusuariosroles){
+                        usuariosrolesArray.add(item.DisplayText.toString())
+                        if (registro.IDUsuarioRoles == item.Value) {
+                            sel = i }
+                        i++
+                    }
+                    val adapter = ArrayAdapter(this@MenuRolActivity, android.R.layout.simple_spinner_dropdown_item, usuariosrolesArray)
                     // Set Adapter to Spinner
                     cbidUsuarioRoles!!.setAdapter(adapter)
                     cbidUsuarioRoles.setSelection(sel)
@@ -128,20 +165,19 @@ private fun setupViewModelAndObserve() {
     private fun create(){
         val post = RetrofitBuilder.builder().create(MenuRolesApi::class.java)
 
-        var idUsuarioRoles :Int = 1
-        if (records.size > 0) {
-            idUsuarioRoles = records[cbidUsuarioRoles.selectedItemPosition].Value!!.toInt()
+        var IDMenu :Int = 1
+        if (recordsmenus.size > 0) {
+            IDMenu = recordsmenus[cbidMenu.selectedItemPosition].Value!!.toInt()
         }
 
-        var idMenu :Int = 1
-        if (records.size > 0) {
-            idMenu = records[cbidMenu.selectedItemPosition].Value!!.toInt()
+        var IDUsuarioRoles :Int = 1
+        if (recordsusuariosroles.size > 0) {
+            IDUsuarioRoles = recordsusuariosroles[cbidUsuarioRoles.selectedItemPosition].Value!!.toInt()
         }
-
 
         val callcreate = post.Create(
-            idMenu.toString().toInt(),
-            idUsuarioRoles)
+            IDMenu.toString().toInt(),
+            IDUsuarioRoles)
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@MenuActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -164,13 +200,17 @@ private fun setupViewModelAndObserve() {
     private fun update(ID:Int){
 
         val post = RetrofitBuilder.builder().create(MenuRolesApi::class.java)
-        var idMenuRol :Int = 0
-        var idUsuarioRoles :Int = 0
+        var IDMenu :Int = 0
+        var IDUsuarioRoles :Int = 0
 
-        if (records.size > 0) {
-            idMenuRol = records[cbidUsuarioRoles.selectedItemPosition].Value!!.toInt()
+        if (recordsmenus.size > 0) {
+            IDMenu = recordsmenus[cbidMenu.selectedItemPosition].Value!!.toInt()
         }
-        val callUpdate = post.Update(ID,idMenuRol, idUsuarioRoles.toString().toInt())
+
+        if (recordsusuariosroles.size > 0) {
+            IDUsuarioRoles = recordsusuariosroles[cbidUsuarioRoles.selectedItemPosition].Value!!.toInt()
+        }
+        val callUpdate = post.Update(ID,IDMenu, IDUsuarioRoles.toString().toInt())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@MenuRolActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()

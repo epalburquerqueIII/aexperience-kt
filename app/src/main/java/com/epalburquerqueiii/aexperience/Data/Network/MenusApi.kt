@@ -2,6 +2,7 @@ package com.epalburquerqueiii.aexperience.Data.Network
 
 import com.epalburquerqueiii.aexperience.BuildConfig
 import com.epalburquerqueiii.aexperience.Data.Model.Menus
+import com.epalburquerqueiii.aexperience.Data.Model.Options
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import retrofit2.Call
 import retrofit2.http.Field
@@ -54,5 +55,7 @@ interface MenusApi {
         @Field("Id")id:Int
 
     ):Call<responseModel>
+    @GET("menus/"+BuildConfig.GETOPTIONS_DATA)
+    fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
 
 }

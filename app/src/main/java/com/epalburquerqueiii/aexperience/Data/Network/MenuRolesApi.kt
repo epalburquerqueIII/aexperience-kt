@@ -24,24 +24,24 @@ interface MenuRolesApi {
     @FormUrlEncoded
     @POST("menuroles/"+BuildConfig.CREATE_DATA)
     fun Create(
-        @Field("idMenu")idMenu:Int,
-        @Field("idUsuarioRoles")idUsuarioRoles:Int
+        @Field("idMenu")IDMenu:Int,
+        @Field("idUsuarioRoles")IDUsuarioRoles:Int
     ):Call<responseModel>
 
     //update
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"menuroles/"+BuildConfig.UPDATE_DATA)
     fun Update(
-        @Field("Id")id: Int,
-        @Field("idMenu")idMenu:Int,
-        @Field("idUsuarioRoles")idUsuarioRoles: Int
+        @Field("ID")ID: Int,
+        @Field("IDMenu")IDMenu:Int,
+        @Field("IDUsuarioRoles")IDUsuarioRoles: Int
     ):Call<responseModel>
 
     //delete
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"menuroles/"+BuildConfig.DELETE_DATA)
     fun Delete(
-        @Field("Id")id:Int
+        @Field("ID")ID:Int
 
     ):Call<responseModel>
 
