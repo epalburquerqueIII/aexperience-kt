@@ -44,14 +44,13 @@ class Registros31Fragment : Fragment() {
         }
 
 
-        btn_registrar.setOnClickListener{
+        btn_registrar.setOnClickListener {
             // Validamos los datos
-            var ok : Boolean
+            var ok: Boolean
             if (PasswordR.text.toString() != Repetirpassword.text.toString()) {
                 textError.setText("Las contraseñas son distintas")
                 ok = false
-            }
-            else {
+            } else {
                 ok = Comun.validarEmail(EmailR.text.toString())
                 if (!ok) {
                     textError.text = "Email no valido"
@@ -68,26 +67,26 @@ class Registros31Fragment : Fragment() {
                     TelefonoR.text.toString(),
                     PasswordR.text.toString()
                 )
-                callcreate.enqueue(object: Callback<responseModel> {
+                callcreate.enqueue(object : Callback<responseModel> {
                     override fun onFailure(call: Call<responseModel>, t: Throwable) {
                         // Toast.makeText(this@PagosActivity,"failure",Toast.LENGTH_SHORT).show()
-                        Log.i("dasboardfragment:",""+t.message)
+                        Log.i("dasboardfragment:", "" + t.message)
                     }
 
-                    override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
+                    override fun onResponse(
+                        call: Call<responseModel>,
+                        response: Response<responseModel>
+                    ) {
                         //Toast.makeText(activity,"succes",Toast.LENGTH_SHORT).show()
                         @Suppress("NAME_SHADOWING")
                         val response = response.body() as responseModel
-                        println("test : "+response.Error)
+                        println("test : " + response.Error)
                     }
 
                 })
 
             }
-
-
         }
-
     }
 
     private fun showDatePickerDialog() {
