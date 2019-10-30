@@ -14,7 +14,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/eventoThumbnail"
+                android:id="@+id/itemImagen"
                 android:layout_width="170dp"
                 android:layout_height="250dp" />
 
@@ -25,14 +25,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textViewTitle"
+                    android:id="@+id/itemTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sample Title"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 <TextView
-                    android:id="@+id/textViewYear"
+                    android:id="@+id/itemFecha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Published Year"

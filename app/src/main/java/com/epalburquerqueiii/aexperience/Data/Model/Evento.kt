@@ -12,7 +12,7 @@ class Evento : Serializable {
         Description: String?,
         Tipo: String?,
         Image: String?,
-        Imageslice: String?,
+        Imageslide: String?,
         Author: String?,
         Identificator: String?,
         Categorias: String?,
@@ -24,7 +24,7 @@ class Evento : Serializable {
         this.Description = Description
         this.Tipo = Tipo
         this.Image = Image
-        this.Imageslice = Imageslice
+        this.Imageslide = Imageslide
         this.Author = Author
         this.Identificator = Identificator
         this.Categorias = Categorias
@@ -38,7 +38,7 @@ class Evento : Serializable {
     var Description: String?
     var Tipo: String?
     var Image: String?
-    var Imageslice: String?
+    var Imageslide: String?
     var Author: String?
     var Identificator: String?
     var Categorias: String?

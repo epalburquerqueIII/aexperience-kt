@@ -1,41 +1,58 @@
 package com.epalburquerqueiii.aexperience.UI.Eventos
 
 import android.os.Bundle
-import android.util.EventLog
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.epalburquerqueiii.aexperience.Data.Model.Espacio
+import com.epalburquerqueiii.aexperience.Data.Model.Config
 import com.epalburquerqueiii.aexperience.Data.Model.Evento
-import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Network.EventosApi
-import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
-import com.epalburquerqueiii.aexperience.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_espacios.*
-import kotlinx.android.synthetic.main.activity_eventos.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.android.synthetic.main.activity_details.*
+
+
 
 class DetailsActivity : AppCompatActivity() {
 
+    //private var fecha : String = ""
+
+
+    fun loadImageFromUrl(imageview: ImageView, imageurl: String?) {
+        Log.i("Procesando la  imagen ", imageurl)
+        try {
+            Picasso.get()
+                .load(Config.cms_url + imageurl)
+                .into(imageview)
+
+        } catch (e: Exception) {
+            Log.i("Error en la imagen ", imageurl)
+
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
+        setContentView(com.epalburquerqueiii.aexperience.R.layout.activity_details)
 
-
-        val imageurl = intent.getStringExtra("Imageurl")
-        val id = intent.getStringExtra("ID")
-        val descripcion = intent.getStringExtra("Descripcion")
-        val year = intent.getStringExtra("Year")
 
         val bundle: Bundle? = intent.extras
         val registro = intent.extras.get("registro") as Evento
 
-        textViewTitle.text = descripcion
-        textViewYear.text = "Año : " + year
+        loadImageFromUrl(ImagenEventoThumbail, registro.Imageslide)
+        textViewTitle.text = registro.Title
+        textViewYear.text = registro.Date
+        //      textViewTitle.text = descripcion
+        //      textViewYear.text = "Año : " + year
+
+        /*fun showDatePickerDialog() {
+            val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+                // +1 because January is zero
+                val selectedDate = "%02d-%02d-%04d".format(day, month+1, year)
+                textViewYear.setText(selectedDate)
+                fecha = selectedDate
+            })
+
+            newFragment.show(supportFragmentManager, "datePicker")
+        }*/
 
         //val get = RetrofitBuilder.builder().create(EventosApi::class.java)
         //val callget = get.GetOptions()
@@ -63,8 +80,6 @@ class DetailsActivity : AppCompatActivity() {
                 }*/
 
 
-        Picasso.get()
-            .load(imageurl)
-            .into(eventoThumbnail)
-        }
+
     }
+}

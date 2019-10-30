@@ -15,7 +15,7 @@
                 android:orientation="vertical">
 
             <ImageView
-                    android:id="@+id/movieThumbnail"
+                    android:id="@+id/ImagenEventoThumbail"
                     android:layout_width="225dp"
                     android:layout_height="330dp"
                     android:layout_margin="10dp" />
