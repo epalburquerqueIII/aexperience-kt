@@ -60,7 +60,7 @@ class NewslettersViewModel : ViewModel() {
         return datos
     }
 
-    public fun Load()=changed.set(false)
-    public fun make_Change()=changed.set(true)
+    fun Load()=changed.set(false)
+    fun make_Change()=changed.set(true)
 
 }

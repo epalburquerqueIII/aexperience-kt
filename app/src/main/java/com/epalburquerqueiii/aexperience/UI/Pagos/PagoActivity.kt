@@ -103,7 +103,7 @@ class PagoActivity : AppCompatActivity() {
                     }
                     val adapter = ArrayAdapter(this@PagoActivity, android.R.layout.simple_spinner_dropdown_item, IdReserva)
                     // Set Adapter to Spinner
-                    cbreserva!!.setAdapter(adapter)
+                    cbreserva!!.adapter = adapter
                     cbreserva.setSelection(sel)
                 }
             }
@@ -138,7 +138,7 @@ class PagoActivity : AppCompatActivity() {
                     }
                     val adapterTipopago = ArrayAdapter(this@PagoActivity, android.R.layout.simple_spinner_dropdown_item, IdTipopago)
                     // Set Adapter to Spinner
-                    cbtipopago!!.setAdapter(adapterTipopago)
+                    cbtipopago!!.adapter = adapterTipopago
                     cbtipopago.setSelection(sel)
                 }
             }
@@ -188,7 +188,7 @@ class PagoActivity : AppCompatActivity() {
             Tipopago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
         }
 
-        val callcreate = post.Create(
+        val callcreate = post.create(
             Reserva,
            // fechapagoCB.text.toString(),
             Tipopago,
@@ -231,7 +231,7 @@ class PagoActivity : AppCompatActivity() {
         }
 
 
-        val callUpdate = post.Update(
+        val callUpdate = post.update(
             Id,
             IdReserva,
             fecha,
@@ -265,7 +265,7 @@ class PagoActivity : AppCompatActivity() {
 
     private fun delete(Id: Int){
         val post = RetrofitBuilder.builder().create(PagosApi::class.java)
-        val calldelete = post.Delete(Id.toInt())
+        val calldelete = post.delete(Id.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

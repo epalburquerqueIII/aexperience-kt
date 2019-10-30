@@ -40,7 +40,7 @@ class UsuariosViewModel : ViewModel() {
         var datos = ArrayList<Usuario>()
 
         val get = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-        val callget = get.Get()
+        val callget = get.get()
         callget.enqueue(object : Callback<Usuarios> {
             override fun onFailure(call: Call<Usuarios>, t: Throwable) {
                 Log.i("Usuarios Fragment:", "" + t.message)
@@ -63,7 +63,7 @@ class UsuariosViewModel : ViewModel() {
         return datos
     }
 
-    public fun Load()=changed.set(false)
-    public fun make_Change()=changed.set(true)
+    fun Load()=changed.set(false)
+    fun make_Change()=changed.set(true)
 
 }

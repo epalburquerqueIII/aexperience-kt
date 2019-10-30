@@ -37,7 +37,7 @@ class PagosViewModel : ViewModel() {
         var datos = ArrayList<Pago>()
 
         val get = RetrofitBuilder.builder().create(PagosApi::class.java)
-        val callget = get.Get()
+        val callget = get.get()
         callget.enqueue(object : Callback<Pagos> {
             override fun onFailure(call: Call<Pagos>, t: Throwable) {
                 Log.i("Pagos Fragment:", "" + t.message)
@@ -56,7 +56,7 @@ class PagosViewModel : ViewModel() {
         return datos
     }
 
-    public fun Load()=changed.set(false)
-    public fun make_Change()=changed.set(true)
+    fun Load()=changed.set(false)
+    fun make_Change()=changed.set(true)
 
 }

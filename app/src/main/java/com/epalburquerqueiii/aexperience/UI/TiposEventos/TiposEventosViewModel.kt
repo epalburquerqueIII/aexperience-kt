@@ -17,7 +17,7 @@ class TiposEventosViewModel : ViewModel() {
 
 //    private val TiposeventosUseCase = TiposeventosUseCase()
 
-    val changed = ObservableBoolean(false)
+//    val changed = ObservableBoolean(false)
 
 
     private val registros = MutableLiveData<ArrayList<TiposEvento>>()
@@ -62,8 +62,8 @@ class TiposEventosViewModel : ViewModel() {
         return datos
     }
 
-    public fun Load() = changed.set(false)
-    public fun make_Change() = changed.set(true)
+//    public fun Load() = changed.set(false)
+//    public fun make_Change() = changed.set(true)
 }
 
 

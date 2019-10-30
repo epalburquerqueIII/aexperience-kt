@@ -51,7 +51,7 @@ class EventosViewModel : ViewModel() {
         })
 
         if (datos.size == 0) {
-            datos!!.add(Evento(0,"No hay registros","","","","","","","","","",""))
+            datos.add(Evento(0,"No hay registros","","","","","","","","","",""))
         }
         return datos
 

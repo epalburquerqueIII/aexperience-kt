@@ -95,7 +95,7 @@ class ReservaActivity : AppCompatActivity() {
         // Obtiene los usuarios
 
         val get = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-        val callget = get.GetOptions()
+        val callget = get.getOptions()
 
         callget.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
@@ -121,7 +121,7 @@ class ReservaActivity : AppCompatActivity() {
                     )
 
                     // Set Adapter to Spinner
-                    cbusuario!!.setAdapter(adapterUsu)
+                    cbusuario!!.adapter = adapterUsu
                     cbusuario.setSelection(sel)
                 }
             }
@@ -162,7 +162,7 @@ class ReservaActivity : AppCompatActivity() {
                         espacios
                     )
                     // Set Adapter to Spinner
-                    cbespacio!!.setAdapter(adapterEsp)
+                    cbespacio!!.adapter = adapterEsp
                     cbespacio.setSelection(sel)
                 }
             }
@@ -203,7 +203,7 @@ class ReservaActivity : AppCompatActivity() {
                         autorizados
                     )
                     // Set Adapter to Spinner
-                    cbautorizado!!.setAdapter(adapterAut)
+                    cbautorizado!!.adapter = adapterAut
                     cbautorizado.setSelection(sel)
                 }
             }

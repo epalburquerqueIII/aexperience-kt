@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
-import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
 import kotlinx.android.synthetic.main.fragment_registro.*
@@ -19,10 +18,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-private var fecha : String = ""
-private var email: Boolean = false
-private var pass: String=""
 
+private var fecha : String = ""
 class Registros31Fragment : Fragment() {
 
         private lateinit var viewModel: RegistrosViewModel
@@ -73,20 +70,20 @@ class Registros31Fragment : Fragment() {
                         Log.i("dasboardfragment:", "" + t.message)
                     }
 
-                    override fun onResponse(
-                        call: Call<responseModel>,
-                        response: Response<responseModel>
-                    ) {
-                        //Toast.makeText(activity,"succes",Toast.LENGTH_SHORT).show()
-                        @Suppress("NAME_SHADOWING")
-                        val response = response.body() as responseModel
-                        println("test : " + response.Error)
-                    }
+                override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
+                    //Toast.makeText(activity,"succes",Toast.LENGTH_SHORT).show()
+                    @Suppress("NAME_SHADOWING")
+                    val response = response.body() as responseModel
+                    println("test : "+response.Error)
+// Changed true
 
-                })
 
-            }
+                }
+
+            })
+
         }
+
     }
 
     private fun showDatePickerDialog() {
@@ -100,5 +97,4 @@ class Registros31Fragment : Fragment() {
 
         newFragment.show(activity!!.supportFragmentManager, "datePicker")
     }
-
 }

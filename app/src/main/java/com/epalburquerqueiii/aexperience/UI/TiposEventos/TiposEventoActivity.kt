@@ -105,7 +105,7 @@ class TiposEventoActivity : AppCompatActivity() {
                 val response = response.body() as responseModel
                 println("test : "+response.Error)
 // Changed true
-                viewModel.make_Change()
+//                viewModel.make_Change()
                 finish()
 
 
@@ -136,7 +136,7 @@ class TiposEventoActivity : AppCompatActivity() {
                 //val resultIntent = Intent()
                 //setResult(Activity.RESULT_OK,resultIntent)
 // Changed true
-                viewModel.make_Change()
+//                viewModel.make_Change()
                 finish()
 
 
@@ -157,7 +157,7 @@ class TiposEventoActivity : AppCompatActivity() {
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
                 Toast.makeText(this@TiposEventoActivity," borrado ", Toast.LENGTH_SHORT).show()
 // Changed true
-                viewModel.make_Change()
+//                viewModel.make_Change()
                 finish()
             }
         })

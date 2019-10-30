@@ -17,15 +17,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contraseña"
-            app:layout_constraintBottom_toTopOf="@+id/password"
+            app:layout_constraintBottom_toTopOf="@+id/LoginPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.124"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/LoginEmail"
             app:layout_constraintVertical_bias="0.431" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/LoginEmail"
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="320dp"
             android:layout_height="45dp"
@@ -42,7 +42,6 @@
             android:maxLines="1"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:text="@{addusuarioviewmodel.Email}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -54,13 +53,14 @@
             tools:ignore="MissingConstraints" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/LoginPassword"
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="320dp"
             android:layout_height="45dp"
 
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="304dp"
             android:background="@drawable/background_rectangle_black"
             android:drawablePadding="8dp"
             android:hint="Contraseña"
@@ -68,16 +68,16 @@
             android:imeOptions="actionUnspecified"
             android:maxLines="1"
             android:paddingEnd="20dp"
+            android:password="true"
             android:singleLine="true"
-            android:text="@{addusuarioviewmodel.Password}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.44"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email"
-            app:layout_constraintVertical_bias="0.176"
+            app:layout_constraintTop_toBottomOf="@+id/LoginEmail"
+            app:layout_constraintVertical_bias="0.942"
             tools:ignore="MissingConstraints" />
 
         <TextView
@@ -85,12 +85,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email "
-            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintBottom_toTopOf="@+id/LoginEmail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.122"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.907" />
+
+        <CheckedTextView
+            android:id="@+id/cholvido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="No recuerdo la contraseña"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.172"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LoginPassword"
+            app:layout_constraintVertical_bias="0.079" />
+
+        <Button
+            android:id="@+id/bt_login"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="219dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="69dp"
+            android:layout_marginBottom="200dp"
+            android:text="Aceptar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LoginPassword"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

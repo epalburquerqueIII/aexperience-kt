@@ -122,7 +122,7 @@ class HorarioActivity : AppCompatActivity() {
                         espacios
                     )
                     // Set Adapter to Spinner
-                    IdEspacio!!.setAdapter(adapter)
+                    IdEspacio!!.adapter = adapter
                     IdEspacio.setSelection(sel)
                 }
             }

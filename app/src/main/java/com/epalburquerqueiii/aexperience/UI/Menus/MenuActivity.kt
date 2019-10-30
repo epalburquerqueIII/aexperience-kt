@@ -98,7 +98,7 @@ class MenuActivity : AppCompatActivity() {
                     }
                     val adapter = ArrayAdapter(this@MenuActivity, android.R.layout.simple_spinner_dropdown_item, menuParent)
                     // Set Adapter to Spinner
-                    cbparentid!!.setAdapter(adapter)
+                    cbparentid!!.adapter = adapter
                     cbparentid.setSelection(sel)
                 }
             }

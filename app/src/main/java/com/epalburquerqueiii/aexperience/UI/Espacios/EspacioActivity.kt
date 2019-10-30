@@ -103,7 +103,7 @@ class EspacioActivity : AppCompatActivity() {
                     }
                     val adapter = ArrayAdapter(this@EspacioActivity, android.R.layout.simple_spinner_dropdown_item, Eventosarray)
                     // Set Adapter to Spinner
-                    IDTiposeventos!!.setAdapter(adapter)
+                    IDTiposeventos!!.adapter = adapter
                     IDTiposeventos.setSelection(sel)
                 }
             }

@@ -57,13 +57,13 @@ class EspaciosViewModel : ViewModel() {
         })
 
         if (datos.size == 0) {
-            datos!!.add(Espacio(0,"No hay registros",0,0,0,0,"",0,0))
+            datos.add(Espacio(0,"No hay registros",0,0,0,0,"",0,0))
         }
 
         return datos
     }
 
-    public fun Load()=changed.set(false)
-    public fun make_Change()=changed.set(true)
+    fun Load()=changed.set(false)
+    fun make_Change()=changed.set(true)
 
 }

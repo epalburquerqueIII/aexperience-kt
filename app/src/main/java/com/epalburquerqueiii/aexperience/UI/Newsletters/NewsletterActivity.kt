@@ -93,7 +93,7 @@ class NewsletterActivity : AppCompatActivity() {
                     }
                     val adapter = ArrayAdapter(this@NewsletterActivity, android.R.layout.simple_spinner_dropdown_item, tiponoticias)
                     // Set Adapter to Spinner
-                    cbidtiponoticias!!.setAdapter(adapter)
+                    cbidtiponoticias!!.adapter = adapter
                     cbidtiponoticias.setSelection(sel)
                 }
             }
