@@ -192,6 +192,7 @@ class PagoActivity : AppCompatActivity() {
             Reserva,
            // fechapagoCB.text.toString(),
             Tipopago,
+            Importepago.text.toString().toFloat(),
             numerotarjeta.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -235,6 +236,7 @@ class PagoActivity : AppCompatActivity() {
             IdReserva,
             fecha,
             IdTipopago,
+            Importepago.text.toString().toFloat(),
             numerotarjeta.text.toString())
         callUpdate.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {

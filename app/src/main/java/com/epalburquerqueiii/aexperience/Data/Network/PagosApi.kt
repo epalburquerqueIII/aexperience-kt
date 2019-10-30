@@ -23,6 +23,7 @@ interface PagosApi {
         @Field("IdReserva")IdReserva:Int,
       //  @Field("FechaPago") FechaPago:String,
         @Field("IdTipopago") IdTipopago:Int,
+        @Field("Importe") Importe:Float,
         @Field("NumeroTarjeta") NumeroTarjeta:String
     ):Call<responseModel>
 
@@ -34,6 +35,7 @@ interface PagosApi {
         @Field("IdReserva")IdReserva:Int,
         @Field("FechaPago") FechaPago:String,
         @Field("IdTipopago") IdTipopago:Int,
+        @Field("Importe") Importe:Float,
         @Field("NumeroTarjeta") NumeroTarjeta:String
     ):Call<responseModel>
 

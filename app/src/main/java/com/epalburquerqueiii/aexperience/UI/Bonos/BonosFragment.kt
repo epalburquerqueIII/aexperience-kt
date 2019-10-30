@@ -41,7 +41,7 @@ class BonosFragment : Fragment() {
         viewModel.getRegistros()
         bt_new.setOnClickListener{
             var intent = Intent(activity, BonoActivity::class.java)
-            var registro = Bono(0,0)
+            var registro = Bono(0,0f, 0)
             intent.putExtra("registro",registro)
             intent.putExtra("modo", Crear)
             startActivity(intent) }

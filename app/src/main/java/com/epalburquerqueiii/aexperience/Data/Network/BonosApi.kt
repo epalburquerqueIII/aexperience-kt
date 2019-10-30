@@ -20,7 +20,8 @@ interface BonosApi {
     @FormUrlEncoded
     @POST("bonos/"+BuildConfig.CREATE_DATA)
     fun Create(
-        @Field("Precio")Precio:Int,
+        @Field("ID")id:Int,
+        @Field("Precio")Precio:Float,
         @Field("Sesiones") Sesiones:Int
     ):Call<responseModel>
 
@@ -28,7 +29,8 @@ interface BonosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"bonos/"+BuildConfig.UPDATE_DATA)
     fun Update(
-        @Field("Precio")Precio: Int,
+        @Field("ID")id:Int,
+        @Field("Precio")Precio: Float,
         @Field("Sesiones")Sesiones:Int
     ):Call<responseModel>
 
@@ -36,7 +38,7 @@ interface BonosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"bonos/"+BuildConfig.DELETE_DATA)
     fun Delete(
-        @Field("Precio")precio:Int
+        @Field("ID")id:Int
 
     ):Call<responseModel>
 

@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/espaciosFragment">
+            app:startDestination="@id/BonosFragment">
+
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
@@ -18,8 +19,6 @@
         android:name="com.epalburquerqueiii.aexperience.UI.Menus.MenusFragment"
         android:label="MenusFragment"
         tools:layout="@layout/list_fragment"/>
-            app:startDestination="@id/TiposEventosFragment">
-
     <fragment
         android:id="@+id/NewslettersFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Newsletters.NewslettersFragment"
@@ -35,4 +34,9 @@
         android:id="@+id/espaciosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Espacios.EspaciosFragment"
         android:label="EspaciosFragment" />
+    <fragment
+        android:id="@+id/pagosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Pagos.PagosFragment"
+        android:label="Pagos"
+        tools:layout="@layout/list_fragment"/>
 </navigation>

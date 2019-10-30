@@ -25,7 +25,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/Reserva_item"
+                    android:id="@+id/Reservapago_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Reserva"
@@ -54,7 +54,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/Fechapago_item"
+                    android:id="@+id/Fechapagopago_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FechaPago"
@@ -72,6 +72,36 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Importe"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/indigo_900"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/Importe_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Importe"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view8"
+                android:layout_width="4dp"
+                android:layout_height="2dp" />
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
                 android:orientation="vertical">
 
                 <TextView

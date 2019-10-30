@@ -51,9 +51,10 @@ class PagosAdapter(private val pagos: ArrayList<Pago>, context: Context) : Recyc
         fun bindView(Pago: Pago){
             this.Pago = Pago
             var MostrarFechaReserva : String? = this.Pago?.FechaReserva
-            itemView.Reserva_item.text = Comun.StringYMDtoDMY(MostrarFechaReserva)
+            itemView.Reservapago_item.text = Comun.StringYMDtoDMY(MostrarFechaReserva)
             var MostrarFechaPago : String? = this.Pago?.FechaPago
-            itemView.Fechapago_item.text = Comun.StringYMDtoDMY(MostrarFechaPago)
+            itemView.Fechapagopago_item.text = Comun.StringYMDtoDMY(MostrarFechaPago)
+            itemView.Importe_item.text = this.Pago?.Importe.toString()
             itemView.Tipopago_item.text = this.Pago?.TipoPago.toString()
 //            itemView.Email.text = this.Persona?.Email
         }
