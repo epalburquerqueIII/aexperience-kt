@@ -5,15 +5,18 @@ import java.io.Serializable
 class Bono : Serializable {
 
     constructor(
-        Precio: Int?,
+        ID: Int?,
+        Precio: Float?,
         Sesiones: Int?
 
     ) {
+        this.ID = ID
         this.Precio = Precio
         this.Sesiones = Sesiones
     }
 
-    var Precio: Int? = null
+    var ID: Int? = null
+    var Precio: Float? = null
     var Sesiones: Int? = null
 
 }

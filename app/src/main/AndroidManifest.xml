@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.epalburquerqueiii.aexperience">
 
-    <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Newsletters.NewsletterActivity" />
+        <activity android:name=".UI.Newsletters.NewsletterActivity"></activity>
         <activity android:name=".UI.Horarios.HorarioActivity" />
         <activity android:name=".UI.Autorizados.AutorizadoActivity" />
         <activity android:name=".UI.ConsumoBonos.ConsumoBonoActivity" />
@@ -25,6 +24,7 @@
         <activity android:name=".UI.Tipospagos.TipospagoActivity" />
         <activity android:name=".UI.Usuarios.UsuarioActivity" />
         <activity android:name=".UI.Usuariosroles.UsuariorolActivity" />
+        <activity android:name=".UI.Bonos.BonoActivity" />
 
         <activity android:name=".UI.MainActivity">
             <intent-filter>

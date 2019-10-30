@@ -13,7 +13,6 @@ import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.BonosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.R
-import com.epalburquerqueiii.aexperience.UI.Bonos.BonosViewModel
 import com.epalburquerqueiii.aexperience.databinding.ActivityBonoBinding
 import kotlinx.android.synthetic.main.activity_bono.*
 import kotlinx.android.synthetic.main.editupdate_botton.*
@@ -55,7 +54,6 @@ class BonoActivity : AppCompatActivity() {
 
         if (modo == Editar){
             btn_delete.visibility = View.VISIBLE
-
             binding.setVariable(BR.addbonoviewmodel,registro)
             binding.executePendingBindings()
         }
@@ -66,12 +64,12 @@ class BonoActivity : AppCompatActivity() {
             if (modo == Crear) {
                 create()
             }else{
-                update(registro.Precio!!)
+                update(registro.ID!!)
             }
         }
 
         btn_delete.setOnClickListener{
-            delete(registro.Precio!!)
+            delete(registro.ID!!)
         }
     }
 
@@ -94,7 +92,8 @@ class BonoActivity : AppCompatActivity() {
     private fun create(){
 
         val post = RetrofitBuilder.builder().create(BonosApi::class.java)
-        val callcreate = post.Create(Precio.text.toString().toInt(),
+        val callcreate = post.Create(ID.text.toString().toInt(),
+                                     Precio.text.toString().toFloat(),
                                      Sesiones.text.toString().toInt())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -123,7 +122,8 @@ class BonoActivity : AppCompatActivity() {
 
         val post = RetrofitBuilder.builder().create(BonosApi::class.java)
 
-        val callUpdate = post.Update(Precio.text.toString().toInt(),
+        val callUpdate = post.Update(ID,
+                                    Precio.text.toString().toFloat(),
                                      Sesiones.text.toString().toInt())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
