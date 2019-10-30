@@ -36,6 +36,10 @@ class EventosFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setupViewModelAndObserve()
         viewModel.getRegistros()
+        bt_new.setVisibility(View.GONE)
+
+
+
         bt_new.setOnClickListener{
             var intent = Intent(activity, DetailsActivity::class.java)
             var registro = Evento(0,"","","","","","","","","","","")

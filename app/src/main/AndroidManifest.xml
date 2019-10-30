@@ -24,6 +24,7 @@
         <activity android:name=".UI.Tipospagos.TipospagoActivity" />
         <activity android:name=".UI.Usuarios.UsuarioActivity" />
         <activity android:name=".UI.Usuariosroles.UsuariorolActivity" />
+        <activity android:name=".UI.Eventos.DetailsActivity" />
         <activity android:name=".UI.Bonos.BonoActivity" />
 
         <activity android:name=".UI.MainActivity">

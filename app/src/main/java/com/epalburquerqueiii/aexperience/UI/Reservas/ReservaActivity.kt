@@ -245,7 +245,6 @@ class ReservaActivity : AppCompatActivity() {
             val selectedDate = "%02d-%02d-%04d".format(day, month+1, year)
             FechaAct.setText(selectedDate)
             fecha = selectedDate
-
         })
 
         newFragment.show(supportFragmentManager, "datePicker")
