@@ -176,7 +176,7 @@ private fun setupViewModelAndObserve() {
         }
 
         val callcreate = post.Create(
-            IDMenu.toString().toInt(),
+            IDMenu,
             IDUsuarioRoles)
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -210,7 +210,7 @@ private fun setupViewModelAndObserve() {
         if (recordsusuariosroles.size > 0) {
             IDUsuarioRoles = recordsusuariosroles[cbidUsuarioRoles.selectedItemPosition].Value!!.toInt()
         }
-        val callUpdate = post.Update(ID,IDMenu, IDUsuarioRoles.toString().toInt())
+        val callUpdate = post.Update(ID,IDMenu, IDUsuarioRoles)
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@MenuRolActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()

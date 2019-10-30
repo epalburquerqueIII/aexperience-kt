@@ -24,8 +24,8 @@ interface MenuRolesApi {
     @FormUrlEncoded
     @POST("menuroles/"+BuildConfig.CREATE_DATA)
     fun Create(
-        @Field("idMenu")IDMenu:Int,
-        @Field("idUsuarioRoles")IDUsuarioRoles:Int
+        @Field("IDMenu")IDMenu:Int,
+        @Field("IDUsuarioRoles")IDUsuarioRoles:Int
     ):Call<responseModel>
 
     //update
