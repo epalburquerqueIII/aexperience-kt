@@ -7,12 +7,11 @@ class Pago : Serializable {
     constructor(
         Id: Int?,
         IdReserva: Int?,
-       // FechaReserva: String?,
         FechaPago: String?,
         IdTipopago: Int?,
-       // TipoPago: String?,
         Importe: Float?,
         NumeroTarjeta: String?
+        //  Referencia: String?
     ) {
         this.Id = Id
         this.IdReserva = IdReserva
