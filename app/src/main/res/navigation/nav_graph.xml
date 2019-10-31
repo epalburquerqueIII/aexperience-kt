@@ -18,7 +18,6 @@
         android:name="com.epalburquerqueiii.aexperience.UI.Menus.MenusFragment"
         android:label="MenusFragment"
         tools:layout="@layout/list_fragment"/>
-            app:startDestination="@id/TiposEventosFragment">
 
     <fragment
         android:id="@+id/UsuariosFragment"
@@ -52,8 +51,5 @@
         android:id="@+id/eventosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Eventos.EventosFragment"
         android:label="EventosFragment"
-        android:id="@+id/pagosFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Pagos.PagosFragment"
-        android:label="Pagos"
         tools:layout="@layout/list_fragment"/>
 </navigation>

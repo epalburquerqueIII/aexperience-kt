@@ -49,7 +49,7 @@ class MenusAdapter(private val menus: ArrayList<Menu>, context: Context) : Recyc
 // asigna el dato del adapter al control de la vista
         fun bindView(Menu: Menu){
             this.Menu = Menu
-            itemView.parentid_item.text = this.Menu?.ParentId.toString()
+            itemView.parentid_item.text = this.Menu?.MenuParent
             itemView.titulo_item.text = this.Menu?.Titulo
             itemView.url_item.text = this.Menu?.Url
         }
