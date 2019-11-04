@@ -16,6 +16,7 @@ class Menu : Serializable {
     ) {
         this.Id = Id
         this.ParentId = ParentId
+        this.MenuParent = MenuParent
         this.Orden = Orden
         this.Titulo = Titulo
         this.Icono = Icono
@@ -25,6 +26,7 @@ class Menu : Serializable {
 
     var Id: Int? = null
     var ParentId: Int? = null
+    var MenuParent: String? = null
     var Orden: Int? = null
     var Titulo: String? = null
     var Icono: String? = null

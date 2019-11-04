@@ -77,5 +77,4 @@ class ReservasFragment : Fragment() {
         }
         viewModel.getregistrosLiveData().observe(this, registrosObserver)
    }
-
 }
