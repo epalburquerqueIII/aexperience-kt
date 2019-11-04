@@ -51,7 +51,6 @@ class UsuariosrolesAdapter(private val usuariosroles: ArrayList<Usuariorol>, con
             this.Usuariorol = Usuariorol
             itemView.nombreusuariorol_item.text = this.Usuariorol?.Nombre
         }
-
     }
 
     interface OnItemClickListener {
