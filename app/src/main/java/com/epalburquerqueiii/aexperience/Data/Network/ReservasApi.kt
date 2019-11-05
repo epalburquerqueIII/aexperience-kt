@@ -45,6 +45,22 @@ interface ReservasApi {
     ):Call<responseModel>
 
     @FormUrlEncoded
+    @POST(BuildConfig.BASE_URL+"reservas/"+BuildConfig.UPDATE_DATA)
+    fun Reservahora(
+        @Field("IdEspacioh")IdEspacioh:Int,
+        @Field("Fecha")Fecha:String,
+        @Field("ch1") Hora1:String,
+        @Field("ch2") Hora2:String,
+        @Field("ch3") Hora3:String,
+        @Field("ch4") Hora4:String,
+        @Field("ch5") Hora5:String,
+        @Field("ch6") Hora6:String,
+        @Field("ch7") Hora7:String,
+        @Field("ch8") Hora8:String
+
+    ):Call<responseModel>
+
+    @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"reservas/"+BuildConfig.DELETE_DATA)
     fun Delete(
         @Field("ID")id:Int

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Horasdia.HorasdiaFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.Reservas.ReservaHorasFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,6 +12,7 @@
         tools:context=".UI.Horarios.HorarioActivity">
 
         <include
+            android:id="@+id/btn_guardar"
             layout="@layout/editupdate_botton"
             android:layout_width="368dp"
             android:layout_height="64dp"
@@ -35,19 +37,21 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
+
+
         <EditText
-            android:id="@+id/Fecha"
+            android:id="@+id/Fecha24"
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
             android:layout_width="362dp"
             android:layout_height="52dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/background_rectangle_black"
             android:clickable="true"
             android:drawablePadding="8dp"
             android:focusable="false"
             android:hint="Fecha"
-            android:imeActionId="6"
 
+            android:imeActionId="6"
             android:imeOptions="actionUnspecified"
             android:inputType="date"
             android:maxLines="1"
@@ -55,24 +59,24 @@
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
-            app:layout_constraintTop_toBottomOf="@+id/IdEspacio"
+            app:layout_constraintTop_toBottomOf="@+id/ReservaHorario"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="27dp" />
+            tools:layout_editor_absoluteX="24dp" />
 
         <Spinner
-            android:id="@+id/IdEspacio"
+            android:id="@+id/IdEspacioh"
             style="@style/Spinner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="368dp"
+            android:layout_height="52dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="100dp"
             android:layout_marginEnd="15dp"
             android:background="@drawable/background_rectangle_black"
-            android:spinnerMode="dropdown"
             android:drawSelectorOnTop="true"
             android:entries="@array/espaciosreservables"
+            android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.461"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ReservaHorario" />
 
@@ -81,9 +85,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="124dp"
-            android:layout_marginTop="68dp"
+            android:layout_marginTop="176dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Fecha" />
+            app:layout_constraintTop_toBottomOf="@+id/Fecha24" />
 
         <Switch
             android:id="@+id/Hora2"
@@ -116,17 +120,17 @@
             android:id="@+id/Hora5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
-            android:layout_marginEnd="88dp"
+            android:layout_marginTop="176dp"
+            android:layout_marginEnd="100dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Fecha" />
+            app:layout_constraintTop_toBottomOf="@+id/Fecha24" />
 
         <Switch
             android:id="@+id/Hora6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="88dp"
+            android:layout_marginEnd="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Hora5" />
 
@@ -135,7 +139,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:layout_marginEnd="88dp"
+            android:layout_marginEnd="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Hora6" />
 
@@ -144,7 +148,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:layout_marginEnd="92dp"
+            android:layout_marginEnd="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Hora7" />
 

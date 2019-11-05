@@ -76,7 +76,6 @@
                     android:textColor="@color/grey_40" />
 
             </LinearLayout>
-
             <View
                 android:layout_width="4dp"
                 android:layout_height="2dp" />
