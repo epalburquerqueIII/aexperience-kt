@@ -79,8 +79,6 @@ interface UsuariosApi {
         @Field("password") Nif:String
     ):Call<responseModelAuth>
 
-
-
     @GET("usuarios/"+BuildConfig.GETOPTIONS_DATA)
     fun getOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
 

@@ -33,6 +33,7 @@ class EventosViewModel : ViewModel() {
 
         var datos = ArrayList<Evento>()
 
+
         val get = RetrofitBuilder.builder().create(EventosApi::class.java)
         val callget = get.GetEventos()
         callget.enqueue(object : Callback<Eventos> {

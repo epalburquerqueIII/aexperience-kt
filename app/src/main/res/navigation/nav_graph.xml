@@ -52,5 +52,5 @@
         android:id="@+id/reservaHorasFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Reservas.ReservaHorasFragment"
         android:label="reservahoras_fragment"
-        tools:layout="@layout/reservahoras_fragment" />
+        tools:layout="@layout/reservahoras_fragment" /> />
 </navigation>
