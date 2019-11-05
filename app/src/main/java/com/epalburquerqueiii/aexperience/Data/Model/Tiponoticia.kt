@@ -2,25 +2,24 @@ package com.epalburquerqueiii.aexperience.Data.Model
 
 import java.io.Serializable
 
-class Newsletter : Serializable {
+class Tiponoticia : Serializable {
 
     constructor(
         Id: Int?,
-        Email: String?,
-        Idtiponoticias: Int?
+        Nombre: String?,
+        Email: String?
 
     ) {
         this.Id = Id
+        this.Nombre = Nombre
         this.Email = Email
-        this.Idtiponoticias = Idtiponoticias
 
     }
 
     var Id: Int? = null
+    var Nombre : String? = null
     var Email: String? = null
-    var Idtiponoticias: Int? = null
 
 
 
 }
-
