@@ -16,7 +16,7 @@ import com.epalburquerqueiii.aexperience.Data.Model.Options
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.NewslettersApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
-import com.epalburquerqueiii.aexperience.Data.Network.TiponoticiasApi
+
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.databinding.ActivityNewsletterBinding
 import kotlinx.android.synthetic.main.activity_newsletter.*
@@ -72,7 +72,7 @@ class NewsletterActivity : AppCompatActivity() {
         btn_delete.setOnClickListener{
             delete(registro.Id!!)
         }
-        val get = RetrofitBuilder.builder().create(TiponoticiasApi::class.java)
+        val get = RetrofitBuilder.builder().create(NewslettersApi::class.java)
         val callget = get.GetOptions()
 
         callget.enqueue(object : Callback<Options> {
