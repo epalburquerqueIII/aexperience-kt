@@ -177,7 +177,7 @@ class ReservaHorasFragment : Fragment() {
                     fecha = selectedDate
                 })
 
-            newFragment.show(supportFragmentManager, "datePicker")
+ //           newFragment.show(supportFragmentManager, "datePicker")
         }
         // Fecha con datepicker
         // llamar servicio horas disponible retrofit
