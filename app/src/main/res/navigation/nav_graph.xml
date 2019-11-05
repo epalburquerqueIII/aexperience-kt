@@ -13,6 +13,7 @@
         android:name="com.epalburquerqueiii.aexperience.UI.ConsumoBonos.ConsumoBonosFragment"
         android:label="ConsumoBonos"
         tools:layout="@layout/list_fragment"/>
+
     <fragment
         android:id="@+id/MenusFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Menus.MenusFragment"
