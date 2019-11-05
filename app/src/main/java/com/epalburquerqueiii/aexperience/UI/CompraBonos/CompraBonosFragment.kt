@@ -9,10 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.epalburquerqueiii.aexperience.Data.Model.*
-import com.epalburquerqueiii.aexperience.Data.Network.BonosApi
-import com.epalburquerqueiii.aexperience.Data.Network.EspaciosApi
-import com.epalburquerqueiii.aexperience.Data.Network.ReservasApi
-import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
+import com.epalburquerqueiii.aexperience.Data.Network.*
 import com.epalburquerqueiii.aexperience.R
 import kotlinx.android.synthetic.main.activity_consumo_bono.*
 import kotlinx.android.synthetic.main.activity_horario.*
@@ -31,11 +28,11 @@ class CompraBonosFragment : Fragment() {
 
     private lateinit var RB : ArrayList<RadioButton>
 
-    private lateinit var st : ArrayList<String>
-
     private lateinit var vTEntradas : ArrayList<TextView>
 
     private lateinit var vTPrecios : ArrayList<TextView>
+
+    private lateinit var records: ArrayList<Option>
 
     companion object {
         fun newInstance() = CompraBonosFragment()
@@ -54,14 +51,8 @@ class CompraBonosFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        st = ArrayList<String>()
+        records = ArrayList<Option>()
 
-        st.add("deja el movil")
-        st.add("deja el movil")
-        st.add("deja el movil")
-        st.add("deja el movil")
-        st.add("deja el movil")
-        st.add("deja el movil")
 
         RB = ArrayList<RadioButton>()
         vTEntradas = ArrayList<TextView>()
@@ -91,11 +82,6 @@ class CompraBonosFragment : Fragment() {
         vTPrecios.add(tVPrecios4)
 
 
-
-        //TODO: asignar valores a rb
-        // TODO: añadir listener al boton de comprar. Pasar desde ahi los datos con sql
-
-
         // Obtiene los datos para los rb
         val get = RetrofitBuilder.builder().create(BonosApi::class.java)
         val callget = get.Get()
@@ -121,59 +107,58 @@ class CompraBonosFragment : Fragment() {
 
         })
 
-         fun transferencia_sesiones() {
-
-
-             var i: Int = 9
-
-             for (item in RB) {
-                 if (RB[i].isChecked) {
-                vTEntradas[i]
-                vTPrecios[i]
-
-                 }
-             }
-            val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
-            val callcreate = post.ReservarBono(
-
-                IDUsuario_item.text.toString().toInt(),
-                Sesiones.text.toString().toInt(),
-                Importe.text.toString().toFloat()
-
-            )
-
-            callcreate.enqueue(object : Callback<responseModel> {
-                override fun onFailure(
-                    call: Call<responseModel>,
-                    t: Throwable
-                ) {
-                    // Toast.makeText(this@PagosActivity,"failure",Toast.LENGTH_SHORT).show()
-                    Log.i("dasboardfragment:", "" + t.message)
-                }
-
-                override fun onResponse(
-                    call: Call<responseModel>,
-                    response: Response<responseModel>
-                ) {
-                    //Toast.makeText(activity,"succes",Toast.LENGTH_SHORT).show()
-                    @Suppress("NAME_SHADOWING")
-                    val response = response.body() as responseModel
-                    println("test : " + response.Error)
-                }
-
-            })
-         }
-
-
-        btncomprar.setOnClickListener {
-            transferencia_sesiones()
+        var tipodepago: Int = 0
+        if (rBTransferencia.isChecked) {
+            tipodepago = 2
+        } else {
+            if (rBEfectivo.isChecked) {
+                tipodepago = 1
+            }
         }
 
+        fun transferenciaSesiones() {
+
+            var idUsuario = 18
+
+             for (indice in RB.indices) {
+                 if (RB[indice].isChecked) {
+
+                     val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
+                     val callcreate = post.ComprarBono(
+                         idUsuario,
+                         vTEntradas[indice].toString().toInt(),
+                         vTPrecios[indice].toString().toFloat(),
+                         tipodepago
+                     )
 
 
+                     callcreate.enqueue(object : Callback<responseModel> {
+                         override fun onFailure(
+                             call: Call<responseModel>,
+                             t: Throwable
+                         ) {
+                             // Toast.makeText(this@PagosActivity,"failure",Toast.LENGTH_SHORT).show()
+                             Log.i("dasboardfragment:", "" + t.message)
+                         }
 
+                         override fun onResponse(
+                             call: Call<responseModel>,
+                             response: Response<responseModel>
+                         ) {
+                             //Toast.makeText(activity,"succes",Toast.LENGTH_SHORT).show()
+                             @Suppress("NAME_SHADOWING")
+                             val response = response.body() as responseModel
+                             println("test : " + response.Error)
+                         }
+                     })
+                 }
+             }
+         }
+
+        btncomprar.setOnClickListener {
+            transferenciaSesiones()
+        }
     }
-
 }
 
 

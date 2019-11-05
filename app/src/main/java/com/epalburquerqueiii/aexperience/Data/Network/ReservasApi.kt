@@ -69,13 +69,15 @@ interface ReservasApi {
     @GET("reservas/"+BuildConfig.GETOPTIONS_DATA)
     fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
 
-    //ReservarBono
+    //ComprarBono
     @FormUrlEncoded
-    @POST(BuildConfig.BASE_URL+"reservas/reservarbono")
-    fun ReservarBono(
+    @POST(BuildConfig.BASE_URL+"reservas/comprarbono")
+    fun ComprarBono(
         @Field("IdUsuario") IdUsuario:Int,
         @Field("Sesiones") Sesiones:Int,
-        @Field("Importe") Importe: Float
+        @Field("Importe") Importe: Float,
+        @Field("TipoPago") TipoPago: Int
+
 
 
 

@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/RegistrosFragment">
+            app:startDestination="@id/eventosFragment">
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"
@@ -35,6 +35,7 @@
         android:name="com.epalburquerqueiii.aexperience.UI.Registros.RegistrosFragment"
         android:label="Registro"
         tools:layout="@layout/list_fragment"/>
+
     <fragment
         android:id="@+id/pagosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Pagos.PagosFragment"
@@ -89,6 +90,11 @@
         android:name="com.epalburquerqueiii.aexperience.UI.Usuariosroles.UsuariosrolesFragment"
         android:label="UsuariosrolesFragment"
         tools:layout="@layout/list_fragment"/>
+    <fragment
+        android:id="@+id/compraBonosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.CompraBonos.CompraBonosFragment"
+        android:label="compra_bonos_fragment"
+        tools:layout="@layout/compra_bonos_fragment" />
     <fragment
         android:id="@+id/newsletterUIFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Newsletters.newsletterUIFragment"
