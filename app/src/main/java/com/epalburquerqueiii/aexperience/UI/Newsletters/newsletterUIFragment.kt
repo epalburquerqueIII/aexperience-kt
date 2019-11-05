@@ -70,6 +70,7 @@ class newsletterUIFragment : Fragment() {
         })
     }
 
+/*
     btn_guardar.setOnClickListener {
         val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
 // recorrer horasSwitch y si esta marcado llama a la funcion
@@ -143,7 +144,8 @@ class newsletterUIFragment : Fragment() {
 
         })
     }
-}
+
+}*/
 
 
 
