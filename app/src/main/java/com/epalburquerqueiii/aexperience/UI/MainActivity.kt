@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         val i : Int = navView.getMenu().size()
         navView.getMenu().getItem(4).setVisible(false);
 // Soluciona los problemas de Click
-        navView.bringToFront()
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -56,6 +55,7 @@ class MainActivity : AppCompatActivity() {
             , R.id.loginFragment), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navView.bringToFront()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
