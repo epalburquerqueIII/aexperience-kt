@@ -1,4 +1,4 @@
-package com.epalburquerqueiii.aexperience.UI.Eventos
+package com.epalburquerqueiii.aexperience.UI.Espacios
 
 import android.util.Log
 
@@ -13,7 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class EventosViewModel : ViewModel() {
+class EspaciosUIViewModel : ViewModel() {
 
     private val registros = MutableLiveData<ArrayList<Evento>>()
 
@@ -33,26 +33,17 @@ class EventosViewModel : ViewModel() {
 
         var datos = ArrayList<Evento>()
 
-        val get = RetrofitBuilder.builder().create(EventosApi::class.java)
-        val callget = get.GetEventos()
-        callget.enqueue(object : Callback<Eventos> {
-            override fun onFailure(call: Call<Eventos>, t: Throwable) {
-                Log.i("Eventos Fragment:", "" + t.message)
-            }
+        datos!!.add(Evento(0,"Pabellón","","Horarios\n" +
+                "Invierno: Lunes a Viernes 17:00 - 23:00 h. , Sábados 11:00 - 14:00 / 17:00 - 21:00 h.\n" +
+                "Primavera: Lunes a Viernes 18:00 - 23:00 h. , Sábados 11:00 - 14:00 / 18:00 - 21:00 h.\n" +
+                "Verano: Lunes a Viernes 11:00 - 14:00 / 18:00 - 23:00 h. , Sábados 11:00 - 14:00 / 17:00 - 21:00 h.\n" +
+                "*Domingos y Festivos Cerrado\n" +
+                "Precios\n" +
+                "Adultos (> 14 años): 7,21€\n" +
+                "Menores (< 14 años): 3,01€","","http://192.168.0.3:1313/images/espacios/pabellon.jpg","http://192.168.0.3:1313/images/espacios/pabellon.jpg","","","","",""))
+        datos!!.add(Evento(1,"Pabellaón","","","","","","","","","",""))
+        setRegistros(datos)
 
-            override fun onResponse(call: Call<Eventos>, response: Response<Eventos>) {
-
-                @Suppress("NAME_SHADOWING")
-                val response = response.body() as Eventos
-//                val size = response.Records!!.size
-                datos = response.Records!!
-               setRegistros(datos)
-            }
-        })
-
-        if (datos.size == 0) {
-            datos!!.add(Evento(0,"No hay registros","","","","","","","","","",""))
-        }
         return datos
 
     }
