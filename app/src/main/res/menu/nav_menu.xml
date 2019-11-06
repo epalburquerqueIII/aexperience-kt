@@ -15,4 +15,8 @@
         android:id="@+id/pagosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
         android:title="Pagos"></item>
+    <item
+        android:id="@+id/RegistrosFragment"
+        android:icon="@drawable/ic_person_outline_white_32dp"
+        android:title="Registro"></item>
 </menu>

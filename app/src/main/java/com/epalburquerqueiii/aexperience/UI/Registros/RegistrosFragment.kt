@@ -21,7 +21,6 @@ import java.math.BigInteger
 import java.security.MessageDigest
 
 
-private var fecha : String = ""
 class RegistrosFragment : Fragment() {
 
     fun String.SH256(): String {
@@ -68,7 +67,7 @@ class RegistrosFragment : Fragment() {
                     NombreRegistro.text.toString(),
                     NifR.text.toString(),
                     EmailR.text.toString(),
-                    fecha,
+                    FechaNacimientoR.text.toString() ,
                     TelefonoR.text.toString(),
                     PasswordR.text.toString().SH256()
                 )
@@ -98,14 +97,17 @@ class RegistrosFragment : Fragment() {
 
         }
     }
-
+    fun Int.twoDigits() =
+        if (this <= 9) "0$this" else this.toString()
     private fun showDatePickerDialog() {
         val newFragment =
             DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { datePicker, year, month, day ->
                 // +1 because January is zero
-                val selectedDate = day.toString() + "-" + (month + 1) + "-" + year
+                val dayStr = day.twoDigits()
+                val monthStr = (month + 1).twoDigits() // +1 because January is zero
+
+                val selectedDate = "$dayStr-$monthStr-$year"
                 FechaNacimientoR.setText(selectedDate)
-                fecha = selectedDate
             })
 
         newFragment.show(activity!!.supportFragmentManager, "datePicker")
