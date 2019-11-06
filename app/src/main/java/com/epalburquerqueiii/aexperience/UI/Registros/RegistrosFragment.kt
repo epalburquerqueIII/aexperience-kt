@@ -17,11 +17,17 @@ import kotlinx.android.synthetic.main.fragment_registro.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+import java.math.BigInteger
+import java.security.MessageDigest
 
 
 private var fecha : String = ""
 class RegistrosFragment : Fragment() {
+
+    fun String.SH256(): String {
+        val md = MessageDigest.getInstance("SHA-256")
+        return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
+    }
 
         private lateinit var viewModel: RegistrosViewModel
         override fun onCreateView(
@@ -56,15 +62,15 @@ class RegistrosFragment : Fragment() {
             }
 
             if (ok) {
-/*
+
                 val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-                val callcreate = post.Register(
+                val callcreate = post.register(
                     NombreRegistro.text.toString(),
                     NifR.text.toString(),
                     EmailR.text.toString(),
                     fecha,
                     TelefonoR.text.toString(),
-                    PasswordR.text.toString()
+                    PasswordR.text.toString().SH256()
                 )
                 callcreate.enqueue(object : Callback<responseModel> {
                     override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -86,7 +92,7 @@ class RegistrosFragment : Fragment() {
                     }
 
                 })
-*/
+
 
             }
 

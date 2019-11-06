@@ -80,7 +80,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
 
         // Obtiene los Usuarios
         val get = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-        val callget = get.GetOptions()
+        val callget = get.getOptions()
 
         callget.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
