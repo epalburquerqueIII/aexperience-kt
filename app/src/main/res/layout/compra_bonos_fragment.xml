@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,47 +21,28 @@
             app:layout_constraintGuide_begin="20dp" />
 
         <TextView
-            android:id="@+id/textoBonos"
-            android:layout_width="420dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="16dp"
-            android:background="#E74C3C"
-            android:text="Bonos"
-            android:textAlignment="viewStart"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#2B2B2B"
-            android:textColorLink="#F0E7E7"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/textoHorarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="28dp"
             android:text="Horarios:"
             android:textColor="#E74C3C"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.414"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textoBonos" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textoPiscina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:text="Piscina:"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textopequenopiscina"
-            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintHorizontal_bias="0.375"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textoHorarios" />
 
@@ -67,7 +50,8 @@
             android:id="@+id/textopequenopiscina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="96dp"
             android:text="de lunes a domingo de 12h a 21h"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textoHorarios" />
@@ -77,20 +61,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:text="Gimnasio:"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textopquenogimnasio"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textoPiscina" />
 
         <TextView
             android:id="@+id/textopquenogimnasio"
-            android:layout_width="250dp"
-            android:layout_height="60dp"
+            android:layout_width="246dp"
+            android:layout_height="48dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="56dp"
+            android:layout_marginEnd="60dp"
             android:text="de lunes a viernes de 12h a 14h y de 18h a 22h - sábados de 12h a 14h"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textopequenopiscina" />
@@ -99,7 +83,7 @@
             android:id="@+id/textotituloRB3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="216dp"
             android:text="Seleccionar"
             android:textColor="#E74C3C"
@@ -112,7 +96,7 @@
             android:id="@+id/textotituloRB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
+            android:layout_marginStart="56dp"
             android:text="Entradas"
             android:textColor="#E74C3C"
             app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +109,7 @@
             android:text="Precio"
             android:textColor="#E74C3C"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.377"
+            app:layout_constraintHorizontal_bias="0.352"
             app:layout_constraintStart_toEndOf="@+id/textotituloRB"
             app:layout_constraintTop_toBottomOf="@+id/textotituloRB3" />
 
@@ -183,7 +167,7 @@
             android:id="@+id/tVPrecios0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
             app:layout_constraintStart_toStartOf="parent"
@@ -193,7 +177,7 @@
             android:id="@+id/tVPrecios1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
             app:layout_constraintStart_toStartOf="parent"
@@ -214,32 +198,33 @@
             android:id="@+id/tVPrecios3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tVPrecios2" />
 
+
         <TextView
             android:id="@+id/tVPrecios4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tVPrecios3" />
 
-
         <RadioGroup
             android:id="@+id/rBGroup"
-            android:layout_width="80dp"
-            android:layout_height="193dp"
+            android:layout_width="36dp"
+            android:layout_height="197dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.996"
+            app:layout_constraintHorizontal_bias="0.936"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textopquenogimnasio"
+            app:layout_constraintVertical_bias="0.182">
 
 
             <RadioButton
@@ -305,22 +290,22 @@
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="216dp"
             android:text="menores y pensionistas"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.52"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tVEntradas4" />
-
 
         <RadioGroup
             android:id="@+id/rBGroupPagos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.971"
+            app:layout_constraintHorizontal_bias="0.887"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rBGroup">
 
@@ -347,18 +332,17 @@
             android:id="@+id/textoMenores"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginBottom="108dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="sans-serif"
             android:text="Menores: "
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textView8"
             app:layout_constraintEnd_toStartOf="@+id/textoEdadesmenores"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.61"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20"
-            app:layout_constraintVertical_bias="0.865" />
+            app:layout_constraintVertical_bias="0.57" />
 
         <TextView
             android:id="@+id/textoEdadesmenores"
@@ -381,7 +365,7 @@
             app:backgroundTint="#E74C3C"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8"
             app:layout_constraintVertical_bias="1.0" />
@@ -390,14 +374,14 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
             android:text="Entrada gratuita para menores de 4 años"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.287"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textoEdadesmenores"
-            app:layout_constraintVertical_bias="0.13" />
-
+            app:layout_constraintVertical_bias="0.26999998" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</ScrollView>

@@ -94,40 +94,37 @@ class CompraBonosFragment : Fragment() {
                 datos = response.Records!!
                 if (size > 0) {
                     for (item in datos.indices) {
-                        vTEntradas[item].setText(datos[item].Sesiones.toString())
                         vTPrecios[item].setText(datos[item].Precio.toString())
+                        vTEntradas[item].setText(datos[item].Sesiones.toString())
                     }
-
                 }
             }
-
             override fun onFailure(call: Call<Bonos>, t: Throwable) {
                 Log.i("Error Compra de Bonos :", "" + t.message)
             }
-
         })
 
-        var tipodepago: Int = 0
-        if (rBTransferencia.isChecked) {
-            tipodepago = 2
-        } else {
-            if (rBEfectivo.isChecked) {
-                tipodepago = 1
-            }
-        }
 
-        fun transferenciaSesiones() {
+        btncomprar.setOnClickListener {
 
             var idUsuario = 18
+            var tipodepago: Int = 0
 
+            if (rBTransferencia.isChecked) {
+                tipodepago = 2
+            } else {
+                if (rBEfectivo.isChecked) {
+                    tipodepago = 1
+                }
+            }
              for (indice in RB.indices) {
                  if (RB[indice].isChecked) {
 
                      val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
                      val callcreate = post.ComprarBono(
                          idUsuario,
-                         vTEntradas[indice].toString().toInt(),
-                         vTPrecios[indice].toString().toFloat(),
+                         vTPrecios[indice].text.toString().toFloat(),
+                         vTEntradas[indice].text.toString().toInt(),
                          tipodepago
                      )
 
@@ -151,13 +148,10 @@ class CompraBonosFragment : Fragment() {
                              println("test : " + response.Error)
                          }
                      })
+                     break
                  }
              }
          }
-
-        btncomprar.setOnClickListener {
-            transferenciaSesiones()
-        }
     }
 }
 

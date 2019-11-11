@@ -93,7 +93,7 @@
     <fragment
         android:id="@+id/compraBonosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.CompraBonos.CompraBonosFragment"
-        android:label="compra_bonos_fragment"
+        android:label="Bonos"
         tools:layout="@layout/compra_bonos_fragment" />
     <fragment
         android:id="@+id/newsletterUIFragment"

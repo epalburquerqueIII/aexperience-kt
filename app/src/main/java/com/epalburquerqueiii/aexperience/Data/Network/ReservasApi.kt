@@ -74,8 +74,8 @@ interface ReservasApi {
     @POST(BuildConfig.BASE_URL+"reservas/comprarbono")
     fun ComprarBono(
         @Field("IdUsuario") IdUsuario:Int,
-        @Field("Sesiones") Sesiones:Int,
         @Field("Importe") Importe: Float,
+        @Field("Sesiones") Sesiones:Int,
         @Field("TipoPago") TipoPago: Int
 
 
