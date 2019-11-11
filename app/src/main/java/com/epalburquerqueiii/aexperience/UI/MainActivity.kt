@@ -52,9 +52,22 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.homeFragment,
             R.id.eventosFragment,
-            R.id.loginFragment), drawerLayout)
+            R.id.eventosFragment,
+            R.id.espaciosUIFragment,
+            R.id.loginFragment,
+            R.id.usuariosFragment,
+            R.id.AutorizadosFragment,
+            R.id.ConsumoBonosFragment,
+            R.id.reservasFragment,
+            R.id.horariosFragment,
+            R.id.TipospagosFragment,
+            R.id.tiposEventosFragment,
+            R.id.bonosFragment,
+            R.id.PagosFragment,
+            R.id.usuariosrolesFragment,
+            R.id.newsletterUIFragment,
+            R.id.MenusFragment), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         // Soluciona los problemas de Click

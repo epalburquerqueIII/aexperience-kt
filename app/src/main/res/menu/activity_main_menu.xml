@@ -5,26 +5,69 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/homeFragment"
-            android:icon="@drawable/ic_menu_camera"
+            android:id="@+id/eventosFragment"
+            android:icon="@drawable/home_instagram"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/eventosFragment"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/icons8_billeteconestrella_90"
             android:title="@string/menu_eventos" />
         <item
+            android:id="@+id/espaciosUIFragment"
+            android:icon="@drawable/icons8_habitacion_100"
+            android:title="Espacios" />
+        <item
             android:id="@+id/loginFragment"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/icons8_escudo_96"
             android:title="Area Privada" />
         <item
-            android:id="@+id/fragment_usuario"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/UsuariosFragment"
+            android:icon="@drawable/icons8_credencialesdeusuario_90"
+            android:title="Usuarios" />
         <item
             android:id="@+id/AutorizadosFragment"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/icons8_credencialesdeusuario_90"
             android:title="Autorizados" />
-
+        <item
+            android:id="@+id/ConsumoBonosFragment"
+            android:icon="@drawable/icons8_consumobonos_100"
+            android:title="Consumo Bonos" />
+        <item
+            android:id="@+id/reservasFragment"
+            android:icon="@drawable/icons8_reserva_100"
+            android:title="Reservas" />
+        <item
+            android:id="@+id/horariosFragment"
+            android:icon="@drawable/icons8_reloj_128"
+            android:title="Horarios" />
+        <item
+            android:id="@+id/TipospagosFragment"
+            android:icon="@drawable/icons8_monedero_96"
+            android:title="Tipos de Pagos" />
+        <item
+            android:id="@+id/tiposEventosFragment"
+            android:icon="@drawable/icons8_cortinas_96"
+            android:title="Tipos de Eventos" />
+        <item
+            android:id="@+id/bonosFragment"
+            android:icon="@drawable/icons8_undefined_100"
+            android:title="Bonos" />
+        <item
+            android:id="@+id/PagosFragment"
+            android:icon="@drawable/icons8_euro_90"
+            android:title="Pagos" />
+        <item
+            android:id="@+id/usuariosrolesFragment"
+            android:icon="@drawable/siluetademultiplesusuarios"
+            android:title="Roles" />
+        <item
+            android:id="@+id/newsletterUIFragment"
+            android:icon="@drawable/icons8_listadeingredientes_90"
+            android:title="Newsletter" />
+        <item
+            android:id="@+id/MenusFragment"
+            android:icon="@drawable/icons8_menu_xbox_96"
+            android:title="Menus" />
     </group>
 
 </menu>
