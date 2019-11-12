@@ -45,7 +45,10 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val i : Int = navView.getMenu().size()
-        navView.getMenu().getItem(4).setVisible(false);
+        for (a in 4..i) {
+            navView.getMenu().getItem(a).setVisible(false)
+        }
+
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Añade menu al fragment
