@@ -47,7 +47,7 @@
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
-            app:layout_constraintTop_toBottomOf="@+id/ReservaHorario"
+            app:layout_constraintTop_toBottomOf="@+id/Email"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="24dp" />
 
@@ -82,26 +82,23 @@
                 android:orientation="vertical">
 
                 <CheckBox
-                    android:id="@+id/ch1"
+                    android:id="@+id/nwch1"
                     android:layout_width="101dp"
                     android:layout_height="wrap_content"
-                    android:text="Deportes"
                     tools:layout_editor_absoluteX="26dp"
                     tools:layout_editor_absoluteY="157dp" />
 
                 <CheckBox
-                    android:id="@+id/ch2"
+                    android:id="@+id/nwch2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cultura"
                     app:layout_constraintTop_toBottomOf="@+id/textView9"
                     tools:layout_editor_absoluteX="152dp" />
 
                 <CheckBox
-                    android:id="@+id/ch3"
+                    android:id="@+id/nwch3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Eventos"
                     tools:layout_editor_absoluteX="261dp"
                     tools:layout_editor_absoluteY="154dp" />
 
@@ -113,27 +110,24 @@
                 android:orientation="vertical">
 
                 <CheckBox
-                    android:id="@+id/ch4"
+                    android:id="@+id/nwch4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Noticias"
                     tools:layout_editor_absoluteX="26dp"
                     tools:layout_editor_absoluteY="230dp" />
 
                 <CheckBox
-                    android:id="@+id/ch5"
+                    android:id="@+id/nwch5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Música"
-                    app:layout_constraintTop_toBottomOf="@+id/ch2"
+                    app:layout_constraintTop_toBottomOf="@+id/nwch2"
                     tools:layout_editor_absoluteX="138dp" />
 
                 <CheckBox
-                    android:id="@+id/ch6"
+                    android:id="@+id/nwch6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Actividades"
-                    app:layout_constraintTop_toBottomOf="@+id/ch3"
+                    app:layout_constraintTop_toBottomOf="@+id/nwch3"
                     tools:layout_editor_absoluteX="245dp" />
             </LinearLayout>
 
@@ -143,35 +137,31 @@
                 android:orientation="vertical">
 
                 <CheckBox
-                    android:id="@+id/ch7"
+                    android:id="@+id/nwch7"
                     android:layout_width="132dp"
                     android:layout_height="wrap_content"
-                    android:text="Ferias"
-                    app:layout_constraintTop_toBottomOf="@+id/ch4"
+                    app:layout_constraintTop_toBottomOf="@+id/nwch4"
                     tools:layout_editor_absoluteX="26dp" />
 
                 <CheckBox
-                    android:id="@+id/ch8"
+                    android:id="@+id/nwch8"
                     android:layout_width="148dp"
                     android:layout_height="wrap_content"
-                    android:text="Naturaleza"
-                    app:layout_constraintTop_toBottomOf="@+id/ch5"
+                    app:layout_constraintTop_toBottomOf="@+id/nwch5"
                     tools:layout_editor_absoluteX="116dp" />
 
                 <CheckBox
-                    android:id="@+id/ch9"
+                    android:id="@+id/nwch9"
                     android:layout_width="163dp"
                     android:layout_height="wrap_content"
-                    android:text="Fiestas Regionales"
-                    app:layout_constraintTop_toBottomOf="@+id/ch6"
+                    app:layout_constraintTop_toBottomOf="@+id/nwch6"
                     tools:layout_editor_absoluteX="238dp" />
 
                 <CheckBox
-                    android:id="@+id/ch10"
+                    android:id="@+id/nwch10"
                     android:layout_width="190dp"
                     android:layout_height="58dp"
-                    android:text="Manconmunidad Lácara Los Baldíos"
-                    app:layout_constraintTop_toBottomOf="@+id/ch8"
+                    app:layout_constraintTop_toBottomOf="@+id/nwch8"
                     tools:layout_editor_absoluteX="74dp" />
 
             </LinearLayout>
@@ -198,6 +188,7 @@
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:text="Guardar"
+                    android:textColorHint="#FFFFFF"
                     android:textSize="18sp"
                     app:backgroundTint="#e41f18"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -214,7 +205,7 @@
                     android:layout_weight="1"
                     android:text="Cancelar"
                     android:textSize="18sp"
-                    app:backgroundTint="#e41f18"
+                    app:backgroundTint="#E41F18"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.822"

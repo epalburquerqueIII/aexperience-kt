@@ -6,11 +6,10 @@
         android:title="Bonos">
     </item>
     <item
-        android:id="@+id/TipospagosFragment"
+        android:id="@+id/newsletterUIFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
-        android:title="Tipos de pago">
+        android:title="Tipo Noticias">
     </item>
-
     <item
         android:id="@+id/pagosFragment"
         android:icon="@drawable/ic_person_outline_white_32dp"
