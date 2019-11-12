@@ -12,7 +12,6 @@ import retrofit2.http.POST
 
 
 interface NewslettersApi {
-
     //List
     @FormUrlEncoded
     @POST("newsletter/"+BuildConfig.VIEW_DATA)
