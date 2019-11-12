@@ -27,9 +27,9 @@ interface PagosApi {
         @Field("IdReserva")IdReserva:Int,
       //  @Field("FechaPago") FechaPago:String,
         @Field("IdTipopago") IdTipopago:Int,
-        @Field("Importe") Importe:Float,
-        @Field("NumeroTarjeta") NumeroTarjeta:String
-    ):Call<responseModel>
+        @Field("NumeroTarjeta") NumeroTarjeta:String,
+        @Field("Importe") Importe:Float
+        ):Call<responseModel>
 
     //update
     @FormUrlEncoded
@@ -40,8 +40,8 @@ interface PagosApi {
         @Field("IdReserva")IdReserva:Int,
         @Field("FechaPago") FechaPago:String,
         @Field("IdTipopago") IdTipopago:Int,
-        @Field("Importe") Importe:Float,
-        @Field("NumeroTarjeta") NumeroTarjeta:String
+        @Field("NumeroTarjeta") NumeroTarjeta:String,
+        @Field("Importe") Importe:Float
     ):Call<responseModel>
 
     //delete

@@ -25,7 +25,7 @@
             android:layout_width="371dp"
             android:layout_height="0dp"
 
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/background_rectangle_black"
             android:drawablePadding="8dp"
             android:hint="Importe"
@@ -38,7 +38,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.225"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8"
             tools:ignore="MissingConstraints" />
@@ -129,12 +129,11 @@
         <include
             layout="@layout/editupdate_botton"
             android:layout_width="397dp"
-            android:layout_height="154dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.642"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/numerotarjeta" />
+            app:layout_constraintTop_toBottomOf="@+id/Importepago" />
 
         <TextView
             android:id="@+id/textView2"
@@ -176,12 +175,14 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="Numero Tarjeta"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.031"
+            app:layout_constraintHorizontal_bias="0.033"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Importepago" />
+            app:layout_constraintTop_toBottomOf="@+id/cbtipopago" />
 
         <TextView
             android:id="@+id/textView8"
@@ -193,7 +194,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.025"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cbtipopago" />
+            app:layout_constraintTop_toBottomOf="@+id/numerotarjeta" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,8 +9,8 @@ class Pago : Serializable {
         IdReserva: Int?,
         FechaPago: String?,
         IdTipopago: Int?,
-        Importe: Float?,
         NumeroTarjeta: String?,
+        Importe: Float?,
         Referencia: String?
     ) {
         this.Id = Id
@@ -19,8 +19,8 @@ class Pago : Serializable {
         this.FechaPago = FechaPago
         this.IdTipopago = IdTipopago
         this.TipoPago = TipoPago
-        this.Importe = Importe
         this.NumeroTarjeta = NumeroTarjeta
+        this.Importe = Importe
         this.Referencia = Referencia
     }
 
@@ -30,7 +30,7 @@ class Pago : Serializable {
     var FechaPago: String? = null
     var IdTipopago: Int? = null
     var TipoPago: String? = null
-    var Importe: Float? = null
     var NumeroTarjeta: String? = null
+    var Importe: Float? = null
     var Referencia: String? = null
 }

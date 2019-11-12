@@ -42,7 +42,7 @@ class PagosFragment : Fragment() {
         bt_new.setOnClickListener{
             var intent = Intent(activity, PagoActivity::class.java)
 
-            var registro = Pago(0,0,"",0,0f,"","")
+            var registro = Pago(0,0,"",0,"",0f,"")
             intent.putExtra("registro",registro)
             intent.putExtra("modo", Crear)
             startActivity(intent)
