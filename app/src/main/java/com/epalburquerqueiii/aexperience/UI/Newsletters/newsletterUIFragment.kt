@@ -56,7 +56,7 @@ class newsletterUIFragment : Fragment() {
         nwch.add(nwch10 as CheckBox)
 
         val get = RetrofitBuilder.builder().create(NewslettersApi::class.java)
-        val callget = get.GetOptions()
+        val callget = get.GetOptions(AppData.CsrfRef)
 
         callget.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {

@@ -2,13 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/eventosFragment">>
+            app:startDestination="@id/eventosFragment">
 
-    <fragment
-        android:id="@+id/newsletterUIFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Newsletters.newsletterUIFragment"
-        android:label="fragment_newsletter_ui"
-        tools:layout="@layout/fragment_newsletter_ui" />
     <fragment
         android:id="@+id/AutorizadosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Autorizados.AutorizadosFragment"

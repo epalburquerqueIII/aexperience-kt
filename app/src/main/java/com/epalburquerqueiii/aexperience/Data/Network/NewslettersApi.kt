@@ -51,8 +51,6 @@ interface NewslettersApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"newsletter/newsletterguardar")
     fun SaveNewsletterUser(
-        @Field("X-CSRF-Token") CSRFToken:String,
-        @Field("Id")id: Int,
         @Field("Email")Email:String,
         @Field("nwch1")nwch1:Int,
         @Field("nwch2")nwch2:Int,
