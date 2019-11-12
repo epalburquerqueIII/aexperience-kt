@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.ConsumoBono
 import com.epalburquerqueiii.aexperience.Data.Model.ConsumoBonos
 import com.epalburquerqueiii.aexperience.Data.Network.ConsumoBonosApi
@@ -38,7 +39,7 @@ class ConsumoBonosViewModel : ViewModel() {
         var datos = ArrayList<ConsumoBono>()
 
         val get = RetrofitBuilder.builder().create(ConsumoBonosApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
         callget.enqueue(object : Callback<ConsumoBonos> {
             override fun onFailure(call: Call<ConsumoBonos>, t: Throwable) {
                 Log.i("ConsumoBonos Fragment:", "" + t.message)

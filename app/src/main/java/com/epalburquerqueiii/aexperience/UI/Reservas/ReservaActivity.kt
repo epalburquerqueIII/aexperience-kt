@@ -10,10 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Model.Option
-import com.epalburquerqueiii.aexperience.Data.Model.Reserva
-import com.epalburquerqueiii.aexperience.Data.Model.responseModel
+import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.*
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.databinding.ActivityReservaBinding
@@ -95,7 +92,7 @@ class ReservaActivity : AppCompatActivity() {
         // Obtiene los usuarios
 
         val get = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-        val callget = get.getOptions()
+        val callget = get.getOptions(AppData.CsrfRef)
 
         callget.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
@@ -136,7 +133,7 @@ class ReservaActivity : AppCompatActivity() {
         // Obtiene los espacios
 
         val getespacios = RetrofitBuilder.builder().create(EspaciosApi::class.java)
-        val callgetespacios = getespacios.GetOptions()
+        val callgetespacios = getespacios.GetOptions(AppData.CsrfRef)
 
         callgetespacios.enqueue(object : Callback<Options> {
 
@@ -177,7 +174,7 @@ class ReservaActivity : AppCompatActivity() {
         // Obtiene los autorizados
 
         val getautorizados = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
-        val callgetautorizados = getautorizados.GetOptions()
+        val callgetautorizados = getautorizados.GetOptions(AppData.CsrfRef)
 
         callgetautorizados.enqueue(object : Callback<Options> {
 
@@ -276,12 +273,13 @@ class ReservaActivity : AppCompatActivity() {
         }
 
         val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
-        val callcreate = post.Create(fecha,
-            fechapago,
-            HoraAct.text.toString().toInt(),
-            IdUsuario,
-            IdEspacio,
-            IdAutorizado)
+        val callcreate = post.Create(AppData.CsrfRef,
+                                    fecha,
+                                    fechapago,
+                                    HoraAct.text.toString().toInt(),
+                                    IdUsuario,
+                                    IdEspacio,
+                                    IdAutorizado)
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@ReservaActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -321,13 +319,14 @@ class ReservaActivity : AppCompatActivity() {
             IdAutorizado = recordsautorizados[cbautorizado.selectedItemPosition].Value!!.toInt()
         }
         val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
-        val callUpdate = post.Update(Id,
-            fecha,
-            fechapago,
-            HoraAct.text.toString().toInt(),
-            IdUsuario,
-            IdEspacio,
-            IdAutorizado)
+        val callUpdate = post.Update(AppData.CsrfRef,
+                                            Id,
+                                            fecha,
+                                            fechapago,
+                                            HoraAct.text.toString().toInt(),
+                                            IdUsuario,
+                                            IdEspacio,
+                                            IdAutorizado)
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@ReservaActivity, "Fallo $Id", Toast.LENGTH_SHORT).show()
@@ -356,7 +355,8 @@ class ReservaActivity : AppCompatActivity() {
 
     private fun delete(ID: Int){
         val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
-        val calldelete = post.Delete(ID.toInt())
+        val calldelete = post.Delete(AppData.CsrfRef,
+                                    ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

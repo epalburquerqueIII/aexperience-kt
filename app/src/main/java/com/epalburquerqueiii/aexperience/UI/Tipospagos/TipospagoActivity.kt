@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Option
 import com.epalburquerqueiii.aexperience.Data.Model.Tipospago
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
@@ -76,7 +77,8 @@ class TipospagoActivity : AppCompatActivity() {
     private fun create(){
 
         val post = RetrofitBuilder.builder().create(TipospagosApi::class.java)
-        val callcreate = post.Create(NombreTipospago.text.toString())
+        val callcreate = post.Create(AppData.CsrfRef,
+                                    NombreTipospago.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@PersonaActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -103,7 +105,9 @@ class TipospagoActivity : AppCompatActivity() {
     private fun update(Id:Int){
 
         val post = RetrofitBuilder.builder().create(TipospagosApi::class.java)
-        val callUpdate = post.Update(Id,NombreTipospago.text.toString())
+        val callUpdate = post.Update(AppData.CsrfRef,
+                                    Id,
+                                    NombreTipospago.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@TipospagoActivity, "Fallo $Id", Toast.LENGTH_SHORT).show()
@@ -130,7 +134,8 @@ class TipospagoActivity : AppCompatActivity() {
 
     private fun delete(Id: Int){
         val post = RetrofitBuilder.builder().create(TipospagosApi::class.java)
-        val calldelete = post.Delete(Id.toInt())
+        val calldelete = post.Delete(AppData.CsrfRef,
+                                    Id.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

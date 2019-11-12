@@ -33,8 +33,12 @@ public class Comun {
 
         //2019-01-01
         fun StringYMDtoDMY(fecha: String?): String {
-            val date:Date = SimpleDateFormat("yyyy-MM-dd").parse(fecha)
-            return DatetoString(date)
+            if (fecha != "") {
+                val date: Date = SimpleDateFormat("yyyy-MM-dd").parse(fecha)
+                return DatetoString(date)
+            } else {
+                return ""
+            }
         }
 
         fun DatetoString(date: Date): String {

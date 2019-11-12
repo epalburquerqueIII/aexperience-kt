@@ -13,15 +13,19 @@ import retrofit2.http.POST
 
 
 interface UsuariosApi {
-    //view
+    //List
 
-    @GET("usuarios/"+BuildConfig.VIEW_DATA)
-    fun get(/*debe haber un encabezado o un cuerpo*/) :Call<Usuarios>
+    @FormUrlEncoded
+    @POST("usuarios/"+BuildConfig.VIEW_DATA)
+    fun List(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+        ) :Call<Usuarios>
 
     //create
     @FormUrlEncoded
     @POST("usuarios/"+BuildConfig.CREATE_DATA)
     fun create(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Nombre")Nombre:String,
         @Field("Nif") Nif:String,
         @Field("Email") Email:String,
@@ -32,13 +36,14 @@ interface UsuariosApi {
         @Field("SesionesBonos") SesionesBonos:Int,
         @Field("Newsletter") Newsletter:Int,
         @Field("FechaBaja") FechaBaja:String
-    ):Call<responseModel>
+        ):Call<responseModel>
 
 
     //update
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"usuarios/"+BuildConfig.UPDATE_DATA)
     fun update(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id: Int,
         @Field("Nombre")Nombre:String,
         @Field("Nif") Nif:String,
@@ -50,15 +55,15 @@ interface UsuariosApi {
         @Field("SesionesBonos") SesionesBonos:Int,
         @Field("Newsletter") Newsletter:Int,
         @Field("FechaBaja") FechaBaja:String
-    ):Call<responseModel>
+        ):Call<responseModel>
 
     //delete
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"usuarios/"+BuildConfig.DELETE_DATA)
     fun delete(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id:Int
-
-    ):Call<responseModel>
+        ):Call<responseModel>
  //registrar
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"usuarios/register")
@@ -77,9 +82,12 @@ interface UsuariosApi {
     fun login(
         @Field("email")Nombre:String,
         @Field("password") Nif:String
-    ):Call<responseModelAuth>
+        ):Call<responseModelAuth>
 
-    @GET("usuarios/"+BuildConfig.GETOPTIONS_DATA)
-    fun getOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
+    @FormUrlEncoded
+    @POST("usuarios/"+BuildConfig.GETOPTIONS_DATA)
+    fun getOptions(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+        ) :Call<Options>
 
 }

@@ -13,15 +13,18 @@ import retrofit2.http.POST
 
 
 interface ReservasApi {
-    //view
-
-    @GET("reservas/"+BuildConfig.VIEW_DATA)
-    fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Reservas>
+    //List
+    @FormUrlEncoded
+    @POST("reservas/"+BuildConfig.VIEW_DATA)
+    fun List(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+    ) :Call<Reservas>
 
     //create
     @FormUrlEncoded
     @POST("reservas/"+BuildConfig.CREATE_DATA)
     fun Create(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Fecha")Fecha:String,
         @Field("FechaPago") FechaPago:String,
         @Field("Hora") Hora:Int,
@@ -35,6 +38,7 @@ interface ReservasApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"reservas/"+BuildConfig.UPDATE_DATA)
     fun Update(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Id")id: Int,
         @Field("Fecha")Fecha:String,
         @Field("FechaPago") FechaPago:String,
@@ -47,6 +51,7 @@ interface ReservasApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"reservas/"+BuildConfig.UPDATE_DATA)
     fun Reservahora(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("IdEspacioh")IdEspacioh:Int,
         @Field("Fecha")Fecha:String,
         @Field("ch1") Hora1:String,
@@ -63,6 +68,7 @@ interface ReservasApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"reservas/"+BuildConfig.DELETE_DATA)
     fun Delete(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id:Int
 
     ):Call<responseModel>
@@ -73,6 +79,7 @@ interface ReservasApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"reservas/comprarbono")
     fun ComprarBono(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("IdUsuario") IdUsuario:Int,
         @Field("Importe") Importe: Float,
         @Field("Sesiones") Sesiones:Int,

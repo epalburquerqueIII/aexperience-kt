@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UI.Newsletters.NewsletterUserActivity"></activity>
+        <activity android:name=".UI.Newsletters.NewsletterActivity" />
         <activity android:name=".UI.Newsletters.NewsletterActivity"></activity>
         <activity android:name=".UI.MenuPrivateActivity"></activity>
         <activity android:name=".UI.Horarios.HorarioActivity" />

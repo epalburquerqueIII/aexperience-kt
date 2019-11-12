@@ -9,10 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Menu
-import com.epalburquerqueiii.aexperience.Data.Model.Option
-import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Model.responseModel
+import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.MenuParentApi
 import com.epalburquerqueiii.aexperience.Data.Network.MenusApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
@@ -78,7 +75,7 @@ class MenuActivity : AppCompatActivity() {
             delete(registro.Id!!)
         }
         val get = RetrofitBuilder.builder().create(MenuParentApi::class.java)
-        val callget = get.GetOptions()
+        val callget = get.GetOptions(AppData.CsrfRef)
 
         callget.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
@@ -136,7 +133,11 @@ class MenuActivity : AppCompatActivity() {
             ParentId = records[cbparentid.selectedItemPosition].Value!!.toInt()
         }
 
-        val callcreate = post.Create(ParentId,Orden.text.toString().toInt(),Titulo.text.toString(),Icono.text.toString(),Url.text.toString(),HandleFunc.text.toString())
+        val callcreate = post.Create(AppData.CsrfRef,
+                                    ParentId,Orden.text.toString().toInt(),
+                                    Titulo.text.toString(),
+                                    Icono.text.toString(),Url.text.toString(),
+                                    HandleFunc.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@MenuActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -167,7 +168,11 @@ class MenuActivity : AppCompatActivity() {
         if (records.size > 0) {
             ParentId = records[cbparentid.selectedItemPosition].Value!!.toInt()
         }
-        val callUpdate = post.Update(ID,ParentId,Orden.text.toString().toInt(),Titulo.text.toString(),Icono.text.toString(),Url.text.toString(),HandleFunc.text.toString())
+        val callUpdate = post.Update(AppData.CsrfRef,
+                                    ID,ParentId,Orden.text.toString().toInt(),
+                                    Titulo.text.toString(),Icono.text.toString(),
+                                    Url.text.toString(),
+                                    HandleFunc.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@MenuActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
@@ -196,7 +201,8 @@ class MenuActivity : AppCompatActivity() {
 
     private fun delete(ID: Int){
         val post = RetrofitBuilder.builder().create(MenusApi::class.java)
-        val calldelete = post.Delete(ID.toInt())
+        val calldelete = post.Delete(AppData.CsrfRef,
+                                    ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

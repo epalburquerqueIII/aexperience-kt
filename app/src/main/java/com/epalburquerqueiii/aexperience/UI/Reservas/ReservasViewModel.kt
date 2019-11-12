@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Reserva
 import com.epalburquerqueiii.aexperience.Data.Model.Reservas
 import com.epalburquerqueiii.aexperience.Data.Network.ReservasApi
@@ -40,7 +41,7 @@ class ReservasViewModel : ViewModel() {
         var datos = ArrayList<Reserva>()
 
         val get = RetrofitBuilder.builder().create(ReservasApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
         callget.enqueue(object : Callback<Reservas> {
             override fun onFailure(call: Call<Reservas>, t: Throwable) {
                 Log.i("Reservas Fragment:", "" + t.message)

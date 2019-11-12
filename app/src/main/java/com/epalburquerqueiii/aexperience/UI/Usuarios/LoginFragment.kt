@@ -8,7 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.Toast
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 
 import com.epalburquerqueiii.aexperience.Data.Model.responseModelAuth
 import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
@@ -24,11 +25,21 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.math.BigInteger
 import java.security.MessageDigest
+import java.util.*
+
+import com.epalburquerqueiii.aexperience.UI.Eventos.EventosFragment
+
 
 /**
  * A simple [Fragment] subclass.
  */
 class LoginFragment : Fragment() {
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.nav_host_fragment, fragment)
+        fragmentTransaction.commit()
+    }
 
     fun String.SH256(): String {
         val md = MessageDigest.getInstance("SHA-256")
@@ -54,7 +65,7 @@ class LoginFragment : Fragment() {
                 cryptoPassword)//+"$!#"
             callLogin.enqueue(object: Callback<responseModelAuth> {
                 override fun onFailure(call: Call<responseModelAuth>, t: Throwable) {
-                   // Toast.makeText(null, "Fallo", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(null, "Email o contraseña incorrectas", Toast.LENGTH_SHORT).show()
                     Log.i("Error Login:",""+ t.message)
                 }
 
@@ -62,15 +73,18 @@ class LoginFragment : Fragment() {
                     //Toast.makeText(null,"succes", Toast.LENGTH_SHORT).show()
                     @Suppress("NAME_SHADOWING")
                     val response = response.body() as responseModelAuth
-
-                    val navView: NavigationView = activity!!.findViewById(R.id.nav_view)
-                    val i : Int = navView.getMenu().size()
-                    navView.getMenu().getItem(4).setVisible(true);
-
-//  Cambiamos el menu de la app a privado
-//                    val navView: NavigationView = it.findViewById(R.id.nav_view_private)
-// Soluciona los problemas de Click
-//                    navView.bringToFront()
+                    AppData.UserID=response.userid
+                    AppData.CsrfRef=response.data2
+                    AppData.lastdate!= Calendar.getInstance().time
+                    val navView: NavigationView = activity!!.findViewById(com.epalburquerqueiii.aexperience.R.id.nav_view)
+                    val i : Int = navView.getMenu().size() - 1
+                    for (a in 4..i) {
+                        navView.getMenu().getItem(a).setVisible(true)
+                    }
+                    replaceFragment(EventosFragment())
+                    if (AppData.CsrfRef.length > 3) {
+                        AppData.CsrfRef = AppData.CsrfRef.substring(0,4) + "$" + AppData.CsrfRef.substring(5,AppData.CsrfRef.length-1)
+                    }
 
                 }
 

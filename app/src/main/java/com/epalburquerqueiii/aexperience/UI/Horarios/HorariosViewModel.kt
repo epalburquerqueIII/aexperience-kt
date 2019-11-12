@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Horario
 import com.epalburquerqueiii.aexperience.Data.Model.Horarios
 import com.epalburquerqueiii.aexperience.Data.Network.HorariosApi
@@ -40,7 +41,7 @@ class HorariosViewModel : ViewModel() {
         var datos = ArrayList<Horario>()
 
         val get = RetrofitBuilder.builder().create(HorariosApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
         callget.enqueue(object : Callback<Horarios> {
             override fun onFailure(call: Call<Horarios>, t: Throwable) {
                 Log.i("Horarios Fragment:", "" + t.message)

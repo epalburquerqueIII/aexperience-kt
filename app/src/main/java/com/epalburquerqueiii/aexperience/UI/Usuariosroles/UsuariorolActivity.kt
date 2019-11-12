@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Option
 import com.epalburquerqueiii.aexperience.Data.Model.Usuariorol
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
@@ -75,7 +76,8 @@ class UsuariorolActivity : AppCompatActivity() {
     private fun create(){
 
         val post = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
-        val callcreate = post.Create(NombreRol.text.toString())
+        val callcreate = post.Create(AppData.CsrfRef,
+                                    NombreRol.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@AutorizadoActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -103,7 +105,8 @@ class UsuariorolActivity : AppCompatActivity() {
 
         val post = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
 
-        val callUpdate = post.Update(ID,NombreRol.text.toString())
+        val callUpdate = post.Update(AppData.CsrfRef,
+                                    ID,NombreRol.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@UsuariorolActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
@@ -132,7 +135,8 @@ class UsuariorolActivity : AppCompatActivity() {
 
     private fun delete(ID: Int){
         val post = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
-        val calldelete = post.Delete(ID.toInt())
+        val calldelete = post.Delete(AppData.CsrfRef,
+                                    ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

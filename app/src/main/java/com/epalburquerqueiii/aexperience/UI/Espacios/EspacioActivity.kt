@@ -11,10 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Espacio
-import com.epalburquerqueiii.aexperience.Data.Model.Option
-import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Model.responseModel
+import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.EspaciosApi
 import com.epalburquerqueiii.aexperience.Data.Network.EventosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
@@ -166,6 +163,7 @@ class EspacioActivity : AppCompatActivity() {
 
 //        val s:String = Comun.datetoStringsql(fecha)
         val callcreate = post.Create(
+            AppData.CsrfRef,
             Descripcion.text.toString(),
             Estado.text.toString().toInt(),
             Modo.text.toString().toInt(),
@@ -217,6 +215,7 @@ class EspacioActivity : AppCompatActivity() {
             Modo.text="0"
         }
         val callUpdate = post.Update(
+            AppData.CsrfRef,
             ID,
             Descripcion.text.toString(),
             Estado.text.toString().toInt(),
@@ -255,7 +254,8 @@ class EspacioActivity : AppCompatActivity() {
 
     private fun delete(ID: Int) {
         val post = RetrofitBuilder.builder().create(EspaciosApi::class.java)
-        val calldelete = post.Delete(ID)
+        val calldelete = post.Delete(AppData.CsrfRef,
+                                    ID)
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

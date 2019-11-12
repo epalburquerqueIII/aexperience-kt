@@ -12,15 +12,20 @@ import retrofit2.http.POST
 
 
 interface AutorizadosApi {
-    //view
 
-    @GET("autorizados/"+BuildConfig.VIEW_DATA)
-    fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Autorizados>
+// List
+    @FormUrlEncoded
+    @POST("autorizados/"+BuildConfig.VIEW_DATA)
+    fun List(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+
+    ) :Call<Autorizados>
 
     //create
     @FormUrlEncoded
     @POST("autorizados/"+BuildConfig.CREATE_DATA)
     fun Create(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("IDUsuario")IDUsuario:Int,
         @Field("NombreAutorizado") NombreAutorizado:String,
         @Field("Nif") Nif:String
@@ -30,6 +35,7 @@ interface AutorizadosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"autorizados/"+BuildConfig.UPDATE_DATA)
     fun Update(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id: Int,
         @Field("IDUsuario")IDUsuario:Int,
         @Field("NombreAutorizado") NombreAutorizado:String,
@@ -40,11 +46,15 @@ interface AutorizadosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"autorizados/"+BuildConfig.DELETE_DATA)
     fun Delete(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id: Int
 
     ):Call<responseModel>
 
-    @GET("autorizados/"+BuildConfig.GETOPTIONS_DATA)
-    fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
+    @FormUrlEncoded
+    @POST("autorizados/"+BuildConfig.GETOPTIONS_DATA)
+    fun GetOptions(
+        @Field("X-CSRF-Token") CSRFToken:String
+        ) :Call<Options>
 
 }

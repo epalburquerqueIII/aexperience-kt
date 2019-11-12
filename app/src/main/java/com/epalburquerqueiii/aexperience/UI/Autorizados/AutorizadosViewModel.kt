@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Autorizado
 import com.epalburquerqueiii.aexperience.Data.Model.Autorizados
 import com.epalburquerqueiii.aexperience.Data.Network.AutorizadosApi
@@ -40,7 +41,8 @@ class AutorizadosViewModel : ViewModel() {
         var datos = ArrayList<Autorizado>()
 
         val get = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
+
         callget.enqueue(object : Callback<Autorizados> {
             override fun onFailure(call: Call<Autorizados>, t: Throwable) {
                 Log.i("Autorizados Fragment:", "" + t.message)

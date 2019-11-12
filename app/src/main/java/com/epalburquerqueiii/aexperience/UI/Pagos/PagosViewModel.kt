@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Pago
 import com.epalburquerqueiii.aexperience.Data.Model.Pagos
 import com.epalburquerqueiii.aexperience.Data.Network.PagosApi
@@ -37,7 +38,7 @@ class PagosViewModel : ViewModel() {
         var datos = ArrayList<Pago>()
 
         val get = RetrofitBuilder.builder().create(PagosApi::class.java)
-        val callget = get.get()
+        val callget = get.List(AppData.CsrfRef)
         callget.enqueue(object : Callback<Pagos> {
             override fun onFailure(call: Call<Pagos>, t: Throwable) {
                 Log.i("Pagos Fragment:", "" + t.message)

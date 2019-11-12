@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Menu
 import com.epalburquerqueiii.aexperience.Data.Model.Menus
 import com.epalburquerqueiii.aexperience.Data.Network.MenusApi
@@ -40,7 +41,7 @@ class MenusViewModel : ViewModel() {
         var datos = ArrayList<Menu>()
 
         val get = RetrofitBuilder.builder().create(MenusApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
         callget.enqueue(object : Callback<Menus> {
             override fun onFailure(call: Call<Menus>, t: Throwable) {
                 Log.i("Menus Fragment:", "" + t.message)

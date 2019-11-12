@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Bono
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.BonosApi
@@ -92,9 +93,10 @@ class BonoActivity : AppCompatActivity() {
     private fun create(){
 
         val post = RetrofitBuilder.builder().create(BonosApi::class.java)
-        val callcreate = post.Create(ID.text.toString().toInt(),
-                                     Precio.text.toString().toFloat(),
-                                     Sesiones.text.toString().toInt())
+        val callcreate = post.Create(AppData.CsrfRef,
+                                    ID.text.toString().toInt(),
+                                    Precio.text.toString().toFloat(),
+                                    Sesiones.text.toString().toInt())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@AutorizadoActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -122,9 +124,10 @@ class BonoActivity : AppCompatActivity() {
 
         val post = RetrofitBuilder.builder().create(BonosApi::class.java)
 
-        val callUpdate = post.Update(ID,
+        val callUpdate = post.Update(AppData.CsrfRef,
+                                    ID,
                                     Precio.text.toString().toFloat(),
-                                     Sesiones.text.toString().toInt())
+                                    Sesiones.text.toString().toInt())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@BonoActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
@@ -153,7 +156,8 @@ class BonoActivity : AppCompatActivity() {
 
     private fun delete(ID: Int){
         val post = RetrofitBuilder.builder().create(BonosApi::class.java)
-        val calldelete = post.Delete(ID.toInt())
+        val calldelete = post.Delete(AppData.CsrfRef,
+                                    ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

@@ -84,7 +84,7 @@ class CompraBonosFragment : Fragment() {
 
         // Obtiene los datos para los rb
         val get = RetrofitBuilder.builder().create(BonosApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
 
         callget.enqueue(object : Callback<Bonos> {
             override fun onResponse(call: Call<Bonos>, response: Response<Bonos>) {
@@ -121,11 +121,11 @@ class CompraBonosFragment : Fragment() {
                  if (RB[indice].isChecked) {
 
                      val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
-                     val callcreate = post.ComprarBono(
-                         idUsuario,
-                         vTPrecios[indice].text.toString().toFloat(),
-                         vTEntradas[indice].text.toString().toInt(),
-                         tipodepago
+                     val callcreate = post.ComprarBono(AppData.CsrfRef,
+                                                        idUsuario,
+                                                        vTPrecios[indice].text.toString().toFloat(),
+                                                        vTEntradas[indice].text.toString().toInt(),
+                                                        tipodepago
                      )
 
 

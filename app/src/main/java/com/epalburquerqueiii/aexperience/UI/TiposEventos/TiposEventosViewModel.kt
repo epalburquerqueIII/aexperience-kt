@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.TiposEvento
 import com.epalburquerqueiii.aexperience.Data.Model.TiposEventos
 import com.epalburquerqueiii.aexperience.Data.Network.TiposEventosApi
@@ -39,7 +40,7 @@ class TiposEventosViewModel : ViewModel() {
         var datos = ArrayList<TiposEvento>()
 
         val get = RetrofitBuilder.builder().create(TiposEventosApi::class.java)
-        val callget = get.Get()
+        val callget = get.List()
             callget.enqueue(object : Callback<TiposEventos> {
             override fun onFailure(call: Call<TiposEventos>, t: Throwable) {
                 Log.i("Tiposeventos Fragment:", "" + t.message)

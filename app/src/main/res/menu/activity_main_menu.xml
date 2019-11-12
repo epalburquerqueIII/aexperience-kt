@@ -5,28 +5,24 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/eventosFragment"
-            android:icon="@drawable/home_instagram"
+            android:id="@+id/homeFragment"
+            android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/eventosFragment"
-            android:icon="@drawable/icons8_billeteconestrella_90"
+            android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_eventos" />
         <item
-            android:id="@+id/espaciosUIFragment"
-            android:icon="@drawable/icons8_habitacion_100"
-            android:title="Espacios" />
-        <item
             android:id="@+id/loginFragment"
-            android:icon="@drawable/icons8_escudo_96"
+            android:icon="@drawable/ic_menu_slideshow"
             android:title="Area Privada" />
         <item
-            android:id="@+id/UsuariosFragment"
-            android:icon="@drawable/icons8_credencialesdeusuario_90"
-            android:title="Usuarios" />
+            android:id="@+id/fragment_usuario"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/menu_tools" />
         <item
             android:id="@+id/AutorizadosFragment"
-            android:icon="@drawable/icons8_credencialesdeusuario_90"
+            android:icon="@drawable/ic_menu_manage"
             android:title="Autorizados" />
         <item
             android:id="@+id/ConsumoBonosFragment"

@@ -12,15 +12,19 @@ import retrofit2.http.POST
 
 
 interface NewslettersApi {
-    //view
 
-    @GET("newsletter/"+BuildConfig.VIEW_DATA)
-    fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Newsletters>
+    //List
+    @FormUrlEncoded
+    @POST("newsletter/"+BuildConfig.VIEW_DATA)
+    fun List(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+    ) :Call<Newsletters>
 
     //create
     @FormUrlEncoded
     @POST("newsletter/"+BuildConfig.CREATE_DATA)
     fun Create(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Email")Email:String,
         @Field("Idtiponoticias")Idtiponoticias:Int
     ):Call<responseModel>
@@ -29,6 +33,7 @@ interface NewslettersApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"newsletter/"+BuildConfig.UPDATE_DATA)
     fun Update(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Id")id: Int,
         @Field("Email")Email:String,
         @Field("Idtiponoticias")Idtiponoticias:Int
@@ -38,14 +43,15 @@ interface NewslettersApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"newsletter/"+BuildConfig.DELETE_DATA)
     fun Delete(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Id")id:Int
-
     ):Call<responseModel>
 
     //SaveNewsletterUser
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"newsletter/newsletterguardar")
     fun SaveNewsletterUser(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Id")id: Int,
         @Field("Email")Email:String,
         @Field("ch1")ch1:Int,
@@ -60,7 +66,10 @@ interface NewslettersApi {
         @Field("ch10")ch10:Int
     ):Call<responseModel>
 
-    @GET("newsletter/getoptions"+BuildConfig.GETOPTIONS_DATA)
-    fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
+    @FormUrlEncoded
+    @POST("newsletter/getoptions"+BuildConfig.GETOPTIONS_DATA)
+    fun GetOptions(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+    ) :Call<Options>
 
 }
