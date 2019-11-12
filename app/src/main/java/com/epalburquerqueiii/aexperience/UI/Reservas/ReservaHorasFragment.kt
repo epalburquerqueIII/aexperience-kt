@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Switch
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Horadia
 import com.epalburquerqueiii.aexperience.Data.Model.Horasdias
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
@@ -65,7 +66,7 @@ class ReservaHorasFragment : Fragment() {
         // Llamada a Horas dia
 
         val get = RetrofitBuilder.builder().create(HorasdiaApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
 
         callget.enqueue(object : Callback<Horasdias> {
             override fun onResponse(call: Call<Horasdias>, response: Response<Horasdias>) {
@@ -100,49 +101,49 @@ class ReservaHorasFragment : Fragment() {
             IdEspacios = IdEspacioh.selectedItemPosition
 
 
-            val callcreate = post.Reservahora(
-                IdEspacios,
-                Fecha24.text.toString(),
-                if (horasSwitch[0].isChecked) {
-                    horasSwitch[0].text.toString()
-                } else {
-                    "0"
-                },
-                if (horasSwitch[1].isChecked) {
-                    horasSwitch[1].text.toString()
-                } else {
-                    "0"
-                },
-                if (horasSwitch[2].isChecked) {
-                    horasSwitch[2].text.toString()
-                } else {
-                    "0"
-                },
-                if (horasSwitch[3].isChecked) {
-                    horasSwitch[3].text.toString()
-                } else {
-                    "0"
-                },
-                if (horasSwitch[4].isChecked) {
-                    horasSwitch[4].text.toString()
-                } else {
-                    "0"
-                },
-                if (horasSwitch[5].isChecked) {
-                    horasSwitch[5].text.toString()
-                } else {
-                    "0"
-                },
-                if (horasSwitch[6].isChecked) {
-                    horasSwitch[6].text.toString()
-                } else {
-                    "0"
-                },
-                if (horasSwitch[7].isChecked) {
-                    horasSwitch[7].text.toString()
-                } else {
-                    "0"
-                }
+            val callcreate = post.Reservahora(AppData.CsrfRef,
+                                            IdEspacios,
+                                            Fecha24.text.toString(),
+                                            if (horasSwitch[0].isChecked) {
+                                                horasSwitch[0].text.toString()
+                                            } else {
+                                                "0"
+                                            },
+                                            if (horasSwitch[1].isChecked) {
+                                                horasSwitch[1].text.toString()
+                                            } else {
+                                                "0"
+                                            },
+                                            if (horasSwitch[2].isChecked) {
+                                                horasSwitch[2].text.toString()
+                                            } else {
+                                                "0"
+                                            },
+                                            if (horasSwitch[3].isChecked) {
+                                                horasSwitch[3].text.toString()
+                                            } else {
+                                                "0"
+                                            },
+                                            if (horasSwitch[4].isChecked) {
+                                                horasSwitch[4].text.toString()
+                                            } else {
+                                                "0"
+                                            },
+                                            if (horasSwitch[5].isChecked) {
+                                                horasSwitch[5].text.toString()
+                                            } else {
+                                                "0"
+                                            },
+                                            if (horasSwitch[6].isChecked) {
+                                                horasSwitch[6].text.toString()
+                                            } else {
+                                                "0"
+                                            },
+                                            if (horasSwitch[7].isChecked) {
+                                                horasSwitch[7].text.toString()
+                                            } else {
+                                                "0"
+                                            }
             )
 
 

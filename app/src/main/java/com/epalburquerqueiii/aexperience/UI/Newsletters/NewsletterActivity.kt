@@ -9,11 +9,8 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Newsletter
-import com.epalburquerqueiii.aexperience.Data.Model.Option
-import com.epalburquerqueiii.aexperience.Data.Model.Options
+import com.epalburquerqueiii.aexperience.Data.Model.*
 
-import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.NewslettersApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 
@@ -73,7 +70,7 @@ class NewsletterActivity : AppCompatActivity() {
             delete(registro.Id!!)
         }
         val get = RetrofitBuilder.builder().create(NewslettersApi::class.java)
-        val callget = get.GetOptions()
+        val callget = get.GetOptions(AppData.CsrfRef)
 
         callget.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
@@ -93,7 +90,7 @@ class NewsletterActivity : AppCompatActivity() {
                     }
                     val adapter = ArrayAdapter(this@NewsletterActivity, android.R.layout.simple_spinner_dropdown_item, tiponoticias)
                     // Set Adapter to Spinner
-                    cbidtiponoticias!!.setAdapter(adapter)
+                    cbidtiponoticias!!.adapter = adapter
                     cbidtiponoticias.setSelection(sel)
                 }
             }
@@ -119,7 +116,9 @@ class NewsletterActivity : AppCompatActivity() {
             Idtiponoticias = records[cbidtiponoticias.selectedItemPosition].Value!!.toInt()
         }
 
-        val callcreate = post.Create(Email.text.toString(),Idtiponoticias)
+        val callcreate = post.Create(AppData.CsrfRef,
+                                    Email.text.toString(),
+                                    Idtiponoticias)
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@MenuActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -150,7 +149,9 @@ class NewsletterActivity : AppCompatActivity() {
         if (records.size > 0) {
             Idtiponoticias = records[cbidtiponoticias.selectedItemPosition].Value!!.toInt()
         }
-        val callUpdate = post.Update(Id,Email.text.toString(),Idtiponoticias)
+        val callUpdate = post.Update(AppData.CsrfRef,
+                                    Id,Email.text.toString(),
+                                    Idtiponoticias)
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@NewsletterActivity, "Fallo $Id", Toast.LENGTH_SHORT).show()
@@ -179,7 +180,8 @@ class NewsletterActivity : AppCompatActivity() {
 
     private fun delete(Id: Int){
         val post = RetrofitBuilder.builder().create(NewslettersApi::class.java)
-        val calldelete = post.Delete(Id.toInt())
+        val calldelete = post.Delete(AppData.CsrfRef,
+                                    Id.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

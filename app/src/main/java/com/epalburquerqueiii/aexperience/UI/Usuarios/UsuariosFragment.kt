@@ -27,12 +27,9 @@ class UsuariosFragment : Fragment() {
     private val Editar = 1
 
     override fun onCreateView(
-
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.list_fragment, container, false)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

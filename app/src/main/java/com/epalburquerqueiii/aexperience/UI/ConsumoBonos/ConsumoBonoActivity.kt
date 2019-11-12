@@ -10,10 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.ConsumoBono
-import com.epalburquerqueiii.aexperience.Data.Model.Option
-import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Model.responseModel
+import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.*
 import com.epalburquerqueiii.aexperience.R
 import com.epalburquerqueiii.aexperience.UI.Dialog.DatePickerFragment
@@ -34,7 +31,9 @@ class ConsumoBonoActivity : AppCompatActivity() {
 
     private val idusuario:Int = 8
 
-    private lateinit var records: ArrayList<Option>
+    private lateinit var records_usuarios: ArrayList<Option>
+    private lateinit var records_espacios: ArrayList<Option>
+    private lateinit var records_autorizados: ArrayList<Option>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +77,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
 
         // Obtiene los Usuarios
         val get = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-        val callget = get.GetOptions()
+        val callget = get.getOptions(AppData.CsrfRef)
 
         callget.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
@@ -86,11 +85,11 @@ class ConsumoBonoActivity : AppCompatActivity() {
                 val response = response.body() as Options
                 val size = response.Options!!.size
                 var sel: Int = 0
-                records = response.Options!!
+                records_usuarios = response.Options!!
                 if (size > 0) {
                     val usuarios = ArrayList<String>()
                     var i: Int = 0
-                    for (item in records) {
+                    for (item in records_usuarios) {
                         usuarios.add(item.DisplayText.toString())
                         if (registro.IDUsuario == item.Value) {
                             sel = i
@@ -116,7 +115,8 @@ class ConsumoBonoActivity : AppCompatActivity() {
 
         // Obtiene los Espacios
         val getEspacios = RetrofitBuilder.builder().create(EspaciosApi::class.java)
-        val callgetEspacios = getEspacios.GetOptions()
+
+        val callgetEspacios = getEspacios.GetOptions(AppData.CsrfRef)
 
         callgetEspacios.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
@@ -124,24 +124,24 @@ class ConsumoBonoActivity : AppCompatActivity() {
                 val response = response.body() as Options
                 val size = response.Options!!.size
                 var sel: Int = 0
-                records = response.Options!!
+                records_espacios = response.Options!!
                 if (size > 0) {
                     val espacios = ArrayList<String>()
                     var i: Int = 0
-                    for (item in records) {
+                    for (item in records_espacios) {
                         espacios.add(item.DisplayText.toString())
                         if (registro.IDEspacio == item.Value) {
                             sel = i
                         }
                         i++
                     }
-                    val adapter = ArrayAdapter(
+                    val adapterEsp = ArrayAdapter(
                         this@ConsumoBonoActivity,
                         android.R.layout.simple_spinner_dropdown_item,
                         espacios
                     )
                     // Set Adapter to Spinner
-                    cbEspacio!!.setAdapter(adapter)
+                    cbEspacio!!.setAdapter(adapterEsp)
                     cbEspacio.setSelection(sel)
                 }
             }
@@ -155,7 +155,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
 
         // Obtiene los Autorizados
         val getAutorizados = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
-        val callgetAutorizados = getAutorizados.GetOptions()
+        val callgetAutorizados = getAutorizados.GetOptions(AppData.CsrfRef)
 
         callgetAutorizados.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
@@ -163,25 +163,26 @@ class ConsumoBonoActivity : AppCompatActivity() {
                 val response = response.body() as Options
                 val size = response.Options!!.size
                 var sel: Int = 0
-                records = response.Options!!
+                records_autorizados = response.Options!!
                 if (size > 0) {
                     val autorizados = ArrayList<String>()
                     var i: Int = 0
-                    for (item in records) {
+                    for (item in records_autorizados) {
                         autorizados.add(item.DisplayText.toString())
                         if (registro.IDAutorizado == item.Value) {
                             sel = i
                         }
                         i++
                     }
-                    val adapter = ArrayAdapter(
+                    val adapterAut = ArrayAdapter(
                         this@ConsumoBonoActivity,
                         android.R.layout.simple_spinner_dropdown_item,
                         autorizados
                     )
                     // Set Adapter to Spinner
-                    cbAutorizado!!.setAdapter(adapter)
+                    cbAutorizado!!.setAdapter(adapterAut)
                     cbAutorizado.setSelection(sel)
+
                 }
             }
 
@@ -189,7 +190,6 @@ class ConsumoBonoActivity : AppCompatActivity() {
                 Toast.makeText(this@ConsumoBonoActivity, "failure", Toast.LENGTH_SHORT).show()
                 Log.i("Error en Autorizados :", "" + t.message)
             }
-
         })
 
         FechaCB.setOnClickListener {
@@ -232,12 +232,20 @@ class ConsumoBonoActivity : AppCompatActivity() {
         var Usuarioid :Int = 0
         var Espacioid :Int = 0
         var Autorizadoid :Int = 0
-        if (records.size > 0) {
-            Usuarioid = records[cbUsuario.selectedItemPosition].Value!!.toInt()
-            Espacioid = records[cbEspacio.selectedItemPosition].Value!!.toInt()
-            Autorizadoid = records[cbAutorizado.selectedItemPosition].Value!!.toInt()
+
+        if (records_usuarios.size > 0) {
+            Usuarioid = records_usuarios[cbUsuario.selectedItemPosition].Value!!.toInt()
         }
-        val callcreate = post.Create(FechaCB.text.toString(), Sesiones.text as Int, Usuarioid, Espacioid, Autorizadoid)
+
+        if (records_espacios.size > 0) {
+            Espacioid = records_espacios[cbEspacio.selectedItemPosition].Value!!.toInt()
+        }
+
+        if (records_autorizados.size > 0) {
+            Autorizadoid = records_autorizados[cbAutorizado.selectedItemPosition].Value!!.toInt()
+        }
+
+        val callcreate = post.Create(AppData.CsrfRef,FechaCB.text.toString(), Sesiones.text.toString().toInt(), Usuarioid, Espacioid, Autorizadoid)
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@AutorizadoActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -263,12 +271,20 @@ class ConsumoBonoActivity : AppCompatActivity() {
         var Usuarioid :Int = 0
         var Espacioid :Int = 0
         var Autorizadoid :Int = 0
-        if (records.size > 0) {
-            Usuarioid = records[cbUsuario.selectedItemPosition].Value!!.toInt()
-            Espacioid = records[cbEspacio.selectedItemPosition].Value!!.toInt()
-            Autorizadoid = records[cbAutorizado.selectedItemPosition].Value!!.toInt()
+
+        if (records_usuarios.size > 0) {
+            Usuarioid = records_usuarios[cbUsuario.selectedItemPosition].Value!!.toInt()
         }
-        val callUpdate = post.Update(ID,FechaCB.text.toString(),Sesiones.text as Int,Usuarioid,Espacioid,Autorizadoid)
+
+        if (records_espacios.size > 0) {
+            Espacioid = records_espacios[cbEspacio.selectedItemPosition].Value!!.toInt()
+        }
+
+        if (records_autorizados.size > 0) {
+            Autorizadoid = records_autorizados[cbAutorizado.selectedItemPosition].Value!!.toInt()
+        }
+
+        val callUpdate = post.Update(AppData.CsrfRef,ID,FechaCB.text.toString(),Sesiones.text.toString().toInt(),Usuarioid,Espacioid,Autorizadoid)
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@ConsumoBonoActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
@@ -293,7 +309,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
 
     private fun delete(ID: Int){
         val post = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
-        val calldelete = post.Delete(ID.toInt())
+        val calldelete = post.Delete(AppData.CsrfRef,ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
             }

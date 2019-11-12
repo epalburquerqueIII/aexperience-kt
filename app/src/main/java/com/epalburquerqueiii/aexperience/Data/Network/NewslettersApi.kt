@@ -46,6 +46,7 @@ interface NewslettersApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"newsletter/newsletterguardar")
     fun SaveNewsletterUser(
+        @Field("Id")id: Int,
         @Field("Email")Email:String,
         @Field("nwch1")nwch1:Int,
         @Field("nwch2")nwch2:Int,
@@ -59,7 +60,10 @@ interface NewslettersApi {
         @Field("nwch10")nwch10:Int
     ):Call<responseModel>
 
-    @GET("newsletter/"+BuildConfig.GETOPTIONS_DATA)
-    fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
+    @FormUrlEncoded
+    @POST("newsletter/"+BuildConfig.GETOPTIONS_DATA)
+    fun GetOptions(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+    ) :Call<Options>
 
 }

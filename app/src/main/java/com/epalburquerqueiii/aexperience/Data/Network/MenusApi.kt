@@ -11,15 +11,18 @@ import retrofit2.http.POST
 
 
 interface MenusApi {
-    //view
+    //List
 
     @GET("menus/"+BuildConfig.VIEW_DATA)
-    fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Menus>
+    fun List(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+    ) :Call<Menus>
 
     //create
     @FormUrlEncoded
     @POST("menus/"+BuildConfig.CREATE_DATA)
     fun Create(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ParentId")ParentId:Int,
         @Field("Orden")Orden:Int,
         @Field("Titulo") Titulo:String,
@@ -32,6 +35,7 @@ interface MenusApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"menus/"+BuildConfig.UPDATE_DATA)
     fun Update(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Id")id: Int,
         @Field("ParentId")IDUsuario:Int,
         @Field("Orden")Orden:Int,
@@ -45,6 +49,7 @@ interface MenusApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"menus/"+BuildConfig.DELETE_DATA)
     fun Delete(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Id")id:Int
 
     ):Call<responseModel>

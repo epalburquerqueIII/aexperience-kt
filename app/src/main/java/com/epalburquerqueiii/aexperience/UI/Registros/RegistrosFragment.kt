@@ -17,13 +17,16 @@ import kotlinx.android.synthetic.main.fragment_registro.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.math.BigInteger
+import java.security.MessageDigest
 
 
-private var fecha : String = ""
-private var email: Boolean = false
-private var pass: String=""
+class RegistrosFragment : Fragment() {
 
-class Registros31Fragment : Fragment() {
+    fun String.SH256(): String {
+        val md = MessageDigest.getInstance("SHA-256")
+        return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
+    }
 
         private lateinit var viewModel: RegistrosViewModel
         override fun onCreateView(
@@ -58,14 +61,15 @@ class Registros31Fragment : Fragment() {
             }
 
             if (ok) {
+
                 val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-                val callcreate = post.Register(
+                val callcreate = post.register(
                     NombreRegistro.text.toString(),
                     NifR.text.toString(),
                     EmailR.text.toString(),
-                    fecha,
+                    FechaNacimientoR.text.toString() ,
                     TelefonoR.text.toString(),
-                    PasswordR.text.toString()
+                    PasswordR.text.toString().SH256()
                 )
                 callcreate.enqueue(object : Callback<responseModel> {
                     override fun onFailure(call: Call<responseModel>, t: Throwable) {
@@ -81,24 +85,31 @@ class Registros31Fragment : Fragment() {
                         @Suppress("NAME_SHADOWING")
                         val response = response.body() as responseModel
                         println("test : " + response.Error)
+// Changed true
+
+
                     }
 
                 })
 
+
             }
+
         }
     }
-
+    fun Int.twoDigits() =
+        if (this <= 9) "0$this" else this.toString()
     private fun showDatePickerDialog() {
         val newFragment =
             DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { datePicker, year, month, day ->
                 // +1 because January is zero
-                val selectedDate = day.toString() + "-" + (month + 1) + "-" + year
+                val dayStr = day.twoDigits()
+                val monthStr = (month + 1).twoDigits() // +1 because January is zero
+
+                val selectedDate = "$dayStr-$monthStr-$year"
                 FechaNacimientoR.setText(selectedDate)
-                fecha = selectedDate
             })
 
         newFragment.show(activity!!.supportFragmentManager, "datePicker")
     }
-
 }

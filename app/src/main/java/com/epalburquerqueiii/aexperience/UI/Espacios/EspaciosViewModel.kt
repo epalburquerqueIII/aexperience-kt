@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Espacio
 import com.epalburquerqueiii.aexperience.Data.Model.Espacios
 import com.epalburquerqueiii.aexperience.Data.Network.EspaciosApi
@@ -40,7 +41,7 @@ class EspaciosViewModel : ViewModel() {
         var datos = ArrayList<Espacio>()
 
         val get = RetrofitBuilder.builder().create(EspaciosApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
         callget.enqueue(object : Callback<Espacios> {
             override fun onFailure(call: Call<Espacios>, t: Throwable) {
                 Log.i("Espacios Fragment:", "" + t.message)
@@ -57,13 +58,13 @@ class EspaciosViewModel : ViewModel() {
         })
 
         if (datos.size == 0) {
-            datos!!.add(Espacio(0,"No hay registros",0,0,0,0,"",0,0))
+            datos.add(Espacio(0,"No hay registros",0,0,0,0,"",0,0))
         }
 
         return datos
     }
 
-    public fun Load()=changed.set(false)
-    public fun make_Change()=changed.set(true)
+    fun Load()=changed.set(false)
+    fun make_Change()=changed.set(true)
 
 }

@@ -13,14 +13,18 @@ import retrofit2.http.POST
 
 interface EspaciosApi {
 
-
-    @GET("espacios/"+BuildConfig.VIEW_DATA)
-    fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Espacios>
+    // List
+    @FormUrlEncoded
+    @POST("espacios/"+BuildConfig.VIEW_DATA)
+    fun List(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+        ) :Call<Espacios>
 
     //create
     @FormUrlEncoded
     @POST("espacios/"+BuildConfig.CREATE_DATA)
     fun Create(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Descripcion") Descripcion:String,
         @Field("Estado") Estado: Int,
         @Field("Modo") Modo: Int,
@@ -39,6 +43,7 @@ interface EspaciosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"espacios/"+BuildConfig.UPDATE_DATA)
     fun Update(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id: Int,
         @Field("Descripcion")Descripcion:String,
         @Field("Estado") Estado:Int,
@@ -55,11 +60,15 @@ interface EspaciosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"espacios/"+BuildConfig.DELETE_DATA)
     fun Delete(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id:Int
 
     ):Call<responseModel>
 
-    @GET("espacios/"+BuildConfig.GETOPTIONS_DATA)
-    fun GetOptions(/*debe haber un encabezado o un cuerpo*/) :Call<Options>
+    @FormUrlEncoded
+    @POST("espacios/"+BuildConfig.GETOPTIONS_DATA)
+    fun GetOptions(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+        ) :Call<Options>
 
 }

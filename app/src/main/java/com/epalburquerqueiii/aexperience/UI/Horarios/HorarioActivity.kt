@@ -10,10 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Horario
-import com.epalburquerqueiii.aexperience.Data.Model.Option
-import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Model.responseModel
+import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.EspaciosApi
 import com.epalburquerqueiii.aexperience.Data.Network.HorariosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
@@ -28,7 +25,7 @@ import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
+
 import kotlin.collections.ArrayList
 
 
@@ -97,7 +94,7 @@ class HorarioActivity : AppCompatActivity() {
 
         //Obtener los espacios
         val get = RetrofitBuilder.builder().create(EspaciosApi::class.java)
-        val callget = get.GetOptions()
+        val callget = get.GetOptions(AppData.CsrfRef)
 
         callget.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
@@ -122,7 +119,7 @@ class HorarioActivity : AppCompatActivity() {
                         espacios
                     )
                     // Set Adapter to Spinner
-                    IdEspacio!!.setAdapter(adapter)
+                    IdEspacio!!.adapter = adapter
                     IdEspacio.setSelection(sel)
                 }
             }
@@ -192,6 +189,7 @@ class HorarioActivity : AppCompatActivity() {
         }
 
         val callcreate = post.Create(
+            AppData.CsrfRef,
             Espacioid,
             Descripcion.text.toString(),
             fecini,
@@ -231,6 +229,7 @@ class HorarioActivity : AppCompatActivity() {
         }
 
         val callUpdate = post.Update(
+            AppData.CsrfRef,
             ID,
             Espacioid,
             Descripcion.text.toString(),
@@ -262,7 +261,8 @@ class HorarioActivity : AppCompatActivity() {
 
     private fun delete(ID: Int){
         val post = RetrofitBuilder.builder().create(HorariosApi::class.java)
-        val calldelete = post.Delete(ID.toInt())
+        val calldelete = post.Delete(AppData.CsrfRef,
+                                    ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
             }

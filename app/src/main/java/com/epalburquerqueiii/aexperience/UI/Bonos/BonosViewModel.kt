@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Bono
 import com.epalburquerqueiii.aexperience.Data.Model.Bonos
 import com.epalburquerqueiii.aexperience.Data.Network.BonosApi
@@ -41,7 +42,7 @@ class BonosViewModel : ViewModel() {
         var datos = ArrayList<Bono>()
 
         val get = RetrofitBuilder.builder().create(BonosApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
         callget.enqueue(object : Callback<Bonos> {
             override fun onFailure(call: Call<Bonos>, t: Throwable) {
                 Log.i("Bonos Fragment:", "" + t.message)
@@ -64,7 +65,7 @@ class BonosViewModel : ViewModel() {
         return datos
     }
 
-    public fun Load()=changed.set(false)
-    public fun make_Change()=changed.set(true)
+    fun Load()=changed.set(false)
+    fun make_Change()=changed.set(true)
 
 }

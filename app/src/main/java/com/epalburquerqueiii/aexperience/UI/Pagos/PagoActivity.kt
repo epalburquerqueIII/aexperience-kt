@@ -10,10 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Option
-import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Model.Pago
-import com.epalburquerqueiii.aexperience.Data.Model.responseModel
+import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.PagosApi
 import com.epalburquerqueiii.aexperience.Data.Network.ReservasApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
@@ -103,7 +100,7 @@ class PagoActivity : AppCompatActivity() {
                     }
                     val adapter = ArrayAdapter(this@PagoActivity, android.R.layout.simple_spinner_dropdown_item, IdReserva)
                     // Set Adapter to Spinner
-                    cbreserva!!.setAdapter(adapter)
+                    cbreserva!!.adapter = adapter
                     cbreserva.setSelection(sel)
                 }
             }
@@ -118,7 +115,7 @@ class PagoActivity : AppCompatActivity() {
         // Obtiene el Tipo de pago
 
         val gettipopago = RetrofitBuilder.builder().create(TipospagosApi::class.java)
-        val callgettipopago = gettipopago.GetOptions()
+        val callgettipopago = gettipopago.GetOptions(AppData.CsrfRef)
 
         callgettipopago.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
@@ -138,7 +135,7 @@ class PagoActivity : AppCompatActivity() {
                     }
                     val adapterTipopago = ArrayAdapter(this@PagoActivity, android.R.layout.simple_spinner_dropdown_item, IdTipopago)
                     // Set Adapter to Spinner
-                    cbtipopago!!.setAdapter(adapterTipopago)
+                    cbtipopago!!.adapter = adapterTipopago
                     cbtipopago.setSelection(sel)
                 }
             }
@@ -188,12 +185,12 @@ class PagoActivity : AppCompatActivity() {
             Tipopago = records[cbtipopago.selectedItemPosition].Value!!.toInt()
         }
 
-        val callcreate = post.Create(
-            Reserva,
-           // fechapagoCB.text.toString(),
-            Tipopago,
-            Importepago.text.toString().toFloat(),
-            numerotarjeta.text.toString())
+        val callcreate = post.create(AppData.CsrfRef,
+                                    Reserva,
+                                // fechapagoCB.text.toString(),
+                                    Tipopago,
+                                    Importepago.text.toString().toFloat(),
+                                    numerotarjeta.text.toString())
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@PagosActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -231,13 +228,13 @@ class PagoActivity : AppCompatActivity() {
         }
 
 
-        val callUpdate = post.Update(
-            Id,
-            IdReserva,
-            fecha,
-            IdTipopago,
-            Importepago.text.toString().toFloat(),
-            numerotarjeta.text.toString())
+        val callUpdate = post.update(AppData.CsrfRef,
+                                    Id,
+                                    IdReserva,
+                                    fecha,
+                                    IdTipopago,
+                                    Importepago.text.toString().toFloat(),
+                                    numerotarjeta.text.toString())
         callUpdate.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@PagoActivity, "Fallo $Id", Toast.LENGTH_SHORT).show()
@@ -265,7 +262,8 @@ class PagoActivity : AppCompatActivity() {
 
     private fun delete(Id: Int){
         val post = RetrofitBuilder.builder().create(PagosApi::class.java)
-        val calldelete = post.Delete(Id.toInt())
+        val calldelete = post.delete(AppData.CsrfRef,
+                                    Id.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

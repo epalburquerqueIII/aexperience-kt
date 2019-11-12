@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.TiposEvento
 import com.epalburquerqueiii.aexperience.Data.Model.TiposEventos
 import com.epalburquerqueiii.aexperience.Data.Network.TiposEventosApi
@@ -17,7 +18,7 @@ class TiposEventosViewModel : ViewModel() {
 
 //    private val TiposeventosUseCase = TiposeventosUseCase()
 
-    val changed = ObservableBoolean(false)
+//    val changed = ObservableBoolean(false)
 
 
     private val registros = MutableLiveData<ArrayList<TiposEvento>>()
@@ -39,7 +40,7 @@ class TiposEventosViewModel : ViewModel() {
         var datos = ArrayList<TiposEvento>()
 
         val get = RetrofitBuilder.builder().create(TiposEventosApi::class.java)
-        val callget = get.Get()
+        val callget = get.List()
             callget.enqueue(object : Callback<TiposEventos> {
             override fun onFailure(call: Call<TiposEventos>, t: Throwable) {
                 Log.i("Tiposeventos Fragment:", "" + t.message)
@@ -62,8 +63,8 @@ class TiposEventosViewModel : ViewModel() {
         return datos
     }
 
-    public fun Load() = changed.set(false)
-    public fun make_Change() = changed.set(true)
+//    public fun Load() = changed.set(false)
+//    public fun make_Change() = changed.set(true)
 }
 
 

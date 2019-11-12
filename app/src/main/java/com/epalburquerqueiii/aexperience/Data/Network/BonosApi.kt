@@ -11,15 +11,19 @@ import retrofit2.http.POST
 
 
 interface BonosApi {
-    //view
 
-    @GET("bonos/"+BuildConfig.VIEW_DATA)
-    fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Bonos>
+    // List
+    @FormUrlEncoded
+    @POST("bonos/"+BuildConfig.VIEW_DATA)
+    fun List(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+    ) :Call<Bonos>
 
     //create
     @FormUrlEncoded
     @POST("bonos/"+BuildConfig.CREATE_DATA)
     fun Create(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id:Int,
         @Field("Precio")Precio:Float,
         @Field("Sesiones") Sesiones:Int
@@ -29,6 +33,7 @@ interface BonosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"bonos/"+BuildConfig.UPDATE_DATA)
     fun Update(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id:Int,
         @Field("Precio")Precio: Float,
         @Field("Sesiones")Sesiones:Int
@@ -38,6 +43,7 @@ interface BonosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"bonos/"+BuildConfig.DELETE_DATA)
     fun Delete(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id:Int
 
     ):Call<responseModel>

@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Usuariorol
 import com.epalburquerqueiii.aexperience.Data.Model.Usuariosroles
 import com.epalburquerqueiii.aexperience.Data.Network.UsuariosrolesApi
@@ -37,7 +38,7 @@ class UsuariosrolesViewModel : ViewModel() {
         var datos = ArrayList<Usuariorol>()
 
         val get = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
         callget.enqueue(object : Callback<Usuariosroles> {
             override fun onFailure(call: Call<Usuariosroles>, t: Throwable) {
                 Log.i("Usuariosroles Fragment:", "" + t.message)
@@ -61,7 +62,7 @@ class UsuariosrolesViewModel : ViewModel() {
         return datos
     }
 
-    public fun Load()=changed.set(false)
-    public fun make_Change()=changed.set(true)
+    fun Load()=changed.set(false)
+    fun make_Change()=changed.set(true)
 
 }

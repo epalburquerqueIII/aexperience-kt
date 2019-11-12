@@ -11,23 +11,22 @@ import retrofit2.http.POST
 
 
 interface TiposEventosApi {
-    //view
-
+    //List
     @GET("tiposeventos/"+BuildConfig.VIEW_DATA)
-    fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<TiposEventos>
+    fun List(/*debe haber un encabezado o un cuerpo*/) :Call<TiposEventos>
 
     //create
     @FormUrlEncoded
     @POST("tiposeventos/"+BuildConfig.CREATE_DATA)
     fun Create(
         @Field("Nombre") Nombre:String
-
     ):Call<responseModel>
 
     //update
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"tiposeventos/"+BuildConfig.UPDATE_DATA)
     fun Update(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id: Int,
         @Field("Nombre") Nombre:String
 
@@ -37,6 +36,7 @@ interface TiposEventosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"tiposeventos/"+BuildConfig.DELETE_DATA)
     fun Delete(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id:Int
 
     ):Call<responseModel>

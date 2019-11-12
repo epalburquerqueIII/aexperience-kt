@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Tipospago
 import com.epalburquerqueiii.aexperience.Data.Model.Tipospagos
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
@@ -39,7 +40,7 @@ class TipospagosViewModel : ViewModel() {
         var datos = ArrayList<Tipospago>()
 
         val get = RetrofitBuilder.builder().create(TipospagosApi::class.java)
-        val callget = get.Get()
+        val callget = get.List(AppData.CsrfRef)
         callget.enqueue(object : Callback<Tipospagos> {
             override fun onFailure(call: Call<Tipospagos>, t: Throwable) {
                 Log.i("Tipospagos Fragment:", "" + t.message)
@@ -62,7 +63,7 @@ class TipospagosViewModel : ViewModel() {
         return datos
     }
 
-    public fun Load()=changed.set(false)
-    public fun make_Change()=changed.set(true)
+    fun Load()=changed.set(false)
+    fun make_Change()=changed.set(true)
 
 }

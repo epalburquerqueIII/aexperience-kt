@@ -11,14 +11,18 @@ import retrofit2.http.POST
 
 
 interface HorasdiaApi {
-    //viewado/"+BuildConfig.VIEW_DATA)
-    @GET ("horarios/"+BuildConfig.VIEW_DATA)
-    fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<Horasdias>
+     // List
+    @FormUrlEncoded
+    @POST ("horarios/"+BuildConfig.VIEW_DATA)
+    fun List(/*debe haber un encabezado o un cuerpo*/
+        @Field("X-CSRF-Token") CSRFToken:String
+    ) :Call<Horasdias>
 
     //create
     @FormUrlEncoded
     @POST("horarios/"+BuildConfig.CREATE_DATA)
     fun Create(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("IdEspacio")IdEspacio:Int,
         @Field("Fecha") Fecha:String,
         @Field("IdHora")IdHora:Int
@@ -30,6 +34,7 @@ interface HorasdiaApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"horarios/"+BuildConfig.UPDATE_DATA)
     fun Update(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")ID: Int,
         @Field("IdEspacio")IdEspacio:Int,
         @Field("Fecha") Fecha:String,
@@ -41,6 +46,7 @@ interface HorasdiaApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"horarios/"+BuildConfig.DELETE_DATA)
     fun Delete(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")Id:Int
 
     ):Call<responseModel>

@@ -10,10 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
-import com.epalburquerqueiii.aexperience.Data.Model.Option
-import com.epalburquerqueiii.aexperience.Data.Model.Options
-import com.epalburquerqueiii.aexperience.Data.Model.Usuario
-import com.epalburquerqueiii.aexperience.Data.Model.responseModel
+import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
 import com.epalburquerqueiii.aexperience.Data.Network.UsuariosrolesApi
@@ -77,7 +74,7 @@ class UsuarioActivity : AppCompatActivity() {
 
         // Obtiene los Roles de Usuarios
         val get = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
-        val callget = get.GetOptions()
+        val callget = get.GetOptions(AppData.CsrfRef)
 
         callget.enqueue(object : Callback<Options> {
             override fun onFailure(call: Call<Options>, t: Throwable) {
@@ -106,7 +103,7 @@ class UsuarioActivity : AppCompatActivity() {
                         roles
                     )
                     // Set Adapter to Spinner
-                    Rol!!.setAdapter(adapter)
+                    Rol!!.adapter = adapter
                     Rol.setSelection(sel)
                 }
                 fun onFailure(call: Call<Options>, t: Throwable) {
@@ -125,12 +122,12 @@ class UsuarioActivity : AppCompatActivity() {
             showDatePickerDialogo()
         }
 
-        OpcionesNoticias.setChecked(registro.Newsletter == 1)
+        OpcionesNoticias.isChecked = registro.Newsletter == 1
 
     }
 
     private fun ver_noticia():Int{
-        if (OpcionesNoticias.isChecked()){
+        if (OpcionesNoticias.isChecked){
             return 1
         } else {
             return 0
@@ -171,7 +168,8 @@ class UsuarioActivity : AppCompatActivity() {
             RolUsuario = records[Rol.selectedItemPosition].Value!!.toInt()
         }
 
-        val callcreate = post.Create(
+        val callcreate = post.create(
+            AppData.CsrfRef,
             Nombre.text.toString(),
             Nif.text.toString(),
             Email.text.toString(),
@@ -208,7 +206,8 @@ class UsuarioActivity : AppCompatActivity() {
         if (records.size > 0) {
             RolUsuario = records[Rol.selectedItemPosition].Value!!.toInt()}
 
-        val callUpdate = post.Update(
+        val callUpdate = post.update(
+                AppData.CsrfRef,
                 ID,Nombre.text.toString(),
                 Nif.text.toString(),
                 Email.text.toString(),
@@ -242,7 +241,8 @@ class UsuarioActivity : AppCompatActivity() {
     }
     private fun delete(ID: Int){
         val post = RetrofitBuilder.builder().create(UsuariosApi::class.java)
-        val calldelete = post.Delete(ID.toInt())
+        val calldelete = post.delete(AppData.CsrfRef,
+                                    ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.epalburquerqueiii.aexperience.BR
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.TiposEvento
 import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
@@ -105,7 +106,7 @@ class TiposEventoActivity : AppCompatActivity() {
                 val response = response.body() as responseModel
                 println("test : "+response.Error)
 // Changed true
-                viewModel.make_Change()
+//                viewModel.make_Change()
                 finish()
 
 
@@ -119,7 +120,9 @@ class TiposEventoActivity : AppCompatActivity() {
 
         val post = RetrofitBuilder.builder().create(TiposEventosApi::class.java)
 
-        val callUpdate = post.Update(ID,NombreEvento.text.toString())
+        val callUpdate = post.Update(AppData.CsrfRef,
+                                    ID,
+                                    NombreEvento.text.toString())
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@TiposEventoActivity, "Fallo $ID", Toast.LENGTH_SHORT).show()
@@ -136,7 +139,7 @@ class TiposEventoActivity : AppCompatActivity() {
                 //val resultIntent = Intent()
                 //setResult(Activity.RESULT_OK,resultIntent)
 // Changed true
-                viewModel.make_Change()
+//                viewModel.make_Change()
                 finish()
 
 
@@ -148,7 +151,8 @@ class TiposEventoActivity : AppCompatActivity() {
 
     private fun delete(ID: Int){
         val post = RetrofitBuilder.builder().create(TiposEventosApi::class.java)
-        val calldelete = post.Delete(ID.toInt())
+        val calldelete = post.Delete(AppData.CsrfRef,
+                                    ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
 
@@ -157,12 +161,10 @@ class TiposEventoActivity : AppCompatActivity() {
             override fun onResponse(call: Call<responseModel>, response: Response<responseModel>) {
                 Toast.makeText(this@TiposEventoActivity," borrado ", Toast.LENGTH_SHORT).show()
 // Changed true
-                viewModel.make_Change()
+//                viewModel.make_Change()
                 finish()
             }
         })
 
     }
-
-
 }

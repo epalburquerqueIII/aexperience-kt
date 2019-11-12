@@ -11,15 +11,19 @@ import retrofit2.http.POST
 
 
 interface ConsumoBonosApi {
-    //view
 
-    @GET("consumobonos/"+BuildConfig.VIEW_DATA)
-    fun Get(/*debe haber un encabezado o un cuerpo*/) :Call<ConsumoBonos>
+    // List
+    @FormUrlEncoded
+    @POST("consumobonos/"+BuildConfig.VIEW_DATA)
+    fun List(
+        @Field("X-CSRF-Token") CSRFToken:String
+        ) :Call<ConsumoBonos>
 
     //create
     @FormUrlEncoded
     @POST("consumobonos/"+BuildConfig.CREATE_DATA)
     fun Create(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Fecha")Fecha:String,
         @Field("Sesiones")Sesiones:Int,
         @Field("IDUsuario")IDUsuario:Int,
@@ -31,6 +35,7 @@ interface ConsumoBonosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"consumobonos/"+BuildConfig.UPDATE_DATA)
     fun Update(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id: Int,
         @Field("Fecha")Fecha:String,
         @Field("Sesiones")Sesiones:Int,
@@ -43,6 +48,7 @@ interface ConsumoBonosApi {
     @FormUrlEncoded
     @POST(BuildConfig.BASE_URL+"consumobonos/"+BuildConfig.DELETE_DATA)
     fun Delete(
+        @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")id:Int
 
     ):Call<responseModel>
