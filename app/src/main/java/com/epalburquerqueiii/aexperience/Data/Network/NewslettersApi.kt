@@ -54,16 +54,16 @@ interface NewslettersApi {
         @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Id")id: Int,
         @Field("Email")Email:String,
-        @Field("ch1")ch1:Int,
-        @Field("ch2")ch2:Int,
-        @Field("ch3")ch3:Int,
-        @Field("ch4")ch4:Int,
-        @Field("ch5")ch5:Int,
-        @Field("ch6")ch6:Int,
-        @Field("ch7")ch7:Int,
-        @Field("ch8")ch8:Int,
-        @Field("ch9")ch9:Int,
-        @Field("ch10")ch10:Int
+        @Field("nwch1")ch1:Int,
+        @Field("nwch2")ch2:Int,
+        @Field("nwch3")ch3:Int,
+        @Field("nwch4")ch4:Int,
+        @Field("nwch5")ch5:Int,
+        @Field("nwch6")ch6:Int,
+        @Field("nwch7")ch7:Int,
+        @Field("nwch8")ch8:Int,
+        @Field("nwch9")ch9:Int,
+        @Field("nwch10")ch10:Int
     ):Call<responseModel>
 
     @FormUrlEncoded
