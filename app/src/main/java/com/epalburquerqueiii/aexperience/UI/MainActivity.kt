@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
-        val i : Int = navView.getMenu().size()
+        val i : Int = navView.getMenu().size() -1
         for (a in 4..i) {
             navView.getMenu().getItem(a).setVisible(false)
         }
