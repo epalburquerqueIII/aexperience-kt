@@ -18,9 +18,9 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Area Privada" />
         <item
-            android:id="@+id/fragment_usuario"
+            android:id="@+id/espaciosUIFragment"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:title="@string/menu_espacios" />
         <item
             android:id="@+id/AutorizadosFragment"
             android:icon="@drawable/ic_menu_manage"
