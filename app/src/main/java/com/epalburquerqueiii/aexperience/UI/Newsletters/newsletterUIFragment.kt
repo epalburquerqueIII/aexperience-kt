@@ -68,8 +68,8 @@ class newsletterUIFragment : Fragment() {
                 if (size > 0) {
                     var i:Int = 0
                     for ( item in records.indices) {
-                        nwch[item + 1].text = records[item].DisplayText
-                        nwch[item + 1].setTag(records[item].Value)
+                        nwch[item].text = records[item].DisplayText
+                        nwch[item].setTag(records[item].Value)
                     }
                 }
             }
@@ -87,6 +87,11 @@ class newsletterUIFragment : Fragment() {
 
             val callcreate = post.SaveNewsletterUser(
                 Email.text.toString(),
+                if (nwch[0].isChecked) {
+                    nwch[0].text.toString().toInt()
+                } else {
+                    0
+                },
                 if (nwch[1].isChecked) {
                     nwch[1].text.toString().toInt()
                 } else {
@@ -129,11 +134,6 @@ class newsletterUIFragment : Fragment() {
                 },
                 if (nwch[9].isChecked) {
                     nwch[9].text.toString().toInt()
-                } else {
-                    0
-                },
-                if (nwch[10].isChecked) {
-                    nwch[10].text.toString().toInt()
                 } else {
                     0
                 }

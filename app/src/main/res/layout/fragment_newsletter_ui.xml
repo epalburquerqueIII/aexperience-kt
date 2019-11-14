@@ -27,29 +27,33 @@
             tools:layout_editor_absoluteX="60dp"
             tools:layout_editor_absoluteY="28dp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
         <EditText
             android:id="@+id/Email"
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
-            android:layout_width="397dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/background_rectangle_black"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:focusable="false"
-            android:hint="Email"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
 
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Email"
             android:imeActionId="6"
             android:imeOptions="actionUnspecified"
-            android:inputType="date"
             android:maxLines="1"
             android:paddingEnd="20dp"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="22sp"
-            app:layout_constraintTop_toBottomOf="@+id/Email"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="24dp" />
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.472"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.612"
+            tools:ignore="MissingConstraints" />
 
         <Space
             android:layout_width="match_parent"
