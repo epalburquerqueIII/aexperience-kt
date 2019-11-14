@@ -25,11 +25,10 @@ interface ReservasApi {
     fun Create(
         @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Fecha")Fecha:String,
-        @Field("FechaPago") FechaPago:String,
         @Field("Hora") Hora:Int,
-        @Field("IDUsuario")IdUsuario:Int,
-        @Field("IDEspacio")IdEspacio:Int,
-        @Field("IDAutorizado")IdAutorizado:Int
+        @Field("IdUsuario")IdUsuario:Int,
+        @Field("IdEspacio")IdEspacio:Int,
+        @Field("IdAutorizado")IdAutorizado:Int
 
     ):Call<responseModel>
     //TODO hacer que el back-end devuelva el registro ID creado
@@ -40,11 +39,10 @@ interface ReservasApi {
         @Field("X-CSRF-Token") CSRFToken:String,
         @Field("Id")id: Int,
         @Field("Fecha")Fecha:String,
-        @Field("FechaPago") FechaPago:String,
         @Field("Hora") Hora:Int,
-        @Field("IDUsuario")IdUsuario:Int,
-        @Field("IDEspacio")IdEspacio:Int,
-        @Field("IDAutorizado")IdAutorizado:Int
+        @Field("IdUsuario")IdUsuario:Int,
+        @Field("IdEspacio")IdEspacio:Int,
+        @Field("IdAutorizado")IdAutorizado:Int
     ):Call<responseModel>
 
     @FormUrlEncoded

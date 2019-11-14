@@ -37,7 +37,7 @@ class ReservaActivity : AppCompatActivity() {
     private val Crear = 0
     private val Editar = 1
     private var fecha : String = ""
-    private var fechapago : String = ""
+
 
     private lateinit var recordsusuarios: ArrayList<Option>
     private lateinit var recordsespacios: ArrayList<Option>
@@ -73,7 +73,7 @@ class ReservaActivity : AppCompatActivity() {
         if (modo == Editar) {
             btn_delete.visibility = View.VISIBLE
             registro.Fecha = Comun.StringYMDtoDMY(registro.Fecha)
-            registro.FechaPago = Comun.StringYMDtoDMY(registro.FechaPago)
+            //registro.FechaPago = Comun.StringYMDtoDMY(registro.FechaPago)
             binding.setVariable(BR.addreservaviewmodel, registro)
             binding.executePendingBindings()
         }
@@ -214,9 +214,7 @@ class ReservaActivity : AppCompatActivity() {
         FechaAct.setOnClickListener {
             showDatePickerDialog()
         }
-        FechaPagoAct.setOnClickListener {
-            showDatePickerDialogFechapago()
-        }
+
 
     }
 
@@ -242,21 +240,12 @@ class ReservaActivity : AppCompatActivity() {
             val selectedDate = "%02d-%02d-%04d".format(day, month+1, year)
             FechaAct.setText(selectedDate)
             fecha = selectedDate
+
         })
 
         newFragment.show(supportFragmentManager, "datePicker")
     }
-//para la fecha pago
-    private fun showDatePickerDialogFechapago() {
-        val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
-            // +1 because January is zero
-            val selectedDate = "%02d-%02d-%04d".format(day, month+1, year)
-            FechaPagoAct.setText(selectedDate)
-            fechapago= selectedDate
-        })
 
-        newFragment.show(supportFragmentManager, "datePicker")
-    }
     private fun create(){
 
         var IdUsuario : Int = 1
@@ -273,13 +262,12 @@ class ReservaActivity : AppCompatActivity() {
         }
 
         val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
-        val callcreate = post.Create(AppData.CsrfRef,
-                                    fecha,
-                                    fechapago,
-                                    HoraAct.text.toString().toInt(),
-                                    IdUsuario,
-                                    IdEspacio,
-                                    IdAutorizado)
+        val callcreate = post.Create(fecha,
+           // Sesiones.text.toString().toInt(),
+            HoraAct.text.toString().toInt(),
+            IdUsuario,
+            IdEspacio,
+            IdAutorizado)
         callcreate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 // Toast.makeText(this@ReservaActivity,"failure",Toast.LENGTH_SHORT).show()
@@ -319,14 +307,13 @@ class ReservaActivity : AppCompatActivity() {
             IdAutorizado = recordsautorizados[cbautorizado.selectedItemPosition].Value!!.toInt()
         }
         val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
-        val callUpdate = post.Update(AppData.CsrfRef,
-                                            Id,
-                                            fecha,
-                                            fechapago,
-                                            HoraAct.text.toString().toInt(),
-                                            IdUsuario,
-                                            IdEspacio,
-                                            IdAutorizado)
+        val callUpdate = post.Update(Id,
+            fecha,
+           // Sesiones.text.toString().toInt(),
+            HoraAct.text.toString().toInt(),
+            IdUsuario,
+            IdEspacio,
+            IdAutorizado)
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@ReservaActivity, "Fallo $Id", Toast.LENGTH_SHORT).show()

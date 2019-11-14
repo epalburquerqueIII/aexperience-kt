@@ -54,13 +54,14 @@ class ReservasAdapter(private val reservas: ArrayList<Reserva>, context: Context
             this.Reserva = Reserva
             var MostrarFecha : String? = this.Reserva?.Fecha
             itemView.fecha_item.text = Comun.StringYMDtoDMY(MostrarFecha)
-            var MostrarFechaPago : String? = this.Reserva?.FechaPago
-            itemView.fechapago_item.text = Comun.StringYMDtoDMY(MostrarFechaPago)
-            itemView.Hora_item.text = this.Reserva?.Hora.toString()
+            if (this.Reserva?.Hora != null) {
+                itemView.HoraReserva_item.setText(this.Reserva?.Hora.toString())
+            }else{
+                itemView.HoraReserva_item.text = "No hay horas registradas"
+            }
             itemView.usuario_item.text = this.Reserva?.UsuarioNombre
-            itemView.IdEspacio_item.text = this.Reserva?.EspacioNombre
+            itemView.espacio_item.text = this.Reserva?.EspacioNombre
             itemView.autorizado_item.text = this.Reserva?.AutorizadoNombre
-    //To string pendiente de revision
         }
 
     }

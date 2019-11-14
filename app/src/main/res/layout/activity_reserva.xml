@@ -53,7 +53,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_activity3"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.7"
             tools:ignore="MissingConstraints" />
 
         <EditText
@@ -80,28 +80,8 @@
             app:layout_constraintVertical_bias="0.705"
             tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/FechaPagoAct"
-            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
-            android:layout_width="386dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/background_rectangle_black"
-            android:drawablePadding="8dp"
-            android:hint="Fecha Pago"
-            android:imeActionId="6"
-            android:imeOptions="actionUnspecified"
-            android:maxLines="1"
-            android:paddingEnd="20dp"
-            android:singleLine="true"
-            android:text="@{addreservaviewmodel.Fecha}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="22sp"
-            app:layout_constraintTop_toBottomOf="@+id/HoraAct"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="3dp" />
-
         <include
+            android:id="@+id/include4"
             layout="@layout/editupdate_botton"
             android:layout_width="346dp"
             android:layout_height="185dp"
@@ -118,19 +98,23 @@
             android:layout_width="369dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/cbespacio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/FechaPagoAct" />
+            app:layout_constraintTop_toBottomOf="@+id/HoraAct" />
 
         <Spinner
             android:id="@+id/cbespacio"
             style="@style/Spinner"
             android:layout_width="371dp"
             android:layout_height="31dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="12dp"
+            android:layout_marginBottom="28dp"
+            app:layout_constraintBottom_toTopOf="@+id/cbautorizado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -142,10 +126,12 @@
             android:layout_width="366dp"
             android:layout_height="31dp"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="4dp"
+            android:layout_marginBottom="29dp"
+            app:layout_constraintBottom_toTopOf="@+id/include4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cbespacio" /><![CDATA[
 
