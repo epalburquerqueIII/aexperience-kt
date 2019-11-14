@@ -262,7 +262,8 @@ class ReservaActivity : AppCompatActivity() {
         }
 
         val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
-        val callcreate = post.Create(fecha,
+        val callcreate = post.Create(AppData.CsrfRef,
+            fecha,
            // Sesiones.text.toString().toInt(),
             HoraAct.text.toString().toInt(),
             IdUsuario,
@@ -307,7 +308,8 @@ class ReservaActivity : AppCompatActivity() {
             IdAutorizado = recordsautorizados[cbautorizado.selectedItemPosition].Value!!.toInt()
         }
         val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
-        val callUpdate = post.Update(Id,
+        val callUpdate = post.Update(AppData.CsrfRef,
+            Id,
             fecha,
            // Sesiones.text.toString().toInt(),
             HoraAct.text.toString().toInt(),
