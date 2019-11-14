@@ -13,7 +13,8 @@ import retrofit2.http.POST
 interface MenusApi {
     //List
 
-    @GET("menus/"+BuildConfig.VIEW_DATA)
+    @FormUrlEncoded
+    @POST("menus/"+BuildConfig.VIEW_DATA)
     fun List(/*debe haber un encabezado o un cuerpo*/
         @Field("X-CSRF-Token") CSRFToken:String
     ) :Call<Menus>
