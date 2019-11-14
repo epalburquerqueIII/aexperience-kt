@@ -7,7 +7,7 @@ class Reserva : Serializable {
     constructor(
         Id: Int?,
         Fecha: String?,
-        FechaPago: String?,
+        Sesiones: Int?,
         Hora: Int?,
         IdUsuario: Int?,
         UsuarioNombre: String?,
@@ -21,7 +21,7 @@ class Reserva : Serializable {
     ) {
         this.Id = Id
         this.Fecha = Fecha
-        this.FechaPago = FechaPago
+        this.Sesiones = Sesiones
         this.Hora = Hora
         this.IdUsuario = IdUsuario
         this.UsuarioNombre = UsuarioNombre
@@ -33,7 +33,7 @@ class Reserva : Serializable {
 
     var Id: Int? = null
     var Fecha: String? = null
-    var FechaPago: String? = null
+    var Sesiones: Int? = null
     var Hora: Int? = null
     var IdUsuario: Int? = null
     var UsuarioNombre: String? = null

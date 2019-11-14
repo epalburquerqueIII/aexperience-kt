@@ -41,7 +41,7 @@ class ReservasFragment : Fragment() {
         viewModel.getRegistros()
         bt_new.setOnClickListener{
             var intent = Intent(activity, ReservaActivity::class.java)
-            var registro = Reserva(0,"","",0,0,"",0,"",
+            var registro = Reserva(0,"",0,0,0,"",0,"",
                 0,"")
             intent.putExtra("registro",registro)
             intent.putExtra("modo", Crear)
