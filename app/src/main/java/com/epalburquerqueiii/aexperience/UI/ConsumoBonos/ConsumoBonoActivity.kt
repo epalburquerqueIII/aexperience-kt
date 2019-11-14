@@ -308,7 +308,7 @@ class ConsumoBonoActivity : AppCompatActivity() {
     }
 
     private fun delete(ID: Int){
-        val post = RetrofitBuilder.builder().create(AutorizadosApi::class.java)
+        val post = RetrofitBuilder.builder().create(ConsumoBonosApi::class.java)
         val calldelete = post.Delete(AppData.CsrfRef,ID.toInt())
         calldelete.enqueue(object : Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
