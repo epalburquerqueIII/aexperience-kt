@@ -77,9 +77,12 @@ class LoginFragment : Fragment() {
                     AppData.CsrfRef=response.data2
                     AppData.lastdate!= Calendar.getInstance().time
                     val navView: NavigationView = activity!!.findViewById(com.epalburquerqueiii.aexperience.R.id.nav_view)
+                    /*val toolbar: NavigationView = activity!!.findViewById(com.epalburquerqueiii.aexperience.R.id.toolbar)
+                    val appbar: NavigationView = activity!!.findViewById(com.epalburquerqueiii.aexperience.R.id.app_bar_main)*/
                     val i : Int = navView.getMenu().size() - 1
                     for (a in 4..i) {
                         navView.getMenu().getItem(a).setVisible(true)
+//                        toolbar.setBackgroundColor()
                     }
                     replaceFragment(EventosFragment())
                     if (AppData.CsrfRef.length > 3) {

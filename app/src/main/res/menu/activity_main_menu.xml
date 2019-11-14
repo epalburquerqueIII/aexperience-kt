@@ -7,11 +7,11 @@
         <!--            No es un error inicio debe apuntar a eventos ¡¡¡¡¡¡¡¡¡¡no tocar!!!!!!!!!!!-->
         <item
             android:id="@+id/eventosFragment"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/home_instagram"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/eventosFragment"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/icons8_billeteconestrella_90"
             android:title="@string/menu_eventos" />
         <item
             android:id="@+id/loginFragment"
@@ -23,7 +23,7 @@
             android:title="@string/menu_espacios" />
         <item
             android:id="@+id/AutorizadosFragment"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/icons8_credencialesdeusuario_90"
             android:title="Autorizados" />
         <item
             android:id="@+id/ConsumoBonosFragment"

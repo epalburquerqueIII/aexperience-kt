@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
             navView.getMenu().getItem(a).setVisible(false)
         }
 
-
         val navController = findNavController(R.id.nav_host_fragment)
         // Añade menu al fragment
         // Passing each menu ID as a set of Ids because each
