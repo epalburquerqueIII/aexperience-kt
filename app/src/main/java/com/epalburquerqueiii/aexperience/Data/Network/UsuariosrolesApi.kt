@@ -15,7 +15,7 @@ interface UsuariosrolesApi {
 
     //List
     @FormUrlEncoded
-    @GET("usuariosroles/"+BuildConfig.VIEW_DATA)
+    @POST("usuariosroles/"+BuildConfig.VIEW_DATA)
     fun List(/*debe haber un encabezado o un cuerpo*/
         @Field("X-CSRF-Token") CSRFToken:String
         ) :Call<Usuariosroles>

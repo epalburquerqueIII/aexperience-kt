@@ -73,7 +73,7 @@ class EventosFragment : Fragment() {
             })
 
         }
-        viewModel.getregistrosLiveData().observe(this, registrosObserver)
+        viewModel.getregistrosLiveData().observe(viewLifecycleOwner, registrosObserver)
    }
 
 }

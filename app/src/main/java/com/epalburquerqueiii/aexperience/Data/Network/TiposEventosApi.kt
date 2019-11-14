@@ -6,13 +6,13 @@ import com.epalburquerqueiii.aexperience.Data.Model.responseModel
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 
 interface TiposEventosApi {
     //List
-    @GET("tiposeventos/"+BuildConfig.VIEW_DATA)
+    @FormUrlEncoded
+    @POST("tiposeventos/"+BuildConfig.VIEW_DATA)
     fun List(/*debe haber un encabezado o un cuerpo*/) :Call<TiposEventos>
 
     //create
