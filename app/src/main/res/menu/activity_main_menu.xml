@@ -4,7 +4,6 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <!--            No es un error inicio debe apuntar a eventos ¡¡¡¡¡¡¡¡¡¡no tocar!!!!!!!!!!!-->
         <item
             android:id="@+id/eventosFragment"
             android:icon="@drawable/home_instagram"
@@ -15,12 +14,20 @@
             android:title="@string/menu_eventos" />
         <item
             android:id="@+id/loginFragment"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/icons8_usuariomasculinoencirculo_96"
             android:title="Area Privada" />
+        <item
+            android:id="@+id/newsletterUIFragment"
+            android:icon="@drawable/icons8_noticias_100"
+            android:title="Registro Newsletter" />
         <item
             android:id="@+id/espaciosUIFragment"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/menu_espacios" />
+        <item
+            android:id="@+id/usuariosFragment"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/menu_tools" />
         <item
             android:id="@+id/AutorizadosFragment"
             android:icon="@drawable/icons8_credencialesdeusuario_90"
@@ -58,7 +65,7 @@
             android:icon="@drawable/siluetademultiplesusuarios"
             android:title="Roles" />
         <item
-            android:id="@+id/newsletterUIFragment"
+            android:id="@+id/newsletterFragment"
             android:icon="@drawable/icons8_listadeingredientes_90"
             android:title="Newsletter" />
         <item
