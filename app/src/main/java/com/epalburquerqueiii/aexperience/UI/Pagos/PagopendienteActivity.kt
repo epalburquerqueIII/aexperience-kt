@@ -8,6 +8,8 @@ import com.epalburquerqueiii.aexperience.Data.Util.Comun
 import com.epalburquerqueiii.aexperience.R
 import kotlinx.android.synthetic.main.activity_pagopendiente.*
 import kotlinx.android.synthetic.main.activity_pagopendiente.view.*
+import kotlinx.android.synthetic.main.confirmar_botton.*
+import kotlinx.android.synthetic.main.editupdate_botton.*
 
 class PagopendienteActivity : AppCompatActivity() {
 
@@ -20,8 +22,8 @@ class PagopendienteActivity : AppCompatActivity() {
 // Rellenar lo campos
         // pedir la referencia
         // Crear api en golang para confirmar el pago de pagopendiente a pago
-        //Cuando ya se confirme en pago borrar de la tabla de paga pendiente
-        // sesiones a usuarios si sesiones <> 0
+        //Cuando ya se confirme en pago borrar de la tabla de paga pendient
+        // sesiones a usuarios si sesiones <> 0º
         // crear llamada en Android
 
         var MostrarFecha : String? = registro.ReservaNombre
@@ -31,5 +33,20 @@ class PagopendienteActivity : AppCompatActivity() {
         pptipopago.setText(registro.TipopagoNombre)
         ppimporte.setText(registro.Importe.toString())
         ppreferencia.setText(registro.Referencia)
+
+        btn_aceptar.setOnClickListener {
+            confirmarpago()
+        }
+
+        btn_cancelar.setOnClickListener{
+            finish()
+        }
+    }
+
+    private fun confirmarpago (){
+
+        //Obtener las sesiones de los usuarios de las reservas
+
+
     }
 }
