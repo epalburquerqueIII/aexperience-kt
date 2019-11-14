@@ -319,7 +319,7 @@ class ReservaActivity : AppCompatActivity() {
         callUpdate.enqueue(object: Callback<responseModel> {
             override fun onFailure(call: Call<responseModel>, t: Throwable) {
                 Toast.makeText(this@ReservaActivity, "Fallo $Id", Toast.LENGTH_SHORT).show()
-                Log.i("dasboardfragmetn:",""+ t.message)
+                Log.i("dasboardfragment:",""+ t.message)
                 finish()
             }
 

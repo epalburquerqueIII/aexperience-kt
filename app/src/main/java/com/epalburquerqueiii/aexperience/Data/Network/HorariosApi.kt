@@ -28,7 +28,7 @@ interface HorariosApi {
         @Field("Fechainicio") Fechainicio:String,
         @Field("Fechafinal") Fechafinal:String,
         @Field("Hora")Hora:Int
-
+                
     ):Call<responseModel>
 
     //update

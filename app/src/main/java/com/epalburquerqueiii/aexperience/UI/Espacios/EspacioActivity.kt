@@ -151,12 +151,12 @@ class EspacioActivity : AppCompatActivity() {
             Evento = records[IDTiposeventos.selectedItemPosition].Value!!.toInt()
         }
         if (Estado.isChecked){
-            Estado.text= "1"
-        }else{
-           Estado.text = "0"
-           }
-        if (Modo.isChecked){
-            Modo.text= "1"
+                Estado.text= "1"
+            }else{
+                Estado.text = "0"
+            }
+            if (Modo.isChecked){
+                Modo.text= "1"
         }else{
             Modo.text="0"
         }

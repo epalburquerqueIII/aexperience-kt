@@ -168,7 +168,8 @@ class HorarioActivity : AppCompatActivity() {
 
     //para la fecha final
     private fun showDatePickerDialogfecfin() {
-        val newFragment = DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+        val newFragment =
+            DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
             // +1 because January is zero
             val selectedDate = "%02d-%02d-%04d".format(day,month+1,year)
             fecfin = selectedDate

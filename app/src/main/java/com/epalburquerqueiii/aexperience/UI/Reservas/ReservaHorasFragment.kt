@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Switch
+import android.widget.CheckBox
 import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Horadia
 import com.epalburquerqueiii.aexperience.Data.Model.Horasdias
@@ -34,8 +34,8 @@ class ReservaHorasFragment : Fragment() {
 
     private var fecha: String = ""
 
-    private lateinit var horasSwitch : ArrayList<Switch>
-    private lateinit var horas : ArrayList<Int>
+    private lateinit var horasCheckBox: ArrayList<CheckBox>
+    private lateinit var horas: ArrayList<Int>
 
     companion object {
         fun newInstance() = ReservaHorasFragment()
@@ -52,16 +52,17 @@ class ReservaHorasFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
 
-        horasSwitch= ArrayList<Switch>()
 
-        horasSwitch.add(Hora1 as Switch)
-        horasSwitch.add(Hora2 as Switch)
-        horasSwitch.add(Hora3 as Switch)
-        horasSwitch.add(Hora4 as Switch)
-        horasSwitch.add(Hora5 as Switch)
-        horasSwitch.add(Hora6 as Switch)
-        horasSwitch.add(Hora7 as Switch)
-        horasSwitch.add(Hora8 as Switch)
+        horasCheckBox = ArrayList<CheckBox>()
+
+        horasCheckBox.add(Hora1 as CheckBox)
+        horasCheckBox.add(Hora2 as CheckBox)
+        horasCheckBox.add(Hora3 as CheckBox)
+        horasCheckBox.add(Hora4 as CheckBox)
+        horasCheckBox.add(Hora5 as CheckBox)
+        horasCheckBox.add(Hora6 as CheckBox)
+        horasCheckBox.add(Hora7 as CheckBox)
+        horasCheckBox.add(Hora8 as CheckBox)
 
         // Llamada a Horas dia
 
@@ -74,12 +75,46 @@ class ReservaHorasFragment : Fragment() {
                 val response = response.body() as Horasdias
                 val size = response.Records!!.size
                 var datos = response.Records!!
+
                 if (size > 0) {
                     for (item in datos.indices) {
-                        horasSwitch[item].setText(datos[item].IdHoras.toString())
+                        horasCheckBox[item].setText(datos[item].Hora.toString())
+
+                        if (datos[item].Reservado == 1) {
+                            horasCheckBox[0].setChecked(true)
+                            horasCheckBox[0].setEnabled(false)
+                        }
+                        if (datos[item].Reservado == 1) {
+                            horasCheckBox[1].setChecked(true)
+                            horasCheckBox[1].setEnabled(false)
+                        }
+                        if (datos[item].Reservado == 1) {
+                            horasCheckBox[2].setChecked(true)
+                            horasCheckBox[2].setEnabled(false)
+                        }
+                        if (datos[item].Reservado == 1) {
+                            horasCheckBox[3].setChecked(true)
+                            horasCheckBox[3].setEnabled(false)
+                        }
+                        if (datos[item].Reservado == 1) {
+                            horasCheckBox[4].setChecked(true)
+                            horasCheckBox[4].setEnabled(false)
+                        }
+                        if (datos[item].Reservado == 1) {
+                            horasCheckBox[5].setChecked(true)
+                            horasCheckBox[5].setEnabled(false)
+                        }
+                        if (datos[item].Reservado == 1) {
+                            horasCheckBox[6].setChecked(true)
+                            horasCheckBox[6].setEnabled(false)
+                        }
+                        if (datos[item].Reservado == 1) {
+                            horasCheckBox[7].setChecked(true)
+                            horasCheckBox[7].setEnabled(false)
+                        }
+                    }
                     }
 
-                }
             }
 
             override fun onFailure(call: Call<Horasdias>, t: Throwable) {
@@ -96,54 +131,58 @@ class ReservaHorasFragment : Fragment() {
 
         btn_guardar.setOnClickListener {
             val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
-// recorrer horasSwitch y si esta marcado llama a la funcion
+// recorrer horasCheckBox y si esta marcado llama a la funcion
             var IdEspacios: Int = 1
             IdEspacios = IdEspacioh.selectedItemPosition
 
+            val callcreate = post.Reservahora(
+                AppData.CsrfRef,
+                IdEspacios,
+                Fecha24.text.toString(),
+                if (horasCheckBox[0].isChecked) {
+                    horasCheckBox[0].text.toString()
+                } else {
+                    "0"
+                },
+                if (horasCheckBox[1].isChecked) {
+                    horasCheckBox[1].text.toString()
+                } else {
+                    "0"
+                },
+                if (horasCheckBox[2].isChecked) {
+                    horasCheckBox[2].text.toString()
+                } else {
+                    "0"
+                },
+                if (horasCheckBox[3].isChecked) {
+                    horasCheckBox[3].text.toString()
+                } else {
+                    "0"
+                },
+                if (horasCheckBox[4].isChecked) {
+                    horasCheckBox[4].text.toString()
+                } else {
+                    "0"
+                },
+                if (horasCheckBox[5].isChecked) {
+                    horasCheckBox[5].text.toString()
+                } else {
+                    "0"
+                },
+                if (horasCheckBox[6].isChecked) {
+                    horasCheckBox[6].text.toString()
+                } else {
+                    "0"
+                },
+                if (horasCheckBox[7].isChecked) {
+                    horasCheckBox[7].text.toString()
+                } else {
+                    "0"
+                }
 
-            val callcreate = post.Reservahora(AppData.CsrfRef,
-                                            IdEspacios,
-                                            Fecha24.text.toString(),
-                                            if (horasSwitch[0].isChecked) {
-                                                horasSwitch[0].text.toString()
-                                            } else {
-                                                "0"
-                                            },
-                                            if (horasSwitch[1].isChecked) {
-                                                horasSwitch[1].text.toString()
-                                            } else {
-                                                "0"
-                                            },
-                                            if (horasSwitch[2].isChecked) {
-                                                horasSwitch[2].text.toString()
-                                            } else {
-                                                "0"
-                                            },
-                                            if (horasSwitch[3].isChecked) {
-                                                horasSwitch[3].text.toString()
-                                            } else {
-                                                "0"
-                                            },
-                                            if (horasSwitch[4].isChecked) {
-                                                horasSwitch[4].text.toString()
-                                            } else {
-                                                "0"
-                                            },
-                                            if (horasSwitch[5].isChecked) {
-                                                horasSwitch[5].text.toString()
-                                            } else {
-                                                "0"
-                                            },
-                                            if (horasSwitch[6].isChecked) {
-                                                horasSwitch[6].text.toString()
-                                            } else {
-                                                "0"
-                                            },
-                                            if (horasSwitch[7].isChecked) {
-                                                horasSwitch[7].text.toString()
-                                            } else {
-                                                "0"
-                                            }
+
+
+
             )
 
 
@@ -151,6 +190,7 @@ class ReservaHorasFragment : Fragment() {
                 override fun onFailure(call: Call<responseModel>, t: Throwable) {
                     // Toast.makeText(this@PagosActivity,"failure",Toast.LENGTH_SHORT).show()
                     Log.i("dasboardfragment:", "" + t.message)
+
 
                 }
 
@@ -169,17 +209,20 @@ class ReservaHorasFragment : Fragment() {
         }
     }
 
-        private fun showDatePickerDialog() {
-            val newFragment =
-                DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
-                    // +1 because January is zero
-                    val selectedDate = "%02d-%02d-%04d".format(day, month + 1, year)
-                    Fecha24.setText(selectedDate)
-                    fecha = selectedDate
-                })
+    private fun showDatePickerDialog() {
+        val newFragment =
+            DatePickerFragment.newInstance(DatePickerDialog.OnDateSetListener { _, year, month, day ->
+                // +1 because January is zero
+                val selectedDate = "%02d-%02d-%04d".format(day, month + 1, year)
+                fecha = selectedDate
+                Fecha24.setText(selectedDate)
+            })
 
- //           newFragment.show(supportFragmentManager, "datePicker")
-        }
+        newFragment.show(activity!!.supportFragmentManager, "datePicker")
+
+    }
+
+
         // Fecha con datepicker
         // llamar servicio horas disponible retrofit
         // crear arraylist con controles swith ( Juan Antonio ) y rellenar los textos con horas y deshabilitar
@@ -190,7 +233,7 @@ class ReservaHorasFragment : Fragment() {
         // Crear
 
 
-    }
+}
 
 
 

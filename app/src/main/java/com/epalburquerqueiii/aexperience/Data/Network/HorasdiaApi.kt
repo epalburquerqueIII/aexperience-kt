@@ -23,9 +23,14 @@ interface HorasdiaApi {
     @POST("horarios/"+BuildConfig.CREATE_DATA)
     fun Create(
         @Field("X-CSRF-Token") CSRFToken:String,
-        @Field("IdEspacio")IdEspacio:Int,
+        @Field("IDEspacio")IdEspacio:Int,
         @Field("Fecha") Fecha:String,
-        @Field("IdHora")IdHora:Int
+        @Field("Hora")IdHora:Int,
+        @Field("Horareservada")Horareservada:Int,
+        @Field("Reservado")Reservado:Int,
+        @Field("IDUsuario")IDUsuario:Int,
+        @Field("IDAutorizado")IDAutorizado:Int
+
 
 
     ):Call<responseModel>
@@ -36,9 +41,13 @@ interface HorasdiaApi {
     fun Update(
         @Field("X-CSRF-Token") CSRFToken:String,
         @Field("ID")ID: Int,
-        @Field("IdEspacio")IdEspacio:Int,
+        @Field("IDEspacio")IdEspacio:Int,
         @Field("Fecha") Fecha:String,
-        @Field("IdHora")IdHora:Int
+        @Field("Hora")IdHora:Int,
+        @Field("Horareservada")Horareservada:Int,
+        @Field("Reservado")Reservado:Int,
+        @Field("IDUsuario")IDUsuario:Int,
+        @Field("IDAutorizado")IDAutorizado:Int
 
     ):Call<responseModel>
 
