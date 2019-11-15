@@ -39,11 +39,6 @@
         tools:layout="@layout/list_fragment"/>
 
     <fragment
-        android:id="@+id/EspaciosUIFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Espacios.EspaciosUIFragment"
-        android:label="Pagos"
-        tools:layout="@layout/list_fragment"/>
-    <fragment
         android:id="@+id/eventosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Eventos.EventosFragment"
         android:label="EventosFragment" />
@@ -109,5 +104,6 @@
     <fragment
         android:id="@+id/pagosFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Pagos.PagosFragment"
-        android:label="PagosFragment" />
+        android:label="PagosFragment"
+        tools:layout="@layout/list_fragment"/>
 </navigation>
