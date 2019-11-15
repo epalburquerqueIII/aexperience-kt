@@ -42,8 +42,8 @@ class EspaciosUIViewModel : ViewModel() {
                 "Adultos (> 14 años): 7,21€\n" +
                 "Menores (< 14 años): 3,01€",
             "",
-            "http://192.168.0.82:1313/images/espacios/pabellon.jpg",
-            "http://192.168.0.82:1313/images/espacios/pabellon.jpg",
+             "images/espacios/pabellon.jpg",
+            "images/espacios/pabellon.jpg",
             "",
             "",
             "",
