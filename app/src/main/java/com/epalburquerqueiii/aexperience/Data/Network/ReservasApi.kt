@@ -78,7 +78,6 @@ interface ReservasApi {
     fun ComprarBono(
         @Field("X-CSRF-Token") CSRFToken:String,
         @Field("IdUsuario") IdUsuario:Int,
-        @Field("Importe") Importe: Float,
         @Field("Sesiones") Sesiones:Int,
         @Field("TipoPago") TipoPago: Int
 
