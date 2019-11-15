@@ -61,6 +61,10 @@
             android:icon="@drawable/icons8_euro_90"
             android:title="Pagos" />
         <item
+            android:id="@+id/pagospendientesFragment"
+            android:icon="@drawable/icons8_euro_90"
+            android:title="Pagos pendientes" />
+        <item
             android:id="@+id/usuariosrolesFragment"
             android:icon="@drawable/siluetademultiplesusuarios"
             android:title="Roles" />

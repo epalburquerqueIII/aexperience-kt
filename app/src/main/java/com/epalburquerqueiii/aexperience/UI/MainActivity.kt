@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             navView.getMenu().getItem(a).setVisible(false)
         }
 
+
         val navController = findNavController(R.id.nav_host_fragment)
         // Añade menu al fragment
         // Passing each menu ID as a set of Ids because each
@@ -67,6 +68,7 @@ class MainActivity : AppCompatActivity() {
             R.id.tiposEventosFragment,
             R.id.bonosFragment,
             R.id.pagosFragment,
+            R.id.pagospendientesFragment,
             R.id.usuariosrolesFragment,
             R.id.compraBonosFragment,
             R.id.newsletterUIFragment,
