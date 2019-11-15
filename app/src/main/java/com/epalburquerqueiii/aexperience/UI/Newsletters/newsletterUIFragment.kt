@@ -16,7 +16,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import com.epalburquerqueiii.aexperience.Data.Network.NewslettersApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
+import com.epalburquerqueiii.aexperience.UI.Eventos.EventosFragment
 import kotlinx.android.synthetic.main.fragment_newsletter_ui.*
+import kotlinx.android.synthetic.main.fragment_newsletter_ui.btn_guardar
+import kotlinx.android.synthetic.main.reservahoras_fragment.*
 
 /**
  * A simple [Fragment] subclass.
@@ -26,6 +29,12 @@ class newsletterUIFragment : Fragment() {
 
     private lateinit var records: ArrayList<Option>
     private lateinit var nwch : ArrayList<CheckBox>
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.nav_host_fragment, fragment)
+        fragmentTransaction.commit()
+    }
 
     companion object {
         fun newInstance() = NewslettersFragment()
@@ -88,52 +97,52 @@ class newsletterUIFragment : Fragment() {
             val callcreate = post.SaveNewsletterUser(
                 Email.text.toString(),
                 if (nwch[0].isChecked) {
-                    nwch[0].text.toString().toInt()
+                    1
                 } else {
                     0
                 },
                 if (nwch[1].isChecked) {
-                    nwch[1].text.toString().toInt()
+                    2
                 } else {
                     0
                 },
                 if (nwch[2].isChecked) {
-                    nwch[2].text.toString().toInt()
+                    3
                 } else {
                     0
                 },
                 if (nwch[3].isChecked) {
-                    nwch[3].text.toString().toInt()
+                    4
                 } else {
                     0
                 },
                 if (nwch[4].isChecked) {
-                    nwch[4].text.toString().toInt()
+                    5
                 } else {
                     0
                 },
                 if (nwch[5].isChecked) {
-                    nwch[5].text.toString().toInt()
+                    6
                 } else {
                     0
                 },
                 if (nwch[6].isChecked) {
-                    nwch[6].text.toString().toInt()
+                    7
                 } else {
                     0
                 },
                 if (nwch[7].isChecked) {
-                    nwch[7].text.toString().toInt()
+                    8
                 } else {
                     0
                 },
                 if (nwch[8].isChecked) {
-                    nwch[8].text.toString().toInt()
+                    9
                 } else {
                     0
                 },
                 if (nwch[9].isChecked) {
-                    nwch[9].text.toString().toInt()
+                    10
                 } else {
                     0
                 }
@@ -141,11 +150,11 @@ class newsletterUIFragment : Fragment() {
             )
 
 
-            callcreate.enqueue(object : Callback<responseModel> {
+            callcreate.enqueue(object: Callback<responseModel> {
                 override fun onFailure(call: Call<responseModel>, t: Throwable) {
-                    // Toast.makeText(this@PagosActivity,"failure",Toast.LENGTH_SHORT).show()
+                    // Toast.makeText(this@MenuActivity,"failure",Toast.LENGTH_SHORT).show()
                     Log.i("dasboardfragment:", "" + t.message)
-
+                    replaceFragment(EventosFragment())
                 }
 
                 override fun onResponse(
@@ -156,11 +165,10 @@ class newsletterUIFragment : Fragment() {
                     @Suppress("NAME_SHADOWING")
                     val response = response.body() as responseModel
                     println("test : " + response.Error)
-
                 }
-
             })
         }
+
     }
 
 }
