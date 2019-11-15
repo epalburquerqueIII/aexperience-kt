@@ -33,14 +33,7 @@ class EspaciosUIViewModel : ViewModel() {
 
         var datos = ArrayList<Evento>()
 
-        datos!!.add(Evento(0,"Pabellón Polideportivo Alburquerque","","Horarios\n" +
-                "Invierno: Lunes a Viernes 17:00 - 23:00 h. , Sábados 11:00 - 14:00 / 17:00 - 21:00 h.\n" +
-                "Primavera: Lunes a Viernes 18:00 - 23:00 h. , Sábados 11:00 - 14:00 / 18:00 - 21:00 h.\n" +
-                "Verano: Lunes a Viernes 11:00 - 14:00 / 18:00 - 23:00 h. , Sábados 11:00 - 14:00 / 17:00 - 21:00 h.\n" +
-                "*Domingos y Festivos Cerrado\n" +
-                "Precios\n" +
-                "Adultos (> 14 años): 7,21€\n" +
-                "Menores (< 14 años): 3,01€",
+        datos!!.add(Evento(0,"Pabellón Polideportivo Alburquerque","","",
             "",
              "images/espacios/pabellon.jpg",
             "images/espacios/pabellon.jpg",
@@ -48,61 +41,68 @@ class EspaciosUIViewModel : ViewModel() {
             "",
             "",
             "",
-            ""))
-        datos!!.add(Evento(1,"Pista Anexa del Pabellón Polideportivo","","Horarios\n" +
-                "Invierno: Lunes a Viernes 17:00 - 23:00 h. , Sábados 11:00 - 14:00 / 17:00 - 21:00 h.\n" +
-                "Primavera: Lunes a Viernes 18:00 - 23:00 h. , Sábados 11:00 - 14:00 / 18:00 - 21:00 h.\n" +
-                "Verano: Lunes a Viernes 11:00 - 14:00 / 18:00 - 23:00 h. , Sábados 11:00 - 14:00 / 17:00 - 21:00 h.\n" +
-                "*Domingos y Festivos Cerrado\n" +
-                "Precios\n" +
-                "Adultos (> 14 años): 7,21€\n" +
-                "Menores (< 14 años): 3,01€\n" +
-                "Dirección\n" +
-                "Calle Santiago, 0, 06510 Alburquerque, Badajoz\n" +
-                "Teléfono\n" +
-                "924 40 11 32  ","","images/espacios/pista.jpg","images/espacios/pista.jpg","","","","",""))
+            "Horarios\\n\" +\n" +
+                    "                \"Invierno: Lunes a Viernes 17:00 - 23:00 h. , Sábados 11:00 - 14:00 / 17:00 - 21:00 h.\\n\" +\n" +
+                    "                \"Primavera: Lunes a Viernes 18:00 - 23:00 h. , Sábados 11:00 - 14:00 / 18:00 - 21:00 h.\\n\" +\n" +
+                    "                \"Verano: Lunes a Viernes 11:00 - 14:00 / 18:00 - 23:00 h. , Sábados 11:00 - 14:00 / 17:00 - 21:00 h.\\n\" +\n" +
+                    "                \"*Domingos y Festivos Cerrado\\n\" +\n" +
+                    "                \"Precios\\n\" +\n" +
+                    "                \"Adultos (> 14 años): 7,21€\\n\" +\n" +
+                    "                \"Menores (< 14 años): 3,01€"))
+        datos!!.add(Evento(1,"Pista Anexa del Pabellón Polideportivo","","","","images/espacios/pista.jpg","images/espacios/pista.jpg","","","","","Horarios\\n\" +\n" +
+                "                \"Invierno: Lunes a Viernes 17:00 - 23:00 h. , Sábados 11:00 - 14:00 / 17:00 - 21:00 h.\\n\" +\n" +
+                "                \"Primavera: Lunes a Viernes 18:00 - 23:00 h. , Sábados 11:00 - 14:00 / 18:00 - 21:00 h.\\n\" +\n" +
+                "                \"Verano: Lunes a Viernes 11:00 - 14:00 / 18:00 - 23:00 h. , Sábados 11:00 - 14:00 / 17:00 - 21:00 h.\\n\" +\n" +
+                "                \"*Domingos y Festivos Cerrado\\n\" +\n" +
+                "                \"Precios\\n\" +\n" +
+                "                \"Adultos (> 14 años): 7,21€\\n\" +\n" +
+                "                \"Menores (< 14 años): 3,01€\\n\" +\n" +
+                "                \"Dirección\\n\" +\n" +
+                "                \"Calle Santiago, 0, 06510 Alburquerque, Badajoz\\n\" +\n" +
+                "                \"Teléfono\\n\" +\n" +
+                "                \"924 40 11 32  "))
         setRegistros(datos)
 
-        datos!!.add(Evento(2,"Anfiteatro Casa de la Cultura Luis Landero","","Horarios\n" +
-                "Lunes a Viernes 10:00 - 14:00 / 17:00 - 21:00 h.\n" +
-                "*Sábados y Domingos Cerrado\n" +
-                "Dirección\n" +
-                "Avda. de Extremadura s/n 06510 Alburquerque, Badajoz\n" +
-                "Teléfono\n" +
-                "924 40 04 68 ","","images/espacios/anfiteatro.jpg","images/espacios/anfiteatro.jpg","","","","",""))
+        datos!!.add(Evento(2,"Anfiteatro Casa de la Cultura Luis Landero","","","","images/espacios/anfiteatro.jpg","images/espacios/anfiteatro.jpg","","","","","Horarios\\n\" +\n" +
+                "                \"Lunes a Viernes 10:00 - 14:00 / 17:00 - 21:00 h.\\n\" +\n" +
+                "                \"*Sábados y Domingos Cerrado\\n\" +\n" +
+                "                \"Dirección\\n\" +\n" +
+                "                \"Avda. de Extremadura s/n 06510 Alburquerque, Badajoz\\n\" +\n" +
+                "                \"Teléfono\\n\" +\n" +
+                "                \"924 40 04 68"))
         setRegistros(datos)
 
-        datos!!.add(Evento(3,"Piscina Municipal Climatizada","","Horarios\n" +
-                "Verano: Lunes a Domingo 12:00 - 21:00 h.\n" +
-                "*En Invierno Cerrada\n" +
-                "Precios\n" +
-                "70 entradas: 50,00 €\n" +
-                "25 entradas: 25,00 €\n" +
-                "10 entradas: 12,00 €\n" +
-                "Diaria Adulto: 3,00 €\n" +
-                "Diaria Menores y Pensionistas: 1,50 €\n" +
-                "Dirección\n" +
-                "Ctra. Valencia de Alcántara - Badajoz, Km 31, 06510 Alburquerque, Badajoz\n" +
-                "Teléfono\n" +
-                "924 40 05 12 ","","images/espacios/piscina.jpg","images/espacios/piscina.jpg","","","","",""))
+        datos!!.add(Evento(3,"Piscina Municipal Climatizada","","","","images/espacios/piscina.jpg","images/espacios/piscina.jpg","","","","","Horarios\\n\" +\n" +
+                "                \"Verano: Lunes a Domingo 12:00 - 21:00 h.\\n\" +\n" +
+                "                \"*En Invierno Cerrada\\n\" +\n" +
+                "                \"Precios\\n\" +\n" +
+                "                \"70 entradas: 50,00 €\\n\" +\n" +
+                "                \"25 entradas: 25,00 €\\n\" +\n" +
+                "                \"10 entradas: 12,00 €\\n\" +\n" +
+                "                \"Diaria Adulto: 3,00 €\\n\" +\n" +
+                "                \"Diaria Menores y Pensionistas: 1,50 €\\n\" +\n" +
+                "                \"Dirección\\n\" +\n" +
+                "                \"Ctra. Valencia de Alcántara - Badajoz, Km 31, 06510 Alburquerque, Badajoz\\n\" +\n" +
+                "                \"Teléfono\\n\" +\n" +
+                "                \"924 40 05 12 "))
         setRegistros(datos)
 
-        datos!!.add(Evento(4,"Aulas en la Casa de la Cultura Luis Landero","","Horarios\n" +
-                "Lunes a Viernes 10:00 - 14:00 / 17:00 - 21:00 h.\n" +
-                "*Sábados y Domingos Cerrada\n" +
-                "Dirección\n" +
-                "Avda. de Extremadura s/n 06510 Alburquerque, Badajoz\n" +
-                "Teléfono\n" +
-                "924 40 04 68 ","","images/espacios/cultura.jpg","images/espacios/cultura.jpg","","","","",""))
+        datos!!.add(Evento(4,"Aulas en la Casa de la Cultura Luis Landero","","","","images/espacios/cultura.jpg","images/espacios/cultura.jpg","","","","","Horarios\\n\" +\n" +
+                "                \"Lunes a Viernes 10:00 - 14:00 / 17:00 - 21:00 h.\\n\" +\n" +
+                "                \"*Sábados y Domingos Cerrada\\n\" +\n" +
+                "                \"Dirección\\n\" +\n" +
+                "                \"Avda. de Extremadura s/n 06510 Alburquerque, Badajoz\\n\" +\n" +
+                "                \"Teléfono\\n\" +\n" +
+                "                \"924 40 04 68 "))
         setRegistros(datos)
 
-        datos!!.add(Evento(5,"Teatro Casa de la Cultura Luis Landero","","Horarios\n" +
-                "Lunes a Viernes 10:00 - 14:00 / 17:00 - 21:00 h.\n" +
-                "*Sábados y Domingos Cerrada\n" +
-                "Dirección\n" +
-                "Avda. de Extremadura s/n 06510 Alburquerque, Badajoz\n" +
-                "Teléfono\n" +
-                "924 40 04 68 ","","images/espacios/teatro.jpg","images/espacios/teatro.jpg","","","","",""))
+        datos!!.add(Evento(5,"Teatro Casa de la Cultura Luis Landero","","","","images/espacios/teatro.jpg","images/espacios/teatro.jpg","","","","","Horarios\\n\" +\n" +
+                "                \"Lunes a Viernes 10:00 - 14:00 / 17:00 - 21:00 h.\\n\" +\n" +
+                "                \"*Sábados y Domingos Cerrada\\n\" +\n" +
+                "                \"Dirección\\n\" +\n" +
+                "                \"Avda. de Extremadura s/n 06510 Alburquerque, Badajoz\\n\" +\n" +
+                "                \"Teléfono\\n\" +\n" +
+                "                \"924 40 04 68 "))
         setRegistros(datos)
 
         return datos
