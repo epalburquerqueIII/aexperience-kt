@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.epalburquerqueiii.aexperience.Data.Model.AppData
 import com.epalburquerqueiii.aexperience.Data.Model.Evento
 import com.epalburquerqueiii.aexperience.Data.Model.Eventos
 import com.epalburquerqueiii.aexperience.Data.Network.EventosApi

@@ -4,7 +4,7 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <!--            No es un error inicio debe apuntar a eventos-->
+        <!--            No es un error inicio debe apuntar a eventos ¡¡¡¡¡¡¡¡¡¡no tocar!!!!!!!!!!!-->
         <item
             android:id="@+id/eventosFragment"
             android:icon="@drawable/ic_menu_camera"
