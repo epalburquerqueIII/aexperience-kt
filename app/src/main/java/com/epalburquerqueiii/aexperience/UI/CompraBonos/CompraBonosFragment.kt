@@ -123,7 +123,7 @@ class CompraBonosFragment : Fragment() {
                      val post = RetrofitBuilder.builder().create(ReservasApi::class.java)
                      val callcreate = post.ComprarBono(AppData.CsrfRef,
                          idUsuario,
-                         //vTPrecios[indice].text.toString().toFloat(),
+                         vTPrecios[indice].text.toString().toFloat(),
                          vTEntradas[indice].text.toString().toInt(),
                          tipodepago
                      )
