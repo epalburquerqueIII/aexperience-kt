@@ -12,15 +12,11 @@ import com.epalburquerqueiii.aexperience.BR
 import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.MenuRolesApi
 import com.epalburquerqueiii.aexperience.Data.Network.MenusApi
-
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
 import com.epalburquerqueiii.aexperience.Data.Network.UsuariosrolesApi
 import com.epalburquerqueiii.aexperience.R
-import com.epalburquerqueiii.aexperience.UI.MenuRoles.MenuRolesViewModel
 import com.epalburquerqueiii.aexperience.databinding.ActivityMenurolBinding
-
 import kotlinx.android.synthetic.main.activity_menurol.*
-
 import kotlinx.android.synthetic.main.editupdate_botton.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -43,7 +39,8 @@ class MenuRolActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setupViewModelAndObserve()
 
-        val binding = DataBindingUtil.setContentView<ActivityMenurolBinding>(this@MenuRolActivity,R.layout.activity_menurol)
+        val binding = DataBindingUtil.setContentView<ActivityMenurolBinding>(this@MenuRolActivity,
+            R.layout.activity_menurol)
 
         // var addnotemodel = ViewModelProviders.of(this).get(MenuRolesViewModel::class.java)
 
@@ -115,7 +112,7 @@ class MenuRolActivity : AppCompatActivity() {
         //----------------------------------------------------------------------------------------
         //combo idusuarios roles
         val getidusuariosroles = RetrofitBuilder.builder().create(UsuariosrolesApi::class.java)
-        val callgetidusuariosroles = getidusuariosroles.GetOptions()
+        val callgetidusuariosroles = getidusuariosroles.GetOptions(AppData.CsrfRef)
 
         callgetidusuariosroles.enqueue(object : Callback<Options> {
             override fun onResponse(call: Call<Options>, response: Response<Options>) {
