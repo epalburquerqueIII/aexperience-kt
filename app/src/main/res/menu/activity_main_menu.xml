@@ -22,7 +22,7 @@
             android:title="Registro Newsletter" />
         <item
             android:id="@+id/espaciosUIFragment"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/icons8_habitacion_100"
             android:title="@string/menu_espacios" />
         <item
             android:id="@+id/usuariosFragment"

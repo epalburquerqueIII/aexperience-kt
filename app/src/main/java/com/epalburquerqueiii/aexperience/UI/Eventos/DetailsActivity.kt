@@ -40,7 +40,7 @@ class DetailsActivity : AppCompatActivity() {
         loadImageFromUrl(ImagenEventoThumbail, registro.Imageslide)
         textViewTitle.text = registro.Title
         textViewYear.text = registro.Date
-        textViewDescription.text = registro.Description
+        textViewDescription.text = registro.Body
         //      textViewTitle.text = descripcion
         //      textViewYear.text = "Año : " + year
 

@@ -47,7 +47,7 @@
             <TextView
                 android:id="@+id/textViewDescription"
                 android:layout_width="match_parent"
-                android:layout_height="79dp"
+                android:layout_height="443dp"
                 android:text="TextView" />
 
         </LinearLayout>
