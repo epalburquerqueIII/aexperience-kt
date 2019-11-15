@@ -50,7 +50,7 @@ class NewslettersAdapter(private val newsletters: ArrayList<Newsletter>, context
         fun bindView(Newsletter: Newsletter){
             this.Newsletter = Newsletter
             itemView.email_item.text = this.Newsletter?.Email
-            itemView.idtiponoticias_item.text = this.Newsletter?.Idtiponoticias.toString()
+            itemView.idtiponoticias_item.text = this.Newsletter?.Temas
 
         }
 
