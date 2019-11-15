@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/EspaciosUIFragment"
-        android:name="com.epalburquerqueiii.aexperience.UI.Pagos.PagosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Espacios.EspaciosUIFragment"
         android:label="Pagos"
         tools:layout="@layout/list_fragment"/>
     <fragment
@@ -106,4 +106,8 @@
         android:name="com.epalburquerqueiii.aexperience.UI.Espacios.EspaciosUIFragment"
         android:label="EspaciosUIFragment"
         tools:layout="@layout/list_fragment"/>
+    <fragment
+        android:id="@+id/pagosFragment"
+        android:name="com.epalburquerqueiii.aexperience.UI.Pagos.PagosFragment"
+        android:label="PagosFragment" />
 </navigation>

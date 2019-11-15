@@ -57,7 +57,7 @@
             android:icon="@drawable/icons8_undefined_100"
             android:title="Bonos" />
         <item
-            android:id="@+id/PagosFragment"
+            android:id="@+id/pagosFragment"
             android:icon="@drawable/icons8_euro_90"
             android:title="Pagos" />
         <item
@@ -65,7 +65,11 @@
             android:icon="@drawable/siluetademultiplesusuarios"
             android:title="Roles" />
         <item
-            android:id="@+id/newsletterFragment"
+            android:id="@+id/compraBonosFragment"
+            android:icon="@drawable/icons8_comprarbonos_100"
+            android:title="Comprar Bonos" />
+        <item
+            android:id="@+id/NewslettersFragment"
             android:icon="@drawable/icons8_listadeingredientes_90"
             android:title="Newsletter" />
         <item
