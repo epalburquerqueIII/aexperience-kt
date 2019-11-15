@@ -4,21 +4,18 @@ package com.epalburquerqueiii.aexperience.UI.Usuarios
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.epalburquerqueiii.aexperience.Data.Model.AppData
-
 import com.epalburquerqueiii.aexperience.Data.Model.responseModelAuth
-import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
 import com.epalburquerqueiii.aexperience.Data.Network.RetrofitBuilder
-
+import com.epalburquerqueiii.aexperience.Data.Network.UsuariosApi
 import com.epalburquerqueiii.aexperience.R
-
+import com.epalburquerqueiii.aexperience.UI.Eventos.EventosFragment
 import com.google.android.material.navigation.NavigationView
-
 import kotlinx.android.synthetic.main.fragment_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,8 +23,6 @@ import retrofit2.Response
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.util.*
-
-import com.epalburquerqueiii.aexperience.UI.Eventos.EventosFragment
 
 
 /**
@@ -80,7 +75,7 @@ class LoginFragment : Fragment() {
                     /*val toolbar: NavigationView = activity!!.findViewById(com.epalburquerqueiii.aexperience.R.id.toolbar)
                     val appbar: NavigationView = activity!!.findViewById(com.epalburquerqueiii.aexperience.R.id.app_bar_main)*/
                     val i : Int = navView.getMenu().size() - 1
-                    for (a in 4..i) {
+                    for (a in 5..i) {
                         navView.getMenu().getItem(a).setVisible(true)
 //                        toolbar.setBackgroundColor()
                     }
