@@ -24,6 +24,22 @@
             android:id="@+id/newsletterUIFragment"
             android:icon="@drawable/icons8_noticias_100"
             android:title="Registro Newsletter" />
+    </group>
+    <group
+        android:id="@+id/menu_proceso"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/compraBonosFragment"
+            android:icon="@drawable/icons8_comprarbonos_100"
+            android:title="Comprar Bonos" />
+        <item
+            android:id="@+id/reservaHorasFragment"
+            android:icon="@drawable/icons8_reserva_100"
+            android:title="Reservas Deportes" />
+    </group>
+    <group
+        android:id="@+id/menu_tablas"
+        android:checkableBehavior="none">
         <item
             android:id="@+id/usuariosFragment"
             android:icon="@drawable/ic_menu_manage"
@@ -68,10 +84,6 @@
             android:id="@+id/usuariosrolesFragment"
             android:icon="@drawable/siluetademultiplesusuarios"
             android:title="Roles" />
-        <item
-            android:id="@+id/compraBonosFragment"
-            android:icon="@drawable/icons8_comprarbonos_100"
-            android:title="Comprar Bonos" />
         <item
             android:id="@+id/NewslettersFragment"
             android:icon="@drawable/icons8_listadeingredientes_90"

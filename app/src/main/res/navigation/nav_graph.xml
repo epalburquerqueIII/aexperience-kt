@@ -79,7 +79,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.epalburquerqueiii.aexperience.UI.Usuarios.LoginFragment"
-        android:label="fragment_login"
+        android:label="Acceso Usuarios"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/usuariosrolesFragment"
