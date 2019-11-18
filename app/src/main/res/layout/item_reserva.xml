@@ -3,26 +3,26 @@
 >
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="6.0dip"
         app:cardElevation="2.0dip"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
-            android:layout_width="371dp"
+            android:layout_width="386dp"
             android:layout_height="521dp"
             android:orientation="vertical"
             android:padding="@dimen/spacing_large">
 
             <LinearLayout
-                android:layout_width="353dp"
-                android:layout_height="15dp"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1.0">
 
                 <TextView
-                    android:layout_width="157dp"
-                    android:layout_height="57dp"
+                    android:layout_width="167dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Autorizado"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
@@ -39,20 +39,15 @@
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/view2"
-                android:layout_width="4dp"
-                android:layout_height="2dp" />
-
             <LinearLayout
-                android:layout_width="353dp"
-                android:layout_height="wrap_content"
+                android:layout_width="370dp"
+                android:layout_height="1dp"
                 android:layout_weight="1.0">
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="296dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Espacio"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
@@ -70,19 +65,14 @@
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/view3"
-                android:layout_width="4dp"
-                android:layout_height="2dp" />
-
             <LinearLayout
-                android:layout_width="353dp"
-                android:layout_height="22dp"
+                android:layout_width="373dp"
+                android:layout_height="2dp"
                 android:layout_weight="1.0">
 
                 <TextView
                     android:layout_width="123dp"
-                    android:layout_height="82dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Usuario"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
@@ -99,19 +89,14 @@
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/view4"
-                android:layout_width="4dp"
-                android:layout_height="2dp" />
-
             <LinearLayout
-                android:layout_width="353dp"
+                android:layout_width="374dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0">
 
                 <TextView
                     android:layout_width="392dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Fecha"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
@@ -128,20 +113,14 @@
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/view6"
-                android:layout_width="4dp"
-                android:layout_height="2dp"
-                android:layout_weight="0" />
-
             <LinearLayout
-                android:layout_width="353dp"
+                android:layout_width="370dp"
                 android:layout_height="11dp"
                 android:layout_weight="1.0">
 
                 <TextView
                     android:layout_width="150dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Hora"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"

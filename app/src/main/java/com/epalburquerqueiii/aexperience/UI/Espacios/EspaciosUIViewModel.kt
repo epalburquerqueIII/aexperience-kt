@@ -106,7 +106,6 @@ class EspaciosUIViewModel : ViewModel() {
         setRegistros(datos)
 
         return datos
-
     }
 
 }

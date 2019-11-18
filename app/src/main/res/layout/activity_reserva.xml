@@ -30,39 +30,36 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/FechaAct"
-            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
-            android:layout_width="386dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="568dp"
-            android:background="@drawable/background_rectangle_black"
-            android:drawablePadding="8dp"
-            android:hint="Fecha"
-            android:imeActionId="6"
-            android:imeOptions="actionUnspecified"
-            android:maxLines="1"
-            android:paddingEnd="20dp"
-            android:singleLine="true"
-            android:text="@{addreservaviewmodel.Fecha}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="22sp"
+        <include
+            android:id="@+id/include4"
+            layout="@layout/editupdate_botton"
+            android:layout_width="334dp"
+            android:layout_height="137dp"
+            android:layout_marginBottom="64dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_activity3"
-            app:layout_constraintVertical_bias="0.7"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.941" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/FechaAct"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.05" />
 
         <EditText
             android:id="@+id/HoraAct"
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
-            android:layout_width="386dp"
+            android:layout_width="390dp"
             android:layout_height="52dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginBottom="504dp"
             android:background="@drawable/background_rectangle_black"
             android:drawablePadding="8dp"
             android:hint="Hora"
@@ -75,65 +72,118 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/FechaAct"
-            app:layout_constraintVertical_bias="0.705"
+            app:layout_constraintStart_toStartOf="@+id/cbusuario"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.23"
             tools:ignore="MissingConstraints" />
 
-        <include
-            android:id="@+id/include4"
-            layout="@layout/editupdate_botton"
-            android:layout_width="346dp"
-            android:layout_height="185dp"
-            android:layout_marginBottom="64dp"
+        <EditText
+            android:id="@+id/FechaAct"
+            style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+            android:layout_width="390dp"
+            android:layout_height="52dp"
+            android:background="@drawable/background_rectangle_black"
+            android:drawablePadding="8dp"
+            android:hint="Fecha"
+            android:imeActionId="6"
+            android:imeOptions="actionUnspecified"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            android:text="@{addreservaviewmodel.Fecha}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cbautorizado"
-            app:layout_constraintVertical_bias="0.484" />
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toTopOf="@+id/txt_activity3"
+            app:layout_constraintVertical_bias="0.092"
+            tools:ignore="MissingConstraints" />
 
         <Spinner
             android:id="@+id/cbusuario"
             style="@style/Spinner"
-            android:layout_width="369dp"
+            android:layout_width="390dp"
             android:layout_height="35dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toTopOf="@+id/cbespacio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/HoraAct" />
+            app:layout_constraintStart_toStartOf="@+id/textView10"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.946" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_espacios"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/cbespacio"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.429" />
 
         <Spinner
             android:id="@+id/cbespacio"
             style="@style/Spinner"
-            android:layout_width="371dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="28dp"
-            app:layout_constraintBottom_toTopOf="@+id/cbautorizado"
+            android:layout_width="390dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="260dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView11"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.116" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_autorizados"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cbusuario" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/cbautorizado"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.537" />
 
         <Spinner
             android:id="@+id/cbautorizado"
             style="@style/Spinner"
-            android:layout_width="366dp"
-            android:layout_height="31dp"
+            android:layout_width="390dp"
+            android:layout_height="30dp"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="28dp"
             android:layout_marginEnd="4dp"
-            android:layout_marginBottom="29dp"
-            app:layout_constraintBottom_toTopOf="@+id/include4"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cbespacio" /><![CDATA[
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.59" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hora"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/HoraAct"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.187" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usuario"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.011"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.317" /><![CDATA[
 
         app:layout_constraintTop_toBottomOf="@+id/HoraAct" />
 

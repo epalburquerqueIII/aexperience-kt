@@ -11,6 +11,7 @@ import android.widget.*
 import com.epalburquerqueiii.aexperience.Data.Model.*
 import com.epalburquerqueiii.aexperience.Data.Network.*
 import com.epalburquerqueiii.aexperience.R
+import com.epalburquerqueiii.aexperience.UI.Eventos.EventosFragment
 import kotlinx.android.synthetic.main.activity_consumo_bono.*
 import kotlinx.android.synthetic.main.activity_horario.*
 import kotlinx.android.synthetic.main.activity_tiposevento.*
@@ -40,6 +41,11 @@ class CompraBonosFragment : Fragment() {
 
     private lateinit var viewModel: CompraBonosViewModel
 
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.nav_host_fragment, fragment)
+        fragmentTransaction.commit()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -141,10 +147,11 @@ class CompraBonosFragment : Fragment() {
                              call: Call<responseModel>,
                              response: Response<responseModel>
                          ) {
-                             //Toast.makeText(activity,"succes",Toast.LENGTH_SHORT).show()
+                             Toast.makeText(activity,"La compra se hizo correctamente",Toast.LENGTH_SHORT).show()
                              @Suppress("NAME_SHADOWING")
                              val response = response.body() as responseModel
                              println("test : " + response.Error)
+                             replaceFragment(EventosFragment())
                          }
                      })
                      break
